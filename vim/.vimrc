@@ -45,21 +45,15 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 
 " vim-repeat: make vim-commentary and vim-surround work with .
-Plug 'tpope/vim-repeat'
-
-" vim-liquid: syntax stuff
-Plug 'tpope/vim-liquid'
+"Plug 'tpope/vim-repeat'
 
 " vim-markdown: some stuff for fenced language highlighting
-Plug 'tpope/vim-markdown'
-let g:markdown_fenced_languages = ['html', 'python', 'ruby', 'yaml', 'haml', 'bash=sh']
+"Plug 'tpope/vim-markdown'
+"let g:markdown_fenced_languages = ['html', 'python', 'ruby', 'yaml', 'haml', 'bash=sh']
 
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-git'
-Plug 'tpope/vim-rails'
 Plug 'tpope/vim-vinegar'
-Plug 'tpope/vim-haml'
-Plug 'tpope/vim-eunuch'
 
 " }}}
 
@@ -69,6 +63,11 @@ Plug 'tpope/vim-eunuch'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
+" }}}
+
+" {{{ tagbar
+"     ========
+Plug 'majutsushi/tagbar'
 " }}}
 
 " {{{ NERDTree
