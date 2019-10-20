@@ -1,0 +1,123 @@
+[submodule "vim/plugged/vim-moonfly-colors"]
+	path = vim/plugged/vim-moonfly-colors
+	url = https://github.com/bluz71/vim-moonfly-colors
+[submodule "vim/plugged/vim-moonfly-statusline"]
+	path = vim/plugged/vim-moonfly-statusline
+	url = https://github.com/bluz71/vim-moonfly-statusline
+[submodule "vim/plugged/indentLine"]
+	path = vim/plugged/indentLine
+	url = https://github.com/Yggdroot/indentLine
+[submodule "vim/plugged/taboo"]
+	path = vim/plugged/taboo
+	url = https://github.com/gcmt/taboo.vim
+[submodule "vim/plugged/vim-visual-star-search"]
+	path = vim/plugged/vim-visual-star-search
+	url = https://github.com/nelstrom/vim-visual-star-search
+[submodule "vim/plugged/vim-indent-object"]
+	path = vim/plugged/vim-indent-object
+	url = https://github.com/michaeljsmith/vim-indent-object
+[submodule "vim/plugged/targets"]
+	path = vim/plugged/targets
+	url = https://github.com/wellle/targets.vim
+[submodule "vim/plugged/vim-lion"]
+	path = vim/plugged/vim-lion
+	url = https://github.com/tommcdo/vim-lion
+[submodule "vim/plugged/vim-wordmotion"]
+	path = vim/plugged/vim-wordmotion
+	url = https://github.com/chaoren/vim-wordmotion
+[submodule "vim/plugged/vim-repeat"]
+	path = vim/plugged/vim-repeat
+	url = https://github.com/tpope/vim-repeat
+[submodule "vim/plugged/https-::github.com:tpope:vim-surround"]
+	path = vim/plugged/https-::github.com:tpope:vim-surround
+	url = https://github.com/tpope/vim-surround
+[submodule "vim/plugged/vim-commentary"]
+	path = vim/plugged/vim-commentary
+	url = https://github.com/tpope/vim-commentary
+[submodule "vim/plugged/vim-endwise"]
+	path = vim/plugged/vim-endwise
+	url = https://github.com/tpope/vim-endwise
+[submodule "vim/plugged/pear-tree"]
+	path = vim/plugged/pear-tree
+	url = https://github.com/tmsvg/pear-tree
+[submodule "vim/plugged/vim-auto-save"]
+	path = vim/plugged/vim-auto-save
+	url = https://github.com/907th/vim-auto-save
+[submodule "vim/plugged/clever-f"]
+	path = vim/plugged/clever-f
+	url = https://github.com/rhysd/clever-f.vim
+[submodule "vim/plugged/undotree"]
+	path = vim/plugged/undotree
+	url = https://github.com/mbbill/undotree
+[submodule "vim/plugged/vim-abolish"]
+	path = vim/plugged/vim-abolish
+	url = https://github.com/tpope/vim-abolish
+[submodule "vim/plugged/vim-obsession"]
+	path = vim/plugged/vim-obsession
+	url = https://github.com/tpope/vim-obsession
+[submodule "vim/plugged/vim-unimpaired"]
+	path = vim/plugged/vim-unimpaired
+	url = https://github.com/tpope/vim-unimpaired
+[submodule "vim/plugged/junegunn:fzf"]
+	path = vim/plugged/junegunn:fzf
+	url = https://github.com/junegunn/fzf
+[submodule "vim/plugged/fzf.vim"]
+	path = vim/plugged/fzf.vim
+	url = https://github.com/junegunn/fzf.vim
+[submodule "vim/plugged/fzf-mru"]
+	path = vim/plugged/fzf-mru
+	url = https://github.com/pbogut/fzf-mru.vim
+[submodule "vim/plugged/nerdtree"]
+	path = vim/plugged/nerdtree
+	url = https://github.com/scrooloose/nerdtree
+[submodule "vim/plugged/nerdtree-git-plugin"]
+	path = vim/plugged/nerdtree-git-plugin
+	url = https://github.com/Xuyuanp/nerdtree-git-plugin
+[submodule "vim/plugged/vim-grepper"]
+	path = vim/plugged/vim-grepper
+	url = https://github.com/mhinz/vim-grepper
+[submodule "vim/plugged/VimCompletesMe"]
+	path = vim/plugged/VimCompletesMe
+	url = https://github.com/ajh17/VimCompletesMe
+[submodule "vim/plugged/vim-lsc"]
+	path = vim/plugged/vim-lsc
+	url = https://github.com/natebosch/vim-lsc
+[submodule "vim/plugged/vim-fugitive"]
+	path = vim/plugged/vim-fugitive
+	url = https://github.com/tpope/vim-fugitive
+[submodule "vim/plugged/vim-gitgutter"]
+	path = vim/plugged/vim-gitgutter
+	url = https://github.com/airblade/vim-gitgutter
+[submodule "vim/plugged/git-messenger"]
+	path = vim/plugged/git-messenger
+	url = https://github.com/rhysd/git-messenger.vim
+[submodule "vim/plugged/vim-polyglot"]
+	path = vim/plugged/vim-polyglot
+	url = https://github.com/sheerun/vim-polyglot
+[submodule "vim/plugged/vim-bundler"]
+	path = vim/plugged/vim-bundler
+	url = https://github.com/tpope/vim-bundler
+[submodule "vim/plugged/vim-projectionist"]
+	path = vim/plugged/vim-projectionist
+	url = https://github.com/tpope/vim-projectionist
+[submodule "vim/plugged/ale"]
+	path = vim/plugged/ale
+	url = https://github.com/dense-analysis/ale
+[submodule "vim/plugged/vim-test"]
+	path = vim/plugged/vim-test
+	url = https://github.com/janko/vim-test
+[submodule "vim/plugged/vim-ragtag"]
+	path = vim/plugged/vim-ragtag
+	url = https://github.com/tpope/vim-ragtag
+[submodule "vim/plugged/ultisnips"]
+	path = vim/plugged/ultisnips
+	url = https://github.com/SirVer/ultisnips
+[submodule "vim/plugged/vim-sleuth"]
+	path = vim/plugged/vim-sleuth
+	url = https://github.com/tpope/vim-sleuth
+[submodule "vim/plugged/vim-editorconfig"]
+	path = vim/plugged/vim-editorconfig
+	url = https://github.com/sgur/vim-editorconfig
+[submodule "vim/plugged/vim-tmux-navigator"]
+	path = vim/plugged/vim-tmux-navigator
+	url = https://github.com/christoomey/vim-tmux-navigator
