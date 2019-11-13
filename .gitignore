@@ -4,3 +4,4 @@
 
 # macOs
 .DS_Store
+/vim/plugged

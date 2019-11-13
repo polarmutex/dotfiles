@@ -1,138 +1,3 @@
-" Hints:    https://bluz71.github.io/2018/03/12/vim-hints.html
-" Tips:     https://bluz71.github.io/2017/05/15/vim-tips-tricks.html
-" Plugins:  https://bluz71.github.io/2017/05/21/vim-plugins-i-like.html
-" Mappings: https://bluz71.github.io/2017/06/14/a-few-vim-tmux-mappings.html
-
-"===========================================================
-" SETTINGS
-"===========================================================
-
-" Enable syntax highlighting.
-"
-syntax on
-
-
-" General vim settings.
-"
-set autoindent        " Indented text
-set autoread          " Pick up external changes to files
-set autowrite         " Write files when navigating with :next/:previous
-set background=dark
-set backspace=indent,eol,start
-set belloff=all       " Bells are annoying
-set breakindent       " Wrap long lines *with* indentation
-set breakindentopt=shift:2
-if has("unnamedplus") " Copy to/from system clipboard
-    set clipboard=unnamed,unnamedplus
-else
-    set clipboard=unnamed
-endif
-set colorcolumn=81,82 " Highlight 81 and 82 columns
-set conceallevel=2
-set complete=.,w,b    " Sources for term and line completions
-set completeopt=menu,menuone,noinsert,noselect
-set dictionary=/usr/share/dict/words
-if has('nvim-0.3.2') || has("patch-8.1.0360")
-    set diffopt=filler,internal,algorithm:histogram,indent-heuristic
-endif
-set expandtab         " Use spaces instead of tabs
-set foldlevelstart=20
-set foldmethod=indent " Simple and fast
-set foldtext=""
-set formatoptions=cqj " Default format options
-set gdefault          " Always do global substitutes
-set history=200       " Keep 200 changes of undo history
-set infercase         " Smart casing when completing
-set ignorecase        " Search in case-insensitively
-set incsearch         " Go to search results immediately
-set laststatus=2      " We want a statusline
-set matchpairs=(:),{:},[:]
-set mouse=a           " Mouse support in the terminal
-set mousehide         " Hide mouse when typing text
-set nobackup          " No backup files
-set nocompatible      " No Vi support
-set noexrc            " Disable reading of working directory vimrc files
-set nohlsearch        " Don't highlight search results by default
-set nojoinspaces      " No to double-spaces when joining lines
-set noshowcmd         " No to showing command in bottom-right corner
-set noshowmatch       " No jumping jumping cursors when matching pairs
-set noshowmode        " No to showing mode in bottom-left corner
-set noswapfile        " No backup files
-set nowrapscan        " Don't wrap searches around
-set number            " Show line numbers
-set nrformats=        " No to oct/hex support when doing CTRL-a/x
-set path=**
-set pumheight=20      " Height of complete list
-set relativenumber    " Show relative numbers
-set ruler
-set shiftwidth=4
-set shortmess+=c      " Don't show insert mode completion messages
-set showbreak=↳       " Use this to wrap long lines
-set smartcase         " Case-smart searching
-set smarttab
-set splitbelow        " Split below current window
-set splitright        " Split window to the right
-set synmaxcol=500     " Syntax highlight first 500 chars, for performance
-set t_Co=256          " 256 color support
-set tabstop=4
-" Be aware, termguicolors results in `:terminal` colors that are slightly off.
-"   https://github.com/neovim/neovim/issues/7018
-" if has("termguicolors")
-"     set termguicolors " Enable 24-bit color support if available
-" endif
-set textwidth=80
-set timeoutlen=1500   " Give some time for multi-key mappings
-" Don't set ttimeoutlen to zero otherwise it will break terminal cursor block
-" to I-beam and back functionality set by the t_SI and t_EI variables.
-set ttimeoutlen=10
-set ttyfast
-" Set the persistent undo directory on temporary private fast storage.
-let s:undoDir="/tmp/.undodir_" . $USER
-if !isdirectory(s:undoDir)
-    call mkdir(s:undoDir, "", 0700)
-endif
-let &undodir=s:undoDir
-set undofile          " Maintain undo history
-set updatetime=300    " Make GitGutter plugin more responsive
-set viminfo=          " No backups
-set wildcharm=<Tab>   " Defines the trigger for 'wildmenu' in mappings
-set wildmenu          " Nice command completions
-set wildmode=full
-set wrap              " Wrap long lines
-
-" Options specific to Neovim or Vim.
-if has("nvim")
-    set inccommand=nosplit
-    set list
-    set listchars=tab:\ \ ,trail:-
-else
-    set cryptmethod=blowfish2
-    set listchars=eol:$,tab:>-,trail:-
-    set ttymouse=xterm2
-endif
-
-
-"===========================================================
-" FUNCTIONS
-"
-" ~/dotfiles/vim/autoload - custom functions
-"===========================================================
-
-
-"===========================================================
-" TERMINAL CONFIGURATION
-"
-" ~/dotfiles/vim/plugin/terminal-settings.vim - Vim terminal tweaks
-"===========================================================
-
-
-"===========================================================
-" MAPPINGS
-"
-" ~/dotfiles/vim/plugin/mappings.vim - custom mappings
-"===========================================================
-let mapleader = ","
-
 
 "===========================================================
 " PLUGINS
@@ -152,137 +17,96 @@ call plug#begin('~/.vim/plugged')
 " Styling related plugings
 "-----------------------------
 Plug 'bluz71/vim-moonfly-colors'
-    " ~/dotfiles/vim/plugin/moonfly-colors.vim - options
 Plug 'bluz71/vim-moonfly-statusline'
-    " ~/dotfiles/vim/plugin/moonfly-statusline.vim - options
-Plug 'Yggdroot/indentLine'
-    " ~/dotfiles/vim/plugin/indentLine.vim - options
-Plug 'gcmt/taboo.vim'
-    " ~/dotfiles/vim/plugin/taboo.vim - options
-
-"-----------------------------
-" General behavior plugins
-"-----------------------------
-Plug 'nelstrom/vim-visual-star-search'
-Plug 'michaeljsmith/vim-indent-object'
-Plug 'wellle/targets.vim'
-Plug 'tommcdo/vim-lion'
-    " ~/dotfiles/vim/plugin/lion.vim - options
-Plug 'chaoren/vim-wordmotion'
-    " ~/dotfiles/vim/after/plugin/wordmotion.vim - overrides
-Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-commentary'
-Plug 'tpope/vim-endwise', { 'for': ['crystal', 'elixir', 'ruby', 'vim'] }
-Plug 'tmsvg/pear-tree'
-    " ~/dotfiles/vim/plugin/pear-tree.vim - options, mappings
-Plug '907th/vim-auto-save'
-    " ~/dotfiles/vim/plugin/auto-save.vim - options
-Plug 'rhysd/clever-f.vim'
-    " ~/dotfiles/vim/plugin/clever-f.vim - options
-Plug 'mbbill/undotree'
-    " ~/dotfiles/vim/plugin/undotree.vim - options, mappings
-Plug 'tpope/vim-abolish'
-    " ~/dotfiles/vim/after/plugin/abolish.vim - abbreviations
-Plug 'tpope/vim-obsession'
-    " ~/dotfiles/vim/plugin/obsession.vim - mappings
-Plug 'tpope/vim-unimpaired'
-    " ~/dotfiles/vim/after/plugin/unimpaired.vim - overrides
 
 "-----------------------------
 " File management plugins
 "-----------------------------
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --no-bash' }
-Plug 'junegunn/fzf.vim'
-    " ~/dotfiles/vim/plugin/fzf.vim - options, mappings
-Plug 'pbogut/fzf-mru.vim'
-    " ~/dotfiles/vim/plugin/fzf-mru.vim - options, mappings
 Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] }
-    " ~/dotfiles/vim/plugin/nerdtree.vim - options, mappings, function, events
 Plug 'Xuyuanp/nerdtree-git-plugin', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] }
-    " ~/dotfiles/vim/plugin/nerdtree-git-plugin.vim - options
-Plug 'mhinz/vim-grepper'
-    " ~/dotfiles/vim/plugin/grepper.vim - options, mappings
-    " ~/dotfiles/vim/after/plugin/grepper.vim - overrides
 
 "-----------------------------
 " Completion plugins
 "-----------------------------
-Plug 'ajh17/VimCompletesMe'
-Plug 'natebosch/vim-lsc'
-    " ~/dotfiles/vim/plugin/lsc.vim - options
 
 "-----------------------------
 " Git plugins
 "-----------------------------
 Plug 'tpope/vim-fugitive'
-    " ~/dotfiles/vim/plugin/fugitive.vim - mappings
 Plug 'airblade/vim-gitgutter'
-    " ~/dotfiles/vim/plugin/gitgutter.vim - options, mappings
-Plug 'rhysd/git-messenger.vim'
-    " ~/dotfiles/vim/plugin/git-messenger.vim - options, mappings
 
 "-----------------------------
 " Development plugins
 "-----------------------------
-Plug 'sheerun/vim-polyglot'
-    " ~/dotfiles/vim/plugin/polyglot.vim - options
-Plug 'tpope/vim-bundler'
-    " Run 'gem ctags' to generate ctags for installed gems (required just once).
-Plug 'tpope/vim-rails'
-    " ~/dotfiles/vim/plugin/rails.vim - mappings
-Plug 'tpope/vim-projectionist'
-    " ~/dotfiles/vim/plugin/projectionist.vim - mappings
 Plug 'dense-analysis/ale'
-    " ~/dotfiles/vim/plugin/ale.vim - options, mappings
-Plug 'janko-m/vim-test'
-    " ~/dotfiles/vim/plugin/test.vim - options, mappings
-Plug 'tpope/vim-ragtag'
-    " ~/dotfiles/vim/plugin/ragtag.vim - mappings
-Plug 'SirVer/ultisnips', { 'on': [] }
-    " ~/dotfiles/vim/plugin/ultisnips.vim - options, mapping & on-demand loading
-    " ~/dotfiles/vim/UltiSnips - custom snippets
-
-" Sleuth and EditorConfig will adjust style and indent either heuristically
-" (former) or explicitly (later). Note, EditorConfig will take precedence if
-" a .editorconfig file is found.
-Plug 'tpope/vim-sleuth'
-    " ~/dotfiles/vim/after/plugin/sleuth.vim - overrides
-Plug 'sgur/vim-editorconfig'
-
+"Plug 'sheerun/vim-polyglot'
+Plug 'janko/vim-test'
 "-----------------------------
 " tmux support
 "-----------------------------
 Plug 'christoomey/vim-tmux-navigator'
-    " ~/dotfiles/vim/plugin/tmux-navigator.vim - options, mappings
-
-"-----------------------------
-" Neovim specific plugins
-"-----------------------------
-if has("nvim")
-Plug 'bfredl/nvim-miniyank'
-    " ~/dotfiles/vim/plugin/miniyank.vim - mappings
-endif
 
 " Finalize vim-plug.
 call plug#end()
-
-
-" Load up the match it plugin which provides smart % XML/HTML matching.
-runtime macros/matchit.vim
-
-
 "===========================================================
-" AUTOCMDS
-"
-" ~/dotfiles/vim/plugin/autocmds.vim - customizations
-" ~/dotfiles/vim/ftplugin            - file type options, mappings
-" ~/dotfiles/vim/after/ftplugin      - file type overrides
+" SETTINGS
 "===========================================================
 
-
-"===========================================================
-" COLOR SCHEME
-"===========================================================
-
+" Colors {{{
+syntax on " enable syntax highlighting
 colorscheme moonfly
+set termguicolors
+" }}}
+" Spaces and tabs {{{
+set tabstop=4 " number of visual spaces per tab
+set softtabstop=4 " number of spaces in tab when editing
+set expandtab " tabs are spaces
+set shiftwidth=4
+set modelines=1
+set smartindent
+set autoindent
+" }}}
+" UI config {{{
+set number " show line numbers
+set showcmd " show command in bottom bar
+set cursorline " hightlight current line
+filetype indent on " load filetype-specifc indent files
+filetype plugin on
+set wildmenu " visual autocomplete for command line
+set lazyredraw " redraw only when we need to
+set showmatch " hightlight matching [{()}]
+" }}}
+" Searching {{{
+set incsearch " search as characters are enetred
+set hlsearch " highlight matches
+" turn off search highlight
+nnoremap <leader><space> :nohlsearch<CR>
+" }}}
+" Folding {{{
+set foldenable " enable folding
+set foldlevelstart=10 " open most folds by default 0-99
+set foldnestmax=10 " 10 nested fold max
+nnoremap <space> za " change fold to space
+set foldmethod=indent " fold based on indent-level
+" }}}
+" Leader shortcuts {{{
+let mapleader=","
+
+" save session
+nnoremap <leader>s :mksession<CR>
+"}}}
+" Backups {{{
+" move backups to tmp dir
+set backup
+set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
+set backupskip=/tmp/*,/private/tmp/*
+set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
+set writebackup
+" }}}
+
+augroup myvimrchooks
+    au!
+    autocmd bufwritepost .vimrc source ~/.vimrc
+augroup END
+
+" vim:foldmethod=marker:foldlevel=0
