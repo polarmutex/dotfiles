@@ -1,19 +1,6 @@
-
-set nocompatible
-
-let s:config_path = $HOME.'/.config/nvim/'
-let s:config_files = [
-	\'functions.vim',
-	\'plugins.vim',
-	\'common.vim',
-	\'languages.vim',
-	\'mappings.vim',
-	\'plugin_conf.vim',
-\]
-
-for file in s:config_files
-	if filereadable(s:config_path.file)
-		exec "so ".s:config_path.file
-	endif
-endfor
-
+set runtimepath^=~/.vim runtimepath+=~/.vim/after
+let $NVIM_TUI_ENABLE_CURSOR_SHAPE=0
+let &packpath = &runtimepath
+set guicursor=
+autocmd OptionSet guicursor noautocmd set guicursor=
+source ~/.vimrc

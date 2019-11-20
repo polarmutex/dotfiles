@@ -1,5 +1,5 @@
-## vim := nvim
-vim := ~/Downloads/nvim.appimage
+vim := nvim
+#vim := ~/Downloads/nvim.appimage
 pwd := $(shell pwd -LP)
 
 
