@@ -2,13 +2,17 @@ vim := vim
 pwd := $(shell pwd -LP)
 
 
-link: link-vim 
+link: link-vim link-tmux
 
 link-vim:
 	@echo "==> ~/.vim"
 	@if [ ! . -ef ~/.vim ]; then ln -nfs "${pwd}/vim" ~/.vim; fi
 	@echo "==> ~/.vimrc"
-	@ln -nfs "${pwd}/vim/init.vim" ~/.vimrc
+	@ln -nfs "${pwd}/vim/vimrc" ~/.vimrc
+
+link-tmux:
+	@echo "==> ~/.tmux.conf"
+	@ln -nfs "${pwd}/tmux/tmux.conf" ~/.tmux.conf
 
 install:
 	$(vim) +PlugInstall +PlugClean
