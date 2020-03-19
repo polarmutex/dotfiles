@@ -1,20 +1,14 @@
-vim := nvim
-#vim := ~/Downloads/nvim.appimage
+vim := vim
 pwd := $(shell pwd -LP)
 
 
-link: link-vim link-neovim
+link: link-vim 
 
 link-vim:
 	@echo "==> ~/.vim"
 	@if [ ! . -ef ~/.vim ]; then ln -nfs "${pwd}/vim" ~/.vim; fi
 	@echo "==> ~/.vimrc"
 	@ln -nfs "${pwd}/vim/init.vim" ~/.vimrc
-
-link-neovim:
-	@mkdir -p ~/.config
-	@echo "==> ~/.config/nvim"
-	@if [ ! . -ef ~/.config/nvim ]; then ln -nfs "${pwd}/vim" ~/.config/nvim; fi
 
 install:
 	$(vim) +PlugInstall +PlugClean
