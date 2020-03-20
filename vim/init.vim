@@ -1,12 +1,20 @@
 
+let g:mapleader=","
+let g:maplocalleader="<Space>"
+
+if has('nvim')
+    let vim = stdpath('config')
+else
+    let vim = $HOME . '/.vim'
+end
+
 " Specify a directory for plugins
 " - For Neovim: stdpath('data') . '/plugged'
 "   " - Avoid using standard Vim directory names like 'plugin'
-call plug#begin('~/.vim/plugins')
+call plug#begin(vim . '/plugins')
 
 " colorschemes
-Plug 'bluz71/vim-moonfly-colors'
-Plug 'joshdick/onedark.vim'
+Plug 'cocopon/iceberg.vim'
 
 " Git
 Plug 'tpope/vim-fugitive'
@@ -38,7 +46,7 @@ scriptencoding utf-8
 " set t_Co=256
 " set background=dark
 set termguicolors
-colorscheme moonfly
+colorscheme iceberg
 
 set timeoutlen=300                      " mapping timeout
 set ttimeoutlen=50                      " keycode timeout
@@ -164,3 +172,4 @@ let g:ctrlp_switch_buffer = 0
 let g:ctrlp_working_path_mode = 0
 let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'
 
+source ~/.config/nvim/statusbar.vim

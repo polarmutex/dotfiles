@@ -8,7 +8,7 @@ git clone https://github.com/robbyrussell/oh-my-zsh ~/.oh-my-zsh
 if [[ "$OSTYPE" == "darwin"* ]]; then
     # macOS
     brew install zsh
-    rcfile="macos.zshrc"
+    rcfile="zshrc"
 else
     # linux
     echo "Pacman or aptitute? (p/a): "
@@ -19,7 +19,7 @@ else
         sudo apt-get install zsh -y
     fi
     
-    rcfile="linux.zshrc"
+    rcfile="zshrc"
 fi
 
 

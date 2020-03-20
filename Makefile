@@ -1,24 +1,26 @@
-vim := vim
 pwd := $(shell pwd -LP)
 
 
-link: link-vim link-tmux
+default: vim tmux
+
+vim: link-vim install-vim
+tmux: link-tmux
 
 link-vim:
-	@echo "==> ~/.vim"
-	@if [ ! . -ef ~/.vim ]; then ln -nfs "${pwd}/vim" ~/.vim; fi
-	@echo "==> ~/.vimrc"
-	@ln -nfs "${pwd}/vim/vimrc" ~/.vimrc
+	@ln -nfs "${pwd}/vim/init.vim" ~/.vimrc
+	@ln -nfs "${pwd}/vim" ~/.vim
+	@mkdir -p ~/.config
+	@ln -nfs "${pwd}/vim" ~/.config/nvim
 
 link-tmux:
 	@echo "==> ~/.tmux.conf"
 	@ln -nfs "${pwd}/tmux/tmux.conf" ~/.tmux.conf
 
-install:
-	$(vim) +PlugInstall +PlugClean
+install-vim:
+	nvim +PlugInstall +PlugClean
 
-upgrade:
-	$(vim) +PlugUpdate +PlugUpgrade +PlugClean +PlugDiff
+update-vim:
+	nvim +PlugUpdate +PlugUpgrade +PlugClean +PlugDiff
 
 
-.PHONY: install link upgrade restore default link-vim link-neovim doc/vimfiles_keys.txt
+.PHONY: install link upgrade 
