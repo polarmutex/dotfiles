@@ -1,3 +1,6 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhistcnt =1
+let g:netrw_dirhistcnt =4
+let g:netrw_dirhist_4='/mnt/d/COARPs/repos/telephonics-adapter'
+let g:netrw_dirhist_3='/mnt/d/COARPs/repos/telephonics-adapter/src/telephonicsDataFIle'
+let g:netrw_dirhist_2='/home/blueguardian/.config/nvim'
 let g:netrw_dirhist_1='/Users/brian/dev/dotfiles/vim/config'

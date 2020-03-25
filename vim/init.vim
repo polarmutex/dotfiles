@@ -15,6 +15,7 @@ call plug#begin(vim . '/plugins')
 
 " colorschemes
 Plug 'cocopon/iceberg.vim'
+Plug 'arcticicestudio/nord-vim'
 
 " Git
 Plug 'tpope/vim-fugitive'
@@ -33,6 +34,9 @@ Plug 'janko-m/vim-test'
 " WHitespace
 "Plug 'ntpeters/vim-better-whitespace'
 
+" Completion
+Plug 'neovim/nvim-lsp'
+Plug 'lifepillar/vim-mucomplete'
 " Initialize plugin system
 call plug#end()
 
@@ -46,7 +50,8 @@ scriptencoding utf-8
 " set t_Co=256
 " set background=dark
 set termguicolors
-colorscheme iceberg
+" colorscheme iceberg
+colorscheme nord
 
 set timeoutlen=300                      " mapping timeout
 set ttimeoutlen=50                      " keycode timeout
@@ -127,6 +132,28 @@ endif
 " Undo and Backup
 set nobackup noswapfile nowritebackup               " disable backup/swap files
 set undofile undodir=~/.vim/undo undolevels=9999    " undo options
+
+
+"lua vim.lsp.set_log_level("debug")
+lua << EOF
+local nvim_lsp = require'nvim_lsp'
+nvim_lsp.clangd.setup{
+cmd = { "clangd-9" };
+filetypes = { "c", "cpp"};
+root_dir = nvim_lsp.util.root_pattern("compile_commands.json");
+}
+EOF
+set omnifunc=lsp#omnifunc
+"set completeopt+=menuone
+set completeopt+=preview
+
+nnoremap <silent> gd    <cmd>lua vim.lsp.buf.declaration()<CR>
+nnoremap <silent> <c-]> <cmd>lua vim.lsp.buf.definition()<CR>
+nnoremap <silent> K     <cmd>lua vim.lsp.buf.hover()<CR>
+nnoremap <silent> gD    <cmd>lua vim.lsp.buf.implemenation()<CR>
+nnoremap <silent> <c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
+nnoremap <silent> 1gd   <cmd>lua vim.lsp.buf.type_definition()<CR>
+nnoremap <silent> gr    <cmd>lua vim.lsp.buf.references()<CR>
 
 " utils
 func! Preserve(command)
