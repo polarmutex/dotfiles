@@ -112,4 +112,5 @@ source $ZSH/oh-my-zsh.sh
 # overcome muscle memory and transform vim to nvim
 if type nvim > /dev/null 2>&1; then
     alias vim='nvim'
+    alias vi='nvim'
 fi
