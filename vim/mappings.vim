@@ -38,3 +38,11 @@ nnoremap [b :bprevious
 nnoremap ]b :bnext
 nnoremap [B :bfirst
 nnoremap ]B :blast
+
+" Vim Tmux Runner
+nnoremap <leader>v- :VtrOpenRunner {"orientation": "v", "percentage": 30}<cr>
+nnoremap <leader>v\ :VtrOpenRunner {"orientation": "h", "percentage": 30}<cr>
+nnoremap <leader>vk :VtrKillRunner<cr>
+nnoremap <leader>va :VtrAttachToPane<cr>
+nnoremap <leader>vf :VtrFocusRunner<cr>
+nnoremap <leader>vs :VtrSendCommandToRunner<space>
