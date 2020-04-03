@@ -3,6 +3,7 @@
 "   " - Avoid using standard Vim directory names like 'plugin'
 call plug#begin(vim . '/plugins')
 
+Plug 'tpope/vim-repeat'
 " colorschemes
 Plug 'cocopon/iceberg.vim'
 Plug 'arcticicestudio/nord-vim'
@@ -10,6 +11,7 @@ Plug 'arcticicestudio/nord-vim'
 " Git
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
+Plug 'jreybert/vimagit'
 
 " fzf
 Plug 'kien/ctrlp.vim'
