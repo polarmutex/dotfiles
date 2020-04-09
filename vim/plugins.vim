@@ -6,6 +6,9 @@ call plug#begin(vim . '/plugins')
 " Hard mode
 Plug 'takac/vim-hardtime'
 
+" Grammat
+Plug 'rhysd/vim-grammarous'
+
 Plug 'tpope/vim-repeat'
 " colorschemes
 Plug 'cocopon/iceberg.vim'
