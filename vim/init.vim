@@ -16,6 +16,7 @@ runtime! abbreviations.vim
 runtime! mappings.vim
 runtime! defx.vim
 runtime! completion.vim
+runtime! hardmode.vim
 
 set ttyfast                             " assume fast terminal connection
 
@@ -48,3 +49,5 @@ let g:magit_default_fold_level = 0
 
 nmap ] <Plug>(GitGutterNextHunk)
 nmap [ <Plug>(GitGutterPrevHunk)
+
+let g:python3_host_prog = '/home/blueguardian/.cache/pypoetry/virtualenvs/nvim-py-venv-Pvle36et-py3.7/bin/python'

@@ -3,6 +3,9 @@
 "   " - Avoid using standard Vim directory names like 'plugin'
 call plug#begin(vim . '/plugins')
 
+" Hard mode
+Plug 'takac/vim-hardtime'
+
 Plug 'tpope/vim-repeat'
 " colorschemes
 Plug 'cocopon/iceberg.vim'
@@ -26,7 +29,9 @@ Plug 'janko-m/vim-test'
 
 " Completion
 Plug 'neovim/nvim-lsp'
-Plug 'lifepillar/vim-mucomplete'
+"Plug 'lifepillar/vim-mucomplete'
+Plug 'haorenW1025/completion-nvim'
+"Plug 'vigoux/completion-treesitter'
 
 " Linter
 Plug 'w0rp/ale'
