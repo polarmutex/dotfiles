@@ -28,9 +28,9 @@ Plug 'sheerun/vim-polyglot'
 Plug 'janko-m/vim-test'
 
 " Completion
-Plug 'neovim/nvim-lsp'
-"Plug 'lifepillar/vim-mucomplete'
-Plug 'haorenW1025/completion-nvim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+"Plug 'neovim/nvim-lsp'
+"Plug 'haorenW1025/completion-nvim'
 "Plug 'vigoux/completion-treesitter'
 
 " Linter
@@ -40,6 +40,18 @@ Plug 'w0rp/ale'
 Plug 'Shougo/defx.nvim'
 Plug 'kristijanhusak/defx-git'
 Plug 'kristijanhusak/defx-icons'
+
+" Tools
+Plug 'kassio/neoterm'
+
+" Visualization
+Plug 'camspiers/animate.vim'
+Plug 'camspiers/lens.vim'
+
+Plug 'caenrique/nvim-toggle-terminal'
+" The bang version will try to download the prebuilt binary if cargo does not
+" exist.
+Plug 'liuchengxu/vim-clap', { 'do': ':Clap install-binary!' }
 
 " Initialize plugin system
 call plug#end()

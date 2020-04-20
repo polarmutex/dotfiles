@@ -1,3 +1,5 @@
+" Exit terminal mode
+tnoremap <Esc> <C-\><c-n>
 
 " LSP Mappings
 nnoremap <silent> gd    <cmd>lua vim.lsp.buf.declaration()<CR>
