@@ -2,3 +2,4 @@ bundle
 spell
 plugins
 undodir
+general/paths.vim
