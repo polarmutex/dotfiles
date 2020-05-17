@@ -43,7 +43,7 @@
 [submodule "rainbow-parentheses"]
 	path = vim/pack/bundle/opt/rainbow-parentheses
 	url = https://github.com/junegunn/rainbow_parentheses.vim.git
-[submodule "theme-omnedark"]
+[submodule "theme-onedark"]
 	path = vim/pack/bundle/opt/theme-onedark
 	url = https://github.com/joshdick/onedark.vim
 [submodule "theme-iceberg"]

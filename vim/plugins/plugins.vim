@@ -11,27 +11,27 @@ packadd! vim-repeat
 " Surround
 packadd! vim-surround
 " Better Comments
-packadd! tpope/vim-commentary
+packadd! vim-commentary
 " Have the file system follow you aroun
 packadd! vim-rooter
 
 if exists('g:vscode')
     " Easy motion for VSCode
-    packadd! vim-easymotion
+    "packadd! vim-easymotion
 else
     " Text Navigation
     packadd! vim-sneak
     packadd! quick-scope
     " Add some color
-    packadd! nvim-colorizer.lua
-    packadd! rainbow_parentheses.vim
+    packadd! nvim-colorizer
+    packadd! rainbow-parentheses
     " Better Syntax Support
     "Plug 'sheerun/vim-polyglot'
     " Auto pairs for '(' '[' '{'
     "Plug 'jiangmiao/auto-pairs'
     " Themes
-    packadd! onedark.vim
-    packadd! iceberg.vim
+    packadd! theme-onedark
+    packadd! theme-iceberg
     " Intellisense
     "Plug 'neoclide/coc.nvim', {'branch': 'release'}
     " Status Line
@@ -47,23 +47,22 @@ else
     packadd! vim-signify
     packadd! vim-fugitive
     packadd! vim-rhubarb
-    packadd! gv.vim
     " Terminal
     packadd! vim-floaterm
     " Start Screen
     packadd! vim-startify
     " Vista
-    packadd! vista.vim'
+    packadd! vista
     " Help
-    packadd! vim-which-key
+    packadd! which-key
     " Making stuff
     "Plug 'neomake/neomake'
      " Better Comments
     "Plug 'jbgutierrez/vim-better-comments'
     " LSP
-    packadd! 'nvim-lsp'
-    packadd! completion-nvim
-    packadd! completion-treesitter
+    packadd! nvim-lsp
+    packadd! nvim-completion
+    packadd! nvim-completion-treesitter
     " Whitespace
     packadd! vim-better-whitespace
     "show when there is gross trailing whitespace
@@ -72,8 +71,6 @@ else
     " highlight current word
 
     " Test
-    packadd! vim-test'
+    packadd! vim-test
 endif
-
-call plug#end()
 
