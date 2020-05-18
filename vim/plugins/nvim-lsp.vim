@@ -1,16 +1,22 @@
 " LSP Settings
 :lua << EOF
     local nvim_lsp = require('nvim_lsp')
+    local on_attach_vim = function()
+        require'completion'.on_attach()
+        require'diagnostic'.on_attach()
+    end
     -- Servers.
     nvim_lsp.clangd.setup{
         cmd={"clangd-9"},
-        on_attach=require'completion'.on_attach
+        on_attach=on_attach_vim
     }
     nvim_lsp.pyls_ms.setup{
-        on_attach=require'completion'.on_attach
+        on_attach=on_attach_vim
     }
 EOF
 
+" Diagnostic-nvim
+let g:diagnostic_enable_virtual_text = 1
 
 nnoremap <silent> gd    <cmd>lua vim.lsp.buf.declaration()<CR>
 nnoremap <silent> <c-]> <cmd>lua vim.lsp.buf.definition()<CR>

@@ -100,3 +100,6 @@
 [submodule "semshi"]
 	path = vim/pack/bundle/opt/semshi
 	url = https://github.com/numirias/semshi.git
+[submodule "diagnostic"]
+	path = vim/pack/bundle/opt/diagnostic-nvim
+	url = https://github.com/haorenW1025/diagnostic-nvim.git
