@@ -88,3 +88,15 @@
 [submodule "nvim-completion-treesitter"]
 	path = vim/pack/bundle/opt/nvim-completion-treesitter
 	url = https://github.com/vigoux/completion-treesitter.git
+[submodule "auto-pairs"]
+	path = vim/pack/bundle/opt/auto-pairs
+	url = https://github.com/jiangmiao/auto-pairs.git
+[submodule "vim-polygot"]
+	path = vim/pack/bundle/opt/vim-polygot
+	url = https://github.com/sheerun/vim-polyglot.git
+[submodule "vim-polyglot"]
+	path = vim/pack/bundle/opt/vim-polyglot
+	url = https://github.com/sheerun/vim-polyglot.git
+[submodule "semshi"]
+	path = vim/pack/bundle/opt/semshi
+	url = https://github.com/numirias/semshi.git

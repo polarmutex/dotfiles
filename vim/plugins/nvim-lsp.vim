@@ -1,21 +1,6 @@
 " LSP Settings
 :lua << EOF
     local nvim_lsp = require('nvim_lsp')
-    local on_attach = function(_, bufnr)
-        vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-        local method = 'textDocument/publishDiagnostics'
-
-        local default_callback = vim.lsp.callbacks[method]
-        vim.lsp.callbacks[method] = function(err, method, result, client_id)
-            default_callback(err, method, result, client_id)
-            if result and result.diagnostics then
-                for _, v in ipairs(result.diagnostics) do
-                    v.uri = v.uri or result.uri
-                end
-                vim.lsp.util.set_qflist(result.diagnostics)
-            end
-        end
-    end
     -- Servers.
     nvim_lsp.clangd.setup{
         cmd={"clangd-9"},

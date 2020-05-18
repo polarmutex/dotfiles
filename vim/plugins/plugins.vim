@@ -26,19 +26,14 @@ else
     packadd! nvim-colorizer
     packadd! rainbow-parentheses
     " Better Syntax Support
-    "Plug 'sheerun/vim-polyglot'
+    packadd! vim-polyglot
     " Auto pairs for '(' '[' '{'
-    "Plug 'jiangmiao/auto-pairs'
+    packadd! auto-pairs
     " Themes
     packadd! theme-onedark
     packadd! theme-iceberg
     " Intellisense
     "Plug 'neoclide/coc.nvim', {'branch': 'release'}
-    " Status Line
-    "Plug 'vim-airline/vim-airline'
-    "Plug 'vim-airline/vim-airline-themes'
-    " Ranger
-    "Plug 'kevinhwang91/rnvimr', {'do': 'make sync'}
     " FZF
     "Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
     "Plug 'junegunn/fzf.vim'
@@ -55,10 +50,6 @@ else
     packadd! vista
     " Help
     packadd! which-key
-    " Making stuff
-    "Plug 'neomake/neomake'
-     " Better Comments
-    "Plug 'jbgutierrez/vim-better-comments'
     " LSP
     packadd! nvim-lsp
     packadd! nvim-completion

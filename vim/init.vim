@@ -6,8 +6,10 @@
 
 source $HOME/.config/nvim/plugins/plugins.vim
 source $HOME/.config/nvim/general/settings.vim
-source $HOME/.config/nvim/general/paths.vim
+source $HOME/.config/nvim/general/functions.vim
 source $HOME/.config/nvim/keys/mappings.vim
+source $HOME/.config/nvim/keys/which-key.vim
+source $HOME/.config/nvim/general/paths.vim
 
 if exists('g:vscode')
     source $HOME/.config/nvim/plugins/easymotion.vim
@@ -22,4 +24,6 @@ else
     source $HOME/.config/nvim/plugins/sneak.vim
     source $HOME/.config/nvim/plugins/start-screen.vim
     source $HOME/.config/nvim/plugins/signify.vim
+    source $HOME/.config/nvim/plugins/better-whitespace.vim
+    source $HOME/.config/nvim/plugins/polyglot.vim
 endif
