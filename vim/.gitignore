@@ -1,5 +1,4 @@
-bundle
 spell
-plugins
+undo
 undodir
 general/paths.vim

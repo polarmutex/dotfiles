@@ -1,0 +1,90 @@
+[submodule "vim-speedating"]
+	path = vim/pack/bundle/opt/vim-speeddating
+	url = https://github.com/tpope/vim-speeddating.git
+[submodule "vim-abolish"]
+	path = vim/pack/bundle/opt/vim-abolish
+	url = https://github.com/tpope/vim-abolish.git
+[submodule "vim-fugitive"]
+	path = vim/pack/bundle/opt/vim-fugitive
+	url = https://github.com/tpope/vim-fugitive.git
+[submodule "vim-dirvish"]
+	path = vim/pack/bundle/opt/vim-dirvish
+	url = https://github.com/justinmk/vim-dirvish.git
+[submodule "vim-git"]
+	path = vim/pack/bundle/opt/vim-git
+	url = https://github.com/tpope/vim-git.git
+[submodule "vim-repeat"]
+	path = vim/pack/bundle/opt/vim-repeat
+	url = https://github.com/tpope/vim-repeat.git
+[submodule "vim-surround"]
+	path = vim/pack/bundle/opt/vim-surround
+	url = https://github.com/tpope/vim-surround.git
+[submodule "vim-radical"]
+	path = vim/pack/bundle/opt/vim-radical
+	url = https://github.com/glts/vim-radical.git
+[submodule "vim-eunuch"]
+	path = vim/pack/bundle/opt/vim-eunuch
+	url = https://github.com/tpope/vim-eunuch.git
+[submodule "vim-commentary"]
+	path = vim/pack/bundle/opt/vim-commentary
+	url = https://github.com/tpope/vim-commentary.git
+[submodule "vim-rooter"]
+	path = vim/pack/bundle/opt/vim-rooter
+	url = https://github.com/airblade/vim-rooter.git
+[submodule "vim-sneak"]
+	path = vim/pack/bundle/opt/vim-sneak
+	url = https://github.com/justinmk/vim-sneak.git
+[submodule "quick-scope"]
+	path = vim/pack/bundle/opt/quick-scope
+	url = https://github.com/unblevable/quick-scope.git
+[submodule "nvim-colorizer"]
+	path = vim/pack/bundle/opt/nvim-colorizer
+	url = https://github.com/norcalli/nvim-colorizer.lua.git
+[submodule "rainbow-parentheses"]
+	path = vim/pack/bundle/opt/rainbow-parentheses
+	url = https://github.com/junegunn/rainbow_parentheses.vim.git
+[submodule "theme-onedark"]
+	path = vim/pack/bundle/opt/theme-onedark
+	url = https://github.com/joshdick/onedark.vim
+[submodule "theme-iceberg"]
+	path = vim/pack/bundle/opt/theme-iceberg
+	url = https://github.com/cocopon/iceberg.vim.git
+[submodule "vim-clap"]
+	path = vim/pack/bundle/opt/vim-clap
+	url = https://github.com/liuchengxu/vim-clap.git
+[submodule "vim-signify"]
+	path = vim/pack/bundle/opt/vim-signify
+	url = https://github.com/mhinz/vim-signify.git
+[submodule "vim-rhubarb"]
+	path = vim/pack/bundle/opt/vim-rhubarb
+	url = https://github.com/tpope/vim-rhubarb.git
+[submodule "vim-floaterm"]
+	path = vim/pack/bundle/opt/vim-floaterm
+	url = https://github.com/voldikss/vim-floaterm.git
+[submodule "vim-startify"]
+	path = vim/pack/bundle/opt/vim-startify
+	url = https://github.com/mhinz/vim-startify.git
+[submodule "vista"]
+	path = vim/pack/bundle/opt/vista
+	url = https://github.com/liuchengxu/vista.vim.git
+[submodule "which-key"]
+	path = vim/pack/bundle/opt/which-key
+	url = https://github.com/liuchengxu/vim-which-key.git
+[submodule "vim-better-whitespace"]
+	path = vim/pack/bundle/opt/vim-better-whitespace
+	url = https://github.com/ntpeters/vim-better-whitespace.git
+[submodule "vim-illuminate"]
+	path = vim/pack/bundle/opt/vim-illuminate
+	url = https://github.com/RRethy/vim-illuminate.git
+[submodule "vim-test"]
+	path = vim/pack/bundle/opt/vim-test
+	url = https://github.com/janko-m/vim-test.git
+[submodule "nvim-lsp"]
+	path = vim/pack/bundle/opt/nvim-lsp
+	url = https://github.com/neovim/nvim-lsp.git
+[submodule "nvim-completion"]
+	path = vim/pack/bundle/opt/nvim-completion
+	url = https://github.com/haorenW1025/completion-nvim.git
+[submodule "nvim-completion-treesitter"]
+	path = vim/pack/bundle/opt/nvim-completion-treesitter
+	url = https://github.com/vigoux/completion-treesitter.git
