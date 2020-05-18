@@ -62,7 +62,7 @@ else
     " LSP
     packadd! nvim-lsp
     packadd! nvim-completion
-    packadd! nvim-completion-treesitter
+    "packadd! nvim-completion-treesitter
     " Whitespace
     packadd! vim-better-whitespace
     "show when there is gross trailing whitespace
