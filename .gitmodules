@@ -103,3 +103,6 @@
 [submodule "diagnostic"]
 	path = vim/pack/bundle/opt/diagnostic-nvim
 	url = https://github.com/haorenW1025/diagnostic-nvim.git
+[submodule "lsp-status"]
+	path = vim/pack/bundle/opt/lsp-status
+	url = https://github.com/wbthomason/lsp-status.nvim

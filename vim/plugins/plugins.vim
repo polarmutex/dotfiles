@@ -54,6 +54,7 @@ else
     packadd! nvim-lsp
     packadd! nvim-completion
     packadd! diagnostic-nvim
+    packadd! lsp-status
     "packadd! nvim-completion-treesitter
     " Whitespace
     packadd! vim-better-whitespace
