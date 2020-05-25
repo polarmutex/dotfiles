@@ -106,3 +106,6 @@
 [submodule "lsp-status"]
 	path = vim/pack/bundle/opt/lsp-status
 	url = https://github.com/wbthomason/lsp-status.nvim
+[submodule "bean-copy-txn"]
+	path = vim/pack/bundle/opt/bean-copy-txn
+	url = https://github.com/mbudde/bean-copy-txn.git
