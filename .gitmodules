@@ -109,3 +109,9 @@
 [submodule "bean-copy-txn"]
 	path = vim/pack/bundle/opt/bean-copy-txn
 	url = https://github.com/mbudde/bean-copy-txn.git
+[submodule "fzf"]
+	path = vim/pack/bundle/opt/fzf
+	url = https://github.com/junegunn/fzf.git
+[submodule "fzf-vim"]
+	path = vim/pack/bundle/opt/fzf-vim
+	url = https://github.com/junegunn/fzf.vim.git
