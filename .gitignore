@@ -1,6 +1,7 @@
 # vim
 *.swp
 *~
+tmp
 
 # macOs
 .DS_Store

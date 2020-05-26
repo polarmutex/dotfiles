@@ -35,8 +35,9 @@ else
     " Intellisense
     "Plug 'neoclide/coc.nvim', {'branch': 'release'}
     " FZF
-    "Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-    "Plug 'junegunn/fzf.vim'
+    packadd! fzf
+    packadd! fzf-vim
+
     packadd! vim-clap
     " Git
     packadd! vim-signify
@@ -65,5 +66,8 @@ else
 
     " Test
     packadd! vim-test
+
+    " Bean Copy Txn
+    packadd! bean-copy-txn
 endif
 
