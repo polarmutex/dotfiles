@@ -55,16 +55,27 @@
                 ['python/setStatusBarMessage'] = lsp_status.extension_callbacks.pyls_ms["python/setStatusBarMessage"],
                 ['python/reportProgress'] = lsp_status.extension_callbacks.pyls_ms["python/reportProgress"],
                 ['python/beginProgress'] = lsp_status.extension_callbacks.pyls_ms["python/beginProgress"],
-                ['python/endProgress'] = lsp_status.extension_callbacks.pyls_ms["python/endProgress"],            
-            }    
+                ['python/endProgress'] = lsp_status.extension_callbacks.pyls_ms["python/endProgress"],
+            }
         },
-        vimls = {}
+        vimls = {},
+        beancount_language_server = {},
+        --jedi_language_server = {
+        --    callbacks = {
+        --        --['window/logMessage'] = lsp_status.extension_callbacks.beancount_language_server["window/logMessage"]
+        --    }
+        --}
     }
+
     for server, config in pairs(servers) do
         config.on_attach = make_on_attach(config)
         nvim_lsp[server].setup(config)
     end
 EOF
+
+" Completion
+let g:completion_enable_fuzzy_match = 1
+let g:completion_matching_strategy_list = ['exact', 'substring', 'fuzzy']
 
 " Diagnostic-nvim
 let g:diagnostic_enable_virtual_text = 1
@@ -110,6 +121,7 @@ nnoremap <silent> <c-k> <cmd>lua vim.lsp.buf.signature_help()<CR>
 nnoremap <silent> 1gD   <cmd>lua vim.lsp.buf.type_definition()<CR>
 nnoremap <silent> gr    <cmd>lua vim.lsp.buf.references()<CR>
 nnoremap <silent> g0    <cmd>lua vim.lsp.buf.document_symbol()<CR>
+nnoremap <silent> lf    <cmd>lua vim.lsp.buf.formatting()<CR>
 
 " Completion-vim options
 " Use <Tab> and <S-Tab> to navigate through popup menu
