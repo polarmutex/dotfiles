@@ -115,3 +115,9 @@
 [submodule "fzf-vim"]
 	path = vim/pack/bundle/opt/fzf-vim
 	url = https://github.com/junegunn/fzf.vim.git
+[submodule "vim-be-good"]
+	path = vim/pack/bundle/opt/vim-be-good
+	url = https://github.com/ThePrimeagen/vim-be-good.git
+[submodule "gruvbox"]
+	path = vim/pack/bundle/opt/gruvbox
+	url = https://github.com/morhetz/gruvbox.git

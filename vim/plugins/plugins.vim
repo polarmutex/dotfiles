@@ -69,5 +69,9 @@ else
 
     " Bean Copy Txn
     packadd! bean-copy-txn
+
+    " Games/ Utils
+    packadd! vim-be-good
+    packadd! vim-typist
 endif
 

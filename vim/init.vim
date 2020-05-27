@@ -16,7 +16,7 @@ if exists('g:vscode')
 else
     source $HOME/.config/nvim/general/statusline.vim
     source $HOME/.config/nvim/general/terminal.vim
-    source $HOME/.config/nvim/themes/onedark.vim
+    source $HOME/.config/nvim/themes/gruvbox.vim
     source $HOME/.config/nvim/plugins/nvim-lsp.vim
     source $HOME/.config/nvim/plugins/fzf.vim
     source $HOME/.config/nvim/plugins/commentary.vim
