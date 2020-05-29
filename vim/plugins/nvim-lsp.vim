@@ -60,6 +60,7 @@
         },
         vimls = {},
         beancount_language_server = {},
+        jdtls = {},
         --jedi_language_server = {
         --    callbacks = {
         --        --['window/logMessage'] = lsp_status.extension_callbacks.beancount_language_server["window/logMessage"]
