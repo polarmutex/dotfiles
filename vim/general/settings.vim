@@ -26,6 +26,7 @@ if !exists('g:vscode')
     set smartindent                         " Makes indenting smart
     set autoindent                          " Good auto indent
     set relativenumber                      " Relative Line numbers
+    set number                              " set current line to the actual line number
     set cursorline                          " Enable highlighting of the current line
     set background=dark                     " tell vim what the background color looks like
     set showtabline=2                       " Always show tabs
