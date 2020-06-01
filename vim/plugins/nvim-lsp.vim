@@ -46,17 +46,17 @@
                 '--header-insertion=iwyu',
                 '--suggest-missing-includes'
             },
-            callbacks = {
-                ['textDocument/clangd.fileStatus'] = lsp_status.extension_callbacks.clangd['textDocument/clangd.fileStatus']
-            }
+            callbacks  = lsp_status.extensions.clangd.setup(),
+            init_options = {
+                clangdFileStatus = true
+            },
+            capabilities = lsp_status.capabilities
         },
         pyls_ms = {
-            callbacks = {
-                ['python/setStatusBarMessage'] = lsp_status.extension_callbacks.pyls_ms["python/setStatusBarMessage"],
-                ['python/reportProgress'] = lsp_status.extension_callbacks.pyls_ms["python/reportProgress"],
-                ['python/beginProgress'] = lsp_status.extension_callbacks.pyls_ms["python/beginProgress"],
-                ['python/endProgress'] = lsp_status.extension_callbacks.pyls_ms["python/endProgress"],
-            }
+            callbacks = lsp_status.extensions.pyls_ms.setup(),
+            settings = { python = { workspaceSymbols = { enabled = true  } } },
+            on_attach = lsp_status.on_attach,
+            capabilities = lsp_status.capabilities
         },
         vimls = {},
         beancount_language_server = {},
