@@ -120,4 +120,4 @@
 	url = https://github.com/ThePrimeagen/vim-be-good.git
 [submodule "gruvbox"]
 	path = vim/pack/bundle/opt/gruvbox
-	url = https://github.com/morhetz/gruvbox.git
+	url = https://github.com/gruvbox-community/gruvbox.git
