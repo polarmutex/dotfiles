@@ -30,7 +30,3 @@ nnoremap tq :tabclose<CR>
 map <c-s> :w<CR>
 imap <c-s> <C-o>:w<CR>
 nnoremap <Leader>s :w<CR>
-
-" Easy CAPS
-inoremap <c-u> <ESC>viwUi
-:nnoremap <c-u> viwU<Esc>
