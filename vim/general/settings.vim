@@ -71,5 +71,8 @@ if !exists('g:vscode')
             call mkdir(expand(&undodir), "p")
         endif
     endif
+
+    " show search count
+    set shortmess -=S
 endif
 
