@@ -34,3 +34,8 @@ nnoremap <Leader>s :w<CR>
 " Easy CAPS
 inoremap <c-u> <ESC>viwUi
 :nnoremap <c-u> viwU<Esc>
+
+" visual move and highligh
+" from the Primeagen
+vnoremap J :m '>+1<CR>gv=gv'
+vnoremap K :m '<-2<CR>gv=gv'
