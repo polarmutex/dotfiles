@@ -15,22 +15,23 @@ set laststatus=2
 function! UpdateColors(mode) abort
     " Normal mode
     if a:mode ==# 'n'
-        " Insert mode
-        hi StatuslineAccent guibg=#d75f5f gui=bold guifg=#e9e9e9
+        " Normal mode
+        hi StatuslineAccent guifg=#e9e9e9 gui=bold guibg=#928374
     elseif a:mode ==# 'i'
         " Replace mode
-        hi StatuslineAccent guifg=#e9e9e9 gui=bold guibg=#dab997
+        hi StatuslineAccent guibg=#d75f5f gui=bold guifg=#cc241d
+        hi StatuslineAccent guifg=#e9e9e9 gui=bold guibg=#8ec07c
     elseif a:mode ==# 'R'
         " Command mode
-        hi StatuslineAccent guifg=#e9e9e9 gui=bold guibg=#afaf00
+        hi StatuslineAccent guifg=#e9e9e9 gui=bold guibg=#b7bb26
     elseif a:mode ==# 'c'
         " Terminal mode
-        hi StatuslineAccent guifg=#e9e9e9 gui=bold guibg=#83adad
+        hi StatuslineAccent guifg=#e9e9e9 gui=bold guibg=#d3869b
     elseif a:mode ==# 't'
-        hi StatuslineAccent guifg=#e9e9e9 gui=bold guibg=#6f6f6f
         " Visual mode
+        hi StatuslineAccent guifg=#e9e9e9 gui=bold guibg=#fabd2f
     else
-        hi StatuslineAccent guifg=#e9e9e9 gui=bold guibg=#f485dd
+        hi StatuslineAccent guifg=#e9e9e9 gui=bold guibg=#928374
     endif
 
     if &modified

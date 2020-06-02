@@ -79,10 +79,6 @@ local function make_installer()
           "-jar", launcher_path,
           "-configuration", path.join { install_dir, config.init_options.os_config or X.get_os_config() },
           "-data", config.init_options.workspace,
-          -- TODO: Handle Java versions 8 and under. This may just work...
-          --"--add-modules=ALL-SYSTEM",
-          --"--add-opens", "java.base/java.util=ALL-UNNAMED",
-          --"--add-opens", "java.base/java.lang=ALL-UNNAMED"
         })
     end
   end

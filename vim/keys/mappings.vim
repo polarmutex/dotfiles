@@ -31,10 +31,6 @@ map <c-s> :w<CR>
 imap <c-s> <C-o>:w<CR>
 nnoremap <Leader>s :w<CR>
 
-" Easy CAPS
-inoremap <c-u> <ESC>viwUi
-:nnoremap <c-u> viwU<Esc>
-
 " visual move and highligh
 " from the Primeagen
 vnoremap J :m '>+1<CR>gv=gv'
