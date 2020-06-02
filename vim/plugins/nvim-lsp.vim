@@ -59,6 +59,7 @@
             }
         },
         vimls = {},
+        tsserver = {},
         beancount_language_server = {},
         jdtls = {},
         --jedi_language_server = {
