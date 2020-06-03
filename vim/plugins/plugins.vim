@@ -71,7 +71,7 @@ else
     packadd! bean-copy-txn
 
     " Games/ Utils
+    packadd! vim-hardtime
     packadd! vim-be-good
-    packadd! vim-typist
 endif
 

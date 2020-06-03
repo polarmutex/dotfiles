@@ -121,3 +121,6 @@
 [submodule "gruvbox"]
 	path = vim/pack/bundle/opt/gruvbox
 	url = https://github.com/gruvbox-community/gruvbox.git
+[submodule "vim-hardtime"]
+	path = vim/pack/bundle/opt/vim-hardtime
+	url = https://github.com/takac/vim-hardtime.git

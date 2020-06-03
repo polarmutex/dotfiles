@@ -27,4 +27,5 @@ else
     source $HOME/.config/nvim/plugins/signify.vim
     source $HOME/.config/nvim/plugins/better-whitespace.vim
     source $HOME/.config/nvim/plugins/polyglot.vim
+    source $HOME/.config/nvim/plugins/hardtime.vim
 endif
