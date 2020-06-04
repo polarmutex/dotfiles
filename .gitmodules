@@ -108,7 +108,7 @@
 	url = https://github.com/wbthomason/lsp-status.nvim
 [submodule "bean-copy-txn"]
 	path = vim/pack/bundle/opt/bean-copy-txn
-	url = https://github.com/mbudde/bean-copy-txn.git
+	url = https://github.com/bryall/bean-copy-txn.git
 [submodule "fzf"]
 	path = vim/pack/bundle/opt/fzf
 	url = https://github.com/junegunn/fzf.git
