@@ -125,5 +125,5 @@
 	path = vim/pack/bundle/opt/vim-hardtime
 	url = https://github.com/takac/vim-hardtime.git
 [submodule "undotree"]
-	path = vim/pack/bundle/opt/undotree
+	path = pack/bundle/opt/undotree
 	url = https://github.com/mbbill/undotree.git
