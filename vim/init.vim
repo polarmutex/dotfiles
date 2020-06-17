@@ -19,6 +19,7 @@ else
     source $HOME/.config/nvim/general/statusline.vim
     source $HOME/.config/nvim/general/terminal.vim
     source $HOME/.config/nvim/themes/gruvbox.vim
+    source $HOME/.config/nvim/plugins/float_term.vim
     source $HOME/.config/nvim/plugins/fzf.vim
     source $HOME/.config/nvim/plugins/commentary.vim
     source $HOME/.config/nvim/plugins/rainbow.vim
