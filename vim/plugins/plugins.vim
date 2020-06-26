@@ -39,7 +39,6 @@ else
     packadd! fzf-vim
     packadd! fzf-preview
 
-    packadd! vim-clap
     " Git
     packadd! vim-signify
     packadd! vim-fugitive

@@ -49,9 +49,6 @@
 [submodule "theme-iceberg"]
 	path = vim/pack/bundle/opt/theme-iceberg
 	url = https://github.com/cocopon/iceberg.vim.git
-[submodule "vim-clap"]
-	path = vim/pack/bundle/opt/vim-clap
-	url = https://github.com/liuchengxu/vim-clap.git
 [submodule "vim-signify"]
 	path = vim/pack/bundle/opt/vim-signify
 	url = https://github.com/mhinz/vim-signify.git
