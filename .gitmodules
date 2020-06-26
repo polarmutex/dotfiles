@@ -127,3 +127,6 @@
 [submodule "undotree"]
 	path = pack/bundle/opt/undotree
 	url = https://github.com/mbbill/undotree.git
+[submodule "fzf-preview"]
+	path = vim/pack/bundle/opt/fzf-preview
+	url = https://github.com/yuki-ycino/fzf-preview.vim.git
