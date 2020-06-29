@@ -14,7 +14,7 @@ local custom_attach = function(client)
         vim.fn.nvim_buf_set_keymap(0,'n','1gD','<cmd>lua vim.lsp.buf.type_definition()<CR>', {noremap=true,silent=true})
         vim.fn.nvim_buf_set_keymap(0,'n','gr','<cmd>lua vim.lsp.buf.references()<CR>', {noremap=true,silent=true})
         vim.fn.nvim_buf_set_keymap(0,'n','<c-s>','<cmd>lua vim.lsp.buf.signature_help()<CR>', {noremap=true,silent=true})
-        vim.fn.nvim_buf_set_keymap(0,'n','gf','<cmd>lua vim.lsp.buf.formatting()<CR>', {noremap=true,silent=true})
+        vim.fn.nvim_buf_set_keymap(0,'n','lf','<cmd>lua vim.lsp.buf.formatting()<CR>', {noremap=true,silent=true})
     end
 
 -- Python
@@ -24,7 +24,9 @@ nvim_lsp.pyls.setup({
 })
 
 -- beancount
-nvim_lsp.beancount_language_server = {}
+nvim_lsp.beancount_language_server.setup({
+    on_attach=custom_attach
+})
 
 -- C++
 nvim_lsp.clangd.setup({
@@ -52,7 +54,9 @@ nvim_lsp.tsserver.setup({
 })
 
 -- jdtls
-nvim_lsp.jdtls = {}
+nvim_lsp.jdtls.setup({
+        on_attach=custom_attach
+})
 
 -- Lua
 local sumneko_settings = {
