@@ -66,28 +66,28 @@ let g:which_key_map.b = {
 " s is for search
 let g:which_key_map.s = {
       \ 'name' : '+search' ,
-      \ '/' : [':Clap history/'     , 'history'],
-      \ ';' : [':Clap commands'     , 'commands'],
-      \ 'b' : [':Clap blines'       , 'current buffer'],
-      \ 'B' : [':Clap buffers'      , 'open buffers'],
-      \ 'c' : [':Clap commits'      , 'commits'],
-      \ 'C' : [':Clap bcommits'     , 'buffer commits'],
-      \ 'f' : [':Clap files'        , 'files'],
-      \ 'g' : [':Clap git_files'       , 'git files'],
-      \ 'G' : [':Clap git_files?'      , 'modified git files'],
-      \ 'h' : [':Clap history'      , 'file history'],
-      \ 'H' : [':Clap history:'     , 'command history'],
-      \ 'l' : [':Clap lines'        , 'lines'] ,
-      \ 'm' : [':Clap marks'        , 'marks'] ,
-      \ 'M' : [':Clap maps'         , 'normal maps'] ,
-      \ 'p' : [':Clap helptags'     , 'help tags'] ,
-      \ 'P' : [':Clap tags'         , 'project tags'],
-      \ 's' : [':Clap snippets'     , 'snippets'],
-      \ 'S' : [':Clap colors'       , 'color schemes'],
-      \ 't' : [':Clap rg'           , 'text Rg'],
-      \ 'T' : [':Clap btags'        , 'buffer tags'],
-      \ 'w' : [':Clap windows'      , 'search windows'],
-      \ 'y' : [':Clap filetypes'    , 'file types'],
+      \ '/' : [':History/'     , 'history'],
+      \ ';' : [':Commands'     , 'commands'],
+      \ 'b' : [':Blines'       , 'current buffer'],
+      \ 'B' : [':Buffers'      , 'open buffers'],
+      \ 'c' : [':Commits'      , 'commits'],
+      \ 'C' : [':Bcommits'     , 'buffer commits'],
+      \ 'f' : [':Files'        , 'files'],
+      \ 'g' : [':Gfiles'       , 'git files'],
+      \ 'G' : [':Gfiles?'      , 'modified git files'],
+      \ 'h' : [':History'      , 'file history'],
+      \ 'H' : [':History:'     , 'command history'],
+      \ 'l' : [':Lines'        , 'lines'] ,
+      \ 'm' : [':Marks'        , 'marks'] ,
+      \ 'M' : [':Maps'         , 'normal maps'] ,
+      \ 'p' : [':Helptags'     , 'help tags'] ,
+      \ 'P' : [':Tags'         , 'project tags'],
+      \ 'S' : [':Colors'       , 'color schemes'],
+      \ 't' : [':Rg'           , 'text Rg'],
+      \ 'T' : [':Btags'        , 'buffer tags'],
+      \ 'w' : [':Windows'      , 'search windows'],
+      \ 'y' : [':Filetypes'    , 'file types'],
+      \ 'z' : [':FZF'          , 'FZF'],
       \ }
 
 " g is for git
@@ -159,5 +159,10 @@ let g:which_key_map.t = {
       \ 's' : [':FloatermNew ncdu'                              , 'ncdu'],
       \ }
 
+" f is for finances
+let g:which_key_map.f = {
+            \ 'name' : '+finances' ,
+      \ 't' : [':Clap beancount'        , 'copy txn'],
+      \ }
 " Register which key map
 call which_key#register('<Space>', "g:which_key_map")
