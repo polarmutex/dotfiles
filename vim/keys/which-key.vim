@@ -162,7 +162,8 @@ let g:which_key_map.t = {
 " f is for finances
 let g:which_key_map.f = {
             \ 'name' : '+finances' ,
-      \ 't' : [':Clap beancount'        , 'copy txn'],
+      \ 't' : [':CopyTransaction'        , 'copy txn'],
+      \ 'c' : [':%s/txn/*/gc'        , 'confirm txns'],
       \ }
 " Register which key map
 call which_key#register('<Space>', "g:which_key_map")
