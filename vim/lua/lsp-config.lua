@@ -21,7 +21,7 @@ local custom_attach = function(client)
                     table.insert(item_list, {
                         filename = fname,
                         lnum = v.range.start.line + 1,
-                        col = v.range.start.character + 12;
+                        col = v.range.start.character + 1;
                         text = v.message;
                     })
                 end
