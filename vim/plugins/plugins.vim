@@ -57,6 +57,9 @@ else
     packadd! diagnostic-nvim
     packadd! lsp-status
     "packadd! nvim-completion-treesitter
+    " Tree-Sitter
+    packadd! nvim-treesitter
+    packadd! treesitter-playground
     " Whitespace
     packadd! vim-better-whitespace
     "show when there is gross trailing whitespace
