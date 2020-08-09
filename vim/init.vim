@@ -34,3 +34,4 @@ else
 endif
 
 lua require('lsp-config')
+lua require('tree-sitter-config')
