@@ -18,8 +18,10 @@ local custom_attach = function(client)
     end
 
 -- Python
-nvim_lsp.pyls.setup({
-    enable=true,
+--nvim_lsp.pyls_ms.setup({
+--    on_attach=custom_attach,
+--})
+nvim_lsp.pyright.setup({
     on_attach=custom_attach,
 })
 
@@ -31,7 +33,7 @@ nvim_lsp.beancount_language_server.setup({
 -- C++
 nvim_lsp.clangd.setup({
     cmd={
-        'clangd-9',
+        'clangd-10',
         '--background-index',
         '--clang-tidy',
         '--completion-style=bundled',
