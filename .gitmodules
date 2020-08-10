@@ -127,3 +127,9 @@
 [submodule "fzf-preview"]
 	path = vim/pack/bundle/opt/fzf-preview
 	url = https://github.com/yuki-ycino/fzf-preview.vim.git
+[submodule "nvim-treesitter"]
+	path = vim/pack/bundle/opt/nvim-treesitter
+	url = https://github.com/nvim-treesitter/nvim-treesitter.git
+[submodule "treesitter-playground"]
+	path = vim/pack/bundle/opt/treesitter-playground
+	url = https://github.com/nvim-treesitter/playground.git
