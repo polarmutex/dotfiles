@@ -9,7 +9,7 @@ let g:which_key_sep = '→'
 " set timeoutlen=100
 
 " Not a fan of floating windows for this
-let g:which_key_use_floating_win = 0
+"let g:which_key_use_floating_win = 0
 
 " Change the colors if you want
 highlight default link WhichKey          Operator
@@ -166,4 +166,4 @@ let g:which_key_map.f = {
       \ 'c' : [':%s/txn/*/gc'        , 'confirm txns'],
       \ }
 " Register which key map
-call which_key#register('<Space>', "g:which_key_map")
+"call which_key#register('<Space>', "g:which_key_map")

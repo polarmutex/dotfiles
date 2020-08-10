@@ -1,0 +1,175 @@
+
+-- Only required if you have packer in your `opt` pack
+vim.cmd [[packadd packer.nvim]]
+-- Temporary until https://github.com/neovim/neovim/pull/12632 is merged
+vim._update_package_paths()
+
+local packer_exists = pcall(require, 'packer')
+
+if not packer_exists then
+  -- TODO: Maybe handle windows better?
+  if vim.fn.input("Download Packer? (y for yes)") ~= "y" then
+    return
+  end
+
+  local directory = string.format(
+    '%s/site/pack/packer/opt/',
+    vim.fn.stdpath('data')
+  )
+
+  vim.fn.mkdir(directory, 'p')
+
+  local out = vim.fn.system(string.format(
+    'git clone %s %s',
+    'https://github.com/wbthomason/packer.nvim',
+    directory .. '/packer.nvim'
+  ))
+
+  print(out)
+  print("Downloading packer.nvim...")
+
+  return
+end
+
+return require('packer').startup{
+    function(use)
+        -- Packer can manage itself as an optional plugin
+        use {'wbthomason/packer.nvim', opt = true}
+
+        -- text maniuplation
+        -- use 'godlygeek/tabular'        -- Quickly align text by pattern
+        use 'tpope/vim-surround'       -- Surround text objects easily
+        use 'tpope/vim-speeddating'    -- Handle changing of dates in a nicer manner
+        use 'tpope/vim-commentary'     -- Easily comment out lines or objects
+        -- use 'tpope/vim-repeat'         -- Repeat actions better
+        use 'tpope/vim-abolish'        -- Cool things with words!
+        -- use 'tpope/vim-characterize'
+        -- use 'AndrewRadev/splitjoin.vim'
+        -- use 'AndrewRadev/sideways.vim' -- Easy sideways movement
+
+        -- Convert binary, hex, etc..
+        use 'glts/vim-radical'
+
+        -- Files
+        use 'tpope/vim-eunuch'
+
+        -- Have the file system follow you aroun
+        use 'airblade/vim-rooter'
+
+        -- Text Navigation
+        use 'justinmk/vim-sneak'
+        use 'unblevable/quick-scope'
+
+        -- Add some color
+        use 'norcalli/nvim-colorizer.lua'
+        -- Better Syntax Support
+        -- vim-polyglot
+        -- Auto pairs for '(' '[' '{'
+        -- auto-pairs
+
+        -- Themes
+        use 'gruvbox-community/gruvbox'
+
+        -- FZF
+        use {'junegunn/fzf', run = './install --all' }
+        use {'junegunn/fzf.vim'}
+        use {'yuki-ycino/fzf-preview.vim', run = 'npm install' }
+
+        -- Git
+        use 'mhinz/vim-signify'
+        use'tpope/vim-fugitive'
+        use 'tpope/vim-rhubarb'
+
+        -- Terminal
+        use 'voldikss/vim-floaterm'
+
+        -- Start Screen
+        -- :SSave and :SLoad (wrappers on male session)
+        use 'mhinz/vim-startify'
+
+        -- Cool tags based viewer
+        --   :Vista  <-- Opens up a really cool sidebar with info about file.
+        use 'liuchengxu/vista.vim'
+
+        -- Help
+        use {'liuchengxu/vim-which-key',
+        config = function()
+            vim.fn['which_key#register']("<Space>", "g:which_key_map")
+        end}
+
+        -- :Messages <- view messages in quickfix list
+        -- :Verbose  <- view verbose output in preview window.
+        -- :Time     <- measure how long it takes to run some stuff.
+        use 'tpope/vim-scriptease'
+
+        -- Quickfix enhancements. See :help vim-qf
+        use 'romainl/vim-qf'
+
+        -- Better profiling output for startup.
+        use 'tweekmonster/startuptime.vim'
+
+        -- Lnaguages
+        -- Lua
+        use 'nvim-lua/plenary.nvim'
+        -- c++
+        use {'rhysd/vim-clang-format', rocks = { 'lua-cjson', 'lpeg', 'asdf' }}
+
+        -- LSP
+        use 'neovim/nvim-lsp'
+        use 'nvim-lua/completion-nvim'
+        use 'nvim-lua/diagnostic-nvim'
+        use 'nvim-lua/lsp-status.nvim'
+
+        -- Tree-Sitter
+        use 'nvim-treesitter/nvim-treesitter'
+        use 'nvim-treesitter/playground'
+        use 'nvim-treesitter/completion-treesitter'
+
+        -- Whitespace
+        use 'ntpeters/vim-better-whitespace'
+        --show when there is gross trailing whitespace
+
+        use 'RRethy/vim-illuminate'
+        -- highlight current word
+
+        -- Undo
+        use 'mbbill/undotree'
+
+        -- Test
+        use 'vim-test/vim-test'
+
+        -- Bean Copy Txn
+        use 'bryall/bean-copy-txn'
+
+        -- Better profiling output for startup.
+        use 'tweekmonster/startuptime.vim'
+
+        -- Games/ Utils
+        use 'takac/vim-hardtime'
+        use 'ThePrimeagen/vim-be-good'
+end,
+config = {
+    display = {
+        open_fn = function(name)
+        -- Can only use plenary when we have our plugins.
+        --  We can only get plenary when we don't have our plugins ;)
+        local ok, float_win = pcall(function()
+            return require('plenary.window.float').percentage_range_window(0.8, 0.8)
+        end)
+
+        if not ok then
+            vim.cmd [[65vnew  [packer] ]]
+            return vim.api.nvim_get_current_win(), vim.api.nvim_get_current_buf()
+        end
+
+        local bufnr = float_win.buf
+        local win = float_win.win
+
+        vim.api.nvim_buf_set_name(bufnr, name)
+        vim.api.nvim_win_set_option(win, 'winblend', 10)
+
+        return win, bufnr
+      end
+    },
+  }
+}
