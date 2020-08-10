@@ -4,33 +4,6 @@ vim.cmd [[packadd packer.nvim]]
 -- Temporary until https://github.com/neovim/neovim/pull/12632 is merged
 vim._update_package_paths()
 
-local packer_exists = pcall(require, 'packer')
-
-if not packer_exists then
-  -- TODO: Maybe handle windows better?
-  if vim.fn.input("Download Packer? (y for yes)") ~= "y" then
-    return
-  end
-
-  local directory = string.format(
-    '%s/site/pack/packer/opt/',
-    vim.fn.stdpath('data')
-  )
-
-  vim.fn.mkdir(directory, 'p')
-
-  local out = vim.fn.system(string.format(
-    'git clone %s %s',
-    'https://github.com/wbthomason/packer.nvim',
-    directory .. '/packer.nvim'
-  ))
-
-  print(out)
-  print("Downloading packer.nvim...")
-
-  return
-end
-
 return require('packer').startup{
     function(use)
         -- Packer can manage itself as an optional plugin
@@ -92,10 +65,7 @@ return require('packer').startup{
         use 'liuchengxu/vista.vim'
 
         -- Help
-        use {'liuchengxu/vim-which-key',
-        config = function()
-            vim.fn['which_key#register']("<Space>", "g:which_key_map")
-        end}
+        use 'liuchengxu/vim-which-key'
 
         -- :Messages <- view messages in quickfix list
         -- :Verbose  <- view verbose output in preview window.
@@ -140,9 +110,6 @@ return require('packer').startup{
 
         -- Bean Copy Txn
         use 'bryall/bean-copy-txn'
-
-        -- Better profiling output for startup.
-        use 'tweekmonster/startuptime.vim'
 
         -- Games/ Utils
         use 'takac/vim-hardtime'

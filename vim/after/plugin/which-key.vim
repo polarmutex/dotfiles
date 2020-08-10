@@ -166,4 +166,4 @@ let g:which_key_map.f = {
       \ 'c' : [':%s/txn/*/gc'        , 'confirm txns'],
       \ }
 " Register which key map
-"call which_key#register('<Space>', "g:which_key_map")
+call which_key#register('<Space>', "g:which_key_map")
