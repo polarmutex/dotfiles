@@ -5,7 +5,7 @@ local server_name = "pyright"
 local bin_name = "pyright-langserver"
 
 local installer = util.npm_installer {
-  server_name = server_name;
+  server_name = server_name.."python";
   packages = {server_name};
   binaries = {bin_name};
 }
