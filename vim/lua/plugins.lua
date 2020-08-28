@@ -6,6 +6,13 @@ vim._update_package_paths()
 
 return require('packer').startup{
     function(use)
+        local use_local = function(plug_path)
+            if vim.fn.isdirectory(vim.fn.expand("~/dev/" .. plug_path)) == 1 then
+                use("~/dev/" .. plug_path)
+            else
+                use('bryall/' .. plug_path)
+            end
+        end
         -- Packer can manage itself as an optional plugin
         use {'wbthomason/packer.nvim', opt = true}
 
