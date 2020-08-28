@@ -3,13 +3,14 @@ local util = require 'nvim_lsp/util'
 
 configs.beancount_language_server = {
   default_config = {
-    cmd = {"beancount-language-server"};
+    cmd = {"beancount-language-server",};
     filetypes = {"beancount"};
     root_dir = function(fname)
       return util.path.dirname(fname)
     end;
     init_options = {
       journal = "~/Documents/beancount/journal.beancount";
+      use_tree_sitter = true;
     };
   };
   docs = {
