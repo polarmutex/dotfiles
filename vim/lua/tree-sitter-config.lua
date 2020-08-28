@@ -1,11 +1,3 @@
--- Add Beancount Tree Sitter config
-require "nvim-treesitter.parsers".get_parser_configs().beancount = {
-    install_info = {
-        url = "https://github.com/bryall/tree-sitter-beancount",
-        files = {"src/parser.c"}
-    }
-}
-
 require'nvim-treesitter.configs'.setup {
     highlight = {
       enable = true,
@@ -44,7 +36,7 @@ require'nvim-treesitter.configs'.setup {
       }
     },
     textobjects = { -- syntax-aware textobjects
-    enable = false,
+    enable = true,
     disable = {},
     keymaps = {
         --["iL"] = { -- you can define your own textobjects directly here
