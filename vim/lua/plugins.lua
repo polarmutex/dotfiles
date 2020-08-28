@@ -101,6 +101,7 @@ return require('packer').startup{
         use 'nvim-treesitter/nvim-treesitter'
         use 'nvim-treesitter/playground'
         use 'nvim-treesitter/completion-treesitter'
+        use_local 'nvim-beancount'
 
         -- Whitespace
         use 'ntpeters/vim-better-whitespace'
@@ -115,12 +116,11 @@ return require('packer').startup{
         -- Test
         use 'vim-test/vim-test'
 
-        -- Bean Copy Txn
-        use 'bryall/bean-copy-txn'
-
         -- Games/ Utils
         use 'takac/vim-hardtime'
-        use 'ThePrimeagen/vim-be-good'
+        --use {'ThePrimeagen/vim-be-good', branch="lua-lua"}
+        use_local 'vim-be-good'
+        use 'ThePrimeagen/vim-apm'
 end,
 config = {
     display = {
