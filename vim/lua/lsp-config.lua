@@ -31,8 +31,6 @@ local custom_attach = function(client)
                     local bufnr = vim.uri_to_bufnr(result.uri)
                     if vim.uri_from_bufnr(old_item.bufnr) ~= result.uri then
                         table.insert(item_list, old_item)
-                    else
-                        print("Skipping Old Item")
                     end
                 end
 
