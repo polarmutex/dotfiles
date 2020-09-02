@@ -87,7 +87,9 @@ return require('packer').startup{
 
         -- Lnaguages
         -- Lua
+        use 'nvim-lua/popup.nvim'
         use 'nvim-lua/plenary.nvim'
+        use 'nvim-lua/telescope.nvim'
         -- c++
         use {'rhysd/vim-clang-format', rocks = { 'lua-cjson', 'lpeg', 'asdf' }}
 
@@ -124,7 +126,7 @@ return require('packer').startup{
 end,
 config = {
     display = {
-        open_fn = function(name)
+        _open_fn = function(name)
         -- Can only use plenary when we have our plugins.
         --  We can only get plenary when we don't have our plugins ;)
         local ok, float_win = pcall(function()
