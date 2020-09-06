@@ -1,0 +1,23 @@
+- defaults:
+    link:
+        create: true
+        relink: true
+        force: true
+    shell:
+        quiet: false
+
+- clean:
+    ~/:
+        force: true
+    ~/.config:
+        recursive: true
+
+- link:
+    ~/.config/nvim: neovim/
+    ~/.zshrc: zsh/zshrc
+
+- shell:
+    - description: "Updating brew"
+      command: "brew update"
+    - description: "Removing old brew files"
+      command: "brew cleanup"
