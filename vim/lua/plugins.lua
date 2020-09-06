@@ -89,7 +89,8 @@ return require('packer').startup{
         -- Lua
         use 'nvim-lua/popup.nvim'
         use 'nvim-lua/plenary.nvim'
-        use 'nvim-lua/telescope.nvim'
+        -- use 'nvim-lua/telescope.nvim'
+        use_local 'telescope.nvim'
         -- c++
         use {'rhysd/vim-clang-format', rocks = { 'lua-cjson', 'lpeg', 'asdf' }}
 
@@ -103,7 +104,7 @@ return require('packer').startup{
         use 'nvim-treesitter/nvim-treesitter'
         use 'nvim-treesitter/playground'
         use 'nvim-treesitter/completion-treesitter'
-        use_local 'nvim-beancount'
+        use_local 'beancount.nvim'
 
         -- Whitespace
         use 'ntpeters/vim-better-whitespace'
