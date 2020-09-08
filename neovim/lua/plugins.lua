@@ -105,6 +105,9 @@ return require('packer').startup{
         use 'nvim-treesitter/completion-treesitter'
         use_local 'beancount.nvim'
 
+        -- Statusline
+        use_local 'express_line.nvim'
+
         -- Whitespace
         use 'ntpeters/vim-better-whitespace'
         --show when there is gross trailing whitespace
