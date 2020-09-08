@@ -89,8 +89,7 @@ return require('packer').startup{
         -- Lua
         use 'nvim-lua/popup.nvim'
         use 'nvim-lua/plenary.nvim'
-        -- use 'nvim-lua/telescope.nvim'
-        use_local 'telescope.nvim'
+        use 'nvim-lua/telescope.nvim'
         -- c++
         use {'rhysd/vim-clang-format', rocks = { 'lua-cjson', 'lpeg', 'asdf' }}
 
