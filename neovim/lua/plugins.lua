@@ -93,7 +93,7 @@ return require('packer').startup{
         use {'rhysd/vim-clang-format', rocks = { 'lua-cjson', 'lpeg', 'asdf' }}
 
         -- LSP
-        use 'neovim/nvim-lsp'
+        use 'neovim/nvim-lspconfig'
         use 'nvim-lua/completion-nvim'
         use 'nvim-lua/diagnostic-nvim'
         use 'nvim-lua/lsp-status.nvim'
