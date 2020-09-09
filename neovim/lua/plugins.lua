@@ -97,6 +97,7 @@ return require('packer').startup{
         use 'nvim-lua/completion-nvim'
         use 'nvim-lua/diagnostic-nvim'
         use 'nvim-lua/lsp-status.nvim'
+        use 'tjdevries/nlua.nvim'
 
         -- Tree-Sitter
         use 'nvim-treesitter/nvim-treesitter'
