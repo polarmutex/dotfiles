@@ -57,6 +57,12 @@ local custom_attach = function(client)
 --})
 nvim_lsp.pyright.setup({
     on_attach=custom_attach,
+    before_init = function(initialization_params, config)
+        initialization_params['workspaceFolders'] = {{
+            name = 'workspace',
+            uri = initialization_params['rootUri']
+        }}
+    end;
 })
 
 -- beancount
