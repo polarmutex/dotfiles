@@ -53,7 +53,6 @@ return require('packer').startup{
         -- FZF
         use {'junegunn/fzf', run = './install --all' }
         use {'junegunn/fzf.vim'}
-        use {'yuki-ycino/fzf-preview.vim', run = 'npm install' }
 
         -- Git
         use 'mhinz/vim-signify'
