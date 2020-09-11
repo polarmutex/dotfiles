@@ -73,7 +73,8 @@ let g:which_key_map.s = {
       \ 'l' : [':call Telescope_loclist()'        , 'location list'],
       \ 'o' : [':call Telescope_oldfiles()'       , 'old files'],
       \ 'c' : [':call Telescope_cmdhistory()'     , 'command history'],
-      \ 'b' : [':call Telescope_builtin()'     , 'builtin'],
+      \ 'b' : [':call Telescope_builtin()'        , 'builtin'],
+      \ 's' : [':call Telescope_treesitter()'     , 'treesitter'],
       \ }
       " '/' : [':History/'     , 'history'],
       " 'c' : [':Commits'      , 'commits'],

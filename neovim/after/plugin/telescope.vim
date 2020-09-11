@@ -22,3 +22,6 @@ endfunction
 function Telescope_builtin()
     lua require('telescope.builtin').builtin({})
 endfunction
+function Telescope_treesitter()
+    lua require('telescope.builtin').treesitter({})
+endfunction
