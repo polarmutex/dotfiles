@@ -31,3 +31,8 @@ else
     "source $HOME/.config/nvim/plugins/hardtime.vim
     "source $HOME/.config/nvim/plugins/vim-be-good.vim
 endif
+
+augroup start_screen
+  au!
+  autocmd VimEnter * ++once lua require('start-screen').start()
+augroup END

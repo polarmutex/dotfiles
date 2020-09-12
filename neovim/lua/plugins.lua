@@ -62,10 +62,6 @@ return require('packer').startup{
         -- Terminal
         use 'voldikss/vim-floaterm'
 
-        -- Start Screen
-        -- :SSave and :SLoad (wrappers on male session)
-        use 'mhinz/vim-startify'
-
         -- Cool tags based viewer
         --   :Vista  <-- Opens up a really cool sidebar with info about file.
         use 'liuchengxu/vista.vim'
@@ -89,8 +85,6 @@ return require('packer').startup{
         use 'nvim-lua/popup.nvim'
         use 'nvim-lua/plenary.nvim'
         use 'nvim-lua/telescope.nvim'
-        -- c++
-        use {'rhysd/vim-clang-format', rocks = { 'lua-cjson', 'lpeg', 'asdf' }}
 
         -- LSP
         use 'neovim/nvim-lspconfig'
