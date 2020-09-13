@@ -16,6 +16,7 @@
     ~/.config/nvim: neovim/
     ~/.zshrc: zsh/zshrc
     ~/.config/kitty: kitty/
+    ~/.config/awesome: awesome/
 
 - shell:
     # brew
