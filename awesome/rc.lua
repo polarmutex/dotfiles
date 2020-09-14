@@ -329,8 +329,16 @@ globalkeys = gears.table.join(
               {description = "restore minimized", group = "client"}),
 
     -- Prompt
-    awful.key({ modkey },            "r",     function () awful.screen.focused().mypromptbox:run() end,
-              {description = "run prompt", group = "launcher"}),
+    awful.key({ modkey },            "r",     function ()
+        awful.util.spawn("dmenu_run") end,
+        {description = "run dmenu", group = "launcher"}
+    ),
+
+    -- Browser
+    awful.key({ modkey },            "b",     function ()
+        awful.util.spawn("firefox") end,
+        {description = "run firefox", group = "launcher"}
+    ),
 
     awful.key({ modkey }, "x",
               function ()
@@ -585,4 +593,5 @@ client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_n
 beautiful.useless_gap = 5
 
 -- Autostart
-awful.spawn.with_shell("compton")
+awful.spawn.with_shell("compton -b -c --backend glx --vsync opengl-swc")
+awful.spawn.with_shell("feh --bg-fill --randomize ~/Media/wallpapers")
