@@ -17,6 +17,7 @@
     ~/.zshrc: zsh/zshrc
     ~/.config/kitty: kitty/
     ~/.config/awesome: awesome/
+    ~/Media/wallpapers: wallpapers
 
 - shell:
     # brew
