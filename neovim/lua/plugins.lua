@@ -42,17 +42,11 @@ return require('packer').startup{
 
         -- Add some color
         use 'norcalli/nvim-colorizer.lua'
+        -- use 'norcalli/nvim-terminal.lua'
         -- Better Syntax Support
         -- vim-polyglot
         -- Auto pairs for '(' '[' '{'
         -- auto-pairs
-
-        -- Themes
-        use 'gruvbox-community/gruvbox'
-
-        -- FZF
-        use {'junegunn/fzf', run = './install --all' }
-        use {'junegunn/fzf.vim'}
 
         -- Git
         use 'mhinz/vim-signify'
@@ -85,6 +79,7 @@ return require('packer').startup{
         use 'nvim-lua/popup.nvim'
         use 'nvim-lua/plenary.nvim'
         use 'nvim-lua/telescope.nvim'
+        use 'tjdevries/colorbuddy.nvim'
 
         -- LSP
         use 'neovim/nvim-lspconfig'
