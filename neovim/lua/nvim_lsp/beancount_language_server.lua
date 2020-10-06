@@ -3,7 +3,8 @@ local util = require 'nvim_lsp/util'
 
 configs.beancount_language_server = {
   default_config = {
-    cmd = {"beancount-language-server",};
+    cmd = {"beancount-language-server"};
+    --cmd = {"beancount-language-server", "--debug",  "--log-file",  "bls.log"};
     filetypes = {"beancount"};
     root_dir = function(fname)
       return util.path.dirname(fname)
