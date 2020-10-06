@@ -74,6 +74,7 @@ return require('packer').startup{
         use 'nvim-lua/plenary.nvim'
         use 'nvim-lua/telescope.nvim'
         use 'tjdevries/colorbuddy.nvim'
+        use 'kyazdani42/nvim-web-devicons'
 
         -- LSP
         use 'neovim/nvim-lspconfig'
