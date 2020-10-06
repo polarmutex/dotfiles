@@ -20,6 +20,10 @@ local function create_buffer()
     BufferId = vim.api.nvim_create_buf(false, true)
 end
 
+local function kill_window()
+    vim.cmd(string.format([[bwipeout! %s]], BufferId))
+end
+
 local function open_window()
     if not buffer_exists() then
         create_buffer()
@@ -57,6 +61,14 @@ function M.toggle()
     end
     print("opening")
     open_window()
+end
+
+function M.open()
+    open_window()
+end
+
+function M.kill()
+    kill_window()
 end
 
 return M
