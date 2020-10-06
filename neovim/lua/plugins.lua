@@ -43,8 +43,6 @@ return require('packer').startup{
         -- Add some color
         use 'norcalli/nvim-colorizer.lua'
         -- use 'norcalli/nvim-terminal.lua'
-        -- Better Syntax Support
-        -- vim-polyglot
         -- Auto pairs for '(' '[' '{'
         -- auto-pairs
 
@@ -55,10 +53,6 @@ return require('packer').startup{
 
         -- Terminal
         use 'voldikss/vim-floaterm'
-
-        -- Cool tags based viewer
-        --   :Vista  <-- Opens up a really cool sidebar with info about file.
-        use 'liuchengxu/vista.vim'
 
         -- Help
         use 'liuchengxu/vim-which-key'
@@ -95,7 +89,7 @@ return require('packer').startup{
         use_local 'beancount.nvim'
 
         -- Statusline
-        use_local 'express_line.nvim'
+        use 'tjdevries/express_line.nvim'
 
         -- Whitespace
         use 'ntpeters/vim-better-whitespace'
