@@ -1,4 +1,3 @@
-vim.api.nvim_command('syntax enable')
 vim.api.nvim_command('set termguicolors')
 
 local Color, colors, Group, groups, styles = require('colorbuddy').setup()
@@ -213,8 +212,8 @@ Group.new('IncSearch', c.orange, c.bg0, b + r) -- 'incsearch' highlighting; also
 
 Group.new('QuickFixLine', c.bg0, c.yellow, b) -- Current quickfix item in the quickfix window.
 
-Group.new('StatusLine',   c.bg2, c.fg1, no) -- status line of current window
-Group.new('StatusLineNC', c.bg1, c.fg4, no) -- status lines of not-current windows Note: if this is equal to "StatusLine" Vim will use "^^^" in the status line of the current window.
+Group.new('StatusLine',   c.fg1, c.bg2, no) -- status line of current window
+Group.new('StatusLineNC', c.fg4, c.bg1, no) -- status lines of not-current windows Note: if this is equal to "StatusLine" Vim will use "^^^" in the status line of the current window.
 --Group.new('StatusLineTerm', g.StatusLine, g.StatusLine, g.StatusLine) -- status line of current :terminal window
 --Group.new('StatusLineTermNC', g.StatusLineNC, g.StatusLineNC, g.StatusLineNC) -- status line of non-current :terminal window
 
@@ -246,10 +245,10 @@ Group.new('PmenuSel', c.bg2, c.blue, b) -- Popup menu: selected item.
 Group.new('PmenuSbar', c.none, c.bg2, no) -- Popup menu: scrollbar.
 Group.new('PmenuThumb', c.none, c.bg4, no) -- Popup menu: Thumb of the scrollbar.
 
-Group.new('DiffAdd', c.green, c.bg0, r) -- diff mode: Added line
-Group.new('DiffChange', c.aqua, c.bg0, r) --  diff mode: Changed line
+Group.new('DiffAdd',    c.green, c.bg0, r) -- diff mode: Added line
+Group.new('DiffChange', c.yellow, c.bg0, r) --  diff mode: Changed line
 Group.new('DiffDelete', c.red, c.bg0, r) -- diff mode: Deleted line
-Group.new('DiffText', c.yellow, c.bg0, r) -- diff mode: Changed text within a changed line
+Group.new('DiffText',   c.yellow, c.bg0, r) -- diff mode: Changed text within a changed line
 
 Group.new('EndOfBuffer', c.bg0, c.bg0, no) -- filler lines (~) after the last line in the buffer
 
@@ -341,7 +340,7 @@ Group.new("LspReferenceWrite", g.GruvboxGreen, g.GruvboxGreen, g.GruvboxGreen) -
 -- Group.new("TSTypeBuiltin", g.Type, c.bg0, s.none) -- For builtin types (you guessed it, right ?).
 -- Group.new("TSStructure", g.Structure, c.bg0) -- This is left as an exercise for the reader.
 -- Group.new("TSInclude", g.Include, c.bg0) -- For includes: `#include` in C, `use` or `extern crate` in Rust, or `require` in Lua.
- Group.new("TSAnnotation"         , c.blue , c.none) -- For C++/Dart attributes, annotations that can be attached to the code to denote some kind of meta information.
+-- Group.new("TSAnnotation"         , c.blue , c.none) -- For C++/Dart attributes, annotations that can be attached to the code to denote some kind of meta information.
 -- Group.new("TSText"             , c.fg              , c.bg           , b) -- For strings considered text in a markup language.
 -- Group.new("TSStrong"             , c.fg              , c.bg           , b) -- For text to be represented with strong.
 -- Group.new("TSEmphasis"            , c.blue_alt          , c.none  , b) -- For text to be represented with emphasis.
@@ -360,15 +359,25 @@ Group.new("LspReferenceWrite", g.GruvboxGreen, g.GruvboxGreen, g.GruvboxGreen) -
 -------------------------
 -- Plugin Highlighting --
 -------------------------
+-- Express-Line
+Group.new("ElNormal",      c.bg0, c.fg4, b)
+Group.new("ElInsert",      c.bg0, c.red, b)
+Group.new("ElReplace",     c.bg0, c.aqua, b)
+Group.new("ElCommand",     c.bg0, c.purple, b)
+Group.new("ElTerm",        c.bg0, c.green, b)
+Group.new("ElVisual",      c.bg0, c.orange, b)
+Group.new("ElVisualLine",  g.ElVisual, g.ElVisual, g.ElVisual)
+Group.new("ElVisualBlock", g.ElVisual, g.ElVisual, g.ElVisual)
 
 -- Signify (mhinz/vim-signify)
 Group.new('SignifySignAdd', g.GruvboxGreenSign, g.GruvboxGreenSign, g.GruvboxGreenSign)
-Group.new('SignifySignChange', g.GruvboxAquaSign, g.GruvboxAquaSign, g.GruvboxAquaSign)
+Group.new('SignifySignChange', g.GruvboxYellowSign, g.GruvboxYellowSign, g.GruvboxYellowSign)
 Group.new('SignifySignDelete', g.GruvboxRedSign, g.GruvboxRedSign, g.GruvboxRedSign)
 
 -- Which Key (liuchengxu/vim-which-key)
-Group.new('WhichKey', g.Function, g.Function, g.Function)
+Group.new('WhichKey',          c.green, c.bg0, no)
 Group.new('WhichKeySeperator', c.green, c.bg0, no)
-Group.new('WhichKeyGroup', g.Keyword, g.Keyword, g.Keyword)
-Group.new('WhichKeyDesc', g.Identifier, g.Identifier, g.Identifier)
+Group.new('WhichKeyGroup',     c.red, c.bg0, no)
+Group.new('WhichKeyDesc',      c.blue, c.bg0, no)
+Group.new('WhichKeyFloating',  c.bg0, c.none, no)
 

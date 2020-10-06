@@ -63,28 +63,6 @@ local generator = function()
     return el_segments
 end
 
--- Mode Colors
--- TODO Change to more Gruvbox Colors
-vim.cmd [[hi ElNormal                 guibg=#3c3836 gui=bold guifg=#b8bb26]]
-vim.cmd [[hi ElInsert                 guibg=#3c3836 gui=bold guifg=#83a598]]
-vim.cmd [[hi ElReplace                guibg=#3c3836 gui=bold guifg=#fb4934]]
-vim.cmd [[hi ElCommand                guibg=#3c3836 gui=bold guifg=#b8bb26]]
-vim.cmd [[hi ElTerm                   guibg=#3c3836 gui=bold guifg=#83a598]]
-vim.cmd [[hi ElNormalOperatingRending guibg=#3c3836 gui=bold guifg=#b8bb26]]
-vim.cmd [[hi ElVisual                 guibg=#3c3836 gui=bold guifg=#d3869b]]
-vim.cmd [[hi ElVisualLine             guibg=#3c3836 gui=bold guifg=#d3869b]]
-vim.cmd [[hi ElVisualBlock            guibg=#3c3836 gui=bold guifg=#d3869b]]
-vim.cmd [[hi ElSelect                 guibg=#3c3836 gui=bold guifg=#b8bb26]]
-vim.cmd [[hi ElSLine                  guibg=#3c3836 gui=bold guifg=#b8bb26]]
-vim.cmd [[hi ElSBlock                 guibg=#3c3836 gui=bold guifg=#b8bb26]]
-vim.cmd [[hi ElInsertCompletion       guibg=#3c3836 gui=bold guifg=#b8bb26]]
-vim.cmd [[hi ElVirtualReplace         guibg=#3c3836 gui=bold guifg=#b8bb26]]
-vim.cmd [[hi ElCommandCV              guibg=#3c3836 gui=bold guifg=#b8bb26]]
-vim.cmd [[hi ElCommandEx              guibg=#3c3836 gui=bold guifg=#b8bb26]]
-vim.cmd [[hi ElPrompt                 guibg=#3c3836 gui=bold guifg=#b8bb26]]
-vim.cmd [[hi ElMore                   guibg=#3c3836 gui=bold guifg=#b8bb26]]
-vim.cmd [[hi ElConfirm                guibg=#3c3836 gui=bold guifg=#b8bb26]]
-vim.cmd [[hi ElShell                  guibg=#3c3836 gui=bold guifg=#b8bb26]]
 
 require('el').setup{ generator = generator }
 
