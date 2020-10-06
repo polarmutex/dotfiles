@@ -369,6 +369,12 @@ Group.new("ElVisual",      c.bg0, c.orange, b)
 Group.new("ElVisualLine",  g.ElVisual, g.ElVisual, g.ElVisual)
 Group.new("ElVisualBlock", g.ElVisual, g.ElVisual, g.ElVisual)
 
+-- start-screen
+Group.new("StartifyTitle",   c.red, c.none, b)
+Group.new("StartifyBracket", c.blue, c.none, no)
+Group.new("StartifyNumber",  c.yellow, c.none, b)
+Group.new("StartifyPath",    c.orange, c.none, no)
+
 -- Signify (mhinz/vim-signify)
 Group.new('SignifySignAdd', g.GruvboxGreenSign, g.GruvboxGreenSign, g.GruvboxGreenSign)
 Group.new('SignifySignChange', g.GruvboxYellowSign, g.GruvboxYellowSign, g.GruvboxYellowSign)

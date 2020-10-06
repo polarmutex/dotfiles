@@ -108,7 +108,7 @@ local function make_sections()
     for _, section in ipairs(sections) do
         if next(section.show) ~= nil then
             vim.api.nvim_buf_set_lines(0, linenr, linenr, false, {' ' .. section.title})
-            vim.api.nvim_buf_add_highlight(0, -1, 'Title', linenr, 1, -1)
+            vim.api.nvim_buf_add_highlight(0, -1, 'StartifyTitle', linenr, 1, -1)
 
             local size = 1
             for _, item in ipairs(section.show) do
