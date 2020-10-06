@@ -1,3 +1,6 @@
+vim.api.nvim_command('syntax enable')
+vim.api.nvim_command('set termguicolors')
+
 local Color, colors, Group, groups, styles = require('colorbuddy').setup()
 
 local g = groups
@@ -66,6 +69,7 @@ Color.new('blue',    '#83a598')
 Color.new('purple',  '#d3869b')
 Color.new('aqua',    '#8ec07c')
 Color.new('orange',  '#fe8019')
+Color.new('gray',    '#928374')
 
 -- terminal colors
 vim.g.terminal_color_0 = colors.bg0.H
@@ -92,47 +96,47 @@ vim.g.terminal_color_14 = colors.aqua.H
 vim.g.terminal_color_7 = colors.fg4.H
 vim.g.terminal_color_15 = colors.fg1.H
 
-Group.new('GruvboxFg0',  c.fg0, c.none, no)
-Group.new('GruvboxFg1',  c.fg1, c.none, no)
-Group.new('GruvboxFg2',  c.fg2, c.none, no)
-Group.new('GruvboxFg3',  c.fg3, c.none, no)
-Group.new('GruvboxFg4',  c.fg4, c.none, no)
+Group.new('GruvboxFg0',  c.fg0,  c.none, no)
+Group.new('GruvboxFg1',  c.fg1,  c.none, no)
+Group.new('GruvboxFg2',  c.fg2,  c.none, no)
+Group.new('GruvboxFg3',  c.fg3,  c.none, no)
+Group.new('GruvboxFg4',  c.fg4,  c.none, no)
 Group.new('GruvboxGray', c.gray, c.none, no)
-Group.new('GruvboxBg0',  c.bg0, c.none, no)
-Group.new('GruvboxBg1',  c.bg1, c.none, no)
-Group.new('GruvboxBg2',  c.bg2, c.none, no)
-Group.new('GruvboxBg3',  c.bg3, c.none, no)
-Group.new('GruvboxBg4',  c.bg4, c.none, no)
+Group.new('GruvboxBg0',  c.bg0,  c.none, no)
+Group.new('GruvboxBg1',  c.bg1,  c.none, no)
+Group.new('GruvboxBg2',  c.bg2,  c.none, no)
+Group.new('GruvboxBg3',  c.bg3,  c.none, no)
+Group.new('GruvboxBg4',  c.bg4,  c.none, no)
 
-Group.new('GruvboxRed',        c.red, c.none, no)
-Group.new('GruvboxRedBold',    c.red, c.none, b)
-Group.new('GruvboxGreen',      c.green, c.none, no)
-Group.new('GruvboxGreenBold',  c.green, c.none, b)
+Group.new('GruvboxRed',        c.red,    c.none, no)
+Group.new('GruvboxRedBold',    c.red,    c.none, b)
+Group.new('GruvboxGreen',      c.green,  c.none, no)
+Group.new('GruvboxGreenBold',  c.green,  c.none, b)
 Group.new('GruvboxYellow',     c.yellow, c.none, no)
 Group.new('GruvboxYellowBold', c.yellow, c.none, b)
-Group.new('GruvboxBlue',       c.blue, c.none, no)
-Group.new('GruvboxBlueBold',   c.blue, c.none, b)
+Group.new('GruvboxBlue',       c.blue,   c.none, no)
+Group.new('GruvboxBlueBold',   c.blue,   c.none, b)
 Group.new('GruvboxPurple',     c.purple, c.none, no)
 Group.new('GruvboxPurpleBold', c.purple, c.none, b)
-Group.new('GruvboxAqua',       c.aqua, c.none, no)
-Group.new('GruvboxAquaBold',   c.aqua, c.none, b)
+Group.new('GruvboxAqua',       c.aqua,   c.none, no)
+Group.new('GruvboxAquaBold',   c.aqua,   c.none, b)
 Group.new('GruvboxOrange',     c.orange, c.none, no)
 Group.new('GruvboxOrangeBold', c.orange, c.none, b)
 
-Group.new('GruvboxRedSign',        c.red, c.bg1, no)
-Group.new('GruvboxGreenSign',      c.green, c.bg1, no)
+Group.new('GruvboxRedSign',        c.red,    c.bg1, no)
+Group.new('GruvboxGreenSign',      c.green,  c.bg1, no)
 Group.new('GruvboxYellowSign',     c.yellow, c.bg1, no)
-Group.new('GruvboxBlueSign',       c.blue, c.bg1, no)
+Group.new('GruvboxBlueSign',       c.blue,   c.bg1, no)
 Group.new('GruvboxPurpleSign',     c.purple, c.bg1, no)
-Group.new('GruvboxAquaSign',       c.aqua, c.bg1, no)
+Group.new('GruvboxAquaSign',       c.aqua,   c.bg1, no)
 Group.new('GruvboxOrangeSign',     c.orange, c.bg1, no)
 
-Group.new('GruvboxRedUnderline',        c.red, c.none, uc)
-Group.new('GruvboxGreenUnderline',      c.green, c.none, uc)
+Group.new('GruvboxRedUnderline',        c.red,    c.none, uc)
+Group.new('GruvboxGreenUnderline',      c.green,  c.none, uc)
 Group.new('GruvboxYellowUnderline',     c.yellow, c.none, uc)
-Group.new('GruvboxBlueUnderline',       c.blue, c.none, uc)
+Group.new('GruvboxBlueUnderline',       c.blue,   c.none, uc)
 Group.new('GruvboxPurpleUnderline',     c.purple, c.none, uc)
-Group.new('GruvboxAquaUnderline',       c.aqua, c.none, uc)
+Group.new('GruvboxAquaUnderline',       c.aqua,   c.none, uc)
 Group.new('GruvboxOrangeUnderline',     c.orange, c.none, uc)
 
 -------------------------------------------------------------
@@ -140,9 +144,9 @@ Group.new('GruvboxOrangeUnderline',     c.orange, c.none, uc)
 -------------------------------------------------------------
 Group.new('Special', g.GruvboxOrange, g.GruvboxOrange, g.GruvboxOrange) -- any special symbol
 
-Group.new('Comment', c.gray,   c.none, i) -- any comment
-Group.new('Todo',    c.orange, c.bg0,  b + i) -- anything that needs extra attention; mostly the keywords TODO FIXME and XXX
-Group.new('Error',   c.red,    c.bg0,  b + r) -- any erroneous construct
+Group.new('Comment', c.gray,   c.none, i+b) -- any comment
+Group.new('Todo',    g.GruvboxOrange, c.bg0,         b + i) -- anything that needs extra attention; mostly the keywords TODO FIXME and XXX
+Group.new('Error',   g.GruvboxRed,    c.bg0,         b + r) -- any erroneous construct
 
 Group.new('Statement',   g.GruvboxRed, g.GruvboxRed, g.GruvboxRed) -- any statement
 Group.new('Conditional', g.GruvboxRed, g.GruvboxRed, g.GruvboxRed) -- if, then, else, endif, switch, etc.
@@ -152,7 +156,7 @@ Group.new('Exception',   g.GruvboxRed, g.GruvboxRed, g.GruvboxRed) -- try, catch
 Group.new('Operator',    g.GruvboxFg1, g.GruvboxFg1, g.GruvboxFg1) -- sizeof", "+", "*", etc.
 Group.new('Keyword',     g.GruvboxRed, g.GruvboxRed, g.GruvboxRed) -- any other keyword
 
-Group.new('Identifier', g.GruvboxBlue, g.GruvboxBlue, g.GruvboxBlue) -- any variable name
+Group.new('Identifier', g.GruvboxBlue,      g.GruvboxBlue,      g.GruvboxBlue)      -- any variable name
 Group.new('Function',   g.GruvboxGreenBold, g.GruvboxGreenBold, g.GruvboxGreenBold) -- function name (also: methods for classes)
 
 Group.new('PreProc',   g.GruvboxAqua, g.GruvboxAqua, g.GruvboxAqua) -- generic Preprocessor
@@ -163,53 +167,53 @@ Group.new('PreCondit', g.GruvboxAqua, g.GruvboxAqua, g.GruvboxAqua) -- preproces
 
 Group.new('Constant',  g.GruvboxPurple, g.GruvboxPurple, g.GruvboxPurple) -- any constant
 Group.new('Character', g.GruvboxPurple, g.GruvboxPurple, g.GruvboxPurple) -- a character constant: 'c', '\n'
-Group.new('String',    c.fg1, c.none, i) -- this is a string
+Group.new('String',    g.GruvboxFg1,    c.none,          i)               -- this is a string
 Group.new('Boolean',   g.GruvboxPurple, g.GruvboxPurple, g.GruvboxPurple) -- a boolean constant: TRUE, false
 Group.new('Number',    g.GruvboxPurple, g.GruvboxPurple, g.GruvboxPurple) -- a floating point constant: 2.3e10
 Group.new('Float',     g.GruvboxPurple, g.GruvboxPurple, g.GruvboxPurple) -- a floating point constant: 2.3e10
 
 Group.new('Type',         g.GruvboxYellow, g.GruvboxYellow, g.GruvboxYellow) -- int, long, char, etc.
 Group.new('StorageClass', g.GruvboxYellow, g.GruvboxYellow, g.GruvboxYellow) -- static, register, volatile, etc.
-Group.new('Structure',    g.GruvboxYellow, g.GruvboxYellow, g.GruvboxYellow ) -- struct, union, enum, etc.
+Group.new('Structure',    g.GruvboxYellow, g.GruvboxYellow, g.GruvboxYellow) -- struct, union, enum, etc.
 Group.new('Typedef',      g.GruvboxYellow, g.GruvboxYellow, g.GruvboxYellow) -- A typedef
 
---Group.new('SpecialChar',) -- special character in a constant
---Group.new('Tag', ) -- you can use CTRL-] on this
---Group.new('Delimiter', ) -- character that needs attention
---Group.new('SpecialComment', ) -- special things inside a comment
---Group.new('Debug', ) -- debugging statements
+Group.new('SpecialChar', g.GruvboxGreenUnderline) -- special character in a constant
+Group.new('Tag', g.GruvboxGreenUnderline) -- you can use CTRL-] on this
+Group.new('Delimiter', g.GruvboxGreenUnderline) -- character that needs attention
+Group.new('SpecialComment', g.GruvboxGreenUnderline) -- special things inside a comment
+Group.new('Debug', g.GruvboxGreenUnderline) -- debugging statements
 Group.new('Underlined', c.blue, c.none, ul) -- text that stands out, HTML links
---Group.new('Ignore',) -- left blank, hidden
+Group.new('Ignore', g.GruvboxGreenUnderline) -- left blank, hidden
 
 --------------------------------------------------------------------------------
 -- Highlighting Groups (descriptions and ordering from `:h highlight-groups`) --
 --------------------------------------------------------------------------------
 
-Group.new('Normal', c.fg1, c.bg0, no) -- normal text
+Group.new('Normal', g.GruvboxFg1, c.bg0, no) -- normal text
 
-Group.new('CursorLine', c.none, c.bg1, no)
-Group.new('CursorColumn', g.CursorLine, g.CursorLine, g.CursorLine)
-Group.new('TabLineFill', c.bg4, c.bg1, no)
-Group.new('TabLineSel', c.green, c.bg1, no)
-Group.new('TabLine', g.TabLineFill, g.TabLineFill, g.TabLineFill)
-Group.new('MatchParen', c.green, c.bg0, b + ul) -- The character under the cursor or just before it, if it is a paired bracket, and its match.
+Group.new('CursorLine',   c.none,        c.bg1,         no)
+Group.new('CursorColumn', g.CursorLine,  g.CursorLine,  g.CursorLine)
+Group.new('TabLineFill',  c.bg4,         c.bg1,         no)
+Group.new('TabLineSel',   c.green,       c.bg1,         no)
+Group.new('TabLine',      g.TabLineFill, g.TabLineFill, g.TabLineFill)
+Group.new('MatchParen',   c.green,       c.bg0,         b + ul) -- The character under the cursor or just before it, if it is a paired bracket, and its match.
 
-Group.new('ColorColumn', c.none, c.bg1, no) --  used for the columns set with 'colorcolumn'
-Group.new('Conceal', c.blue, c.none, no) -- placeholder characters substituted for concealed text (see 'conceallevel')
-Group.new('CursorLineNr', c.yellow, c.bg1, no) -- Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
+Group.new('ColorColumn',  c.none,   c.bg1,  no) --  used for the columns set with 'colorcolumn'
+Group.new('Conceal',      c.blue,   c.none, no) -- placeholder characters substituted for concealed text (see 'conceallevel')
+Group.new('CursorLineNr', c.yellow, c.bg1,  no) -- Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
 
-Group.new('NonText', g.GruvboxBg2, g.GruvboxBg2, g.GruvboxBg2) -- '~' and '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., ">" displayed when a double-wide character doesn't fit at the end of the line).
+Group.new('NonText',    g.GruvboxBg2, g.GruvboxBg2, g.GruvboxBg2) -- '~' and '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., ">" displayed when a double-wide character doesn't fit at the end of the line).
 Group.new('SpecialKey', g.GruvboxFg4, g.GruvboxFg4, g.GruvboxFg4) -- Meta and special keys listed with ":map", also for text used to show unprintable characters in the text, 'listchars'. Generally: text that is displayed differently from what it really is.
 
-Group.new('Visual', c.none, c.bg3, no) -- Visual mode selection
+Group.new('Visual',    c.none,   c.bg3,    no)       -- Visual mode selection
 Group.new('VisualNOS', g.Visual, g.Visual, g.Visual) -- Visual mode selection when vim is "Not Owning the Selection". Only X11 Gui's gui-x11 and xterm-clipboard supports this.
 
-Group.new('Search', c.yellow, c.bg0, b + r) -- Last search pattern highlighting (see 'hlsearch'). Also used for similar items that need to stand out.
+Group.new('Search',    c.yellow, c.bg0, b + r) -- Last search pattern highlighting (see 'hlsearch'). Also used for similar items that need to stand out.
 Group.new('IncSearch', c.orange, c.bg0, b + r) -- 'incsearch' highlighting; also used for the text replaced with ":s///c"
 
 Group.new('QuickFixLine', c.bg0, c.yellow, b) -- Current quickfix item in the quickfix window.
 
-Group.new('StatusLine', c.bg2, c.fg1, no) -- status line of current window
+Group.new('StatusLine',   c.bg2, c.fg1, no) -- status line of current window
 Group.new('StatusLineNC', c.bg1, c.fg4, no) -- status lines of not-current windows Note: if this is equal to "StatusLine" Vim will use "^^^" in the status line of the current window.
 --Group.new('StatusLineTerm', g.StatusLine, g.StatusLine, g.StatusLine) -- status line of current :terminal window
 --Group.new('StatusLineTermNC', g.StatusLineNC, g.StatusLineNC, g.StatusLineNC) -- status line of non-current :terminal window
@@ -222,13 +226,13 @@ Group.new('Directory', g.GruvboxGreenBold, g.GruvboxGreenBold, g.GruvboxGreenBol
 
 Group.new('Title', g.GruvboxGreenBold, g.GruvboxGreenBold, g.GruvboxGreenBold) -- titles for output from ":set all", ":autocmd" etc.
 
-Group.new('ErrorMsg', c.bg0, c.red, b) -- error messages on the command line
-Group.new('MoreMsg', g.GruvboxYellowBold, g.GruvboxYellowBold, g.GruvboxYellowBold) -- more-prompt
-Group.new('ModeMsg', g.GruvboxYellowBold, g.GruvboxYellowBold, g.GruvboxYellowBold) -- 'showmode' message (e.g., "-- INSERT --")
-Group.new('Question', g.GruvboxOrangeBold, g.GruvboxOrangeBold, g.GruvboxOrangeBold) -- hit-enter prompt and yes/no questions
-Group.new('WarningMsg', g.GruvboxRedBold, g.GruvboxRedBold, g.GruvboxRedBold) --  warning messages
+Group.new('ErrorMsg',   c.bg0,               c.red,               b)                   -- error messages on the command line
+Group.new('MoreMsg',    g.GruvboxYellowBold, g.GruvboxYellowBold, g.GruvboxYellowBold) -- more-prompt
+Group.new('ModeMsg',    g.GruvboxYellowBold, g.GruvboxYellowBold, g.GruvboxYellowBold) -- 'showmode' message (e.g., "-- INSERT --")
+Group.new('Question',   g.GruvboxOrangeBold, g.GruvboxOrangeBold, g.GruvboxOrangeBold) -- hit-enter prompt and yes/no questions
+Group.new('WarningMsg', g.GruvboxRedBold,    g.GruvboxRedBold,    g.GruvboxRedBold)    --  warning messages
 
-Group.new('LineNr', c.bg4, c.none, no) -- Line number for ":number" and ":#" commands, and when 'number' or 'relativenumber' option is set.
+Group.new('LineNr',   c.bg4, c.none, no) -- Line number for ":number" and ":#" commands, and when 'number' or 'relativenumber' option is set.
 Group.new('SignColumn', c.none, c.bg1, no) -- column where signs are displayed
 Group.new('Folded', c.gray, c.bg1, i) -- line used for closed folds
 Group.new('FoldColumn', c.gray, c.bg1, no) -- 'foldcolumn'
@@ -337,7 +341,7 @@ Group.new("LspReferenceWrite", g.GruvboxGreen, g.GruvboxGreen, g.GruvboxGreen) -
 -- Group.new("TSTypeBuiltin", g.Type, c.bg0, s.none) -- For builtin types (you guessed it, right ?).
 -- Group.new("TSStructure", g.Structure, c.bg0) -- This is left as an exercise for the reader.
 -- Group.new("TSInclude", g.Include, c.bg0) -- For includes: `#include` in C, `use` or `extern crate` in Rust, or `require` in Lua.
--- Group.new("TSAnnotation"         , c.blue_nuanced_bg , c.none) -- For C++/Dart attributes, annotations that can be attached to the code to denote some kind of meta information.
+ Group.new("TSAnnotation"         , c.blue , c.none) -- For C++/Dart attributes, annotations that can be attached to the code to denote some kind of meta information.
 -- Group.new("TSText"             , c.fg              , c.bg           , b) -- For strings considered text in a markup language.
 -- Group.new("TSStrong"             , c.fg              , c.bg           , b) -- For text to be represented with strong.
 -- Group.new("TSEmphasis"            , c.blue_alt          , c.none  , b) -- For text to be represented with emphasis.
@@ -368,8 +372,3 @@ Group.new('WhichKeySeperator', c.green, c.bg0, no)
 Group.new('WhichKeyGroup', g.Keyword, g.Keyword, g.Keyword)
 Group.new('WhichKeyDesc', g.Identifier, g.Identifier, g.Identifier)
 
-
-local name = "gruvbox_polarmutex"
-vim.api.nvim_command('set termguicolors')
-vim.api.nvim_command(string.format('let g:colors_name = "%s"', name))
-vim.api.nvim_command(string.format('set background=%s', 'dark'))

@@ -1,5 +1,6 @@
 require('lsp-config')
 require('tree-sitter-config')
 require('popterm')
-require'colorizer'.setup()
+
 require('polarmutex.theme')
+require'colorizer'.setup()

@@ -49,7 +49,6 @@ if !exists('g:vscode')
     set listchars=tab:→→,trail:●,nbsp:○     " visualize whitespace
     set list
     set mmp=5000                            " for floatingterm
-    set termguicolors
 
     " auto source when writing to init.vm alternatively you can run :source $MYVIMRC
     au! BufWritePost $MYVIMRC source %
