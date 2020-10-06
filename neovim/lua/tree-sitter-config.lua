@@ -63,5 +63,5 @@ require'nvim-treesitter.configs'.setup {
         --["im"] = "@call.inner"
       }
     },
-    ensure_installed = {"python", "beancount"} -- one of "all", "language", or a list of languages
+    ensure_installed = {"python", "beancount", "lua", "cpp"} -- one of "all", "language", or a list of languages
 }
