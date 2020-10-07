@@ -64,17 +64,67 @@ let g:which_key_map.b = {
       \ }
 
 " s is for search
+function TelescopeGitFiles()
+    lua require('telescope.builtin').git_files()
+endfunction
+function TelescopeLiveGrep()
+    lua require('telescope.builtin').live_grep()
+endfunction
+function TelescopeLspReferences()
+    lua require('telescope.builtin').lsp_references()
+endfunction
+function TelescopeQuickfix()
+    lua require('telescope.builtin').quickfix()
+endfunction
+function TelescopeLoclist()
+    lua require('telescope.builtin').loclist()
+endfunction
+function TelescopeOldfiles()
+    lua require('telescope.builtin').oldfiles()
+endfunction
+function TelescopeCmdHistory()
+    lua require('telescope.builtin').command_history()
+endfunction
+function TelescopeBuiltin()
+    lua require('telescope.builtin').builtin()
+endfunction
+function TelescopeTreesitter()
+    lua require('telescope.builtin').treesitter()
+endfunction
+function TelescopeGrepString()
+    lua require('telescope.builtin').grep_string()
+endfunction
+function TelescopePlanets()
+    lua require('telescope.builtin').planets()
+endfunction
+function TelescopeHelpTags()
+    lua require('telescope.builtin').help_tags()
+endfunction
+function TelescopeFindFiles()
+    lua require('telescope.builtin').find_files()
+endfunction
+function TelescopeReloader()
+    lua require('telescope.builtin').reloader()
+endfunction
 let g:which_key_map.s = {
       \ 'name' : '+search' ,
-      \ 'g' : [':call Telescope_git_files()'      , 'git files'],
-      \ 't' : [':call Telescope_live_grep()'      , 'live grep'],
-      \ 'r' : [':call Telescope_lsp_references()' , 'lsp references'],
-      \ 'q' : [':call Telescope_quickfix()'       , 'quickfix'],
-      \ 'l' : [':call Telescope_loclist()'        , 'location list'],
-      \ 'o' : [':call Telescope_oldfiles()'       , 'old files'],
-      \ 'c' : [':call Telescope_cmdhistory()'     , 'command history'],
-      \ 'b' : [':call Telescope_builtin()'        , 'builtin'],
-      \ 's' : [':call Telescope_treesitter()'     , 'treesitter'],
+      \ 'g' : [':call TelescopeGitFiles()'      , 'git files'],
+      \ 't' : [':call TelescopeLiveGrep()'      , 'live grep'],
+      \ 'r' : [':call TelescopeLspReferences()' , 'lsp references'],
+      \ 'a' : [':call TelescopeLspCodeActions()', 'lsp code actions'],
+      \ 'd' : [':call TelescopeLspDocSymbols()' , 'lsp document symbols'],
+      \ 'w' : [':call TelescopeLspWSSymbols()'  , 'lsp workspace symbols'],
+      \ 'q' : [':call TelescopeQuickfix()'      , 'quickfix'],
+      \ 'l' : [':call TelescopeLoclist()'       , 'location list'],
+      \ 'o' : [':call TelescopeOldfiles()'      , 'old files'],
+      \ 'c' : [':call TelescopeCmdHistory()'    , 'command history'],
+      \ 'b' : [':call TelescopeBuiltin()'       , 'builtin'],
+      \ 'n' : [':call TelescopeTreesitter()'    , 'treesitter'],
+      \ 's' : [':call TelescopeGrepString()'    , 'grep string'],
+      \ 'z' : [':call TelescopePlanets()'       , 'planets'],
+      \ 'h' : [':call TelescopeHelpTags()'      , 'help tags'],
+      \ 'f' : [':call TelescopeFindFiles()'     , 'find files'],
+      \ 'p' : [':call TelescopeReloader()'      , 'lua reloader'],
       \ }
       " '/' : [':History/'     , 'history'],
       " 'c' : [':Commits'      , 'commits'],
@@ -153,9 +203,12 @@ let g:which_key_map.t = {
       \ }
 
 " f is for finances
+function BeancountCopyTransaction()
+    lua require('plenary.reload').reload_module('beancount'); require('beancount').CopyTransaction({})
+endfunction
 let g:which_key_map.f = {
             \ 'name' : '+finances' ,
-      \ 't' : [':CopyTransaction'        , 'copy txn'],
+      \ 't' : [':call BeancountCopyTransaction()'        , 'copy txn'],
       \ 'c' : [':%s/txn/*/gc'        , 'confirm txns'],
       \ }
 " Register which key map
