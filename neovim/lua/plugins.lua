@@ -107,8 +107,8 @@ return require('packer').startup{
 
         -- Games/ Utils
         use 'takac/vim-hardtime'
-        --use {'ThePrimeagen/vim-be-good', branch="lua-lua"}
-        use_local 'vim-be-good'
+        use 'ThePrimeagen/vim-be-good'
+        --use_local 'vim-be-good'
         use 'ThePrimeagen/vim-apm'
 end,
 config = {
