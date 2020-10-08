@@ -4,3 +4,5 @@ require('popterm')
 
 require('polarmutex.theme')
 require'colorizer'.setup()
+
+require('polarmutex.telescope')

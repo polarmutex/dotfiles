@@ -64,74 +64,49 @@ let g:which_key_map.b = {
       \ }
 
 " s is for search
-function TelescopeGitFiles()
-    lua require('telescope.builtin').git_files()
-endfunction
-function TelescopeLiveGrep()
-    lua require('telescope.builtin').live_grep()
-endfunction
-function TelescopeLspReferences()
-    lua require('telescope.builtin').lsp_references()
-endfunction
-function TelescopeQuickfix()
-    lua require('telescope.builtin').quickfix()
-endfunction
-function TelescopeLoclist()
-    lua require('telescope.builtin').loclist()
-endfunction
-function TelescopeOldfiles()
-    lua require('telescope.builtin').oldfiles()
-endfunction
-function TelescopeCmdHistory()
-    lua require('telescope.builtin').command_history()
-endfunction
-function TelescopeBuiltin()
-    lua require('telescope.builtin').builtin()
-endfunction
-function TelescopeTreesitter()
-    lua require('telescope.builtin').treesitter()
-endfunction
-function TelescopeGrepString()
-    lua require('telescope.builtin').grep_string()
-endfunction
-function TelescopePlanets()
-    lua require('telescope.builtin').planets()
-endfunction
-function TelescopeHelpTags()
-    lua require('telescope.builtin').help_tags()
-endfunction
-function TelescopeFindFiles()
-    lua require('telescope.builtin').find_files()
-endfunction
-function TelescopeReloader()
-    lua require('telescope.builtin').reloader()
-endfunction
+command! TelescopeGitFiles       lua require('polarmutex.telescope')["git_files"]()
+command! TelescopeLiveGrep       lua require('polarmutex.telescope')["live_grep"]()
+command! TelescopeLspReferences  lua require('polarmutex.telescope')["lsp_references"]()
+command! TelescopeLspCodeActions lua require('polarmutex.telescope')["lsp_code_actions"]()
+command! TelescopeLspDocSymbols  lua require('polarmutex.telescope')["lsp_document_symbols"]()
+command! TelescopeLspWSSymbols   lua require('polarmutex.telescope')["lsp_workspace_symbols"]()
+command! TelescopeOldFiles       lua require('polarmutex.telescope')["old_files"]()
+command! TelescopeFindFiles      lua require('polarmutex.telescope')["fd"]()
+command! TelescopeBuffers        lua require('polarmutex.telescope')["buffers"]()
+command! TelescopeCurrentBuffer  lua require('polarmutex.telescope')["current_buffer"]()
+command! TelescopeHelpTags       lua require('polarmutex.telescope')["help_tags"]()
+command! TelescopeBuiltin        lua require('polarmutex.telescope')["builtin"]()
+command! TelescopeReloader       lua require('polarmutex.telescope')["reloader"]()
+command! TelescopeQuickfix       lua require('polarmutex.telescope')["quickfix"]()
+command! TelescopeLocList        lua require('polarmutex.telescope')["loclist"]()
+command! TelescopeCommands       lua require('polarmutex.telescope')["commands"]()
+command! TelescopeCommandHistory lua require('polarmutex.telescope')["command_history"]()
+command! TelescopeTreesitter     lua require('polarmutex.telescope')["treesitter"]()
+command! TelescopeGrepString     lua require('polarmutex.telescope')["grep_string"]()
+command! TelescopePlanets        lua require('polarmutex.telescope')["planets"]()
 let g:which_key_map.s = {
       \ 'name' : '+search' ,
-      \ 'g' : [':call TelescopeGitFiles()'      , 'git files'],
-      \ 't' : [':call TelescopeLiveGrep()'      , 'live grep'],
-      \ 'r' : [':call TelescopeLspReferences()' , 'lsp references'],
-      \ 'a' : [':call TelescopeLspCodeActions()', 'lsp code actions'],
-      \ 'd' : [':call TelescopeLspDocSymbols()' , 'lsp document symbols'],
-      \ 'w' : [':call TelescopeLspWSSymbols()'  , 'lsp workspace symbols'],
-      \ 'q' : [':call TelescopeQuickfix()'      , 'quickfix'],
-      \ 'l' : [':call TelescopeLoclist()'       , 'location list'],
-      \ 'o' : [':call TelescopeOldfiles()'      , 'old files'],
-      \ 'c' : [':call TelescopeCmdHistory()'    , 'command history'],
-      \ 'b' : [':call TelescopeBuiltin()'       , 'builtin'],
-      \ 'n' : [':call TelescopeTreesitter()'    , 'treesitter'],
-      \ 's' : [':call TelescopeGrepString()'    , 'grep string'],
-      \ 'z' : [':call TelescopePlanets()'       , 'planets'],
-      \ 'h' : [':call TelescopeHelpTags()'      , 'help tags'],
-      \ 'f' : [':call TelescopeFindFiles()'     , 'find files'],
-      \ 'p' : [':call TelescopeReloader()'      , 'lua reloader'],
+      \ 'g' : [":TelescopeGitFiles"      , 'git files'],
+      \ 't' : [':TelescopeLiveGrep'      , 'live grep'],
+      \ 'r' : [':TelescopeLspReferences' , 'lsp references'],
+      \ 'a' : [':TelescopeLspCodeActions', 'lsp code actions'],
+      \ 'd' : [':TelescopeLspDocSymbols' , 'lsp document symbols'],
+      \ 'w' : [':TelescopeLspWSSymbols'  , 'lsp workspace symbols'],
+      \ 'q' : [':TelescopeQuickfix'      , 'quickfix'],
+      \ 'l' : [':TelescopeLoclist'       , 'location list'],
+      \ 'o' : [':TelescopeOldFiles'      , 'old files'],
+      \ 'c' : [':TelescopeCommands'      , 'command history'],
+      \ 'x' : [':TelescopeBuiltin'       , 'builtin'],
+      \ 'n' : [':TelescopeTreesitter'    , 'treesitter'],
+      \ 's' : [':TelescopeGrepString'    , 'grep string'],
+      \ 'z' : [':TelescopePlanets'       , 'planets'],
+      \ 'h' : [':TelescopeHelpTags'      , 'help tags'],
+      \ 'f' : [':TelescopeFindFiles'     , 'find files'],
+      \ 'p' : [':TelescopeReloader'      , 'lua reloader'],
+      \ 'b' : [':TelescopeCurrentBuffer' , 'current buffer'],
+      \ 'j' : [':TelescopeBuffers'       , 'buffers'],
+      \ 'm' : [':TelescopeCommandHistory', 'command history'],
       \ }
-      " '/' : [':History/'     , 'history'],
-      " 'c' : [':Commits'      , 'commits'],
-      " 'm' : [':Marks'        , 'marks'] ,
-      " 'M' : [':Maps'         , 'normal maps'] ,
-      " 'w' : [':Windows'      , 'search windows'],
-      " 'P' : [':Tags'         , 'project tags'],
 
 " g is for git
 let g:which_key_map.g = {
