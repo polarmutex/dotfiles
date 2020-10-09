@@ -189,6 +189,7 @@ Group.new('Ignore', g.GruvboxGreenUnderline) -- left blank, hidden
 --------------------------------------------------------------------------------
 
 Group.new('Normal', g.GruvboxFg1, c.bg0, no) -- normal text
+Group.new('NormalFloat', g.GruvboxFg1, c.bg0, no) -- normal text
 
 Group.new('CursorLine',   c.none,        c.bg1,         no)
 Group.new('CursorColumn', g.CursorLine,  g.CursorLine,  g.CursorLine)
