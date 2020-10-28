@@ -17,6 +17,7 @@
     ~/.zshrc: zsh/zshrc
     ~/.config/kitty: kitty/
     ~/.config/awesome: awesome/
+    ~/.config/i3: i3/
     ~/Media/wallpapers: wallpapers
 
 - shell:
