@@ -110,6 +110,7 @@ return require('packer').startup{
         use 'ThePrimeagen/vim-be-good'
         --use_local 'vim-be-good'
         use 'ThePrimeagen/vim-apm'
+        use 'VimDeathmatch/client'
 end,
 config = {
     display = {
