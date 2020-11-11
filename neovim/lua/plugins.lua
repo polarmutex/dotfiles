@@ -68,6 +68,9 @@ return require('packer').startup{
         -- Better profiling output for startup.
         use 'tweekmonster/startuptime.vim'
 
+        -- Neovim in the browser
+        use 'glacambre/firenvim'
+
         -- Lnaguages
         -- Lua
         use 'nvim-lua/popup.nvim'
