@@ -7,8 +7,8 @@ vim._update_package_paths()
 return require('packer').startup{
     function(use)
         local use_local = function(plug_path)
-            if vim.fn.isdirectory(vim.fn.expand("~/dev/" .. plug_path)) == 1 then
-                use("~/dev/" .. plug_path)
+            if vim.fn.isdirectory(vim.fn.expand("~/repos/" .. plug_path)) == 1 then
+                use("~/repos/" .. plug_path)
             else
                 use('bryall/' .. plug_path)
             end
