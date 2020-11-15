@@ -1,8 +1,6 @@
 
 -- Only required if you have packer in your `opt` pack
 vim.cmd [[packadd packer.nvim]]
--- Temporary until https://github.com/neovim/neovim/pull/12632 is merged
-vim._update_package_paths()
 
 return require('packer').startup{
     function(use)
@@ -82,7 +80,6 @@ return require('packer').startup{
         -- LSP
         use 'neovim/nvim-lspconfig'
         use 'nvim-lua/completion-nvim'
-        use 'nvim-lua/diagnostic-nvim'
         use 'nvim-lua/lsp-status.nvim'
         use 'tjdevries/nlua.nvim'
 

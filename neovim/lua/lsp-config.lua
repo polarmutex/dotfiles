@@ -1,54 +1,68 @@
-local nvim_lsp = require('nvim_lsp')
-local lsp_status = require('lsp-status')
+local nvim_lsp = require('lspconfig')
+--local status = require('lsp-status')
 
 -- require('vim.lsp.log').set_level("trace")
 
+-- from tj
+local mapper = function(mode, key, result)
+  vim.api.nvim_buf_set_keymap(0, mode, key, result, {noremap = true, silent = true})
+end
+
+-- Turn on status.
+--status.activate()
+
 local custom_attach = function(client)
         require('completion').on_attach(client)
-        require('diagnostic').on_attach(client)
+        --status.on_attach(client)
 
-        -- populate quickfix list with diagnostics
-        -- TODO can we limit this easily to beancount?
-        local method = "textDocument/publishDiagnostics"
-        local default_callback = vim.lsp.callbacks[method]
-        vim.lsp.callbacks[method] = function(err, method, result, client_id)
-            default_callback(err, method, result, client_id)
-            if result and result.diagnostics then
-                local item_list = {}
+        if vim.api.nvim_buf_get_option(0,'filetype') == 'beancount' then
+            -- populate quickfix list with diagnostics
+            -- TODO can we limit this easily to beancount?
+            local method = "textDocument/publishDiagnostics"
+            local default_callback = vim.lsp.handlers[method]
+            vim.lsp.handlers[method] = function(err, method, result, client_id)
+                default_callback(err, method, result, client_id)
+                if result and result.diagnostics then
+                    local item_list = {}
 
-                for _, v in ipairs(result.diagnostics) do
-                    local fname = result.uri
-                    table.insert(item_list, {
-                        filename = fname,
-                        lnum = v.range.start.line + 1,
-                        col = v.range.start.character + 1;
-                        text = v.message;
+                    for _, v in ipairs(result.diagnostics) do
+                        local fname = result.uri
+                        table.insert(item_list, {
+                            filename = fname,
+                            lnum = v.range.start.line + 1,
+                            col = v.range.start.character + 1;
+                            text = v.message;
+                        })
+                    end
+
+                    local old_items = vim.fn.getqflist()
+                    for _, old_item in ipairs(old_items) do
+                        local bufnr = vim.uri_to_bufnr(result.uri)
+                        if vim.uri_from_bufnr(old_item.bufnr) ~= result.uri then
+                            table.insert(item_list, old_item)
+                        end
+                    end
+
+                    vim.fn.setqflist({}, ' ', {
+                        title = 'LSP';
+                        items = item_list;
                     })
                 end
-
-                local old_items = vim.fn.getqflist()
-                for _, old_item in ipairs(old_items) do
-                    local bufnr = vim.uri_to_bufnr(result.uri)
-                    if vim.uri_from_bufnr(old_item.bufnr) ~= result.uri then
-                        table.insert(item_list, old_item)
-                    end
-                end
-
-                vim.fn.setqflist({}, ' ', {
-                    title = 'LSP';
-                    items = item_list;
-                })
             end
         end
 
-        vim.fn.nvim_buf_set_keymap(0,'n','gd','<cmd>lua vim.lsp.buf.declaration()<CR>', {noremap=true,silent=true})
-        vim.fn.nvim_buf_set_keymap(0,'n','gD','<cmd>lua vim.lsp.buf.definition()<CR>', {noremap=true,silent=true})
-        vim.fn.nvim_buf_set_keymap(0,'n','K','<cmd>lua vim.lsp.buf.hover()<CR>', {noremap=true,silent=true})
-        vim.fn.nvim_buf_set_keymap(0,'n','gi','<cmd>lua vim.lsp.buf.implementation()<CR>', {noremap=true,silent=true})
-        vim.fn.nvim_buf_set_keymap(0,'n','1gD','<cmd>lua vim.lsp.buf.type_definition()<CR>', {noremap=true,silent=true})
-        vim.fn.nvim_buf_set_keymap(0,'n','gr','<cmd>lua vim.lsp.buf.references()<CR>', {noremap=true,silent=true})
-        vim.fn.nvim_buf_set_keymap(0,'n','<c-s>','<cmd>lua vim.lsp.buf.signature_help()<CR>', {noremap=true,silent=true})
-        vim.fn.nvim_buf_set_keymap(0,'n','lf','<cmd>lua vim.lsp.buf.formatting()<CR>', {noremap=true,silent=true})
+        mapper('n','gd','<cmd>lua vim.lsp.buf.declaration()<CR>')
+        mapper('n','gD','<cmd>lua vim.lsp.buf.definition()<CR>')
+        mapper('n','gi','<cmd>lua vim.lsp.buf.implementation()<CR>')
+        mapper('n','1gD','<cmd>lua vim.lsp.buf.type_definition()<CR>')
+        mapper('n','K','<cmd>lua vim.lsp.buf.hover()<CR>')
+        mapper('n','gr','<cmd>lua vim.lsp.buf.references()<CR>')
+        mapper('n','<c-s>','<cmd>lua vim.lsp.buf.signature_help()<CR>')
+        mapper('n','lf','<cmd>lua vim.lsp.buf.formatting()<CR>')
+        mapper('n','<leader>ca','<cmd>lua vim.lsp.buf.code_actions()<CR>')
+        mapper('n','<leader>cr','<cmd>lua MyLuaRename()<CR>')
+        mapper('n','<leader>dn','<cmd>lua vim.lsp.diagnostic.goto_next()<CR>')
+        mapper('n','<leader>dp','<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>')
     end
 
 -- Python
@@ -101,27 +115,81 @@ nvim_lsp.jdtls.setup({
 })
 
 -- Lua
-local sumneko_settings = {
-    runtime={
-        version="LuaJIT",
-    },
-    diagnostics={
-        enable=true,
-        globals={
-            "vim", "Color", "c", "Group", "g", "s", "describe", "it", "before_each", "after_each"
+if true then
+    local sumneko_settings = {
+        runtime={
+            version="LuaJIT",
         },
-    },
-}
-sumneko_settings.Lua = vim.deepcopy(sumneko_settings)
+        diagnostics={
+            enable=true,
+            globals={
+                "vim", "Color", "c", "Group", "g", "s", "describe", "it", "before_each", "after_each"
+            },
+        },
+    }
+    sumneko_settings.Lua = vim.deepcopy(sumneko_settings)
 
-nvim_lsp.sumneko_lua.setup({
-    settings=sumneko_settings,
-    filetypes = {"lua"},
-    cmd = {
-        "~/.cache/nvim/nvim_lsp/sumneko_lua/lua-language-server/bin/Linux/lua-language-server",
-        "-E",
-        "~/.cache/nvim/nvim_lsp/sumneko_lua/lua-language-server/main.lua"
-    },
-    on_attach=custom_attach
-})
+    nvim_lsp.sumneko_lua.setup({
+        settings=sumneko_settings,
+        filetypes = {"lua"},
+        cmd = {
+            "~/.cache/nvim/nvim_lsp/sumneko_lua/lua-language-server/bin/Linux/lua-language-server",
+            "-E",
+            "~/.cache/nvim/nvim_lsp/sumneko_lua/lua-language-server/main.lua"
+        },
+        on_attach=custom_attach
+    })
+else
+    require('nlua.lsp.nvim').setup(nvim_lsp, {
+    on_attach = custom_attach,
 
+    globals = {
+      -- Colorbuddy
+      "Color", "c", "Group", "g", "s",
+
+      -- Custom
+      "RELOAD",
+    }
+  })
+end
+
+-- setup diagnostice
+--[[
+0. nil -> do default (could be enabled or disabled)
+1. false -> disable it
+2. true -> enable, use defaults
+3. table -> enable, with (some) overrides
+4. function -> can return any of above
+--]]
+
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+  vim.lsp.diagnostic.on_publish_diagnostics, {
+    underline = true,
+    virtual_text = true,
+    signs = {
+      priority = 20
+    },
+    update_in_insert = false,
+  }
+)
+
+--from tj
+function MyLspRename()
+    local current_word = vim.fn.expand("<cword>")
+    local plenary_window = require('plenary.window.float').percentage_range_window(0.5, 0.2)
+    vim.api.nvim_buf_set_option(plenary_window.bufnr, 'buftype', 'prompt')
+    vim.fn.prompt_setprompt(plenary_window.bufnr, string.format('Rename "%s" to > ', current_word))
+    vim.fn.prompt_setcallback(plenary_window.bufnr, function(text)
+        vim.api.nvim_win_close(plenary_window.win_id, true)
+
+        if text ~= '' then
+            vim.schedule(function()
+                vim.api.nvim_buf_delete(plenary_window.bufnr, { force = true })
+                vim.lsp.buf.rename(text)
+            end)
+        else
+            print("Nothing to rename!")
+        end
+    end)
+    vim.cmd [[startinsert]]
+end
