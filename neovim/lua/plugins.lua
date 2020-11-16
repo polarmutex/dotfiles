@@ -1,14 +1,12 @@
 
 -- Only required if you have packer in your `opt` pack
 vim.cmd [[packadd packer.nvim]]
--- Temporary until https://github.com/neovim/neovim/pull/12632 is merged
-vim._update_package_paths()
 
 return require('packer').startup{
     function(use)
         local use_local = function(plug_path)
-            if vim.fn.isdirectory(vim.fn.expand("~/dev/" .. plug_path)) == 1 then
-                use("~/dev/" .. plug_path)
+            if vim.fn.isdirectory(vim.fn.expand("~/repos/" .. plug_path)) == 1 then
+                use("~/repos/" .. plug_path)
             else
                 use('bryall/' .. plug_path)
             end
@@ -68,6 +66,9 @@ return require('packer').startup{
         -- Better profiling output for startup.
         use 'tweekmonster/startuptime.vim'
 
+        -- Neovim in the browser
+        use 'glacambre/firenvim'
+
         -- Lnaguages
         -- Lua
         use 'nvim-lua/popup.nvim'
@@ -79,7 +80,6 @@ return require('packer').startup{
         -- LSP
         use 'neovim/nvim-lspconfig'
         use 'nvim-lua/completion-nvim'
-        use 'nvim-lua/diagnostic-nvim'
         use 'nvim-lua/lsp-status.nvim'
         use 'tjdevries/nlua.nvim'
 
@@ -110,6 +110,7 @@ return require('packer').startup{
         use 'ThePrimeagen/vim-be-good'
         --use_local 'vim-be-good'
         use 'ThePrimeagen/vim-apm'
+        use 'VimDeathmatch/client'
 end,
 config = {
     display = {

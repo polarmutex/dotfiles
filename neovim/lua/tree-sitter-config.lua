@@ -63,5 +63,6 @@ require'nvim-treesitter.configs'.setup {
         --["im"] = "@call.inner"
       }
     },
+    playground = { enable = true },
     ensure_installed = {"python", "beancount", "lua", "cpp"} -- one of "all", "language", or a list of languages
 }

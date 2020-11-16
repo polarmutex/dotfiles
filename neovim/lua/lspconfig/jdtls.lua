@@ -1,6 +1,6 @@
-local configs = require 'nvim_lsp/configs'
-local util = require 'nvim_lsp/util'
-local callbacks = require 'vim.lsp.callbacks'
+local configs = require 'lspconfig/configs'
+local util = require 'lspconfig/util'
+local callbacks = require 'vim.lsp.handlers'
 local path = util.path
 
 local server_name = "jdtls"

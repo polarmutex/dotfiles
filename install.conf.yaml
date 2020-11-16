@@ -19,6 +19,7 @@
     ~/.config/awesome: awesome/
     ~/.config/i3: i3/
     ~/Media/wallpapers: wallpapers
+    ~/.local/bin/obsidian_sync: obsidian/obsidian_sync
 
 - shell:
     # brew

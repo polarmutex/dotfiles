@@ -179,7 +179,7 @@ let g:which_key_map.t = {
 
 " f is for finances
 function BeancountCopyTransaction()
-    lua require('plenary.reload').reload_module('beancount'); require('beancount').CopyTransaction({})
+    lua require('plenary.reload').reload_module('beancount'); require('beancount').CopyTransaction()
 endfunction
 let g:which_key_map.f = {
             \ 'name' : '+finances' ,
