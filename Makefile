@@ -22,7 +22,7 @@ neovim_target = $(pwd)/../neovim
 neovim: | $(neovim_target)
 	cd $(neovim_target);\
 	git pull;\
-	make distclean\
+	make distclean;\
 	make CMAKE_BUILD_TYPE=RelWithDebInfo;\
 	sudo make install;\
 
