@@ -3,6 +3,23 @@ local nvim_lsp = require('lspconfig')
 
 -- require('vim.lsp.log').set_level("trace")
 
+-- from rockerboo
+function DoFormat()
+    vim.lsp.buf.formatting_sync(nil, 1000)
+end
+local attach_formatting = function(client)
+  -- Skip tsserver for now so we dont format things twice
+  if client.name == "tsserver" then return end
+
+  print(string.format('attaching format to %s', client.name))
+
+  vim.api.nvim_command [[augroup Format]]
+  vim.api.nvim_command [[autocmd! * <buffer>]]
+  vim.api.nvim_command [[autocmd BufWritePre <buffer> lua DoFormat()]]
+  vim.api.nvim_command [[augroup END]]
+end
+
+
 -- from tj
 local mapper = function(mode, key, result)
   vim.api.nvim_buf_set_keymap(0, mode, key, result, {noremap = true, silent = true})
@@ -14,6 +31,11 @@ end
 local custom_attach = function(client)
         require('completion').on_attach(client)
         --status.on_attach(client)
+
+        if client.resolved_capabilities.document_formatting then
+            print(string.format("Formatting supported %s", client.name))
+            attach_formatting(client)
+        end
 
         if vim.api.nvim_buf_get_option(0,'filetype') == 'beancount' then
             -- populate quickfix list with diagnostics
@@ -108,6 +130,83 @@ nvim_lsp.tsserver.setup({
     filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
     on_attach=custom_attach
 })
+
+-- diagnosticls
+nvim_lsp.diagnosticls.setup {
+    on_attach = custom_attach,
+    filetypes = {
+        "javascript",
+        "javascriptreact",
+        "typescript",
+        "typescriptreact",
+        "typescript.tsx",
+        "css",
+        "scss",
+        "markdown",
+        -- "pandoc",
+    },
+    init_options = {
+        linters = {
+            eslint = {
+                command = "eslint",
+                rootPatterns = {".git", ".eslintrc.cjs", ".eslintrc", ".eslintrc.json", ".eslintrc.js"},
+                debounce = 100,
+                args = {"--stdin", "--stdin-filename", "%filepath", "--format", "json"},
+                sourceName = "eslint",
+                parseJson = {
+                    errorsRoot = "[0].messages",
+                    line = "line",
+                    column = "column",
+                    endLine = "endLine",
+                    endColumn = "endColumn",
+                    message = "[eslint] ${message} [${ruleId}]",
+                    security = "severity",
+                },
+                securities = {[2] = "error", [1] = "warning"},
+            },
+            markdownlint = {
+                command = "markdownlint",
+                rootPatterns = {".git"},
+                isStderr = true,
+                debounce = 100,
+                args = {"--stdin"},
+                offsetLine = 0,
+                offsetColumn = 0,
+                sourceName = "markdownlint",
+                securities = {undefined = "hint"},
+                formatLines = 1,
+                formatPattern = {"^.*:(\\d+)\\s+(.*)$", {line = 1, column = -1, message = 2}},
+            },
+        },
+        filetypes = {
+            javascript = "eslint",
+            javascriptreact = "eslint",
+            typescript = "eslint",
+            typescriptreact = "eslint",
+            ["typescript.tsx"] = "eslint",
+            markdown = "markdownlint",
+            -- pandoc = "markdownlint",
+        },
+        formatters = {
+            prettierEslint = {
+                command = "prettier-eslint",
+                args = {"--stdin"},
+                rootPatterns = {".eslintrc.cjs", ".eslintrc", ".eslintrc.json", ".eslintrc.js", ".git"},
+            },
+            prettier = {command = "prettier", args = {"--stdin-filepath", "%filename"}},
+        },
+        formatFiletypes = {
+            css = "prettier",
+            javascript = "prettierEslint",
+            javascriptreact = "prettierEslint",
+            json = "prettier",
+            scss = "prettier",
+            typescript = "prettierEslint",
+            typescriptreact = "prettierEslint",
+            ["typescript.tsx"] = "prettierEslint",
+        },
+    },
+}
 
 -- jdtls
 nvim_lsp.jdtls.setup({
