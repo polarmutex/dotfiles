@@ -7,6 +7,8 @@ return require('packer').startup{
         local use_local = function(plug_path)
             if vim.fn.isdirectory(vim.fn.expand("~/repos/" .. plug_path)) == 1 then
                 use("~/repos/" .. plug_path)
+            elseif vim.fn.isdirectory(vim.fn.expand("~/dev/" .. plug_path)) == 1 then
+                use("~/dev/" .. plug_path)
             else
                 use('bryall/' .. plug_path)
             end
@@ -88,6 +90,7 @@ return require('packer').startup{
         use 'nvim-treesitter/playground'
         use 'nvim-treesitter/completion-treesitter'
         use_local 'beancount.nvim'
+        use_local 'contextprint.nvim'
 
         -- Statusline
         use 'tjdevries/express_line.nvim'
