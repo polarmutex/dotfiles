@@ -40,3 +40,6 @@ $(CMAKE):
 i3_reload:
 	i3-msg reload
 	i3-msg restart
+
+efmlsp:
+	go get github.com/mattn/efm-langserver
