@@ -37,7 +37,7 @@ if !exists('g:vscode')
     set undolevels=1000
     set undoreload=1000
     set shortmess+=c                        " Don't pass messages to |ins-completion-menu|.
-    set signcolumn=yes                      " Always show the signcolumn, otherwise it would shift the text each time
+    set signcolumn=auto:5                      " Always show the signcolumn, otherwise it would shift the text each time
     set updatetime=300                      " Faster completion
     set timeoutlen=100                      " By default timeoutlen is 1000 ms
     set clipboard=unnamedplus               " Copy paste between vim and everything else
