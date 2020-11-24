@@ -1,5 +1,5 @@
 local nvim_lsp = require('lspconfig')
---local status = require('lsp-status')
+local status = require('polarmutex.lsp-status')
 
 -- require('vim.lsp.log').set_level("trace")
 
@@ -26,11 +26,11 @@ local mapper = function(mode, key, result)
 end
 
 -- Turn on status.
---status.activate()
+status.activate()
 
 local custom_attach = function(client)
         require('completion').on_attach(client)
-        --status.on_attach(client)
+        status.on_attach(client)
 
         if client.resolved_capabilities.document_formatting then
             print(string.format("Formatting supported %s", client.name))
