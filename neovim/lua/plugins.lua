@@ -114,6 +114,9 @@ return require('packer').startup{
         --use_local 'vim-be-good'
         use 'ThePrimeagen/vim-apm'
         use 'VimDeathmatch/client'
+
+        -- tasks
+        use_local 'tasks.nvim'
 end,
 config = {
     display = {
