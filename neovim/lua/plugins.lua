@@ -92,6 +92,9 @@ return require('packer').startup{
         use_local 'beancount.nvim'
         use_local 'contextprint.nvim'
 
+        -- Languagetool
+        use 'vigoux/LanguageTool.nvim'
+
         -- Statusline
         use 'tjdevries/express_line.nvim'
 
