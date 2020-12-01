@@ -169,12 +169,10 @@ let g:which_key_map.l = {
 " t is for terminal
 let g:which_key_map.t = {
       \ 'name' : '+terminal' ,
-      \ ';' : [':FloatermNew --wintype=popup --height=6'        , 'terminal'],
-      \ 'f' : [':FloatermNew fzf'                               , 'fzf'],
-      \ 'p' : [':FloatermNew python'                            , 'python'],
-      \ 't' : [':FloatermToggle'                                , 'toggle'],
-      \ 'y' : [':FloatermNew ytop'                              , 'ytop'],
-      \ 's' : [':FloatermNew ncdu'                              , 'ncdu'],
+      \ 't' : [':call GotoBuffer(0)', 'buffer 0'],
+      \ 's' : [':call GotoBuffer(1)', 'buffer 1'],
+      \ 'r' : [':call GotoBuffer(2)', 'buffer 2'],
+      \ 'a' : [':call GotoBuffer(3)', 'buffer 3'],
       \ }
 
 " f is for finances

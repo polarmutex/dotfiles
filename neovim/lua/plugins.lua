@@ -52,6 +52,7 @@ return require('packer').startup{
         use 'tpope/vim-rhubarb'
 
         -- Terminal
+        use 'ThePrimeagen/harpoon'
         use 'voldikss/vim-floaterm'
 
         -- Help
