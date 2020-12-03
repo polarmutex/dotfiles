@@ -2,6 +2,14 @@
 -- Only required if you have packer in your `opt` pack
 vim.cmd [[packadd packer.nvim]]
 
+-- Look into
+-- https://github.com/lervag/wiki.vim
+-- https://github.com/ihsanturk/neuron.vim
+-- https://github.com/kdheepak/lazygit.nvim
+-- https://github.com/johannesthyssen/vim-signit
+-- https://github.com/kyazdani42/nvim-tree.lua
+-- https://github.com/mkitt/tabline.vim
+
 return require('packer').startup{
     function(use)
         local use_local = function(plug_path)
@@ -56,7 +64,7 @@ return require('packer').startup{
         use 'voldikss/vim-floaterm'
 
         -- Help
-        use 'liuchengxu/vim-which-key'
+        --use 'liuchengxu/vim-which-key'
 
         -- :Messages <- view messages in quickfix list
         -- :Verbose  <- view verbose output in preview window.
@@ -70,24 +78,51 @@ return require('packer').startup{
         use 'tweekmonster/startuptime.vim'
 
         -- Neovim in the browser
-        use 'glacambre/firenvim'
+        use {
+            'glacambre/firenvim',
+            run = function()
+                vim.fn['firenvim#install'](0)
+            end
+        }
 
         -- Lnaguages
         -- Lua
-        use 'nvim-lua/popup.nvim'
-        use 'nvim-lua/plenary.nvim'
-        use 'nvim-lua/telescope.nvim'
-        use 'tjdevries/colorbuddy.nvim'
+        use {
+            'nvim-telescope/telescope.nvim',
+	        requires = {
+                {'nvim-lua/popup.nvim'},
+                {'nvim-lua/plenary.nvim'},
+	    	    {'nvim-telescope/telescope-fzy-native.nvim'},
+    		    {'nvim-telescope/telescope-fzf-writer.nvim'},
+    		    {'nvim-telescope/telescope-packer.nvim'},
+    		    {'nvim-telescope/telescope-github.nvim'},
+                {'nvim-telescope/telescope-packer.nvim'},
+	        },
+            config = require('polarmutex.plugins.telescope.config')
+        }
+        use {
+            'tjdevries/colorbuddy.nvim',
+            config = require('polarmutex.theme')
+        }
         use 'kyazdani42/nvim-web-devicons'
 
         -- LSP
-        use 'neovim/nvim-lspconfig'
-        use 'nvim-lua/completion-nvim'
+        use {
+            'neovim/nvim-lspconfig',
+            config = require('polarmutex.lsp-config')
+        }
+        use {
+            'nvim-lua/completion-nvim',
+            config = require('polarmutex.plugins.completion-nvim')
+        }
         use 'nvim-lua/lsp-status.nvim'
         use 'tjdevries/nlua.nvim'
 
         -- Tree-Sitter
-        use 'nvim-treesitter/nvim-treesitter'
+        use {
+            'nvim-treesitter/nvim-treesitter',
+            config = require('polarmutex.tree-sitter-config')
+        }
         use 'nvim-treesitter/playground'
         use 'nvim-treesitter/completion-treesitter'
         use_local 'beancount.nvim'
@@ -97,7 +132,10 @@ return require('packer').startup{
         use 'vigoux/LanguageTool.nvim'
 
         -- Statusline
-        use 'tjdevries/express_line.nvim'
+        use {
+            'tjdevries/express_line.nvim',
+            config = require('polarmutex.statusline')
+        }
 
         -- Whitespace
         use 'ntpeters/vim-better-whitespace'
