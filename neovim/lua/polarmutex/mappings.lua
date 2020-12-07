@@ -62,17 +62,14 @@ mapper('n','tq',':tabclose<CR>',{noremap=true})
 --'t' : [':GitGutterSignsToggle'             , 'toggle signs'],
 --'u' : ['<Plug>(GitGutterUndoHunk)'         , 'undo hunk'],
 
--- terminal harpoon
---'t' : [':call GotoBuffer(0)', 'buffer 0'],
---'s' : [':call GotoBuffer(1)', 'buffer 1'],
---'r' : [':call GotoBuffer(2)', 'buffer 2'],
---'a' : [':call GotoBuffer(3)', 'buffer 3'],
+-- terminal / harpoon
+mapper('n','<leader>tt',':call GotoBuffer(0)<CR> | :startinsert<CR>',{})
+mapper('n','<leader>ts',':call GotoBuffer(1)<CR> | :startinsert<CR>',{})
+mapper('n','<leader>tr',':call GotoBuffer(2)<CR> | :startinsert<CR>',{})
+mapper('n','<leader>ta',':call GotoBuffer(3)<CR> | :startinsert<CR>',{})
+-- turn terminal to normal mode with escape
+mapper('t','<Esc>','<C-\\><C-n>',{noremap=true});
 
---f is for finances
---function BeancountCopyTransaction()
---    lua require('plenary.reload').reload_module('beancount'); require('beancount').CopyTransaction()
---endfunction
---let g:which_key_map.f = {
---finances' ,
---'t' : [':call BeancountCopyTransaction()'        , 'copy txn'],
---'c' : [':%s/txn/*/gc'        , 'confirm txns'],
+-- finances
+mapper('n','<leader>ft',":lua require('plenary.reload').reload_module('beancount'); require('beancount').CopyTransaction()<CR>",{})
+mapper('n','<leader>fc',":%s/txn/*/gc<CR>",{})
