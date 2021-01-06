@@ -1,7 +1,8 @@
 local nvim_lsp = require('lspconfig')
 local status = require('polarmutex.lsp-status')
 
--- require('vim.lsp.log').set_level("trace")
+--require('vim.lsp.log').set_level("trace")
+--require('vim.lsp.log').set_level("debug")
 
 -- from rockerboo
 function DoFormat()
@@ -11,7 +12,7 @@ local attach_formatting = function(client)
   -- Skip tsserver for now so we dont format things twice
   if client.name == "tsserver" then return end
 
-  print(string.format('attaching format to %s', client.name))
+  --print(string.format('attaching format to %s', client.name))
 
   vim.api.nvim_command [[augroup Format]]
   vim.api.nvim_command [[autocmd! * <buffer>]]
@@ -33,7 +34,6 @@ local custom_attach = function(client)
         status.on_attach(client)
 
         if client.resolved_capabilities.document_formatting then
-            print(string.format("Formatting supported %s", client.name))
             attach_formatting(client)
         end
 
@@ -91,26 +91,26 @@ local custom_attach = function(client)
 --nvim_lsp.pyls_ms.setup({
 --    on_attach=custom_attach,
 --})
-nvim_lsp.pyright.setup({
-    on_attach=custom_attach,
-    settings = {
-        analysis = {
-            autoSearchPaths = true
-        },
-        pyright = {
-            useLibraryCodeForTypes = true
-        }
-    },
-    before_init = function(initialization_params, config)
-        initialization_params['workspaceFolders'] = {{
-            name = 'workspace',
-            uri = initialization_params['rootUri']
-        }}
-    end;
-})
+--nvim_lsp.pyright.setup({
+--    on_attach=custom_attach,
+--    settings = {
+--        analysis = {
+--            autoSearchPaths = true
+--        },
+--        pyright = {
+--            useLibraryCodeForTypes = true
+--        }
+--    },
+--    before_init = function(initialization_params, config)
+--        initialization_params['workspaceFolders'] = {{
+--            name = 'workspace',
+--            uri = initialization_params['rootUri']
+--        }}
+--    end;
+--})
 
 -- beancount
-nvim_lsp.beancount_language_server.setup({
+nvim_lsp.beancount.setup({
     on_attach=custom_attach
 })
 
@@ -209,35 +209,35 @@ nvim_lsp.efm.setup {
 }
 
 -- jdtls
-nvim_lsp.jdtls.setup({
-        on_attach=custom_attach
-})
+--nvim_lsp.jdtls.setup({
+--        on_attach=custom_attach
+--})
 
 -- Lua
 if true then
-    local sumneko_settings = {
-        runtime={
-            version="LuaJIT",
-        },
-        diagnostics={
-            enable=true,
-            globals={
-                "vim", "Color", "c", "Group", "g", "s", "describe", "it", "before_each", "after_each"
-            },
-        },
-    }
-    sumneko_settings.Lua = vim.deepcopy(sumneko_settings)
+--    local sumneko_settings = {
+--        runtime={
+--            version="LuaJIT",
+--        },
+--        diagnostics={
+--            enable=true,
+--            globals={
+--                "vim", "Color", "c", "Group", "g", "s", "describe", "it", "before_each", "after_each"
+--            },
+--        },
+--    }
+--    sumneko_settings.Lua = vim.deepcopy(sumneko_settings)
 
-    nvim_lsp.sumneko_lua.setup({
-        settings=sumneko_settings,
-        filetypes = {"lua"},
-        cmd = {
-            "~/.cache/nvim/nvim_lsp/sumneko_lua/lua-language-server/bin/Linux/lua-language-server",
-            "-E",
-            "~/.cache/nvim/nvim_lsp/sumneko_lua/lua-language-server/main.lua"
-        },
-        on_attach=custom_attach
-    })
+--    nvim_lsp.sumneko_lua.setup({
+--        settings=sumneko_settings,
+--        filetypes = {"lua"},
+--        cmd = {
+--            "~/.cache/nvim/nvim_lsp/sumneko_lua/lua-language-server/bin/Linux/lua-language-server",
+--            "-E",
+--            "~/.cache/nvim/nvim_lsp/sumneko_lua/lua-language-server/main.lua"
+--        },
+--        on_attach=custom_attach
+--    })
 else
     require('nlua.lsp.nvim').setup(nvim_lsp, {
     on_attach = custom_attach,
@@ -268,7 +268,7 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
     signs = {
       priority = 20
     },
-    update_in_insert = false,
+    update_in_insert = true,
   }
 )
 
