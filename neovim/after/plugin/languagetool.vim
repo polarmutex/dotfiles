@@ -1,4 +1,4 @@
-let g:languagetool_server_jar='$HOME/repos/github/LanguageTool-5.2-SNAPSHOT/languagetool-server.jar'
+let g:languagetool_server_jar='$HOME/repos/languagetool/dist/LanguageTool-5.2-SNAPSHOT/languagetool-server.jar'
 
 let g:languagetool = {
             \ '.' : {
