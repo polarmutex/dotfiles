@@ -24,7 +24,14 @@ map_tele('<leader>sg', 'git_files')
 
 -- Nvim
 
+-- Git / Github
+map_tele('<leader>gi','gh_issues')
+map_tele('<leader>gr','gh_pull_request')
+
 -- Telescope Meta
---map_tele('<space>fB', 'builtin')
+map_tele('<leader>sB', 'builtin')
+
+-- Testing
+map_tele('<leader>sc', 'chtsh_root_list')
 
 return map_tele
