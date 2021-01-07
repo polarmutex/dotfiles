@@ -70,6 +70,10 @@ mapper('n','<leader>ta',':call GotoBuffer(3)<CR> | :startinsert<CR>',{})
 -- turn terminal to normal mode with escape
 mapper('t','<Esc>','<C-\\><C-n>',{noremap=true});
 
+-- contextprint
+mapper('n','<leader>cp',":lua require('plenary.reload').reload_module('contextprint'); require('contextprint').add_statement()<CR>",{})
+
+
 -- finances
 mapper('n','<leader>ft',":lua require('plenary.reload').reload_module('beancount'); require('beancount').CopyTransaction()<CR>",{})
 mapper('n','<leader>fc',":%s/txn/*/gc<CR>",{})
