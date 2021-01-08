@@ -18,6 +18,7 @@
     ~/.config/kitty: kitty/
     ~/.config/awesome: awesome/
     ~/.config/i3: i3/
+    ~/.config/qtile: qtile/
     ~/Media/wallpapers: wallpapers
     ~/.local/bin/obsidian_sync: obsidian/obsidian_sync
     ~/.local/bin/task_sync: tasks/task_sync

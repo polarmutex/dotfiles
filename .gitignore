@@ -5,3 +5,5 @@ tmp
 
 # macOs
 .DS_Store
+
+qtile/__pycache__/config.cpython-39.pyc
