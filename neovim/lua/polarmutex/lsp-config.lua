@@ -214,32 +214,7 @@ nvim_lsp.efm.setup {
 --})
 
 -- Lua
-if true then
---    local sumneko_settings = {
---        runtime={
---            version="LuaJIT",
---        },
---        diagnostics={
---            enable=true,
---            globals={
---                "vim", "Color", "c", "Group", "g", "s", "describe", "it", "before_each", "after_each"
---            },
---        },
---    }
---    sumneko_settings.Lua = vim.deepcopy(sumneko_settings)
-
---    nvim_lsp.sumneko_lua.setup({
---        settings=sumneko_settings,
---        filetypes = {"lua"},
---        cmd = {
---            "~/.cache/nvim/nvim_lsp/sumneko_lua/lua-language-server/bin/Linux/lua-language-server",
---            "-E",
---            "~/.cache/nvim/nvim_lsp/sumneko_lua/lua-language-server/main.lua"
---        },
---        on_attach=custom_attach
---    })
-else
-    require('nlua.lsp.nvim').setup(nvim_lsp, {
+require('nlua.lsp.nvim').setup(nvim_lsp, {
     on_attach = custom_attach,
 
     globals = {
@@ -249,8 +224,7 @@ else
       -- Custom
       "RELOAD",
     }
-  })
-end
+})
 
 -- setup diagnostice
 --[[
