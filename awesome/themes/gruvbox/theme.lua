@@ -128,4 +128,9 @@ theme.titlebar_height  = dpi(20)
 -- systray
 theme.systray_icon_spacing = theme.gap
 
+-- Generate Awesome icon
+theme.awesome_icon = theme_assets.awesome_icon(
+    theme.menu_height, theme.bg_focus, theme.fg_focus
+)
+
 return theme
