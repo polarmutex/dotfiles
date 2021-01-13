@@ -85,7 +85,7 @@ theme.taglist_bg_urgent   = theme.lightorange
 theme.taglist_bg_occupied = theme.bg1
 theme.taglist_bg_volatile = theme.lightpurple
 theme.taglist_bg_empty    = theme.bg1
-theme.taglist_font        = "DejaVu Sans Bold 18"
+theme.taglist_font        = "DejaVu Sans Bold 11"
 
 -- Variables set for theming the menu:
 -- menu_[bg|fg]_[normal|focus]
