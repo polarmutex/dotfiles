@@ -22,7 +22,7 @@ local M = {}
 
 -- Wibar
 -- Create a textclock widget
-mytextclock = wibox.widget.textclock()
+mytextclock = wibox.widget.textclock(" %a %b %d, %l:%M%P", 15)
 
 local widget_template = {
     {
@@ -106,20 +106,23 @@ awful.screen.connect_for_each_screen(function(s)
 
   -- Add widgets to the wibox
   s.mywibox:setup {
-    layout = wibox.layout.align.horizontal,
-    { -- Left widgets
-      layout = wibox.layout.fixed.horizontal,
-      RC.launcher,
-      s.mytaglist,
-      s.mypromptbox,
-    },
-    s.mytasklist, -- Middle widget
-    { -- Right widgets
-      layout = wibox.layout.fixed.horizontal,
-      mykeyboardlayout,
-      wibox.widget.systray(),
-      mytextclock,
-      s.mylayoutbox,
-    },
+        layout = wibox.layout.align.horizontal,
+        { -- Left widgets
+            layout = wibox.layout.fixed.horizontal,
+            RC.launcher,
+            s.mytaglist,
+            s.mypromptbox,
+        },
+        { -- Middle widgets
+            layout = wibox.layout.fixed.horizontal,
+            --s.mytasklist,
+        },
+        { -- Right widgets
+            layout = wibox.layout.fixed.horizontal,
+            mykeyboardlayout,
+            wibox.widget.systray(),
+            mytextclock,
+            s.mylayoutbox,
+        },
   }
 end)
