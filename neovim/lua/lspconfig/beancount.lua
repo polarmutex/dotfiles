@@ -22,8 +22,7 @@ local beancount_binary = beancount_root_path.."/node_modules/.bin/".."beancount-
 configs.beancount = {
   default_config = {
     cmd = {
-      'node',
-      beancount_binary,
+      'beancount-langserver',
       '--stdio'
     };
     log_level = vim.lsp.protocol.MessageType.Warning;
@@ -33,7 +32,7 @@ configs.beancount = {
     end;
     init_options = {
       journalFile = "~/repos/beancount/journal.beancount",
-      pythonPath = "~/.cache/pypoetry/virtualenvs/beancount-repo-9fbTGybi-py3.8/bin/python3";
+      pythonPath = "~/.cache/pypoetry/virtualenvs/beancount-repo-iwRmyqK8-py3.9/bin/python3";
     };
   };
   docs = {
