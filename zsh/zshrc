@@ -8,7 +8,7 @@ fi
 # If you come from bash you might have to change your $PATH.
 export PATH=$PATH:$HOME/.poetry/bin
 # add current npm bins to path
-export PATH=$PATH:./node_modules/.bin
+export PATH=$PATH:~/.node_modules/bin
 # add go bin path
 export PATH=$PATH:$HOME/go/bin
 
