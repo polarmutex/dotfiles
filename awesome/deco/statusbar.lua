@@ -1,6 +1,7 @@
 -- Standard awesome library
 local gears = require("gears")
-local awful     = require("awful")
+local awful = require("awful")
+local beautiful = require("beautiful")
 
 -- Wibox handling library
 local wibox = require("wibox")
@@ -23,6 +24,37 @@ local M = {}
 -- Create a textclock widget
 mytextclock = wibox.widget.textclock()
 
+local widget_template = {
+    {
+        {
+            id     = 'text_role',
+            widget = wibox.widget.textbox,
+        },
+        left  = beautiful.big_gap,
+        right = beautiful.big_gap,
+        widget = wibox.container.margin
+    },
+    id     = 'background_role',
+    widget = wibox.container.background,
+    -- Add support for hover colors
+    create_callback = function(self, c3, index, objects) --luacheck: no unused args
+        self:connect_signal('mouse::enter', function()
+            if not c3.selected then
+                if self.bg ~= beautiful.bg2 then
+                    self.backup     = self.bg
+                    self.has_backup = true
+                end
+                self.bg = beautiful.bg2
+            end
+        end)
+        self:connect_signal('mouse::leave', function()
+            if self.has_backup and not c3.selected then
+                self.bg = self.backup
+            end
+        end)
+    end,
+}
+
 awful.screen.connect_for_each_screen(function(s)
   -- Wallpaper
   set_wallpaper(s)
@@ -44,6 +76,21 @@ awful.screen.connect_for_each_screen(function(s)
   s.mytaglist = awful.widget.taglist {
     screen  = s,
     filter  = awful.widget.taglist.filter.all,
+    style   = {
+        shape = function(cr, width, height, degree)
+            degree = degree or 10
+            cr:move_to(0, 0)
+            cr:line_to(width - degree, 0)
+            cr:line_to(width, height)
+            cr:line_to(degree, height)
+            cr:close_path()
+        end
+    },
+    layout  = {
+        spacing = beautiful.negative_gap,
+        layout  = wibox.layout.grid.horizontal
+    },
+    widget_template = widget_template,
     buttons = taglist_buttons
   }
 
