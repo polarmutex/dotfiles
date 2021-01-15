@@ -47,7 +47,7 @@ for k, item in pairs(palette) do
 end
 
 -- options (dark mode by default)
-local bg0 = colors.dark0
+local bg0 = nil --colors.dark0
 local bg1 = colors.dark1
 local bg2 = colors.dark2
 local bg3 = colors.dark3
@@ -100,11 +100,11 @@ end
 --local bg = vim.o.background
 local bg = settings.bg
 local contrast = vim.g["gruvbox_contrast_" .. bg]
-if contrast == "hard" then
-  bg0 = colors[bg .. "0_hard"]
-elseif contrast == "soft" then
-  bg0 = colors[bg .. "0_soft"]
-end
+--if contrast == "hard" then
+--  bg0 = colors[bg .. "0_hard"]
+--elseif contrast == "soft" then
+--  bg0 = colors[bg .. "0_soft"]
+--end
 
 -- swap colors if light mode
 if bg == "light" then

@@ -2,6 +2,7 @@
 local gears = require("gears")
 local awful = require("awful")
 local beautiful = require("beautiful")
+local dpi = require("beautiful.xresources").apply_dpi
 
 -- Wibox handling library
 local wibox = require("wibox")
@@ -22,9 +23,9 @@ local M = {}
 
 -- Wibar
 -- Create a textclock widget
-mytextclock = wibox.widget.textclock()
+mytextclock = wibox.widget.textclock(" %a %b %d, %l:%M%P", 15)
 
-local widget_template = {
+local taglist_widget_template = {
     {
         {
             id     = 'text_role',
@@ -90,7 +91,7 @@ awful.screen.connect_for_each_screen(function(s)
         spacing = beautiful.negative_gap,
         layout  = wibox.layout.grid.horizontal
     },
-    widget_template = widget_template,
+    widget_template = taglist_widget_template,
     buttons = taglist_buttons
   }
 
@@ -106,20 +107,24 @@ awful.screen.connect_for_each_screen(function(s)
 
   -- Add widgets to the wibox
   s.mywibox:setup {
-    layout = wibox.layout.align.horizontal,
-    { -- Left widgets
-      layout = wibox.layout.fixed.horizontal,
-      RC.launcher,
-      s.mytaglist,
-      s.mypromptbox,
-    },
-    s.mytasklist, -- Middle widget
-    { -- Right widgets
-      layout = wibox.layout.fixed.horizontal,
-      mykeyboardlayout,
-      wibox.widget.systray(),
-      mytextclock,
-      s.mylayoutbox,
-    },
+        layout = wibox.layout.align.horizontal,
+        { -- Left widgets
+            layout = wibox.layout.fixed.horizontal,
+            RC.launcher,
+            s.mytaglist,
+            s.mypromptbox,
+        },
+        { -- Middle widgets
+            mytextclock,
+            valign = "center",
+            halign = "center",
+            layout = wibox.container.place
+        },
+        { -- Right widgets
+            layout = wibox.layout.fixed.horizontal,
+            --mykeyboardlayout,
+            wibox.widget.systray(),
+            s.mylayoutbox,
+        },
   }
 end)
