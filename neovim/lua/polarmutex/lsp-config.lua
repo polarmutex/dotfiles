@@ -91,23 +91,23 @@ local custom_attach = function(client)
 --nvim_lsp.pyls_ms.setup({
 --    on_attach=custom_attach,
 --})
---nvim_lsp.pyright.setup({
---    on_attach=custom_attach,
---    settings = {
---        analysis = {
---            autoSearchPaths = true
---        },
---        pyright = {
---            useLibraryCodeForTypes = true
---        }
---    },
---    before_init = function(initialization_params, config)
---        initialization_params['workspaceFolders'] = {{
---            name = 'workspace',
---            uri = initialization_params['rootUri']
---        }}
---    end;
---})
+nvim_lsp.pyright.setup({
+    on_attach=custom_attach,
+    settings = {
+        analysis = {
+            autoSearchPaths = true
+        },
+        pyright = {
+            useLibraryCodeForTypes = true
+        }
+    },
+    before_init = function(initialization_params, config)
+        initialization_params['workspaceFolders'] = {{
+            name = 'workspace',
+            uri = initialization_params['rootUri']
+        }}
+    end;
+})
 
 -- beancount
 nvim_lsp.beancount.setup({
