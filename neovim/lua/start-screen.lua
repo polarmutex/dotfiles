@@ -183,9 +183,9 @@ local function setup_keys()
      -- First, the nav keys
     vim.api.nvim_buf_set_keymap(0, 'n', 'h', '<NOP>', {noremap = true, silent = true})
     vim.api.nvim_buf_set_keymap(0, 'n', 'l', '<NOP>', {noremap = true, silent = true})
-    vim.api.nvim_buf_set_keymap(0, 'n', 'j', '<cmd>lua require"start".handle_j()<cr>', {noremap = true, silent = true})
-    vim.api.nvim_buf_set_keymap(0, 'n', 'k', '<cmd>lua require"start".handle_k()<cr>', {noremap = true, silent = true})
-    vim.api.nvim_buf_set_keymap(0, 'n', '<cr>', '<cmd>lua require"start".handle_cr()<cr>', {noremap = true, silent = true})
+    vim.api.nvim_buf_set_keymap(0, 'n', 'j', '<cmd>lua require"start-screen".handle_j()<cr>', {noremap = true, silent = true})
+    vim.api.nvim_buf_set_keymap(0, 'n', 'k', '<cmd>lua require"start-screen".handle_k()<cr>', {noremap = true, silent = true})
+    vim.api.nvim_buf_set_keymap(0, 'n', '<cr>', '<cmd>lua require"start-screen".handle_cr()<cr>', {noremap = true, silent = true})
 
     -- Then, the defined keybindings
     for _, binding in ipairs(keybindings) do
