@@ -1,3 +1,11 @@
+-- add svelte tree-sitter
+require "nvim-treesitter.parsers".get_parser_configs().svelte= {
+    install_info = {
+        url = "https://github.com/Himujjal/tree-sitter-svelte",
+            files = {"src/parser.c"}
+    }
+}
+
 require'nvim-treesitter.configs'.setup {
     highlight = {
       enable = true,
@@ -64,5 +72,6 @@ require'nvim-treesitter.configs'.setup {
       }
     },
     playground = { enable = true },
-    ensure_installed = {"python", "beancount", "lua", "cpp", "typescript", "tsx"}
+    ensure_installed = {"python", "beancount", "lua", "cpp", "typescript", "tsx", "svelte"}
 }
+
