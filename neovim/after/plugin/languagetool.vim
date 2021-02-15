@@ -1,4 +1,5 @@
-let g:languagetool_server_jar='$HOME/repos/github/languagetool/dist/LanguageTool-5.2-SNAPSHOT/languagetool-server.jar'
+"let g:languagetool_server_jar='$HOME/repos/github/languagetool/dist/LanguageTool-5.2-SNAPSHOT/languagetool-server.jar'
+let g:languagetool_server_command='/usr/bin/languagetool --http'
 
 let g:languagetool = {
             \ '.' : {
@@ -10,8 +11,8 @@ let g:languagetool = {
             \ 'markdown' : { 'language' : 'en-US' },
             \ }
 
-"let g:languagetool_preview_flags = 'MC'
-"let g:languagetool_useFloatting = 1
+let g:languagetool_preview_flags = 'MC'
+let g:languagetool_useFloatting = 1
 
 let g:languagetool_debug = 1
 
