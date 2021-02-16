@@ -33,6 +33,9 @@ local setup = function()
 
     packer.init({
         package_root = require("packer.util").join_paths(vim.fn.stdpath("data"), "site", "pack"),
+        display = {
+            open_fn = require('packer.util').float
+        },
     })
 
     packer.startup{ function(use)
@@ -169,12 +172,6 @@ local setup = function()
 
         -- tasks
         use_local 'tasks.nvim'
-
-        config = {
-            display = {
-                open_fn = require('packer.util').float
-            },
-        }
     end}
 end
 
