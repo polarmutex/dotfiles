@@ -1,7 +1,3 @@
-
--- Only required if you have packer in your `opt` pack
-vim.cmd [[packadd packer.nvim]]
-
 -- Look into
 -- https://github.com/lervag/wiki.vim
 -- https://github.com/ihsanturk/neuron.vim
@@ -10,8 +6,37 @@ vim.cmd [[packadd packer.nvim]]
 -- https://github.com/kyazdani42/nvim-tree.lua
 -- https://github.com/mkitt/tabline.vim
 
-return require('packer').startup{
-    function(use)
+-- From Tj
+local ensure_packer_installed = function()
+  local packer_exists = pcall(vim.cmd, [[packadd packer.nvim]])
+
+  if not packer_exists then
+    if vim.fn.input("Download Packer? (y for yes)") ~= "y" then return false end
+
+    local directory = string.format("%s/site/pack/packer/opt/", vim.fn.stdpath("data"))
+
+    vim.fn.mkdir(directory, "p")
+
+    local out = vim.fn.system(string.format("git clone %s %s",
+                                            "https://github.com/wbthomason/packer.nvim",
+                                            directory .. "/packer.nvim"))
+    print(out)
+  end
+
+  return true
+end
+
+local setup = function()
+    if not ensure_packer_installed() then return end
+
+    local packer = require("packer")
+
+    packer.init({
+        package_root = require("packer.util").join_paths(vim.fn.stdpath("data"), "site", "pack"),
+    })
+
+    packer.startup{ function(use)
+
         local use_local = function(plug_path)
             if vim.fn.isdirectory(vim.fn.expand("~/repos/" .. plug_path)) == 1 then
                 use("~/repos/" .. plug_path)
@@ -21,6 +46,7 @@ return require('packer').startup{
                 use('polarmutex/' .. plug_path)
             end
         end
+
         -- Packer can manage itself as an optional plugin
         use {'wbthomason/packer.nvim', opt = true}
 
@@ -98,31 +124,18 @@ return require('packer').startup{
     		    {'nvim-telescope/telescope-github.nvim'},
                 {'nvim-telescope/telescope-packer.nvim'},
 	        },
-            config = require('polarmutex.plugins.telescope.config')
         }
-        use {
-            'tjdevries/colorbuddy.nvim',
-            config = require('polarmutex.theme')
-        }
+        use 'tjdevries/colorbuddy.nvim'
         use 'kyazdani42/nvim-web-devicons'
 
         -- LSP
-        use {
-            'neovim/nvim-lspconfig',
-            config = require('polarmutex.lsp-config')
-        }
-        use {
-            'nvim-lua/completion-nvim',
-            config = require('polarmutex.plugins.completion-nvim')
-        }
+        use 'neovim/nvim-lspconfig'
+        use 'nvim-lua/completion-nvim'
         use 'nvim-lua/lsp-status.nvim'
         use 'tjdevries/nlua.nvim'
 
         -- Tree-Sitter
-        use {
-            'nvim-treesitter/nvim-treesitter',
-            config = require('polarmutex.tree-sitter-config')
-        }
+        use 'nvim-treesitter/nvim-treesitter'
         use 'nvim-treesitter/playground'
         use 'nvim-treesitter/completion-treesitter'
         use_local 'beancount.nvim'
@@ -132,10 +145,7 @@ return require('packer').startup{
         use 'vigoux/LanguageTool.nvim'
 
         -- Statusline
-        use {
-            'tjdevries/express_line.nvim',
-            config = require('polarmutex.statusline')
-        }
+        use 'tjdevries/express_line.nvim'
 
         -- Whitespace
         use 'ntpeters/vim-better-whitespace'
@@ -159,10 +169,15 @@ return require('packer').startup{
 
         -- tasks
         use_local 'tasks.nvim'
-end,
-config = {
-    display = {
-        open_fn = require('packer.util').float
-    },
-  }
+
+        config = {
+            display = {
+                open_fn = require('packer.util').float
+            },
+        }
+    end}
+end
+
+return {
+    setup = setup
 }
