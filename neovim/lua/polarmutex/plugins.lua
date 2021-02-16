@@ -18,7 +18,7 @@ return require('packer').startup{
             elseif vim.fn.isdirectory(vim.fn.expand("~/dev/" .. plug_path)) == 1 then
                 use("~/dev/" .. plug_path)
             else
-                use('bryall/' .. plug_path)
+                use('polarmutex/' .. plug_path)
             end
         end
         -- Packer can manage itself as an optional plugin
