@@ -8,8 +8,12 @@ package.loaded['polarmutex.globals'] = nil
 require('polarmutex.globals')
 
 require('polarmutex.settings')
+
 -- load plugins
 require("polarmutex.plugins").setup()
+
+require("polarmutex.lsp")
+
 -- configure plugins
 require("polarmutex.configure_plugins")
 require('polarmutex.mappings')
