@@ -84,12 +84,14 @@ local setup = function()
         -- auto-pairs
 
         -- Git
+        use 'TimUntersberger/neogit'
         use 'mhinz/vim-signify'
         use'tpope/vim-fugitive'
         use 'tpope/vim-rhubarb'
 
         -- Terminal
-        use 'ThePrimeagen/harpoon'
+        --use 'ThePrimeagen/harpoon'
+        use_local 'harpoon'
         use 'voldikss/vim-floaterm'
 
         -- Help
