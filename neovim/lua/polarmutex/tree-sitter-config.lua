@@ -1,10 +1,3 @@
--- add svelte tree-sitter
-require "nvim-treesitter.parsers".get_parser_configs().svelte= {
-    install_info = {
-        url = "https://github.com/Himujjal/tree-sitter-svelte",
-            files = {"src/parser.c"}
-    }
-}
 
 require'nvim-treesitter.configs'.setup {
     highlight = {

@@ -138,7 +138,8 @@ local setup = function()
         use 'tjdevries/nlua.nvim'
 
         -- Tree-Sitter
-        use 'nvim-treesitter/nvim-treesitter'
+        --use 'nvim-treesitter/nvim-treesitter'
+        use_local 'nvim-treesitter'
         use 'nvim-treesitter/playground'
         use 'nvim-treesitter/completion-treesitter'
         use_local 'beancount.nvim'
