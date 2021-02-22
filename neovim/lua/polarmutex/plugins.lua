@@ -90,8 +90,8 @@ local setup = function()
         use 'tpope/vim-rhubarb'
 
         -- Terminal
-        --use 'ThePrimeagen/harpoon'
-        use_local 'harpoon'
+        use 'ThePrimeagen/harpoon'
+        --use_local 'harpoon'
         use 'voldikss/vim-floaterm'
 
         -- Help
