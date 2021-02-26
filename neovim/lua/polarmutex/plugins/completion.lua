@@ -1,4 +1,4 @@
-opt.completeopt = { "menuone" , "noinsert", "noselect" }
+vim.opt.completeopt = { "menuone" , "noinsert", "noselect" }
 
 -- Don't show the dumb matching stuff.
 -- TODO look into this
@@ -13,12 +13,13 @@ vim.g.completion_trigger_keyword_length = 2
 
 local has_compe, compe = pcall(require, 'compe')
 if has_compe then
+    print('setting up compe')
     compe.setup {
         enabled = true;
         autocomplete = true;
         debug = false;
         min_length = 1;
-        preselect = 'enable';
+        preselect = 'disable';
         throttle_time = 80;
         source_timeout = 200;
         incomplete_delay = 400;
