@@ -6,52 +6,32 @@
 -- https://github.com/kyazdani42/nvim-tree.lua
 -- https://github.com/mkitt/tabline.vim
 
--- From Tj
-local ensure_packer_installed = function()
-  local packer_exists = pcall(vim.cmd, [[packadd packer.nvim]])
+return require('packer').startup{
+    function(use)
 
-  if not packer_exists then
-    if vim.fn.input("Download Packer? (y for yes)") ~= "y" then return false end
+        local local_use = function(first, second)
+            local plug_path
+            local home
 
-    local directory = string.format("%s/site/pack/packer/opt/", vim.fn.stdpath("data"))
+            if second == nil then
+                plug_path = first
+                home = 'polarmutex'
+            else
+                plug_path = second
+                home = first
+            end
 
-    vim.fn.mkdir(directory, "p")
-
-    local out = vim.fn.system(string.format("git clone %s %s",
-                                            "https://github.com/wbthomason/packer.nvim",
-                                            directory .. "/packer.nvim"))
-    print(out)
-  end
-
-  return true
-end
-
-local setup = function()
-    if not ensure_packer_installed() then return end
-
-    local packer = require("packer")
-
-    packer.init({
-        package_root = require("packer.util").join_paths(vim.fn.stdpath("data"), "site", "pack"),
-        display = {
-            open_fn = require('packer.util').float
-        },
-    })
-
-    packer.startup{ function(use)
-
-        local use_local = function(plug_path)
             if vim.fn.isdirectory(vim.fn.expand("~/repos/" .. plug_path)) == 1 then
                 use("~/repos/" .. plug_path)
             elseif vim.fn.isdirectory(vim.fn.expand("~/dev/" .. plug_path)) == 1 then
                 use("~/dev/" .. plug_path)
             else
-                use('polarmutex/' .. plug_path)
+                use(string.format('%s%s', home, plug_path))
             end
         end
 
         -- Packer can manage itself as an optional plugin
-        use {'wbthomason/packer.nvim', opt = true}
+        use 'wbthomason/packer.nvim'
 
         -- text maniuplation
         -- use 'godlygeek/tabular'        -- Quickly align text by pattern
@@ -140,12 +120,12 @@ local setup = function()
         use 'tjdevries/nlua.nvim'
 
         -- Tree-Sitter
-        --use 'nvim-treesitter/nvim-treesitter'
-        use_local 'nvim-treesitter'
+        use 'nvim-treesitter/nvim-treesitter'
+        --local_use('polarmutex','nvim-treesitter')
         use 'nvim-treesitter/playground'
-        use 'nvim-treesitter/completion-treesitter'
-        use_local 'beancount.nvim'
-        use_local 'contextprint.nvim'
+        --use 'nvim-treesitter/completion-treesitter'
+        local_use('polarmutex', 'beancount.nvim')
+        local_use('polarmutex', 'contextprint.nvim')
 
         -- Languagetool
         use 'vigoux/LanguageTool.nvim'
@@ -174,10 +154,12 @@ local setup = function()
         use 'VimDeathmatch/client'
 
         -- tasks
-        use_local 'tasks.nvim'
-    end}
-end
+        local_use('polarmutex', 'tasks.nvim')
 
-return {
-    setup = setup
+    end,
+    config = {
+        display = {
+            open_fn = require('packer.util').float
+        }
+    }
 }
