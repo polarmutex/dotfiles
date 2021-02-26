@@ -26,7 +26,7 @@ return require('packer').startup{
             elseif vim.fn.isdirectory(vim.fn.expand("~/dev/" .. plug_path)) == 1 then
                 use("~/dev/" .. plug_path)
             else
-                use(string.format('%s%s', home, plug_path))
+                use(string.format('%s/%s', home, plug_path))
             end
         end
 
@@ -77,11 +77,13 @@ return require('packer').startup{
         -- colorsheme
         use 'tjdevries/colorbuddy.nvim'
 
+        -- Increment / Decrement
+        use 'monaqa/dial.nvim'
+        use 'tpope/vim-speeddating'    -- Handle changing of dates in a nicer manner
 
         -- text maniuplation
         -- use 'godlygeek/tabular'        -- Quickly align text by pattern
         use 'tpope/vim-surround'       -- Surround text objects easily
-        use 'tpope/vim-speeddating'    -- Handle changing of dates in a nicer manner
         use 'tpope/vim-commentary'     -- Easily comment out lines or objects
         -- use 'tpope/vim-repeat'         -- Repeat actions better
         use 'tpope/vim-abolish'        -- Cool things with words!
