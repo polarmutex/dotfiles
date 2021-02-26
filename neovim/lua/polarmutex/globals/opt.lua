@@ -1,6 +1,26 @@
--- from TJ
--- https://github.com/tjdevries/config_manager/blob/master/xdg_config/nvim/lua/tj/globals.lua
--- most likely to be part of core
+-- from Tj
+
+--[[ To use a more declarative syntax, you could do something like this:
+local function set_opts(opts_table)
+  for k, v in pairs(opts_table) do
+    vim.opt[k] = v
+  end
+end
+set_opts {
+  mouse = 'n',
+  fillchars = { eob = "~" },
+}
+--]]
+
+--[[ Global option names
+For those wondering how to get the values at the top level,
+    you could use Lua's `setfenv` function to set the environment
+    equal to the vim.opt dict
+cc @mccanch
+setfenv(function()
+    mouse = 'n'
+end, vim.opt)()
+--]]
 
 local if_nil = function(a, b)
   if a == nil then
@@ -181,7 +201,7 @@ opt_mt = {
     end
 
     -- TODO: Figure out why nvim_set_option doesn't override values the same way.
-    -- @bfredl said he will fix this for me, so I can just use nvim_set_option
+    -- @bfred said he will fix this for me, so I can just use nvim_set_option
     if type(v) == 'boolean' then
       vim.o[k] = clean_value(v)
       if v then
@@ -234,4 +254,5 @@ vim.opt = setmetatable({}, opt_mt)
 return {
   convert_vimoption_to_lua = convert_vimoption_to_lua,
   opt = vim.opt,
+  opt_mt = opt_mt
 }

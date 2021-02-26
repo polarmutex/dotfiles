@@ -3,41 +3,61 @@ local themes = require('telescope.themes')
 local M = {}
 
 function M.fd()
-    local opts = themes.get_dropdown {
-        winblend = 10,
-        previewer = false,
-        shorten_path = false,
-    }
-    require('telescope.builtin').fd(opts)
+    require('telescope.builtin').fd()
+end
+
+function M.builtin()
+    require('telescope.builtin').builtin()
 end
 
 function M.git_files()
     local opts = themes.get_dropdown {
         winblend = 10,
+        border = true,
         previewer = false,
         shorten_path = false,
     }
+
     require('telescope.builtin').git_files(opts)
 end
 
-function M.live_grep()
-    local opts = {
-        shorten_path = true,
+function M.lsp_code_actions()
+    local opts = themes.get_dropdown {
+        winblend = 10,
+        border = true,
+        previewer = false,
+        shorten_path = false,
     }
-    require('telescope.builtin').live_grep(opts)
+
+    require('telescope.builtin').lsp_code_actions(opts)
 end
 
-function M.old_files()
-    local opts = {
+function M.live_grep()
+    require('telescope').extensions.fzf_writer.staged_grep {
+        shorten_path = true,
+        previewer = false,
+        fzf_separator = "|>",
     }
-    require('telescope.builtin').old_files(opts)
+end
+
+function M.grep_last_search(opts)
+    opts = opts or {}
+
+    -- \<getreg\>\C
+    -- -> Subs out the search things
+    local register = vim.fn.getreg('/'):gsub('\\<', ''):gsub('\\>', ''):gsub("\\C", "")
+
+    opts.shorten_path = true
+    opts.word_match = '-w'
+    opts.search = register
+
+    require('telescope.builtin').grep_string(opts)
 end
 
 function M.installed_plugins()
-    local opts = {
+    require('telescope.builtin').find_files {
         cwd = vim.fn.stdpath('data') .. '/site/pack/packer/start/'
     }
-    require('telescope.builtin').fd(opts)
 end
 
 function M.buffers()

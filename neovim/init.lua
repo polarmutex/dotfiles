@@ -10,7 +10,10 @@ require('polarmutex.globals')
 require('polarmutex.settings')
 
 -- load plugins
-require("polarmutex.plugins").setup()
+if require('polarmutex.first_load')() then
+    return
+end
+require("polarmutex.plugins")
 
 require("polarmutex.lsp")
 
