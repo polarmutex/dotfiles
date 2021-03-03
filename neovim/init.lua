@@ -8,7 +8,17 @@ package.loaded['polarmutex.globals'] = nil
 require('polarmutex.globals')
 
 require('polarmutex.settings')
-require('polarmutex.plugins')
+
+-- load plugins
+if require('polarmutex.first_load')() then
+    return
+end
+require("polarmutex.plugins")
+
+require("polarmutex.lsp")
+
+-- configure plugins
+require("polarmutex.configure_plugins")
 require('polarmutex.mappings')
 
 vim.api.nvim_command('augroup start_screen')

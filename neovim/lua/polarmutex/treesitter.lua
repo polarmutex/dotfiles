@@ -1,10 +1,3 @@
--- add svelte tree-sitter
-require "nvim-treesitter.parsers".get_parser_configs().svelte= {
-    install_info = {
-        url = "https://github.com/Himujjal/tree-sitter-svelte",
-            files = {"src/parser.c"}
-    }
-}
 
 require'nvim-treesitter.configs'.setup {
     highlight = {
@@ -13,33 +6,34 @@ require'nvim-treesitter.configs'.setup {
       custom_captures = {},
     },
     incremental_selection = {
-      enable = false,
-      disable = {},
-      keymaps = {                       -- mappings for incremental selection (visual mappings)
-        --init_selection = "gnn",         -- maps in normal mode to init the node/scope selection
-        --node_incremental = "grn",       -- increment to the upper named parent
-        --scope_incremental = "grc",      -- increment to the upper scope (as defined in locals.scm)
-        --node_decremental = "grm",       -- decrement to the previous node
-      }
+        enable = true,
+        disable = {},
+        keymaps = {                       -- mappings for incremental selection (visual mappings)
+            init_selection = 'gnn',         -- maps in normal mode to init the node/scope selection
+            node_incremental = "grn",       -- increment to the upper named parent
+            scope_incremental = "grc",      -- increment to the upper scope (as defined in locals.scm)
+            node_decremental = "grm",       -- decrement to the previous node
+        }
     },
+    indent = { enable = false },
     refactor = {
       highlight_definitions = {
-        enable = false
+        enable = true
       },
       highlight_current_scope = {
-        enable = false
+        enable = true
       },
       smart_rename = {
         enable = false,
         keymaps = {
-          --smart_rename = "grr"          -- mapping to rename reference under cursor
+          smart_rename = "grr"          -- mapping to rename reference under cursor
         }
       },
       navigation = {
         enable = false,
         keymaps = {
-          --goto_definition = "gnd",      -- mapping to go to definition of symbol under cursor
-          --list_definitions = "gnD"      -- mapping to list all definitions in current file
+          goto_definition = "gnd",      -- mapping to go to definition of symbol under cursor
+          list_definitions = "gnD"      -- mapping to list all definitions in current file
         }
       }
     },
