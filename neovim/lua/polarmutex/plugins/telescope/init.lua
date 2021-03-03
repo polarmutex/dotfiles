@@ -82,6 +82,16 @@ function M.help_tags()
     require('telescope.builtin').help_tags(opts)
 end
 
+function M.git_branches()
+    require("telescope.builtin").git_branches({
+        attach_mappings = function(prompt_bufnr, map)
+            map('i', '<c-d>', actions.git_delete_branch)
+            map('n', '<c-d>', actions.git_delete_branch)
+            return true
+        end
+    })
+end
+
 return setmetatable({}, {
     __index = function(_, k)
         if M[k] then

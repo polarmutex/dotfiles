@@ -61,6 +61,8 @@ mapper('n','tq',':tabclose<CR>',{noremap=true})
 --'s' : ['<Plug>(GitGutterStageHunk)'        , 'stage hunk'],
 --'t' : [':GitGutterSignsToggle'             , 'toggle signs'],
 --'u' : ['<Plug>(GitGutterUndoHunk)'         , 'undo hunk'],
+-- Undo
+mapper('n','<leader>u',':UndotreeShow<CR>',{})
 
 -- terminal / harpoon
 mapper('n','<leader>tt',':call GotoBuffer(0)<CR> | :startinsert<CR>',{})
@@ -77,3 +79,23 @@ mapper('n','<leader>cp',":lua require('plenary.reload').reload_module('contextpr
 -- finances
 mapper('n','<leader>ft',":lua require('plenary.reload').reload_module('beancount'); require('beancount').CopyTransaction()<CR>",{})
 mapper('n','<leader>fc',":%s/txn/*/gc<CR>",{})
+
+-- harpoon
+-- Terminal commands
+-- ueoa is first through fourth finger left hand home row.
+-- This just means I can crush, with opposite hand, the 4 terminal positions
+--
+-- These functions are stored in harpoon.  A plugn that I am developing
+mapper('n','<C-m>',':lua require("harpoon.mark").add_file()<CR>',{})
+mapper('n','<C-e>',':lua require("harpoon.ui").toggle_quick_menu()<CR>',{})
+mapper('n','<C-h>',':lua require("harpoon.ui").nav_file(2)<CR>',{})
+mapper('n','<C-t>',':lua require("harpoon.ui").nav_file(2)<CR>',{})
+mapper('n','<C-n>',':lua require("harpoon.ui").nav_file(3)<CR>',{})
+mapper('n','<C-s>',':lua require("harpoon.ui").nav_file(4)<CR>',{})
+mapper('n','<C-g>',':lua require("harpoon.mark").rm_file()<CR>',{})
+mapper('n','<leader><C-r>',':lua require("harpoon.mark").shorten_list()<CR>',{})
+mapper('n','<leader>r',':lua require("harpoon.mark").promote()<CR>',{})
+mapper('n','<leader>tu',':lua require("harpoon.term").gotoTerminal(1)<CR>',{})
+mapper('n','<leader>te',':lua require("harpoon.term").gotoTerminal(2)<CR>',{})
+mapper('n','<leader>cu',':lua require("harpoon.term").sendCommand(1, 1)<CR>',{})
+mapper('n','<leader>ce',':lua require("harpoon.term").sendCommand(1, 2)<CR>',{})

@@ -2,24 +2,26 @@ local M = {}
 
 M.setup = function()
     require('harpoon').setup({
-        ["~/repos/brianryall.xyz"] = {
-            term = {
-                cmd = {
-                    "npm run dev\n"
+        projects = {
+            ["~/repos/brianryall.xyz"] = {
+                term = {
+                    cmds = {
+                        "npm run dev\n"
+                    }
+                },
+                mark = {
                 }
             },
-            mark = {
-            }
-        },
-        ["~/repos/beancount"] = {
-            term = {
-                cmd = {
-                    "fava journal.beancount\n"
+            ["~/repos/beancount"] = {
+                term = {
+                    cmd = {
+                        "fava journal.beancount\n"
+                    }
+                },
+                mark = {
                 }
             },
-            mark = {
-            }
-        },
+        }
     })
 end
 

@@ -31,7 +31,7 @@ require('telescope').setup {
         mappings = {
             i = {
                 ["<c-x>"] = false,
-                ["<c-s>"] = actions.select_vertical,
+                ["<C-q>"] = actions.send_to_qflist,
             },
         },
 
@@ -41,6 +41,10 @@ require('telescope').setup {
         },
 
         file_sorter = sorters.get_fzy_sorter,
+
+        file_previewer   = require('telescope.previewers').vim_buffer_cat.new,
+        grep_previewer   = require('telescope.previewers').vim_buffer_vimgrep.new,
+        qflist_previewer = require('telescope.previewers').vim_buffer_qflist.new,
     },
 
     extensions = {
