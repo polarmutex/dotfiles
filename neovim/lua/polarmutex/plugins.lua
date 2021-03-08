@@ -78,6 +78,7 @@ return require('packer').startup{
 
         -- colorsheme
         use 'tjdevries/colorbuddy.nvim'
+        use "rktjmp/lush.nvim"
 
         -- Increment / Decrement
         use 'monaqa/dial.nvim'

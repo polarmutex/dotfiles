@@ -104,3 +104,7 @@ opt.joinspaces = false         -- Two spaces and grade school, we're done
 
 opt.fillchars = { eob = "~" }
 
+-- colorscheme settings
+opt.termguicolors = true
+opt.background = "dark"
+vim.cmd([[colorscheme gruvbox]])
