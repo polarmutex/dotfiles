@@ -18,8 +18,8 @@ if has_compe then
         enabled = true;
         autocomplete = true;
         debug = false;
-        min_length = 1;
-        preselect = 'disable';
+        min_length = 2;
+        preselect = 'enabled';
         throttle_time = 80;
         source_timeout = 200;
         incomplete_delay = 400;
@@ -39,6 +39,7 @@ if has_compe then
             spell = true;
             tags = true;
             snippets_nvim = true;
+            treesitter = true;
         };
     }
 end

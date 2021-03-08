@@ -36,12 +36,13 @@ return require('packer').startup{
         -- LSP
         use 'neovim/nvim-lspconfig'
         use 'nvim-lua/completion-nvim'
+        use 'hrsh7th/nvim-compe'
         use 'nvim-lua/lsp-status.nvim'
         use 'tjdevries/nlua.nvim'
 
         -- Tree-Sitter
-        use 'nvim-treesitter/nvim-treesitter'
-        --local_use('polarmutex','nvim-treesitter')
+        --use 'nvim-treesitter/nvim-treesitter'
+        local_use('polarmutex','nvim-treesitter')
         use 'nvim-treesitter/playground'
         --use 'nvim-treesitter/completion-treesitter'
         local_use('polarmutex', 'beancount.nvim')
