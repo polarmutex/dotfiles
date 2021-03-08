@@ -24,10 +24,6 @@ local attach_formatting = function(client)
 end
 
 
--- Turn on status.
-status.activate()
-
-
 require("polarmutex.lsp.python")
 require("polarmutex.lsp.beancount")
 require("polarmutex.lsp.cpp")
