@@ -10,6 +10,8 @@ M.setup = function()
                     }
                 },
                 mark = {
+                    marks = {
+                    }
                 }
             },
             ["~/repos/beancount"] = {
@@ -19,6 +21,8 @@ M.setup = function()
                     }
                 },
                 mark = {
+                    marks = {
+                    }
                 }
             },
         }
