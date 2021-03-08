@@ -22,7 +22,10 @@ local beancount_binary = beancount_root_path.."/node_modules/.bin/".."beancount-
 configs.beancount = {
   default_config = {
     cmd = {
-      'beancount-langserver',
+      'node',
+      '--inspect',
+      '/home/brian/repos/beancount-language-server/out/cli.js',
+      --'beancount-langserver',
       '--stdio'
     };
     log_level = vim.lsp.protocol.MessageType.Warning;
