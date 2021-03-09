@@ -6,6 +6,7 @@ local extension = require('galaxyline.provider_extensions')
 local fileinfo = require 'galaxyline.provider_fileinfo'
 local diagnostic = require('galaxyline.provider_diagnostic')
 local vcs = require('galaxyline.provider_vcs')
+local has_lsp_status, lsp_status = pcall(require, 'lsp-status')
 
 local sep = {
     right_filled = '', -- e0b2
@@ -92,9 +93,6 @@ gls.left = {
         highlight = {theme.GruvboxGreen.fg, theme.GruvboxBg2.fg},
   }
 },
-}
-
-gls.mid = {
 {
     FileName = {
         provider = {'FileName'},
@@ -112,6 +110,46 @@ gls.mid = {
     end,
     highlight = {theme.GruvboxRed.fg, theme.GruvboxBg2.fg}
   }
+},
+}
+
+gls.mid = {
+{
+    LspStatusMsgs = {
+        provider = function()
+            local clients = vim.lsp.buf_get_clients(0)
+            local connected = not vim.tbl_isempty(clients)
+            if connected then
+                local all_messages = lsp_status.messages()
+                for _, msg in ipairs(all_messages) do
+                    if msg.name then
+                        local contents = ''
+                        if msg.progress then
+                            contents = msg.title
+                            if msg.message then
+                                contents = contents .. ' ' .. msg.message
+                            end
+
+                            if msg.percentage then
+                                contents = contents .. ' (' .. msg.percentage .. ')'
+                            end
+
+                        elseif msg.status then
+                            contents = msg.content
+                        else
+                            contents = msg.content
+                        end
+
+                        return ' ' .. contents .. ' '
+                    end
+                end
+                return ''
+            else
+                return ''
+            end
+        end,
+        highlight = {theme.GruvboxFg2.fg, theme.GruvboxBg2.fg}
+    },
 },
 }
 
