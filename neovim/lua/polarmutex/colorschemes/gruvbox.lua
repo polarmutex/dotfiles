@@ -494,26 +494,6 @@ local theme = lush(function()
         SignifySignChange {GruvboxAquaSign},
         SignifySignDelete {GruvboxRedSign},
 
-        -- Plugin: galaxyline
-        -- Galaxyline default providers
-        GalaxyGitBranch { GruvboxBlue },
-        GalaxyGitBranchSeparator { GruvboxYellow },
-        GalaxyDiffAdd { DiffAdd },
-        GalaxyDiffModified { DiffChange },
-        GalaxyDiffRemove { DiffDelete },
-        GalaxyScrollbar { GruvboxGreen },
-        GalaxyLinePercent { },
-        GalaxyFileTypeName { gui = styles.bold },
-        GalaxyFileName { GruvboxBlue, gui = styles.bold },
-        GalaxyFileIcon { GalaxyFileName },
-        GalaxyFileSize { GalaxyFileName },
-        GalaxyFileEncode { GalaxyFileName },
-        GalaxyFileFormat { GalaxyFileName },
-        GalaxyDiagnosticError { LspDiagnosticsDefaultError },
-        GalaxyDiagnosticWarn { LspDiagnosticsDefaultWarning },
-        GalaxyDiagnosticHint { LspDiagnosticsDefaultHint },
-        GalaxyDiagnosticInformation { LspDiagnosticsDefaultInformation },
-
     }
 end)
 
