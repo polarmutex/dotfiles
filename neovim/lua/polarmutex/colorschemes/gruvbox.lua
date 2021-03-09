@@ -80,7 +80,7 @@ local purple = colors.bright_purple
 local aqua = colors.bright_aqua
 local orange = colors.bright_orange
 local gray = colors.gray
-local sign_column = bg1
+local sign_column = bg0
 
 -- global settings
 local settings = {
@@ -462,6 +462,57 @@ local theme = lush(function()
         jsonQuote {GruvboxGreen},
         jsonBraces {GruvboxFg1},
         jsonString {GruvboxFg1},
+
+        -- Plugin: start-screen
+        StartifyBracket {Delimiter},
+        StartifyFile {Identifier},
+        StartifyNumber {Number},
+        StartifyPath {Directory},
+        StartifySlash {Delimiter},
+        StartifySection {Statement},
+        StartifySpecial {Comment},
+        StartifyHeader {Title},
+        StartifyFooter {Title},
+        StartifyVar {StartifyPath},
+        StartifySelect {Title},
+
+        -- Plugin: Telescope
+        TelescopeSelection {GruvboxOrangeBold},
+        TelescopeSlectionCaret {GruvboxRed},
+        TelescopeMultiSelection {GruvboxGray},
+        TelescopeNormal {GruvboxFg1},
+        TelescopeBorder {TelescopeNormal},
+        TelescopePromptBorder {TelescopeNormal},
+        TelescopeResultsBorder {TelescopeNormal},
+        TelescopePreviewBorder {TelescopeNormal},
+        TelescopeMatching {GruvboxBlue},
+        TelescopePromptPrefix {GruvboxRed},
+        TelescopePrompt {TelescopeNormal},
+
+        -- Plugin: signify
+        SignifySignAdd {GruvboxGreenSign},
+        SignifySignChange {GruvboxAquaSign},
+        SignifySignDelete {GruvboxRedSign},
+
+        -- Plugin: galaxyline
+        -- Galaxyline default providers
+        GalaxyGitBranch { GruvboxBlue },
+        GalaxyGitBranchSeparator { GruvboxYellow },
+        GalaxyDiffAdd { DiffAdd },
+        GalaxyDiffModified { DiffChange },
+        GalaxyDiffRemove { DiffDelete },
+        GalaxyScrollbar { GruvboxGreen },
+        GalaxyLinePercent { },
+        GalaxyFileTypeName { gui = styles.bold },
+        GalaxyFileName { GruvboxBlue, gui = styles.bold },
+        GalaxyFileIcon { GalaxyFileName },
+        GalaxyFileSize { GalaxyFileName },
+        GalaxyFileEncode { GalaxyFileName },
+        GalaxyFileFormat { GalaxyFileName },
+        GalaxyDiagnosticError { LspDiagnosticsDefaultError },
+        GalaxyDiagnosticWarn { LspDiagnosticsDefaultWarning },
+        GalaxyDiagnosticHint { LspDiagnosticsDefaultHint },
+        GalaxyDiagnosticInformation { LspDiagnosticsDefaultInformation },
 
     }
 end)

@@ -10,4 +10,4 @@
 lua package.loaded['gruvbox'] = nil
 
 " include our theme file and pass it to lush to apply
-lua require('lush')(require('polarmutex.gruvbox'))
+lua require('lush')(require('polarmutex.colorschemes.gruvbox'))
