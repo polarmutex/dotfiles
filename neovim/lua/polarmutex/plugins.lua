@@ -64,6 +64,10 @@ return require('packer').startup{
         use 'kyazdani42/nvim-web-devicons'
 
         -- Statusline
+        use {
+            'glepnir/galaxyline.nvim',
+            branch = 'main',
+        }
         use 'tjdevries/express_line.nvim'
 
         -- Terminal / File Nav
