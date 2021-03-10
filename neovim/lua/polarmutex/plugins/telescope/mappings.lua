@@ -57,8 +57,10 @@ map_tele('<space>si', 'search_all_files')
 map_tele('<space>ff', 'curbuf')
 map_tele('<space>sh', 'help_tags')
 map_tele('<space>so', 'vim_options')
+map_tele('<space>sk', 'keymaps')
 
 -- Git / Github
+map_tele('<leader>gb','git_branches')
 map_tele('<leader>gi','gh_issues')
 map_tele('<leader>gr','gh_pull_request')
 
