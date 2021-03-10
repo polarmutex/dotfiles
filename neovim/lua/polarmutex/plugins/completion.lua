@@ -13,7 +13,6 @@ vim.g.completion_trigger_keyword_length = 2
 
 local has_compe, compe = pcall(require, 'compe')
 if has_compe then
-    print('setting up compe')
     compe.setup {
         enabled = true;
         autocomplete = true;
