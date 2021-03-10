@@ -22,6 +22,8 @@ M.git_branches = function()
         end
     })
 end
+--TODO
+--octo commits, files, gists, issues, prs, live_issues, live_prs
 
 -- Files / Meta
 M.builtin = function()
