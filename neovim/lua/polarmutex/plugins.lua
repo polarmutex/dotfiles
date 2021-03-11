@@ -41,7 +41,10 @@ return require('packer').startup{
         use 'tjdevries/nlua.nvim'
 
         -- Tree-Sitter
-        --use 'nvim-treesitter/nvim-treesitter'
+        --use {
+        --    'nvim-treesitter/nvim-treesitter',
+        --    run = function() vim.cmd [[TSUpdate]] end
+        --}
         local_use('polarmutex','nvim-treesitter')
         use 'nvim-treesitter/playground'
         --use 'nvim-treesitter/completion-treesitter'
