@@ -79,6 +79,7 @@ return require('packer').startup{
         -- Git
         use 'TimUntersberger/neogit'
         use 'lewis6991/gitsigns.nvim'
+        use 'pwntester/octo.nvim'
         --use 'mhinz/vim-signify'
         --use'tpope/vim-fugitive'
         --use 'tpope/vim-rhubarb'
