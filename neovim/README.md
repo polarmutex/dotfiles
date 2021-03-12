@@ -18,7 +18,7 @@ some way.
 ## Mappings
 
 ### Telescope
-| Mappings | Action |
+| Mappings | Action | Description |
 |----------------|----------------------------------|
 | `<Leader>gb` | Git branches | |
 | | `Enter` | track selected branch |
