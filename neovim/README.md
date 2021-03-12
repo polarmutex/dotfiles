@@ -19,7 +19,7 @@ some way.
 
 ### Telescope
 | Mappings | Action | Description |
-|----------------|----------------------------------|
+|---|---|---|
 | `<Leader>gb` | Git branches | |
 | | `Enter` | track selected branch |
 | | `<C-d>` | delete selected branch |
