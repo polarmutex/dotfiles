@@ -1,5 +1,6 @@
-local themes = require('telescope.themes')
+
 local actions = require('telescope.actions')
+local themes = require('telescope.themes')
 
 local M = {}
 
@@ -22,8 +23,18 @@ M.git_branches = function()
         end
     })
 end
---TODO
---octo commits, files, gists, issues, prs, live_issues, live_prs
+M.git_commits = function()
+    require('telescope.builtin').git_commits({})
+end
+M.git_bcommits = function()
+    require('telescope.builtin').git_bcommits({})
+end
+M.gh_pull_request = function()
+    require("telescope").extensions.octo.prs({})
+end
+M.gh_issues = function()
+    require("telescope").extensions.octo.issues({})
+end
 
 -- Files / Meta
 M.builtin = function()

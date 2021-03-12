@@ -61,6 +61,8 @@ map_tele('<space>sk', 'keymaps')
 
 -- Git / Github
 map_tele('<leader>gb','git_branches')
+map_tele('<leader>gc','git_commits')
+map_tele('<leader>gd','git_bcommits')
 map_tele('<leader>gi','gh_issues')
 map_tele('<leader>gr','gh_pull_request')
 
