@@ -18,15 +18,12 @@ some way.
 ## Mappings
 
 ### Telescope
-| Mappings       | Action                           |
+| Mappings | Action |
 |----------------|----------------------------------|
-| `<Leader>gb`   | [Git branches](#)                |
+| `<Leader>gb` | Git branches | |
+| | `Enter` | track selected branch |
+| | `<C-d>` | delete selected branch |
 
-#### Git branches
-| Mappings       | Action                           |
-|----------------|----------------------------------|
-|`Enter`         | track selected branch            |
-|`<C-d>          | delete selected branch           |
 
 ## Functions
 
