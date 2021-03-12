@@ -20,9 +20,26 @@ some way.
 ### Telescope
 | Mappings | Action | Description |
 |---|---|---|
+| `<Leader>sg` | Search filenames under Git control | |
+| | `Enter` | Open file at location|
+| `<Leader>sd` | Search all filenames | |
+| | `Enter` | Open file at location|
+| `<Leader>sl` | Grep within files | |
+| | `Enter` | Open file at location|
+| `<Leader>sh` | Search neovim help files | |
+| | `Enter` | Open help |
+| `<Leader>so` | Search neovim options | |
+| `<Leader>sk` | Search keymaps | |
+| `<Leader>sB` | Search telescope builtins | |
+| `<Leader>gw` | Grep files for word under cursor | |
+| | `Enter` | Open file at location|
 | `<Leader>gb` | Git branches | |
 | | `Enter` | track selected branch |
 | | `<C-d>` | delete selected branch |
+| `<Leader>gc` | Git commits | |
+| `<Leader>gd` | Git buffer commits | |
+| `<Leader>gi` | Github Issues | |
+| `<Leader>gr` | Github Pull Reviews | |
 
 
 ## Functions

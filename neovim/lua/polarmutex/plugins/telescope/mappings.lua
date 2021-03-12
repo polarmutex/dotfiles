@@ -48,13 +48,13 @@ map_tele('<space>gw', 'grep_string', {
 map_tele('<leader>sg', 'git_files')
 map_tele('<space>sl', 'live_grep')
 map_tele('<space>sd', 'fd')
-map_tele('<space>pp', 'project_search')
+--map_tele('<space>pp', 'project_search')
 
 -- Nvim
-map_tele('<space>sb', 'buffers')
-map_tele('<space>sa', 'installed_plugins')
-map_tele('<space>si', 'search_all_files')
-map_tele('<space>ff', 'curbuf')
+--map_tele('<space>sb', 'buffers')
+--map_tele('<space>sa', 'installed_plugins')
+--map_tele('<space>si', 'search_all_files')
+--map_tele('<space>ff', 'curbuf')
 map_tele('<space>sh', 'help_tags')
 map_tele('<space>so', 'vim_options')
 map_tele('<space>sk', 'keymaps')
@@ -68,8 +68,5 @@ map_tele('<leader>gr','gh_pull_request')
 
 -- Telescope Meta
 map_tele('<leader>sB', 'builtin')
-
--- Testing
-map_tele('<leader>sc', 'chtsh_root_list')
 
 return map_tele
