@@ -9,3 +9,4 @@ tmp
 qtile/__pycache__/config.cpython-39.pyc
 .nvimlog
 neovim/.netrwhist
+qtile/config.pyc

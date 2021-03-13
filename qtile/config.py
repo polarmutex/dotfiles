@@ -1,5 +1,5 @@
 # Copyright (c) 2010 Aldo Cortesi
-# Copyright (c) 2010, 2014 dequis
+
 # Copyright (c) 2012 Randall Ma
 # Copyright (c) 2012-2014 Tycho Andersen
 # Copyright (c) 2012 Craig Barnes
@@ -27,11 +27,14 @@
 import os
 import re
 import socket
-from typing import List  # noqa: F401
+import subprocess
 
-from libqtile import bar, layout, widget, hook
-from libqtile.config import Click, Drag, Group, Key, KeyChord, Screen
+from libqtile import qtile
+from libqtile.config import Click, Drag, Group, Key, KeyChord, Match, Screen
 from libqtile.lazy import lazy
+from libqtile import bar, layout, widget, hook
+
+from typing import List  # noqa: F401
 
 mod = "mod4" # sets mod key to super
 myTerminal = "kitty" # my preferred terminal
@@ -98,7 +101,19 @@ keys = [
         desc="Spawn a command using a prompt widget"),
 ]
 
-groups = [Group(i) for i in "asdfuiop"]
+# TODO look into
+group_names = [("WWW", {'layout': 'monadtall'}),
+               ("DEV", {'layout': 'monadtall'}),
+               ("SYS", {'layout': 'monadtall'}),
+               ("DOC", {'layout': 'monadtall'}),
+               ("VBOX", {'layout': 'monadtall'}),
+               ("CHAT", {'layout': 'monadtall'}),
+               ("MUS", {'layout': 'monadtall'}),
+               ("VID", {'layout': 'monadtall'}),
+               ("GFX", {'layout': 'floating'})]
+
+
+groups = [Group(i) for i in "arstneio"]
 
 for i in groups:
     keys.extend([
@@ -115,9 +130,17 @@ for i in groups:
         #     desc="move focused window to group {}".format(i.name)),
     ])
 
+layout_theme = {
+    "border_width": 2,
+    "margin": 8,
+    "border_focus": "e1acff",
+    "border_normal": "1D2330"
+}
+
 layouts = [
-    layout.MonadTall(),
-    layout.Max(),
+    layout.MonadTall(**layout_theme),
+    layout.Max(**layout_theme),
+    layout.Tile(shift_windows=True, **layout_theme),
     layout.Stack(num_stacks=2),
     # Try more layouts by unleashing below layouts.
     # layout.Bsp(),
@@ -125,7 +148,6 @@ layouts = [
     # layout.Matrix(),
     # layout.MonadWide(),
     # layout.RatioTile(),
-    # layout.Tile(),
     # layout.TreeTab(),
     # layout.VerticalTile(),
     # layout.Zoomy(),
@@ -160,9 +182,16 @@ def init_widgets_list():
                        background = colors[0]
                        ),
               #widget.Image(
-              #         filename = "~/.config/qtile/icons/python.png",
-              #         mouse_callbacks = {'Button1': lambda qtile: qtile.cmd_spawn('dmenu_run')}
+              #         filename = "~/.config/qtile/icons/python-white.png",
+              #         scale = "False",
+              #         mouse_callbacks = {'Button1': lambda: qtile.cmd_spawn(myTerminal)}
               #         ),
+             widget.Sep(
+                       linewidth = 0,
+                       padding = 6,
+                       foreground = colors[2],
+                       background = colors[0]
+                       ),
               widget.GroupBox(
                        font = "JetBrains Mono",
                        fontsize = 9,
@@ -175,17 +204,24 @@ def init_widgets_list():
                        inactive = colors[2],
                        rounded = False,
                        highlight_color = colors[1],
-                       highlight_method = "text",
-                       this_current_screen_border = colors[3],
+                       highlight_method = "line",
+                       this_current_screen_border = colors[6],
                        this_screen_border = colors [4],
-                       other_current_screen_border = colors[0],
-                       other_screen_border = colors[0],
+                       other_current_screen_border = colors[6],
+                       other_screen_border = colors[4],
                        foreground = colors[2],
                        background = colors[0]
                        ),
-              widget.Sep(
-                       linewidth = 1,
+              widget.Prompt(
+                       prompt = prompt,
+                       font = "JetBrains Mono",
                        padding = 10,
+                       foreground = colors[3],
+                       background = colors[1]
+                       ),
+              widget.Sep(
+                       linewidth = 0,
+                       padding = 40,
                        foreground = colors[2],
                        background = colors[0]
                        ),
@@ -194,106 +230,140 @@ def init_widgets_list():
                        background = colors[0],
                        padding = 0
                        ),
-              widget.ThermalSensor(
-                       foreground = colors[2],
-                       background = colors[0],
-                       threshold = 90,
-                       padding = 5
-                       ),
-              widget.Sep(
-                       linewidth = 1,
-                       padding = 10,
-                       foreground = colors[2],
-                       background = colors[0]
-                       ),
-              widget.CheckUpdates(
-                       update_interval = 1800,
-                       foreground = colors[2],
-                       mouse_callbacks = {'Button1': lambda qtile: qtile.cmd_spawn(myTerminal + ' -e sudo pacman -Syu')},
-                       background = colors[0]
-                       ),
-              widget.Sep(
-                       linewidth = 1,
-                       padding = 10,
-                       foreground = colors[2],
-                       background = colors[0]
-                       ),
-              widget.CPU(
-			format = '{load_percent}% ',
-			font = "UbuntuMono Nerd Font",
-                        fontsize = 14,
-			foreground = colors[5],
-                        background = colors[0],
-                        update_interval = 3
-			),
-              widget.Sep(
-                       linewidth = 1,
-                       padding = 10,
-                       foreground = colors[2],
-                       background = colors[0]
-                       ),
-              widget.Memory(
-                       foreground = colors[2],
-                       background = colors[0],
-                       mouse_callbacks = {'Button1': lambda qtile: qtile.cmd_spawn(myTerminal + ' -e htop')},
-                       padding = 5
-                       ),
-              widget.Sep(
-                       linewidth = 1,
-                       padding = 10,
-                       foreground = colors[2],
-                       background = colors[0]
-                       ),
-              widget.TextBox(
-                      text="Vol:",
-                      padding=10,
-                      fontsize=12,
-                       foreground = colors[2],
-                       background = colors[0],
-                      ),
-              widget.Volume(
-                       foreground = colors[2],
-                       background = colors[0],
-                       padding = 5
-                       ),
-              widget.Sep(
-                       linewidth = 1,
-                       padding = 10,
-                       foreground = colors[2],
-                       background = colors[0]
-                       ),
-              widget.CurrentLayoutIcon(
-                       foreground = colors[2],
-                       background = colors[0],
-                       padding = 5
-                       ),
-              widget.Sep(
-                       linewidth = 1,
-                       padding = 10,
-                       foreground = colors[2],
-                       background = colors[0]
-                       ),
-              widget.TextBox(
-                        text = " 📅 ",
-                        padding = 0,
-                        mouse_callbacks = {'Button1': lambda qtile: qtile.cmd_spawn(myTerminal + ' -e calcurse')},
-                        fontsize=12
-                        ),
-
-              widget.Clock(
-                       foreground = colors[2],
-                       background = colors[0],
-                       format = "%A, %B %d  [ %H:%M ]"
-                       ),
-              widget.Sep(
-                       linewidth = 1,
-                       padding = 10,
-                       foreground = colors[2],
-                       background = colors[0]
-                       ),
               widget.Systray(
                        background = colors[0],
                        padding = 5
+                       ),
+              widget.Sep(
+                       linewidth = 0,
+                       padding = 6,
+                       foreground = colors[0],
+                       background = colors[0]
+                       ),
+              widget.TextBox(
+                       text = '',
+                       background = colors[0],
+                       foreground = colors[4],
+                       padding = 0,
+                       fontsize = 37
+                       ),
+              widget.TextBox(
+                       text = " 🌡",
+                       padding = 2,
+                       foreground = colors[2],
+                       background = colors[5],
+                       fontsize = 11
+                       ),
+              widget.ThermalSensor(
+                       foreground = colors[2],
+                       background = colors[5],
+                       threshold = 90,
+                       padding = 5
+                       ),
+              widget.TextBox(
+                       text='',
+                       background = colors[5],
+                       foreground = colors[4],
+                       padding = 0,
+                       fontsize = 37
+                       ),
+              widget.TextBox(
+                       text = " ⟳",
+                       padding = 2,
+                       foreground = colors[2],
+                       background = colors[4],
+                       fontsize = 14
+                       ),
+              widget.CheckUpdates(
+                       update_interval = 1800,
+                       distro = "Arch_checkupdates",
+                       display_format = "{updates} Updates",
+                       foreground = colors[2],
+                       mouse_callbacks = {'Button1': lambda: qtile.cmd_spawn(myTerminal + ' -e sudo pacman -Syu')},
+                       background = colors[4]
+                       ),
+              widget.TextBox(
+                       text = '',
+                       background = colors[4],
+                       foreground = colors[5],
+                       padding = 0,
+                       fontsize = 37
+                       ),
+              widget.TextBox(
+                       text = " 🖬",
+                       foreground = colors[2],
+                       background = colors[5],
+                       padding = 0,
+                       fontsize = 14
+                       ),
+              widget.Memory(
+                       foreground = colors[2],
+                       background = colors[5],
+                       mouse_callbacks = {'Button1': lambda: qtile.cmd_spawn(myTerminal + ' -e htop')},
+                       padding = 5
+                       ),
+              widget.TextBox(
+                       text='',
+                       background = colors[5],
+                       foreground = colors[4],
+                       padding = 0,
+                       fontsize = 37
+                       ),
+              widget.Net(
+                       interface = "enp6s0",
+                       format = '{down} ↓↑ {up}',
+                       foreground = colors[2],
+                       background = colors[4],
+                       padding = 5
+                       ),
+              widget.TextBox(
+                       text = '',
+                       background = colors[4],
+                       foreground = colors[5],
+                       padding = 0,
+                       fontsize = 37
+                       ),
+              widget.TextBox(
+                      text = " Vol:",
+                       foreground = colors[2],
+                       background = colors[5],
+                       padding = 0
+                       ),
+              widget.Volume(
+                       foreground = colors[2],
+                       background = colors[5],
+                       padding = 5
+                       ),
+              widget.TextBox(
+                       text = '',
+                       background = colors[5],
+                       foreground = colors[4],
+                       padding = 0,
+                       fontsize = 37
+                       ),
+              widget.CurrentLayoutIcon(
+                       custom_icon_paths = [os.path.expanduser("~/.config/qtile/icons")],
+                       foreground = colors[0],
+                       background = colors[4],
+                       padding = 0,
+                       scale = 0.7
+                       ),
+              widget.CurrentLayout(
+                       foreground = colors[2],
+                       background = colors[4],
+                       padding = 5
+                       ),
+              widget.TextBox(
+                       text = '',
+                       background = colors[4],
+                       foreground = colors[5],
+                       padding = 0,
+                       fontsize = 37
+                       ),
+              widget.Clock(
+                       foreground = colors[2],
+                       background = colors[5],
+                       format = "%A, %B %d - %H:%M "
                        ),
               ]
     return widgets_list
@@ -334,23 +404,17 @@ bring_front_click = False
 cursor_warp = False
 floating_layout = layout.Floating(float_rules=[
     # Run the utility of `xprop` to see the wm class and name of an X client.
-    {'wmclass': 'confirm'},
-    {'wmclass': 'dialog'},
-    {'wmclass': 'download'},
-    {'wmclass': 'error'},
-    {'wmclass': 'file_progress'},
-    {'wmclass': 'notification'},
-    {'wmclass': 'splash'},
-    {'wmclass': 'toolbar'},
-    {'wmclass': 'confirmreset'},  # gitk
-    {'wmclass': 'makebranch'},  # gitk
-    {'wmclass': 'maketag'},  # gitk
-    {'wname': 'branchdialog'},  # gitk
-    {'wname': 'pinentry'},  # GPG key password entry
-    {'wmclass': 'ssh-askpass'},  # ssh-askpass
+     # default_float_rules include: utility, notification, toolbar, splash, dialog,
+    # file_progress, confirm, download and error.
+    *layout.Floating.default_float_rules,
 ])
 auto_fullscreen = True
 focus_on_window_activation = "smart"
+
+@hook.subscribe.startup_once
+def start_once():
+    home = os.path.expanduser('~')
+    subprocess.call([home + '/.config/qtile/autostart.sh'])
 
 # XXX: Gasp! We're lying here. In fact, nobody really uses or cares about this
 # string besides java UI toolkits; you can see several discussions on the
