@@ -1,3 +1,3 @@
 #! /bin/bash
-picom &
+picom --experimental-backends &
 feh --bg-fill --randomize ~/Media/wallpapers/* &
