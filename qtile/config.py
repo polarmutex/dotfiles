@@ -153,13 +153,20 @@ layouts = [
     # layout.Zoomy(),
 ]
 
-colors = [["#282c34", "#282c34"], # panel background
-          ["#458588", "#458588"], # background for current screen tab
-          ["#458588", "#458588"], # font color for group names
-          ["#ff5555", "#ff5555"], # border line color for current tab
-          ["#8d62a9", "#8d62a9"], # border line color for other tab and odd widgets
-          ["#668bd7", "#668bd7"], # color for the even widgets
-          ["#458588", "#458588"]] # window name
+colors = [
+    ["#1d2021", "#1d2021"],  # 0 -  background
+    ["#fbf1c7", "#fbf1c7"],  # 1 -  foreground
+    ["#3c3836", "#3c3836"],  # 2 -  background lighter
+    ["#fb4934", "#fb4934"],  # 3 -  red
+    ["#b8bb26", "#b8bb26"],  # 4 -  green
+    ["#fabd2f", "#fabd2f"],  # 5 -  yellow
+    ["#83a598", "#83a598"],  # 6 -  blue
+    ["#d3869b", "#d3869b"],  # 7 -  magenta
+    ["#8ec07c", "#8ec07c"],  # 8 -  cyan
+    ["#f9f5d7", "#f9f5d7"],  # 9 -  white
+    ["#928374", "#928374"],  # 10 - grey
+    ["#fe8019", "#fe8019"],  # 11 - orange
+]
 
 prompt = "{0}@{1}: ".format(os.environ["USER"], socket.gethostname())
 
