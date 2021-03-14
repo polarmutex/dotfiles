@@ -129,6 +129,9 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 if type nvim > /dev/null 2>&1; then
     alias vim='nvim'
     alias vi='nvim'
+
+~/.local/bin/colorscript.sh random
+
 fi
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
