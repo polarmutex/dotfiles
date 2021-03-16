@@ -64,12 +64,6 @@ mapper('n','tq',':tabclose<CR>',{noremap=true})
 -- Undo
 mapper('n','<leader>u',':UndotreeShow<CR>',{})
 
--- terminal / harpoon
-mapper('n','<leader>tt',':call GotoBuffer(0)<CR> | :startinsert<CR>',{})
-mapper('n','<leader>ts',':call GotoBuffer(1)<CR> | :startinsert<CR>',{})
-mapper('n','<leader>tr',':call GotoBuffer(2)<CR> | :startinsert<CR>',{})
-mapper('n','<leader>ta',':call GotoBuffer(3)<CR> | :startinsert<CR>',{})
--- turn terminal to normal mode with escape
 mapper('t','<Esc>','<C-\\><C-n>',{noremap=true});
 
 -- contextprint
