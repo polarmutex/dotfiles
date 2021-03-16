@@ -16,7 +16,7 @@ M.setup = function()
             },
             ["~/repos/beancount"] = {
                 term = {
-                    cmd = {
+                    cmds = {
                         "fava journal.beancount\n"
                     }
                 },
