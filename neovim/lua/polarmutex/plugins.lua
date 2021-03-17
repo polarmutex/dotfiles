@@ -74,7 +74,8 @@ return require('packer').startup{
         use 'tjdevries/express_line.nvim'
 
         -- Terminal / File Nav
-        use 'ThePrimeagen/harpoon'
+        --use 'ThePrimeagen/harpoon'
+        local_use('polarmutex','harpoon')
 
         -- Git
         use 'TimUntersberger/neogit'
@@ -163,7 +164,8 @@ return require('packer').startup{
         use 'takac/vim-hardtime'
         use 'ThePrimeagen/vim-be-good'
         --use_local 'vim-be-good'
-        use 'ThePrimeagen/vim-apm'
+        --use 'ThePrimeagen/vim-apm'
+        local_use('polarmutex','vim-apm')
         use 'VimDeathmatch/client'
 
         -- tasks
