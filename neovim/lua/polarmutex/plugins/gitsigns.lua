@@ -7,6 +7,7 @@ require('gitsigns').setup {
         changedelete = {hl = 'DiffChange', text = '~', numhl='GitSignsChangeNr'},
     },
     numhl = false,
+    linehl = false,
     keymaps = {
         -- Default keymap options
         noremap = true,
@@ -30,4 +31,6 @@ require('gitsigns').setup {
     },
     sign_priority = 6,
     status_formatter = nil, -- Use default
+    use_decoration_api = true,
+    use_internal_diff = true,  -- If luajit is present
 }
