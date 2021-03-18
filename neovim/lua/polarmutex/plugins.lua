@@ -144,9 +144,6 @@ return require('packer').startup{
             end
         }
 
-        -- Languagetool
-        use 'vigoux/LanguageTool.nvim'
-
         -- Whitespace
         use 'ntpeters/vim-better-whitespace'
         --show when there is gross trailing whitespace

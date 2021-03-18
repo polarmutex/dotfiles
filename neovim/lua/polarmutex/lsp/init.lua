@@ -32,6 +32,7 @@ require("polarmutex.lsp.typescript")
 require("polarmutex.lsp.efm")
 require("polarmutex.lsp.lua")
 require("polarmutex.lsp.svelte")
+require("polarmutex.lsp.prosemd")
 
 
 -- setup diagnostice
