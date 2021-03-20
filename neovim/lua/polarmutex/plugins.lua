@@ -162,7 +162,7 @@ return require('packer').startup{
         use 'ThePrimeagen/vim-be-good'
         --use_local 'vim-be-good'
         --use 'ThePrimeagen/vim-apm'
-        local_use('polarmutex','vim-apm')
+        --local_use('polarmutex','vim-apm')
         use 'VimDeathmatch/client'
 
         -- tasks

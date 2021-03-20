@@ -6,7 +6,7 @@ tmp
 # macOs
 .DS_Store
 
-qtile/__pycache__/config.cpython-39.pyc
+__pycache__
 .nvimlog
 neovim/.netrwhist
-qtile/config.pyc
+*.pyc
