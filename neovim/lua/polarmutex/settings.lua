@@ -109,5 +109,5 @@ opt.termguicolors = true
 opt.background = "dark"
 vim.cmd([[colorscheme gruvbox]])
 
-opt.foldmethod="expr"
-opt.foldexpr="nvim_treesitter#foldexpr()"
+--opt.foldmethod="expr"
+--opt.foldexpr="nvim_treesitter#foldexpr()"
