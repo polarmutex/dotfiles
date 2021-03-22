@@ -155,8 +155,8 @@ layouts = [
 
 colors = [
     ["#1d2021", "#1d2021"],  # 0 -  background
-    ["#fbf1c7", "#fbf1c7"],  # 1 -  foreground
     ["#3c3836", "#3c3836"],  # 2 -  background lighter
+    ["#fbf1c7", "#fbf1c7"],  # 1 -  foreground
     ["#fb4934", "#fb4934"],  # 3 -  red
     ["#b8bb26", "#b8bb26"],  # 4 -  green
     ["#fabd2f", "#fabd2f"],  # 5 -  yellow
@@ -197,7 +197,7 @@ def open_bt_menu():
 
 ##### DEFAULT WIDGET SETTINGS #####
 widget_defaults = dict(
-    font="JetBrains Mono",
+    font="MonoLisa",
     fontsize = 16,
     padding = 3,
     background=colors[0]
@@ -207,75 +207,86 @@ extension_defaults = widget_defaults.copy()
 
 def init_widgets_list():
     widgets_list = [
+            # Initial Spacer
             widget.Sep(
                 linewidth = 0,
                 padding = 6,
-                foreground = colors[0],
-                background = colors[0]
+                foreground = colors[2],
+                background = colors[1]
                 ),
+            # Python Image to launch terminal
             #widget.Image(
             #         filename = "~/.config/qtile/icons/python-white.png",
             #         scale = "False",
             #         mouse_callbacks = {'Button1': lambda: qtile.cmd_spawn(myTerminal)}
             #         ),
+            # Group Box
             widget.Sep(
                 linewidth = 0,
                 padding = 6,
                 foreground = colors[2],
-                background = colors[0]
-                ),
-            widget.GroupBox(
-                font = "JetBrains Mono",
-                padding = 5,
-                borderwidth = 4,
-                active = colors[9],
-                inactive = colors[10],
-                rounded = True,
-                disable_drag = True,
-                highlight_color = colors[3],
-                block_highlight_text_color = colors[5],
-                highlight_method = "block",
-                this_current_screen_border = colors[0],
-                this_screen_border = colors[7],
-                other_current_screen_border = colors[0],
-                other_screen_border = colors[0],
-                foreground = colors[1],
-                background = colors[2],
-                urgent_border = colors[3],
-                ),
-            widget.Prompt(
-                prompt = prompt,
-                font = "JetBrains Mono",
-                padding = 10,
-                foreground = colors[3],
                 background = colors[1]
                 ),
+            widget.GroupBox(
+                font = "MonoLisa",
+                fontsize = 11,
+                margin_y = 3,
+                margin_x = 0,
+                padding_y = 5,
+                padding_x = 3,
+                borderwidth = 3,
+                active = colors[5],
+                inactive = colors[2],
+                rounded = True,
+                highlight_color = colors[0],
+                this_current_screen_border = colors[6],
+                this_screen_border = colors[4],
+                other_current_screen_border = colors[6],
+                other_screen_border = colors[4],
+                foreground = colors[2],
+                background = colors[1]
+                ),
+            # Space separator
             widget.Sep(
                 linewidth = 0,
                 padding = 40,
                 foreground = colors[2],
-                background = colors[0]
+                background = colors[1]
                 ),
+            # Widow Name
             widget.WindowName(
-                    foreground = colors[1],
-                    background = colors[0],
+                    max_chars = 25,
+                    empty_string = '---',
+                    foreground = colors[6],
+                    background = colors[1],
                     padding = 0
                     ),
+            # System Tray
             widget.Systray(
-                    background = colors[0],
+                    background = colors[1],
                     padding = 5
                     ),
             widget.Sep(
                     linewidth = 0,
                     padding = 6,
-                    foreground = colors[0],
-                    background = colors[0]
+                    foreground = colors[1],
+                    background = colors[1]
                     ),
+            # Thermal Sensor
             widget.ThermalSensor(
                     foreground = colors[5],
                     background = colors[0],
                     threshold = 90,
                     padding = 5
+                    ),
+            # Updates
+            widget.TextBox(
+                    font="MonoLisa Nerd Font",
+                    fontsize = 16,
+                    text = ' ',
+                    background = colors[1],
+                    foreground = colors[0],
+                    padding = 0,
                     ),
             widget.CheckUpdates(
                     update_interval = 1800,
@@ -285,11 +296,45 @@ def init_widgets_list():
                     mouse_callbacks = {'Button1': lambda: qtile.cmd_spawn(myTerminal + ' -e sudo pacman -Syu')},
                     background = colors[0]
                     ),
+            widget.TextBox(
+                    font="MonoLisa Nerd Font",
+                   text = ' ',
+                   background = colors[1],
+                   foreground = colors[0],
+                   padding = 0,
+                   fontsize = 16
+                   ),
+            # Memory
+            widget.TextBox(
+                    font="MonoLisa Nerd Font",
+                    text = ' ',
+                    fontsize = 16,
+                    background = colors[1],
+                    foreground = colors[0],
+                    padding = 0,
+                    ),
             widget.Memory(
                     foreground = colors[5],
                     background = colors[0],
                     mouse_callbacks = {'Button1': lambda: qtile.cmd_spawn(myTerminal + ' -e htop')},
                     padding = 5
+                    ),
+            widget.TextBox(
+                    font="MonoLisa Nerd Font",
+                   text = ' ',
+                   background = colors[1],
+                   foreground = colors[0],
+                   padding = 0,
+                   fontsize = 16
+                   ),
+            # Volume
+            widget.TextBox(
+                    font="MonoLisa Nerd Font",
+                    fontsize = 16,
+                    text = ' ',
+                    background = colors[1],
+                    foreground = colors[0],
+                    padding = 0,
                     ),
             widget.TextBox(
                     text=" ",
@@ -298,11 +343,29 @@ def init_widgets_list():
                     font="Font Awesome 5 Free Solid",
                     # fontsize=38,
                     ),
-            widget.PulseVolume(
+            widget.Volume(
                     foreground=colors[7],
                     background=colors[0],
-                    limit_max_volume="True",
                     mouse_callbacks={"Button3": open_pavu},
+                    padding = 5,
+                    max_chars = 30
+                    ),
+            widget.TextBox(
+                    font="MonoLisa Nerd Font",
+                   text = ' ',
+                   background = colors[1],
+                   foreground = colors[0],
+                   padding = 0,
+                   fontsize = 16
+                   ),
+            # Current Layout
+            widget.TextBox(
+                    font="MonoLisa Nerd Font",
+                    fontsize = 16,
+                    text = ' ',
+                    background = colors[1],
+                    foreground = colors[0],
+                    padding = 0,
                     ),
             widget.CurrentLayoutIcon(
                     custom_icon_paths = [os.path.expanduser("~/.config/qtile/icons")],
@@ -316,6 +379,23 @@ def init_widgets_list():
                     background = colors[0],
                     padding = 5
                     ),
+            widget.TextBox(
+                    font="MonoLisa Nerd Font",
+                   text = ' ',
+                   background = colors[1],
+                   foreground = colors[0],
+                   padding = 0,
+                   fontsize = 16
+                   ),
+            # Bluetooth
+            widget.TextBox(
+                    font="MonoLisa Nerd Font",
+                    fontsize = 16,
+                    text = ' ',
+                    background = colors[1],
+                    foreground = colors[0],
+                    padding = 0,
+                    ),
             widget.GenPollText(
                     func=bluetooth,
                     background=colors[0],
@@ -325,6 +405,23 @@ def init_widgets_list():
                         "Button1": toggle_bluetooth,
                         "Button3": open_bt_menu,
                         },
+                    ),
+            widget.TextBox(
+                    font="MonoLisa Nerd Font",
+                   text = ' ',
+                   background = colors[1],
+                   foreground = colors[0],
+                   padding = 0,
+                   fontsize = 16
+                   ),
+            # Clock
+            widget.TextBox(
+                    font="MonoLisa Nerd Font",
+                    fontsize = 16,
+                    text = ' ',
+                    background = colors[1],
+                    foreground = colors[0],
+                    padding = 0,
                     ),
             widget.TextBox(
                     text="",
@@ -338,13 +435,38 @@ def init_widgets_list():
                     format = "%A, %B %d - %H:%M "
                     ),
             widget.TextBox(
+                    font="MonoLisa Nerd Font",
+                   text = ' ',
+                   background = colors[1],
+                   foreground = colors[0],
+                   padding = 0,
+                   fontsize = 16
+                   ),
+            # Poweroff Button
+            widget.TextBox(
+                    font="MonoLisa Nerd Font",
+                    fontsize = 16,
+                    text = ' ',
+                    background = colors[1],
+                    foreground = colors[0],
+                    padding = 0,
+                    ),
+            widget.TextBox(
                     text="⏻",
                     foreground=colors[5],
                     font="Font Awesome 5 Free Solid",
-                    fontsize=20,
-                    padding=20,
+                    fontsize=16,
+                    padding=10,
                     mouse_callbacks={"Button1": open_powermenu},
                     ),
+            widget.TextBox(
+                    font="MonoLisa Nerd Font",
+                   text = ' ',
+                   background = colors[1],
+                   foreground = colors[0],
+                   padding = 0,
+                   fontsize = 16
+                   ),
             ]
     return widgets_list
 
