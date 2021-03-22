@@ -1,5 +1,5 @@
 " Autostart VimApm
-augroup VimApm
-    autocmd!
-    autocmd VimEnter * :VimApm
-augroup end
+"augroup VimApm
+"    autocmd!
+"    autocmd VimEnter * :VimApm
+"augroup end
