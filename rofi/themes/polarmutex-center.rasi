@@ -1,0 +1,86 @@
+/**
+ * ROFI Color theme
+ * NAME: dt-center.rasi
+ * DESCRIPTION: This is a centered prompt.
+ * AUTHOR: Derek Taylor (DT)
+ */
+
+* {
+    background-color:            #1d2021;
+    border-color:                #3c3836;
+    text-color:                  #fbf1c7;
+    font:                        "MonoLisa";
+    prompt-font:                 "MonoLisa";
+    prompt-background:           #83a598;
+    prompt-foreground:           #1d2021;
+    prompt-padding:              4px;
+    alternate-normal-background: #1c1f24;
+    alternate-normal-foreground: @text-color;
+    selected-normal-background:  #fabd2f;
+    selected-normal-foreground:  #1d2021;
+    spacing:                     3;
+}
+#window {
+    border:  1;
+    padding: 5;
+}
+#mainbox {
+    border:  0;
+    padding: 0;
+}
+#message {
+    border:       1px dash 0px 0px ;
+    padding:      1px ;
+}
+#listview {
+    fixed-height: 0;
+    border:       2px dash 0px 0px ;
+    spacing:      2px ;
+    scrollbar:    true;
+    padding:      2px 0px 0px ;
+}
+#element {
+    border:  0;
+    padding: 1px ;
+}
+#element.selected.normal {
+    background-color: @selected-normal-background;
+    text-color:       @selected-normal-foreground;
+}
+#element.alternate.normal {
+    background-color: @alternate-normal-background;
+    text-color:       @alternate-normal-foreground;
+}
+#scrollbar {
+    width:        0px ;
+    border:       0;
+    handle-width: 0px ;
+    padding:      0;
+}
+#sidebar {
+    border: 2px dash 0px 0px ;
+}
+#button.selected {
+    background-color: @selected-normal-background;
+    text-color:       @selected-normal-foreground;
+}
+#inputbar {
+    spacing:    0;
+    padding:    1px ;
+}
+#case-indicator {
+    spacing:    0;
+}
+#entry {
+    padding: 4px 4px;
+    expand: false;
+    width: 10em;
+}
+#prompt {
+    padding:          @prompt-padding;
+    background-color: @prompt-background;
+    text-color:       @prompt-foreground;
+    font:             @prompt-font;
+    border-radius:    2px;
+}
+
