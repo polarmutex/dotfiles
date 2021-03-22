@@ -19,11 +19,13 @@
     ~/.config/awesome: awesome/
     ~/.config/i3: i3/
     ~/.config/qtile: qtile/
+    ~/.config/rofi: rofi/
     ~/Media/wallpapers: wallpapers
     ~/.local/bin/obsidian_sync: obsidian/obsidian_sync
     ~/.local/bin/task_sync: tasks/task_sync
     ~/.local/bin/colorscript.sh: colorscripts/colorscript.sh
     ~/.local/bin/colorscripts: colorscripts/colorscripts
+    ~/.config/picom: picom/
 
 - shell:
     # brew
