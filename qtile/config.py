@@ -40,19 +40,28 @@ mod = "mod4" # sets mod key to super
 myTerminal = "kitty" # my preferred terminal
 
 keys = [
+    # Launch Terminal
     Key([mod], "Return",
         lazy.spawn(myTerminal),
         desc="Launch terminal"),
+
+    # Launch Launcher
     Key([mod, "control"], "Return",
         #lazy.spawn("dmenu_run -p 'Run: '"),
         lazy.spawn("rofi -show drun -display-drun \"Run: \" -drun-display-format \"{name}\""),
         desc="Run Launcher"),
+
+    # Kill focused window
     Key([mod], "w",
         lazy.window.kill(),
         desc="Kill focused window"),
+
+    # reload qtile
     Key([mod, "control"], "r",
         lazy.restart(),
         desc="Restart qtile"),
+
+    # shutdown qtile
     Key([mod, "control"], "q",
         lazy.shutdown(),
         desc="Shutdown qtile"),
@@ -72,6 +81,21 @@ keys = [
     Key([mod, "control"], "j",
         lazy.layout.shuffle_up(),
         desc="Move window up in current stack "),
+
+    # Expand/Shrink window
+    Key([mod], "h",
+        lazy.layout.shrink(),
+        lazy.layout.decrease_nmaster(),
+        desc="Shrink window (MonadTall), decrease number on master pane (Tile)"),
+    Key([mod], "l",
+        lazy.layout.grow(),
+        lazy.layout.increase_nmaster(),
+        desc="Shrink window (MonadTall), decrease number on master pane (Tile)"),
+
+    # Window fullscreen
+    Key([mod], "f",
+        lazy.window.toggle_fullscreen(),
+        desc='toggle window between minimum and maximum sizes'),
 
     # Switch window focus to other pane(s) of stack
     Key([mod], "space",
@@ -139,13 +163,14 @@ layout_theme = {
 
 layouts = [
     layout.MonadTall(**layout_theme),
+    layout.MonadWide(**layout_theme),
+    layout.Matrix(**layout_theme),
     layout.Max(**layout_theme),
     layout.Tile(shift_windows=True, **layout_theme),
     layout.Stack(num_stacks=2),
     # Try more layouts by unleashing below layouts.
     # layout.Bsp(),
     # layout.Columns(),
-    # layout.Matrix(),
     # layout.MonadWide(),
     # layout.RatioTile(),
     # layout.TreeTab(),
@@ -215,11 +240,11 @@ def init_widgets_list():
                 background = colors[1]
                 ),
             # Python Image to launch terminal
-            #widget.Image(
-            #         filename = "~/.config/qtile/icons/python-white.png",
-            #         scale = "False",
-            #         mouse_callbacks = {'Button1': lambda: qtile.cmd_spawn(myTerminal)}
-            #         ),
+            widget.Image(
+                     filename = "~/.config/qtile/python.png",
+                     scale = "False",
+                     mouse_callbacks = {'Button1': lambda: qtile.cmd_spawn(myTerminal)}
+                     ),
             # Group Box
             widget.Sep(
                 linewidth = 0,
@@ -343,12 +368,11 @@ def init_widgets_list():
                     font="Font Awesome 5 Free Solid",
                     # fontsize=38,
                     ),
-            widget.Volume(
+            widget.PulseVolume(
                     foreground=colors[7],
                     background=colors[0],
                     mouse_callbacks={"Button3": open_pavu},
                     padding = 5,
-                    max_chars = 30
                     ),
             widget.TextBox(
                     font="MonoLisa Nerd Font",
@@ -509,6 +533,7 @@ floating_layout = layout.Floating(float_rules=[
      # default_float_rules include: utility, notification, toolbar, splash, dialog,
     # file_progress, confirm, download and error.
     *layout.Floating.default_float_rules,
+    Match(wm_class='pinentry-gtk-2'),  # GPG key password entry
 ])
 auto_fullscreen = True
 focus_on_window_activation = "smart"
