@@ -7,13 +7,12 @@
 package.loaded['polarmutex.globals'] = nil
 require('polarmutex.globals')
 
-require('polarmutex.settings')
-
 -- load plugins
 if require('polarmutex.first_load')() then
     return
 end
 require("polarmutex.plugins")
+require('polarmutex.settings')
 
 require("polarmutex.lsp")
 
