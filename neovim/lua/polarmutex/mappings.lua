@@ -20,6 +20,15 @@ mapper('n','<leader>gd',':lua require("polarmutex.plugins.telescope").git_bcommi
 mapper('n','<leader>gi',':lua require("polarmutex.plugins.telescope").gh_issues()<CR>',{})
 mapper('n','<leader>gr',':lua require("polarmutex.plugins.telescope").gh_pull_request()<CR>',{})
 
+--H
+
+mapper('n','<leader>hb','<cmd>lua require("gitsigns").blame_line()<CR>',{})
+mapper('n','<leader>hp','<cmd>lua require("gitsigns").preview_hunk()<CR>',{})
+mapper('n','<leader>hr','<cmd>lua require("gitsigns").reset_hunk()<CR>',{})
+mapper('n','<leader>hR','<cmd>lua require("gitsigns").reset_buffer()<CR>',{})
+mapper('n','<leader>hs','<cmd>lua require("gitsigns").stage_hunk()<CR>',{})
+mapper('n','<leader>hu','<cmd>lua require("gitsigns").undo_stage_hunk()<CR>',{})
+
 --M
 
 mapper('n','<leader>mc',":%s/txn/*/gc<CR>",{}) -- change uncleared transactions to cleared in beancount
