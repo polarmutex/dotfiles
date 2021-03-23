@@ -9,10 +9,12 @@ local vcs = require('galaxyline.provider_vcs')
 local has_lsp_status, lsp_status = pcall(require, 'lsp-status')
 
 local sep = {
-    right_filled = '', -- e0b2
-    left_filled = '', -- e0b0
-    right = '', -- e0b3
-    left = '', -- e0b1
+    left_filled = ' ', -- e0b2
+    right_filled = ' ', -- e0b0
+    left = ' ', -- e0b3
+    right = ' ', -- e0b1
+    left_rounded = ' ',
+    right_rounded = ' ',
 }
 
 local icons = {
@@ -20,7 +22,7 @@ local icons = {
     unsaved = '',
     warning = '',
     error = 'ﳛ',
-    branch = '',
+    branch = ' ',
 }
 
 function condition.checkwidth()
@@ -81,7 +83,7 @@ gls.left = {
             return string.format('  %s ', mode_map[vim.fn.mode()][2])
         end,
         highlight = 'GalaxyLineMode',
-        separator = sep.left_filled,
+        separator = sep.right_rounded,
         separator_highlight = 'GalaxyLineModeInv',
     }
 },
@@ -92,6 +94,16 @@ gls.left = {
         condition = vcs.check_git_workspace,
         highlight = {theme.GruvboxGreen.fg, theme.GruvboxBg2.fg},
   }
+},
+ {
+    FileIcon = {
+        provider = "FileIcon",
+        condition = buffer_not_empty,
+        highlight = {
+            require("galaxyline.provider_fileinfo").get_file_icon_color,
+            theme.GruvboxBg2.fg
+        }
+    }
 },
 {
     FileName = {
@@ -180,7 +192,7 @@ gls.right = {
                 return ''
             end
         end,
-        highlight = {theme.GruvboxFg2.fg, theme.GruvboxBg2.fg}
+        highlight = {theme.GruvboxGreen.fg, theme.GruvboxBg2.fg}
     },
 },
 {
@@ -209,17 +221,25 @@ gls.right = {
                 return string.format(' %s:%s ', vim.fn.line('.'), vim.fn.col('.'))
             end,
         },
-        highlight = {theme.GruvboxFg2.fg, theme.GruvboxBg2.fg},
+        highlight = {theme.GruvboxBg2.fg, theme.GruvboxBlue.fg, 'bold'},
         condition = buffer_not_empty,
-        separator = sep.slant_alt_left,
-        separator_highlight = {theme.GruvboxFg2.fg, theme.GruvboxBg2.fg},
+        separator = sep.left_rounded,
+        separator_highlight = {theme.GruvboxBlue.fg, theme.GruvboxBg2.fg},
     },
 },
 {
     PercentInfo = {
         provider = fileinfo.current_line_percent,
-        highlight = {theme.GruvboxFg2.fg, theme.GruvboxBg2.fg},
+        highlight = {theme.GruvboxBg2.fg, theme.GruvboxBlue.fg, 'bold'},
         condition = buffer_not_empty,
     },
+},
+{
+    PosRightRounded = {
+        provider = function()
+            return sep.right_rounded
+        end,
+        highlight = {theme.GruvboxBlue.fg, theme.GruvboxBg2.fg}
+    }
 },
 }
