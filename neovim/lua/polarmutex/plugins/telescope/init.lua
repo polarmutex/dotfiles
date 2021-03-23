@@ -17,10 +17,6 @@ M.git_files = function()
 end
 M.git_branches = function()
     require("telescope.builtin").git_branches({
-        attach_mappings = function(_, map)
-            actions.select_default:replace(actions.git_track_branch)
-            return true
-        end
     })
 end
 M.git_commits = function()
