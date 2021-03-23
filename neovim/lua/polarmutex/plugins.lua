@@ -73,6 +73,9 @@ return require('packer').startup{
         }
         use 'tjdevries/express_line.nvim'
 
+        --Buffer Tabs
+        use 'akinsho/nvim-bufferline.lua'
+
         -- Terminal / File Nav
         --use 'ThePrimeagen/harpoon'
         local_use('polarmutex','harpoon')
