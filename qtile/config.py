@@ -125,6 +125,43 @@ keys = [
         desc="Spawn a command using a prompt widget"),
 ]
 
+
+def show_keys():
+    key_help = ""
+    for k in keys:
+        mods = ""
+
+        for m in k.modifiers:
+            if m == "mod4":
+                mods += "Super + "
+            else:
+                mods += m.capitalize() + " + "
+
+        if len(k.key) > 1:
+            mods += k.key.capitalize()
+        else:
+            mods += k.key
+
+        key_help += "{:<30} {}".format(mods, k.desc + "\n")
+
+    return key_help
+
+
+keys.extend(
+    [
+        Key(
+            [mod],
+            "k",
+            lazy.spawn(
+                "sh -c 'echo \""
+                + show_keys()
+                + '" | rofi -dmenu -theme ~/.config/rofi/configTall.rasi -i -p "?"\''
+            ),
+            desc="Print keyboard bindings",
+        ),
+    ]
+)
+
 # TODO look into
 group_names = [("WWW", {'layout': 'monadtall'}),
                ("DEV", {'layout': 'monadtall'}),
@@ -230,6 +267,8 @@ widget_defaults = dict(
 extension_defaults = widget_defaults.copy()
 
 
+# TODO make functions to cleanup widget list
+# TODO call new scripts to display info
 def init_widgets_list():
     widgets_list = [
             # Initial Spacer
@@ -368,7 +407,7 @@ def init_widgets_list():
                     font="Font Awesome 5 Free Solid",
                     # fontsize=38,
                     ),
-            widget.PulseVolume(
+            widget.Volume(
                     foreground=colors[7],
                     background=colors[0],
                     mouse_callbacks={"Button3": open_pavu},
@@ -411,7 +450,7 @@ def init_widgets_list():
                    padding = 0,
                    fontsize = 16
                    ),
-            # Bluetooth
+            # CPU
             widget.TextBox(
                     font="MonoLisa Nerd Font",
                     fontsize = 16,
@@ -420,15 +459,10 @@ def init_widgets_list():
                     foreground = colors[0],
                     padding = 0,
                     ),
-            widget.GenPollText(
-                    func=bluetooth,
+            widget.CPU(
                     background=colors[0],
                     foreground=colors[6],
-                    update_interval=3,
-                    mouse_callbacks={
-                        "Button1": toggle_bluetooth,
-                        "Button3": open_bt_menu,
-                        },
+                    fontsize = 16
                     ),
             widget.TextBox(
                     font="MonoLisa Nerd Font",
