@@ -66,5 +66,3 @@ require('telescope').load_extension('octo')
 --require('telescope').load_extension('ghcli')
 --require('telescope').load_extension('cht-sh')
 
-require('polarmutex.plugins.telescope.mappings')
-

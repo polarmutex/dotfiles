@@ -33,6 +33,18 @@ M.gh_issues = function()
 end
 
 -- Files / Meta
+M.nvim_dotfiles = function()
+    require('telescope.builtin').find_files {
+        prompt_title = "~ dotfiles ~",
+        shorten_path = false,
+        cwd = "~/.config/nvim",
+
+        layout_strategy = 'horizontal',
+        layout_config = {
+            preview_width = 0.65,
+        }
+    }
+end
 M.builtin = function()
     require('telescope.builtin').builtin()
 end
