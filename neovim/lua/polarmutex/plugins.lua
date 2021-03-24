@@ -35,9 +35,11 @@ return require('packer').startup{
 
         -- LSP
         use 'neovim/nvim-lspconfig'
-        use 'nvim-lua/completion-nvim'
+        --use 'nvim-lua/completion-nvim'
         use 'hrsh7th/nvim-compe'
         use 'nvim-lua/lsp-status.nvim'
+        use 'onsails/lspkind-nvim'
+        use 'kosayoda/nvim-lightbulb'
         use 'tjdevries/nlua.nvim'
 
         -- Tree-Sitter
@@ -77,8 +79,8 @@ return require('packer').startup{
         use 'akinsho/nvim-bufferline.lua'
 
         -- Terminal / File Nav
-        --use 'ThePrimeagen/harpoon'
-        local_use('polarmutex','harpoon')
+        use 'ThePrimeagen/harpoon'
+        --local_use('polarmutex','harpoon')
 
         -- Git
         use 'TimUntersberger/neogit'
