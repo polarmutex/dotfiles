@@ -1,8 +1,4 @@
-local lspconfig = require('lspconfig')
-local custom_attach = require("polarmutex.lsp.attach")
-
-lspconfig.efm.setup {
-    on_attach = custom_attach,
+return {
     init_options = {
         documentFormatting = true
     },

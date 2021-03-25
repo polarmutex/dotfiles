@@ -1,12 +1,4 @@
-
-local lspconfig = require('lspconfig')
-local custom_attach = require("polarmutex.lsp.attach")
-
---lspconfig.pyls_ms.setup({
---    on_attach=custom_attach,
---})
-lspconfig.pyright.setup({
-    on_attach=custom_attach,
+return {
     settings = {
         analysis = {
             autoSearchPaths = true
@@ -22,4 +14,4 @@ lspconfig.pyright.setup({
             uri = initialization_params['rootUri']
         }}
     end;
-})
+}

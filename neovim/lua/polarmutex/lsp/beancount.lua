@@ -1,7 +1,4 @@
-local lspconfig = require('lspconfig')
-local custom_attach = require("polarmutex.lsp.attach")
-
-lspconfig.beancount.setup({
+return {
     cmd = {
         'node',
         '--inspect',
@@ -9,9 +6,8 @@ lspconfig.beancount.setup({
         --'beancount-langserver',
         '--stdio'
     },
-    on_attach=custom_attach,
     init_options = {
-      journalFile = "~/repos/beancount/journal.beancount",
-      pythonPath = "~/.cache/pypoetry/virtualenvs/beancount-repo-iwRmyqK8-py3.9/bin/python3";
+        journalFile = "~/repos/beancount/journal.beancount",
+        pythonPath = "~/.cache/pypoetry/virtualenvs/beancount-repo-iwRmyqK8-py3.9/bin/python3";
     },
-})
+}

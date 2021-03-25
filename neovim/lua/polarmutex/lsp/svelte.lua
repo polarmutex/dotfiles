@@ -1,8 +1,4 @@
-local lspconfig = require('lspconfig')
-local custom_attach = require("polarmutex.lsp.attach")
-
-lspconfig.svelte.setup({
-    on_attach=custom_attach,
+return {
     settings = {
         svelte =  {
             plugin = {
@@ -27,4 +23,4 @@ lspconfig.svelte.setup({
             }
         }
     },
-})
+}
