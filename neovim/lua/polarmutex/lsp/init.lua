@@ -82,12 +82,13 @@ local function setup_servers()
     local servers = require'lspinstall'.installed_servers()
     -- ... and add manually installed servers
     table.insert(servers, "clangd")
+    table.insert(servers, "prosemd")
 
     for _, server in pairs(servers) do
         local config = make_config()
 
-        if server == "lua" then
-            config = vim.tbl_extend("force", config, require'polarmutex.lsp.lua')
+        if server == "sumneko" then
+            config = vim.tbl_extend("force", config, require'polarmutex.lsp.sumneko')
         elseif server == "pyright" then
             config = vim.tbl_extend("force", config, require'polarmutex.lsp.pyright')
         elseif server == "clangd" then
