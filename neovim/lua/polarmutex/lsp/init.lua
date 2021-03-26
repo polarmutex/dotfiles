@@ -81,6 +81,7 @@ local function setup_servers()
     -- get all installed servers
     local servers = require'lspinstall'.installed_servers()
     -- ... and add manually installed servers
+    table.insert(servers, "beancount")
     table.insert(servers, "clangd")
     table.insert(servers, "prosemd")
 
