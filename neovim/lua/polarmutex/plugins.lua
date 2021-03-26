@@ -67,6 +67,7 @@ return require('packer').startup{
 	        },
         }
         use 'kyazdani42/nvim-web-devicons'
+        use 'phaazon/hop.nvim'
 
         -- Statusline
         use {
@@ -96,7 +97,7 @@ return require('packer').startup{
 
         -- Increment / Decrement
         use 'monaqa/dial.nvim'
-        use 'tpope/vim-speeddating'    -- Handle changing of dates in a nicer manner
+        --use 'tpope/vim-speeddating'    -- Handle changing of dates in a nicer manner
 
         -- text maniuplation
         -- use 'godlygeek/tabular'        -- Quickly align text by pattern
