@@ -30,6 +30,18 @@ $(neovim_target):
 	mkdir $(neovim_target);
 	git clone https://github.com/neovim/neovim.git $(neovim_target);
 
+kitty_target = $(pwd)/../kitty
+kitty: | $(kitty_target)
+	cd $(kitty_target);\
+	git pull;\
+	make clean;\
+	make;\
+	sudo make install;\
+
+$(kitty_target):
+	mkdir $(kitty_target);
+	git clone https://github.com/kovidgoyal/kitty.git $(kitty_target);
+
 CMAKE = /opt/cmake
 cmake: | $(CMAKE)
 $(CMAKE):
