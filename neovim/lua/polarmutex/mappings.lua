@@ -1,132 +1,118 @@
-local mapper = function(mode, key, result, options)
-    vim.api.nvim_set_keymap(mode, key, result, options)
+-- @param map {{mode, lhs, rhs, opts}, ..}
+-- @param mode string 'n' | 'i' | 'v'
+-- @param lhs string key to map
+-- @param rhs string command to run
+local keymap = function(map)
+  map = map or {}
+  local opts = map[4] or {}
+  return vim.api.nvim_set_keymap(map[1], map[2], map[3], opts)
 end
 
---
---LEADER
---
+-- @param maps list of keymaps
+local keymaps = function(maps)
+  for _, m in ipairs(maps) do keymap(m) end
+end
 
---C
+local n, i, t, esc = "n", "i", "t", "<esc>"
+local silent = { silent = true }
 
-mapper('n','<leader>ce',':lua require("harpoon.term").sendCommand(1, 2)<CR>',{})
-mapper('n','<leader>cp',":lua require('plenary.reload').reload_module('contextprint'); require('contextprint').add_statement()<CR>",{})
-mapper('n','<leader>cu',':lua require("harpoon.term").sendCommand(1, 1)<CR>',{})
+local maps = {
 
---G
+    -- LSP
+    { n, "gd", "<cmd>lua vim.lsp.buf.definition()<cr>", silent },
+	{ n, "K", "<cmd>lua vim.lsp.buf.hover()<cr>", silent },
+	{ n, "gD", "<cmd>lua vim.lsp.buf.implementation()<CR>", silent },
+	{ n, "1gD", "<cmd>lua vim.lsp.buf.type_definition()<CR>", silent },
+	{ n, "gr", "<cmd>lua require'telescope.builtin'.lsp_references{}<CR>", silent },
+	{ n, "g0", "<cmd>lua vim.lsp.buf.document_symbol()<CR>", silent },
+	{ n, "gW", "<cmd>lua vim.lsp.buf.workspace_symbol()<CR>", silent },
+	{ n, "<Leader>re", "<cmd>lua vim.lsp.buf.rename()<CR>", silent },
+	{ n, "<Leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", silent },
+	{ n, "<c-]>", "<cmd>lua vim.lsp.buf.declaration()<CR>", silent },
+	{ n, "<Leader>di", "<cmd>lua vim.lsp.util.show_line_diagnostics()<CR>", silent },
 
-mapper('n','<leader>gb',':lua require("polarmutex.plugins.telescope").git_branches()<CR>',{})
-mapper('n','<leader>gc',':lua require("polarmutex.plugins.telescope").git_commits()<CR>',{})
-mapper('n','<leader>gd',':lua require("polarmutex.plugins.telescope").git_bcommits()<CR>',{})
-mapper('n','<leader>gi',':lua require("polarmutex.plugins.telescope").gh_issues()<CR>',{})
-mapper('n','<leader>gr',':lua require("polarmutex.plugins.telescope").gh_pull_request()<CR>',{})
+    -- Testing
+	{ n, "<leader>T", "<cmd>Ultest<cr>" },
+	{ n, "]t", "<plug>(ultest-next-fail)" },
+	{ n, "[t", "<plug>(ultest-prev-fail)" },
 
---H
 
-mapper('n','<leader>hb','<cmd>lua require("gitsigns").blame_line()<CR>',{})
-mapper('n','<leader>hp','<cmd>lua require("gitsigns").preview_hunk()<CR>',{})
-mapper('n','<leader>hr','<cmd>lua require("gitsigns").reset_hunk()<CR>',{})
-mapper('n','<leader>hR','<cmd>lua require("gitsigns").reset_buffer()<CR>',{})
-mapper('n','<leader>hs','<cmd>lua require("gitsigns").stage_hunk()<CR>',{})
-mapper('n','<leader>hu','<cmd>lua require("gitsigns").undo_stage_hunk()<CR>',{})
+    -- Harpoon
+    { n, '<leader>te',':lua require("harpoon.term").gotoTerminal(2)<CR>'},
+    { n, '<leader>ce',':lua require("harpoon.term").sendCommand(1, 2)<CR>'},
+    { n, '<leader>tu',':lua require("harpoon.term").gotoTerminal(1)<CR>'},
+    { n, '<leader>cu',':lua require("harpoon.term").sendCommand(1, 1)<CR>'},
 
---M
+    { n, '<leader>cp',":lua require('plenary.reload').reload_module('contextprint'); require('contextprint').add_statement()<CR>"},
 
-mapper('n','<leader>mc',":%s/txn/*/gc<CR>",{}) -- change uncleared transactions to cleared in beancount
-mapper('n','<leader>mt',":lua require('plenary.reload').reload_module('beancount'); require('beancount').CopyTransaction()<CR>",{}) --find transactions to copy
+    -- Git
+    { n, '<leader>gb',':lua require("polarmutex.plugins.telescope").git_branches()<CR>'},
+    { n, '<leader>gc',':lua require("polarmutex.plugins.telescope").git_commits()<CR>'},
+    { n, '<leader>gd',':lua require("polarmutex.plugins.telescope").git_bcommits()<CR>',},
+    { n, '<leader>gi',':lua require("polarmutex.plugins.telescope").gh_issues()<CR>'},
+    { n, '<leader>gr',':lua require("polarmutex.plugins.telescope").gh_pull_request()<CR>'},
+    { n, '<leader>hb','<cmd>lua require("gitsigns").blame_line()<CR>'},
+    { n, '<leader>hp','<cmd>lua require("gitsigns").preview_hunk()<CR>'},
+    { n, '<leader>hr','<cmd>lua require("gitsigns").reset_hunk()<CR>'},
+    { n, '<leader>hR','<cmd>lua require("gitsigns").reset_buffer()<CR>'},
+    { n, '<leader>hs','<cmd>lua require("gitsigns").stage_hunk()<CR>'},
+    { n, '<leader>hu','<cmd>lua require("gitsigns").undo_stage_hunk()<CR>'},
 
---S
+    -- Beancount
+    { n, '<leader>mc',":%s/txn/*/gc<CR>"}, -- change uncleared transactions to cleared in beancount
+    { n,'<leader>mt',":lua require('plenary.reload').reload_module('beancount'); require('beancount').CopyTransaction()<CR>"}, --find transactions to copy
 
-mapper('n','<leader>sB',':lua require("polarmutex.plugins.telescope").builtin()<CR>',{})
-mapper('n','<leader>sc',':lua require("telescope.builtin").commands()<CR>',{})
-mapper('n','<leader>sch',':lua require("telescope.builtin").command_history()<CR>',{})
-mapper('n','<leader>sC',':lua require("telescope.builtin").git_string()<CR>',{})
-mapper('n','<leader>sd',':lua require("polarmutex.plugins.telescope").nvim_dotfiles()<CR>',{})
-mapper('n','<leader>sf',':lua require("polarmutex.plugins.telescope").fd()<CR>',{})
-mapper('n','<leader>sh',':lua require("polarmutex.plugins.telescope").help_tags()<CR>',{})
-mapper('n','<leader>sH',':lua require("telescope.builtin").highlights()<CR>',{})
-mapper('n','<leader>sk',':lua require("polarmutex.plugins.telescope").keymaps()<CR>',{})
-mapper('n','<leader>sl',':lua require("polarmutex.plugins.telescope").live_grep()<CR>',{})
-mapper('n','<leader>sg',':lua require("polarmutex.plugins.telescope").git_files()<CR>',{})
-mapper('n','<leader>sp',':lua require("telescope.builtin").spell_suggest()<CR>',{})
-mapper('n','<leader>sq',':lua require("telescope.builtin").quickfix()<CR>',{})
+    -- Find/Search Files
+    { n, '<leader>sB',':lua require("polarmutex.plugins.telescope").builtin()<CR>'},
+    { n, '<leader>sc',':lua require("telescope.builtin").commands()<CR>'},
+    { n, '<leader>sch',':lua require("telescope.builtin").command_history()<CR>'},
+    { n, '<leader>sC',':lua require("telescope.builtin").git_string()<CR>'},
+    { n, '<leader>sd',':lua require("polarmutex.plugins.telescope").nvim_dotfiles()<CR>'},
+    { n, '<leader>sf',':lua require("polarmutex.plugins.telescope").fd()<CR>'},
+    { n, '<leader>sh',':lua require("polarmutex.plugins.telescope").help_tags()<CR>'},
+    { n, '<leader>sH',':lua require("telescope.builtin").highlights()<CR>'},
+    { n,'<leader>sk',':lua require("polarmutex.plugins.telescope").keymaps()<CR>'},
+    { n, '<leader>sl',':lua require("polarmutex.plugins.telescope").live_grep()<CR>'},
+    { n, '<leader>sg',':lua require("polarmutex.plugins.telescope").git_files()<CR>'},
+    { n, '<leader>sp',':lua require("telescope.builtin").spell_suggest()<CR>'},
+    { n, '<leader>sq',':lua require("telescope.builtin").quickfix()<CR>'},
 
---T
 
-mapper('n','<leader>te',':lua require("harpoon.term").gotoTerminal(2)<CR>',{})
-mapper('n','<leader>tu',':lua require("harpoon.term").gotoTerminal(1)<CR>',{})
+    -- Undo
+    { n, '<leader>u',':UndotreeShow<CR>'},
 
---U
 
-mapper('n','<leader>u',':UndotreeShow<CR>',{})
+    -- Move windows
+    { n, '<C-j>','<C-W><C-J>'},
+    { n, '<C-k>','<C-W><C-K>'},
+    { n, '<C-l>','<C-W><C-L>'},
+    { n, '<C-h>','<C-W><C-H>'},
 
---mapper('n','<leader><C-r>',':lua require("harpoon.mark").shorten_list()<CR>',{})
---mapper('n','<leader>r',':lua require("harpoon.mark").promote()<CR>',{})
+    --" Use alt + hjkl to resize windows
+    { n, '<M-j>',':resize -3<CR>'},
+    { n, '<M-k>',':resize +3<CR>'},
+    { n, '<M-h>',':vertical resize -3<CR>'},
+    { n, '<M-l>',':vertical resize +3<CR>'},
 
---
--- CTRL
---
+    -- Allow ESC to leave terminal
+    { t, '<Esc>','<C-\\><C-n>'},
 
-mapper('n','<C-j>','<C-W><C-J>',{noremap=true})
-mapper('n','<C-k>','<C-W><C-K>',{noremap=true})
-mapper('n','<C-l>','<C-W><C-L>',{noremap=true})
-mapper('n','<C-h>','<C-W><C-H>',{noremap=true})
---mapper('n','<C-m>',':lua require("harpoon.mark").add_file()<CR>',{})
---mapper('n','<C-e>',':lua require("harpoon.ui").toggle_quick_menu()<CR>',{})
---mapper('n','<C-h>',':lua require("harpoon.ui").nav_file(2)<CR>',{})
---mapper('n','<C-t>',':lua require("harpoon.ui").nav_file(2)<CR>',{})
---mapper('n','<C-n>',':lua require("harpoon.ui").nav_file(3)<CR>',{})
---mapper('n','<C-s>',':lua require("harpoon.ui").nav_file(4)<CR>',{})
---mapper('n','<C-g>',':lua require("harpoon.mark").rm_file()<CR>',{})
+    --"tab management with t leader
+    { n, 'tn',':tabnew<CR>'},
+    { n, 'tq',':tabclose<CR>'},
 
---
---ALT
---
+    -- Save and Quit
+    { n, "<Leader>w", ":w<cr>" },
+	{ n, "<Leader>q", ":q<cr>" },
 
---" Use alt + hjkl to resize windows
-mapper('n','<M-j>',':resize -3<CR>',{noremap=true})
-mapper('n','<M-k>',':resize +3<CR>',{noremap=true})
-mapper('n','<M-h>',':vertical resize -3<CR>',{noremap=true})
-mapper('n','<M-l>',':vertical resize +3<CR>',{noremap=true})
+    --" visual move and highligh
+    --" from the Primeagen
+    --vnoremap J :m '>+1<CR>gv=gv'
+    --vnoremap K :m '<-2<CR>gv=gv'
 
---
--- OTHER
---
+    -- Disable up/down in insert mode
+	--{ i, "<Up>", "<nop>" },
+	--{ i, "<Down>", "<nop>" },
+}
 
--- Allow ESC to leave terminal
-mapper('t','<Esc>','<C-\\><C-n>',{noremap=true});
---"tab management with t leader
-mapper('n','tn',':tabnew<CR>',{noremap=true})
-mapper('n','tq',':tabclose<CR>',{noremap=true})
-
---" Map save to Ctrl + S
---map <c-s> :w<CR>
---imap <c-s> <C-o>:w<CR>
---nnoremap <Leader>s :w<CR>
-
---" visual move and highligh
---" from the Primeagen
---vnoremap J :m '>+1<CR>gv=gv'
---vnoremap K :m '<-2<CR>gv=gv'
-
--- git
---'a' : [':Git add .'                        , 'add all'],
---'A' : [':Git add %'                        , 'add current'],
---'b' : [':Git blame'                        , 'blame'],
---'B' : [':GBrowse'                          , 'browse'],
---'c' : [':Git commit'                       , 'commit'],
---'d' : [':Git diff'                         , 'diff'],
---'D' : [':Gdiffsplit'                       , 'diff split'],
---'g' : [':GGrep'                            , 'git grep'],
---'G' : [':Gstatus'                          , 'status'],
---'h' : [':GitGutterLineHighlightsToggle'    , 'highlight hunks'],
---'H' : ['<Plug>(GitGutterPreviewHunk)'      , 'preview hunk'],
---'j' : ['<Plug>(GitGutterNextHunk)'         , 'next hunk'],
---'k' : ['<Plug>(GitGutterPrevHunk)'         , 'prev hunk'],
---'l' : [':Git log'                          , 'log'],
---'p' : [':Git push'                         , 'push'],
---'P' : [':Git pull'                         , 'pull'],
---'r' : [':GRemove'                          , 'remove'],
---'s' : ['<Plug>(GitGutterStageHunk)'        , 'stage hunk'],
---'t' : [':GitGutterSignsToggle'             , 'toggle signs'],
---'u' : ['<Plug>(GitGutterUndoHunk)'         , 'undo hunk'],
--- Undo
+keymaps(maps)
