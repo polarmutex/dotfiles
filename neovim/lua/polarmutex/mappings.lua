@@ -1,17 +1,4 @@
--- @param map {{mode, lhs, rhs, opts}, ..}
--- @param mode string 'n' | 'i' | 'v'
--- @param lhs string key to map
--- @param rhs string command to run
-local keymap = function(map)
-  map = map or {}
-  local opts = map[4] or {}
-  return vim.api.nvim_set_keymap(map[1], map[2], map[3], opts)
-end
-
--- @param maps list of keymaps
-local keymaps = function(maps)
-  for _, m in ipairs(maps) do keymap(m) end
-end
+local utils = require('polarmutex.utils')
 
 local n, i, t, esc = "n", "i", "t", "<esc>"
 local silent = { silent = true }
@@ -124,4 +111,4 @@ local maps = {
 	--{ i, "<Down>", "<nop>" },
 }
 
-keymaps(maps)
+utils.keymaps(maps)

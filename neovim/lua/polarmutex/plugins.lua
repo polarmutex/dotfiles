@@ -38,6 +38,7 @@ return require('packer').startup{
         --use 'nvim-lua/completion-nvim'
         use 'hrsh7th/nvim-compe'
         use 'nvim-lua/lsp-status.nvim'
+        use 'glepnir/lspsaga.nvim'
         use 'onsails/lspkind-nvim'
         use 'kosayoda/nvim-lightbulb'
         use 'tjdevries/nlua.nvim'
