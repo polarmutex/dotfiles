@@ -11,12 +11,31 @@
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
     require('polarmutex.lsp.extensions.workspace_diagnostics').handler, {
         underline = true,
-        virtual_text = true,
+        virtual_text = {
+            prefix = "»",
+            spacing = 4,
+        },
         signs = {
             priority = 20
         },
         update_in_insert = true,
     }
+)
+vim.fn.sign_define(
+    "LspDiagnosticsSignError",
+    { text = "", texthl = "LspDiagnosticsDefaultError" }
+)
+vim.fn.sign_define(
+    "LspDiagnosticsSignWarning",
+    { text = "", texthl = "LspDiagnosticsDefaultWarning" }
+)
+vim.fn.sign_define(
+    "LspDiagnosticsSignInformation",
+    { text = "", texthl = "LspDiagnosticsDefaultInformation" }
+)
+vim.fn.sign_define(
+    "LspDiagnosticsSignHint",
+    { text = "", texthl = "LspDiagnosticsDefaultHint" }
 )
 
 vim.lsp.handlers["textDocument/hover"] = require('lspsaga.hover').handler
