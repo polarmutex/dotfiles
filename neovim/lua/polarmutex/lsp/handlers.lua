@@ -37,6 +37,8 @@ vim.fn.sign_define(
     "LspDiagnosticsSignHint",
     { text = "", texthl = "LspDiagnosticsDefaultHint" }
 )
+vim.cmd [[autocmd CursorHold * lua vim.lsp.diagnostic.show_line_diagnostics()]]
+vim.cmd [[autocmd CursorHoldI * silent! lua vim.lsp.buf.signature_help()]]
 
 vim.lsp.handlers["textDocument/hover"] = require('lspsaga.hover').handler
 
