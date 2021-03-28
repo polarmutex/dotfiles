@@ -11,7 +11,7 @@ M.setup = function()
             -- Update the path to prosemd-lsp
             --cmd = { "/usr/local/bin/prosemd-lsp", "--stdio" },
             cmd = { path.join { vim.loop.os_homedir(), ".cargo/bin/prosemd-lsp"}, "--stdio" },
-            filetypes = { "markdown" },
+            filetypes = { "markdown", "svx" },
             root_dir = function(fname)
                 return lsp_util.find_git_ancestor(fname) or vim.fn.getcwd()
             end,
