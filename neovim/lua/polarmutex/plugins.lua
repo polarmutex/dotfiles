@@ -70,6 +70,12 @@ return require('packer').startup{
         use 'kyazdani42/nvim-web-devicons'
         use 'phaazon/hop.nvim'
 
+        -- Debug adapter protocol
+        use 'mfussenegger/nvim-dap'
+        use 'mfussenegger/nvim-dap-python'
+        use 'theHamsta/nvim-dap-virtual-text'
+        use 'nvim-telescope/telescope-dap.nvim'
+
         -- Statusline
         use {
             'glepnir/galaxyline.nvim',
