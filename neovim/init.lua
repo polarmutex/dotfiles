@@ -35,3 +35,6 @@ vim.api.nvim_command('autocmd!')
 -- likely a different one than last time).
 vim.api.nvim_command([[autocmd BufReadPost * if line("'\"") >= 1 && line("'\"") <= line("$") && &ft !~# 'commit' | exe "normal! g`\"" | endif]])
 vim.api.nvim_command("augroup END")
+
+-- automatically run packer compile on plugin change
+vim.api.nvim_command("autocmd BufWritePost plugins.lua PackerCompile")
