@@ -36,10 +36,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/brian/.local/share/nvim/site/pack/packer/start/beancount.nvim"
   },
-  client = {
-    loaded = true,
-    path = "/home/brian/.local/share/nvim/site/pack/packer/start/client"
-  },
   ["colorbuddy.nvim"] = {
     loaded = true,
     path = "/home/brian/.local/share/nvim/site/pack/packer/start/colorbuddy.nvim"

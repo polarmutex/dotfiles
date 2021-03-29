@@ -35,7 +35,6 @@ return require('packer').startup{
 
         -- LSP
         use 'neovim/nvim-lspconfig'
-        --use 'nvim-lua/completion-nvim'
         use 'hrsh7th/nvim-compe'
         use 'nvim-lua/lsp-status.nvim'
         use 'glepnir/lspsaga.nvim'
@@ -95,9 +94,6 @@ return require('packer').startup{
         use 'TimUntersberger/neogit'
         use 'lewis6991/gitsigns.nvim'
         use 'pwntester/octo.nvim'
-        --use 'mhinz/vim-signify'
-        --use'tpope/vim-fugitive'
-        --use 'tpope/vim-rhubarb'
 
         -- colorsheme
         use 'tjdevries/colorbuddy.nvim'
@@ -105,39 +101,21 @@ return require('packer').startup{
 
         -- Increment / Decrement
         use 'monaqa/dial.nvim'
-        --use 'tpope/vim-speeddating'    -- Handle changing of dates in a nicer manner
 
         -- text maniuplation
-        -- use 'godlygeek/tabular'        -- Quickly align text by pattern
         use 'tpope/vim-surround'       -- Surround text objects easily
         use 'tpope/vim-commentary'     -- Easily comment out lines or objects
         -- use 'tpope/vim-repeat'         -- Repeat actions better
         use 'tpope/vim-abolish'        -- Cool things with words!
-        -- use 'tpope/vim-characterize'
-        -- use 'AndrewRadev/splitjoin.vim'
-        -- use 'AndrewRadev/sideways.vim' -- Easy sideways movement
 
         -- Convert binary, hex, etc..
         use 'glts/vim-radical'
 
-        -- Files
-        --use 'tpope/vim-eunuch'
-
         -- Have the file system follow you aroun
         use 'airblade/vim-rooter'
 
-        -- Text Navigation
-        --use 'justinmk/vim-sneak'
-        --use 'unblevable/quick-scope'
-
         -- Add some color
         use 'norcalli/nvim-colorizer.lua'
-        -- use 'norcalli/nvim-terminal.lua'
-        -- Auto pairs for '(' '[' '{'
-        -- auto-pairs
-
-        -- Help
-        --use 'liuchengxu/vim-which-key'
 
         -- :Messages <- view messages in quickfix list
         -- :Verbose  <- view verbose output in preview window.
@@ -160,7 +138,6 @@ return require('packer').startup{
 
         -- Whitespace
         use 'ntpeters/vim-better-whitespace'
-        --show when there is gross trailing whitespace
 
         use 'RRethy/vim-illuminate'
         -- highlight current word
@@ -177,7 +154,6 @@ return require('packer').startup{
         --use_local 'vim-be-good'
         --use 'ThePrimeagen/vim-apm'
         --local_use('polarmutex','vim-apm')
-        use 'VimDeathmatch/client'
 
         -- tasks
         local_use('polarmutex', 'tasks.nvim')
