@@ -8,17 +8,28 @@ local modkey = RC.vars.modkey
 -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
 
 -- Key bindings
+local tag_keys = {
+    'a',
+    'r',
+    's',
+    't',
+    'n',
+    'e',
+    'i',
+    'o',
+    'm',
+}
 
 function M.get(globalkeys)
   -- Bind all key numbers to tags.
   -- Be careful: we use keycodes to make it work on any keyboard layout.
   -- This should map on the top row of your keyboard, usually 1 to 9.
-  for i = 1, 9 do
+  for i = 1, #tag_keys do
     globalkeys = gears.table.join(globalkeys,
 
       --  -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
       -- View tag only.
-      awful.key({ modkey }, "#" .. i + 9,
+      awful.key({ modkey }, tag_keys[i],
         function ()
           local screen = awful.screen.focused()
           local tag = screen.tags[i]
@@ -30,7 +41,7 @@ function M.get(globalkeys)
 
       --  -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
       -- Toggle tag display.
-      awful.key({ modkey, "Control" }, "#" .. i + 9,
+      awful.key({ modkey, "Control" }, tag_keys[i],
         function ()
           local screen = awful.screen.focused()
           local tag = screen.tags[i]
@@ -42,7 +53,7 @@ function M.get(globalkeys)
 
       --  -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
       -- Move client to tag.
-      awful.key({ modkey, "Shift" }, "#" .. i + 9,
+      awful.key({ modkey, "Shift" }, tag_keys[i],
         function ()
           if client.focus then
             local tag = client.focus.screen.tags[i]
@@ -55,7 +66,7 @@ function M.get(globalkeys)
 
       --  -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --
       -- Toggle tag on focused client.
-      awful.key({ modkey, "Control", "Shift" }, "#" .. i + 9,
+      awful.key({ modkey, "Control", "Shift" }, tag_keys[i],
         function ()
           if client.focus then
             local tag = client.focus.screen.tags[i]
