@@ -1,6 +1,6 @@
 local utils = require('polarmutex.utils')
 
-local n, i, t, esc = "n", "i", "t", "<esc>"
+local n, i, v, t, esc = "n", "i", "v", "t", "<esc>"
 local silent = { silent = true }
 
 local maps = {
@@ -25,7 +25,7 @@ local maps = {
     { n, ']d',          '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', silent},
     { n, '<space>q',    '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', silent},
     { n, "<space>f",    "<cmd>lua vim.lsp.buf.formatting()<CR>", silent},
-    { n, "<space>f",    "<cmd>lua vim.lsp.buf.range_formatting()<CR>", silent},
+    --{ n, "<space>f",    "<cmd>lua vim.lsp.buf.range_formatting()<CR>", silent},
 
     -- Testing
 	{ n, "<leader>T", "<cmd>Ultest<cr>" },
@@ -107,12 +107,8 @@ local maps = {
 
     --" visual move and highligh
     --" from the Primeagen
-    --vnoremap J :m '>+1<CR>gv=gv'
-    --vnoremap K :m '<-2<CR>gv=gv'
-
-    -- Disable up/down in insert mode
-	--{ i, "<Up>", "<nop>" },
-	--{ i, "<Down>", "<nop>" },
+    { v, "J", ":m '>+1<CR>gv=gv"},
+    { v, "K", ":m '<-2<CR>gv=gv"},
 }
 
 utils.keymaps(maps)
