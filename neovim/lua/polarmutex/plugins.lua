@@ -137,7 +137,8 @@ return require('packer').startup{
         }
 
         -- Whitespace
-        use 'ntpeters/vim-better-whitespace'
+        -- do I still want this?
+        --use 'ntpeters/vim-better-whitespace'
 
         use 'RRethy/vim-illuminate'
         -- highlight current word
