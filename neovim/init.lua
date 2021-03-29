@@ -38,3 +38,9 @@ vim.api.nvim_command("augroup END")
 
 -- automatically run packer compile on plugin change
 vim.api.nvim_command("autocmd BufWritePost plugins.lua PackerCompile")
+
+-- highlight yank
+vim.api.nvim_command('augroup LuaHighlight')
+vim.api.nvim_command('autocmd!')
+vim.api.nvim_command([[autocmd TextYankPost * lua vim.highlight.on_yank { hlgroup = "Substitute", timeout = 150, on_macro = true }]])
+vim.api.nvim_command("augroup END")
