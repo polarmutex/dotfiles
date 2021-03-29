@@ -19,14 +19,15 @@ dap.configurations.typescript = {
     {
         type = 'node2',
         request = 'attach',
-        program = '${file}',
+        --program = '${file}',
         cwd = vim.fn.getcwd(),
         sourceMaps = true,
         skipFiles= {"<node_internals>/**/*.js"},
         protocol = 'inspector',
-        console = 'integratedTerminal',
+        --console = 'integratedTerminal',
+        console = 'integratedConsole',
         --console = 'externalTerminal',
-        outputCapture = "std",
+        --outputCapture = "std",
         --externalConsole = true,
     },
 }

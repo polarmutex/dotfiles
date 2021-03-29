@@ -73,6 +73,7 @@ return require('packer').startup{
         -- Debug adapter protocol
         use 'mfussenegger/nvim-dap'
         use 'mfussenegger/nvim-dap-python'
+        use 'mfussenegger/nvim-lua-debugger'
         use 'theHamsta/nvim-dap-virtual-text'
         use 'nvim-telescope/telescope-dap.nvim'
 
