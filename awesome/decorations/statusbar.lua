@@ -10,14 +10,14 @@ local markup = lain.util.markup
 local wibox = require("wibox")
 
 -- Custom Local Library: Common Functional Decoration
-local deco = {
-  wallpaper = require("deco.wallpaper"),
-  taglist   = require("deco.taglist"),
-  tasklist  = require("deco.tasklist")
+local decorations = {
+  wallpaper = require("decorations.wallpaper"),
+  taglist   = require("decorations.taglist"),
+  tasklist  = require("decorations.tasklist")
 }
 
-local taglist_buttons  = deco.taglist()
-local tasklist_buttons = deco.tasklist()
+local taglist_buttons  = decorations.taglist()
+local tasklist_buttons = decorations.tasklist()
 
 local M = {}
 
