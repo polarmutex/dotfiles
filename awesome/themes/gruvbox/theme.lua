@@ -133,4 +133,17 @@ theme.awesome_icon = theme_assets.awesome_icon(
     theme.menu_height, theme.bg_focus, theme.fg_focus
 )
 
+-- Widget Icons
+theme.widget_mem = ""
+theme.widget_cpu = ""
+theme.widget_temp = ""
+theme.widget_ac =""
+theme.widget_battery_empty = ""
+theme.widget_battery = ""
+theme.widget_battery_low = ""
+theme.widget_vol = ""
+theme.widget_vol_no= "婢"
+theme.widget_vol_low= ""
+theme.widget_vol_mute = ""
+
 return theme
