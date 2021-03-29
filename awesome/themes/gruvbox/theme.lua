@@ -6,7 +6,7 @@ local dpi = require("beautiful.xresources").apply_dpi
 local theme = {}
 
 --theme.archlinux_icon  = themes_path .. "gruvbox/bar/archlinux.svg"
-theme.font            = "DejaVu Sans 11"
+theme.font        = "MonoLisa"
 
 -- Dark Gruvbox Colors
 theme.lightred    = "#fb4934"
@@ -48,11 +48,11 @@ theme.fg_focus   = theme.fg1
 theme.fg_urgent  = theme.lightorange
 
 --  Borders
-theme.useless_gap       = 0
+theme.useless_gap       = 2
 theme.gap_single_client = false
 theme.border_width      = dpi(3)
 theme.border_normal     = theme.bg0_h
-theme.border_focus      = theme.bg4
+theme.border_focus      = theme.lightyellow
 theme.border_marked     = theme.lightpurple
 
 -- Titlebars
@@ -85,7 +85,7 @@ theme.taglist_bg_urgent   = theme.lightorange
 theme.taglist_bg_occupied = theme.bg1
 theme.taglist_bg_volatile = theme.lightpurple
 theme.taglist_bg_empty    = theme.bg1
-theme.taglist_font        = "DejaVu Sans Bold 11"
+theme.taglist_font        = "MonoLisa"
 
 -- Variables set for theming the menu:
 -- menu_[bg|fg]_[normal|focus]
