@@ -32,6 +32,12 @@ local maps = {
 	{ n, "]t", "<plug>(ultest-next-fail)" },
 	{ n, "[t", "<plug>(ultest-prev-fail)" },
 
+    --DAP
+    { n, '<F5>', ':lua require("dap").continue()<CR>', silent},
+    { n, '<F10>', ':lua require("dap").step_over()<CR>', silent},
+    { n, '<leader>db', ':lua require("dap").toggle_breakpoint()<CR>', silent},
+    { n, '<leader>dr', ':lua require("dap.repl").open()<CR>', silent},
+    { n, '<leader>dh', ':lua require("dap.ui.variables").hover()<CR>', silent},
 
     -- Harpoon
     { n, '<leader>te',':lua require("harpoon.term").gotoTerminal(2)<CR>'},
@@ -73,10 +79,8 @@ local maps = {
     { n, '<leader>sp',':lua require("telescope.builtin").spell_suggest()<CR>'},
     { n, '<leader>sq',':lua require("telescope.builtin").quickfix()<CR>'},
 
-
     -- Undo
     { n, '<leader>u',':UndotreeShow<CR>'},
-
 
     -- Move windows
     { n, '<C-j>','<C-W><C-J>'},

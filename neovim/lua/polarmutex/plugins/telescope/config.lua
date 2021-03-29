@@ -63,6 +63,5 @@ require('telescope').setup {
 -- Load the fzy native extension at the start.
 require('telescope').load_extension('fzy_native')
 require('telescope').load_extension('octo')
---require('telescope').load_extension('ghcli')
---require('telescope').load_extension('cht-sh')
+require('telescope').load_extension('dap')
 
