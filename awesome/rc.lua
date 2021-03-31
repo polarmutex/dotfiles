@@ -5,96 +5,79 @@ pcall(require, "luarocks.loader")
 -- Standard awesome library
 local gears = require("gears")
 local awful = require("awful")
+require("awful.autofocus")
+
+-- Widget and layout library
+local wibox = require("wibox")
 
 -- Theme handling library
 local beautiful = require("beautiful")
 
--- Miscellanous awesome library
+-- Notification library
+local naughty = require("naughty")
 local menubar = require("menubar")
+local hotkeys_popup = require("awful.hotkeys_popup")
 
-RC = {} -- global namespace, on top before require any modules
-RC.vars = require("main.user-variables")
+-- Enable hotkeys help widget for VIM and other apps
+-- when client with a matching name is opened:
+require("awful.hotkeys_popup.keys")
 
--- Error handling -- }}}
-require("main.error-handling")
-
--- Variable definitions
 -- Themes define colours, icons, font and wallpapers.
-require("main.theme")
+beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
 
-modkey = RC.vars.modkey
+-- Init all modules (You can add/remove active modules here)
+require("modules.auto-start")
+require("modules.sloppy-focus")
+require("modules.set-wallpaper")
 
--- Custom Local Library
-local main = {
-  layouts = require("main.layouts"),
-  tags    = require("main.tags"),
-  menu    = require("main.menu"),
-  rules   = require("main.rules"),
-}
+-- Setup UI Elements
+require('ui')
 
--- Custom Local Library: Keys and Mouse Binding
-local binding = {
-  globalbuttons = require("binding.globalbuttons"),
-  clientbuttons = require("binding.clientbuttons"),
-  globalkeys    = require("binding.globalkeys"),
-  bindtotags    = require("binding.bindtotags"),
-  clientkeys    = require("binding.clientkeys")
-}
+-- Setup all configurations
+require('configuration.tags')
+require('configuration.client')
+require('configuration.init')
+_G.root.keys(require('configuration.keys.global'))
+_G.root.buttons(require('configuration.mouse.desktop'))
 
--- Layouts
--- Table of layouts to cover with awful.layout.inc, order matters.
--- a variable needed in main.tags, and statusbar
--- awful.layout.layouts = { ... }
-RC.layouts = main.layouts()
+-- {{{ Error handling
+-- Check if awesome encountered an error during startup and fell back to
+-- another config (This code will only ever execute for the fallback config)
+if awesome.startup_errors then
+    naughty.notify({ preset = naughty.config.presets.critical,
+                     title = "Oops, there were errors during startup!",
+                     text = awesome.startup_errors })
+end
 
--- Tags
--- Define a tag table which hold all screen tags.
--- a variable needed in rules, tasklist, and globalkeys
-RC.tags = main.tags()
+-- Handle runtime errors after startup
+do
+    local in_error = false
+    awesome.connect_signal("debug::error", function (err)
+        -- Make sure we don't go into an endless error loop
+        if in_error then return end
+        in_error = true
 
--- Menu
--- Create a laucher widget and a main menu
-RC.mainmenu = awful.menu({ items = main.menu() }) -- in globalkeys
+        naughty.notify({ preset = naughty.config.presets.critical,
+                         title = "Oops, an error happened!",
+                         text = tostring(err) })
+        in_error = false
+    end)
+end
+-- }}}
 
--- a variable needed in statusbar (helper)
-RC.launcher = awful.widget.launcher(
-  { image = beautiful.awesome_icon, menu = RC.mainmenu }
-)
+-- {{{ Signals
+-- Signal function to execute when a new client appears.
+client.connect_signal("manage", function (c)
+    -- Set the windows at the slave,
+    -- i.e. put it at the end of others instead of setting it master.
+    -- if not awesome.startup then awful.client.setslave(c) end
 
--- Menubar configuration
--- Set the terminal for applications that require it
-menubar.utils.terminal = RC.vars.terminal
+    if awesome.startup
+      and not c.size_hints.user_position
+      and not c.size_hints.program_position then
+        -- Prevent clients from being unreachable after screen count changes.
+        awful.placement.no_offscreen(c)
+    end
+end)
 
 
--- Mouse and Key bindings
-RC.globalkeys = binding.globalkeys()
-RC.globalkeys = binding.bindtotags(RC.globalkeys)
-
--- Set root
-root.buttons(binding.globalbuttons())
-root.keys(RC.globalkeys)
-
--- Keyboard map indicator and switcher
-mykeyboardlayout = awful.widget.keyboardlayout()
-
--- Statusbar: Wibar
-require("ui.statusbar")
-
--- Rules
--- Rules to apply to new clients (through the "manage" signal).
-awful.rules.rules = main.rules(
-  binding.clientkeys(),
-  binding.clientbuttons()
-)
-
--- Signals
-require("main.signals")
-
--- Autostart
-awful.spawn.with_shell(
-    'feh --bg-fill --randomize ~/Media/wallpapers/*;' ..
-    'if (xrdb -query | grep -q "^awesome\\.started:\\s*true$"); then exit; fi;' ..
-    'xrdb -merge <<< "awesome.started:true";' ..
-     -- list each of your autostart commands, followed by ; inside single quotes, followed by ..
-    'picom &;'
-)
