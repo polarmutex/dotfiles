@@ -34,6 +34,7 @@ require("modules.set-wallpaper")
 require('ui')
 
 -- Setup all configurations
+require('configuration.layouts')
 require('configuration.tags')
 require('configuration.client')
 require('configuration.init')
