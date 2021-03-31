@@ -9,7 +9,7 @@ local wibox = require("wibox")
 local beautiful = require("beautiful")
 
 -- Custom Local Library: Common Functional Decoration
-require("decorations.titlebar")
+require("ui.titlebar")
 
 -- reading
 -- https://awesomewm.org/apidoc/classes/signals.html

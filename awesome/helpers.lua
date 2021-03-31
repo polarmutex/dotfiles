@@ -10,8 +10,6 @@ local beautiful = require("beautiful")
 local xresources = require("beautiful.xresources")
 local dpi = xresources.apply_dpi
 local wibox = require("wibox")
-local icons = require("icons")
-local notifications = require("notifications")
 local naughty = require("naughty")
 
 local helpers = {}
@@ -296,7 +294,7 @@ function helpers.prompt(action, textbox, prompt, callback)
             exe_callback = function(input)
                 if not input or #input == 0 then return end
                 awful.spawn.with_shell("noglob "..user.web_search_cmd.."'"..input.."'")
-                naughty.notify { title = "Searching the web for", text = input, icon = icons.image.firefox, urgency = "low" }
+                naughty.notify { title = "Searching the web for", text = input, urgency = "low" }
             end
         }
     end

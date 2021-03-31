@@ -78,7 +78,7 @@ root.keys(RC.globalkeys)
 mykeyboardlayout = awful.widget.keyboardlayout()
 
 -- Statusbar: Wibar
-require("decorations.statusbar")
+require("ui.statusbar")
 
 -- Rules
 -- Rules to apply to new clients (through the "manage" signal).
