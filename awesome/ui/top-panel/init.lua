@@ -3,7 +3,7 @@ local beautiful = require('beautiful')
 local wibox = require('wibox')
 local gears = require('gears')
 
-configuration = require('configuration.config')
+local configuration = require('configuration.config')
 require('widgets.top-panel')
 
 local mylauncher = require('widgets.top-panel.launcher')
@@ -34,6 +34,7 @@ local TopPanel = function(s)
     })
 
     s.mytaglist = require("widgets.top-panel.taglist")(s)
+    s.mypromptbox = require("widgets.top-panel.promptbox")(s)
 
     panel:setup {
         layout = wibox.layout.align.horizontal,
