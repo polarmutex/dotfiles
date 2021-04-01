@@ -34,9 +34,9 @@ local get_taglist = function(s)
         if c3.selected then
             textbox.markup = helpers.colorize_text("", beautiful.yellow)
         elseif #c3:clients() == 0 then
-            textbox.markup = helpers.colorize_text("", beautiful.aqua)
+            textbox.markup = helpers.colorize_text("", beautiful.fg0)
         else
-            textbox.markup = helpers.colorize_text("", beautiful.fg0)
+            textbox.markup = helpers.colorize_text("", beautiful.aqua)
         end
     end
 
