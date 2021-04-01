@@ -2,6 +2,10 @@ local awful = require('awful')
 local beautiful = require('beautiful')
 local wibox = require('wibox')
 local gears = require('gears')
+local helpers = require('helpers')
+local beautiful = require("beautiful")
+local xresources = require("beautiful.xresources")
+local dpi = xresources.apply_dpi
 
 local configuration = require('configuration.config')
 require('widgets.top-panel')
@@ -35,24 +39,82 @@ local TopPanel = function(s)
 
     s.mytaglist = require("widgets.top-panel.taglist")(s)
     s.mypromptbox = require("widgets.top-panel.promptbox")(s)
+    s.mytasklist = require("widgets.top-panel.tasklist")(s)
 
     panel:setup {
-        layout = wibox.layout.align.horizontal,
+        layout = wibox.layout.fixed.vertical,
+        {
+            widget = wibox.container.background,
+            bg = beautiful.xcolor0,
+            --forced_height = beautiful.widget_border_width
+        },
+        {
+            layout = wibox.layout.align.horizontal,
+            expand = "none",
+            {
+                layout = wibox.layout.fixed.horizontal,
+                {
+                    {
+                        {
+                            mylauncher,
+                            s.mytaglist,
+                            layout = wibox.layout.fixed.horizontal
+                        },
+                        bg = beautiful.xcolor0,
+                        shape = helpers.rrect(beautiful.border_radius - 3),
+                        widget = wibox.container.background
+                    },
+                    right = dpi(5),
+                    left = dpi(10),
+                    widget = wibox.container.margin
+                },
+                s.mypromptbox,
+                {
+                    --playerctl_bar,
+                    margins = dpi(5),
+                    widget = wibox.container.margin
+                }
+            },
+            {
+                nil,
+                {
+                    {
+                        s.mytasklist,
+                        bg = beautiful.xcolor0,
+                        shape = helpers.rrect(beautiful.border_radius - 3),
+                        widget = wibox.container.background
+                    },
+                    --margins = dpi(5),
+                    widget = wibox.container.margin
+                },
+                nil,
+                widget = wibox.container.constraint
+            },
+            {
+                {
+                    wibox.widget.systray(),
+                    widget = wibox.container.margin
+                },
+                mytextclock,
+                {
+                    {
+                        {
+                            s.mylayoutbox,
+                            right = dpi(7),
+                            left = dpi(7),
+                            widget = wibox.container.margin
+                        },
+                        bg = beautiful.xcolor0,
+                        shape = helpers.rrect(beautiful.border_radius - 3),
+                        widget = wibox.container.background
+                    },
+                    widget = wibox.container.margin
+                },
 
-        { -- Left widgets
-            layout = wibox.layout.fixed.horizontal,
-            mylauncher,
-            s.mytaglist,
-            s.mypromptbox,
-        },
-        s.mytasklist, -- Middle widget
-        { -- Right widgets
-            layout = wibox.layout.fixed.horizontal,
-            mykeyboardlayout,
-            wibox.widget.systray(),
-            mytextclock,
-            s.mylayoutbox,
-        },
+                layout = wibox.layout.fixed.horizontal
+            }
+        }
+
     }
 
     return panel

@@ -1,5 +1,9 @@
 local awful = require("awful")
 local gears = require("gears")
+local wibox = require("wibox")
+local beautiful = require("beautiful")
+local xresources = require("beautiful.xresources")
+local dpi = xresources.apply_dpi
 
 local tasklist_buttons = gears.table.join(
   awful.button({ }, 1, function (c)
@@ -24,11 +28,41 @@ local tasklist_buttons = gears.table.join(
 end))
 
 -- Create a tasklist widget
--- This works, however it may be better to inherit the s variable from the top panel itself
-awful.screen.connect_for_each_screen(function(s)
-    s.mytasklist = awful.widget.tasklist {
-      screen  = s,
-      filter  = awful.widget.tasklist.filter.currenttags,
-      buttons = tasklist_buttons
+local get_tasklist = function(s)
+
+    local tasklist = awful.widget.tasklist {
+        screen = s,
+        filter = awful.widget.tasklist.filter.currenttags,
+        buttons = tasklist_buttons,
+        bg = beautiful.xcolor0,
+        style = {
+            bg = beautiful.xcolor0
+        },
+        layout = {
+            spacing = dpi(5),
+            spacing_widget = {
+                bg = beautiful.xcolor0,
+                widget = wibox.container.background
+            },
+            layout = wibox.layout.fixed.horizontal
+        },
+        widget_template = {
+            {
+                {
+                    nil,
+                    awful.widget.clienticon,
+                    nil,
+                    layout = wibox.layout.fixed.horizontal
+                },
+                widget = wibox.container.margin
+            },
+            id = 'background_role',
+            widget = wibox.container.background
+        }
     }
-end)
+
+    return tasklist
+
+end
+
+return get_tasklist
