@@ -32,7 +32,8 @@ local TopPanel = function(s)
       top = configuration.toppanel_height
     }
   )
-  --
+
+  s.mytaglist = require("widgets.top-panel.taglist")(s)
 
   panel:setup {
     layout = wibox.layout.align.horizontal,

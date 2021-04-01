@@ -65,10 +65,10 @@ theme.xcolor14 = theme.lightaqua
 theme.xcolor15 = theme.fg1
 
 -- Fonts
-theme.font_name = "Fira Code "
-theme.font = theme.font_name .. "9"
-theme.icon_font = "FiraCode Nerd Font Mono 18"
-theme.font_taglist = "FiraCode Nerd Font Mono 13"
+theme.font_name = "MonoLisa "
+theme.font = theme.font_name .. "10"
+theme.icon_font = theme.font_name .. "Nerd Font 18"
+theme.font_taglist = theme.font_name .. "Nerd Font 14"
 theme.max_font = "FiraCode Nerd Font Mono 10"
 
 -- Background Colors
@@ -109,18 +109,18 @@ theme.taglist_squares_unsel = theme_assets.taglist_squares_unsel(
                                   taglist_square_size, theme.fg_normal)
 theme.taglist_font = theme.font_taglist
 theme.taglist_bg = theme.wibar_bg
-theme.taglist_bg_focus = theme.xcolor0
-theme.taglist_fg_focus = theme.xcolor3
+--theme.taglist_bg_focus = theme.xcolor0
+--theme.taglist_fg_focus = theme.xcolor3
 theme.taglist_bg_urgent = theme.xcolor0
-theme.taglist_fg_urgent = theme.xcolor6
-theme.taglist_bg_occupied = theme.xcolor0
-theme.taglist_fg_occupied = theme.xcolor6
-theme.taglist_bg_empty = theme.xcolor0
-theme.taglist_fg_empty = theme.xcolor8
+--theme.taglist_fg_urgent = theme.xcolor6
+--theme.taglist_bg_occupied = theme.xcolor0
+--theme.taglist_fg_occupied = theme.xcolor6
+--theme.taglist_bg_empty = theme.xcolor0
+--theme.taglist_fg_empty = theme.xcolor8
 theme.taglist_bg_volatile = transparent
-theme.taglist_fg_volatile = theme.xcolor11
+--theme.taglist_fg_volatile = theme.xcolor11
 theme.taglist_disable_icon = true
-theme.taglist_shape_focus = helpers.rrect(theme.border_radius - 3)
+--theme.taglist_shape_focus = helpers.rrect(theme.border_radius - 3)
 
 -- Tasklist
 
