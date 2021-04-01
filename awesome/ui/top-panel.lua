@@ -11,6 +11,9 @@ local configuration = require('configuration.config')
 require('widgets.top-panel')
 
 local mylauncher = require('widgets.top-panel.launcher')
+local cpu = require('widgets.top-panel.cpu')
+local ram = require('widgets.top-panel.ram')
+local battery = require('widgets.top-panel.battery')
 
 local TopPanel = function(s)
 
@@ -51,7 +54,7 @@ local TopPanel = function(s)
         {
             layout = wibox.layout.align.horizontal,
             expand = "none",
-            {
+            { -- LEFT
                 layout = wibox.layout.fixed.horizontal,
                 {
                     {
@@ -75,7 +78,7 @@ local TopPanel = function(s)
                     widget = wibox.container.margin
                 }
             },
-            {
+            { -- MIDDLE
                 nil,
                 {
                     {
@@ -90,7 +93,25 @@ local TopPanel = function(s)
                 nil,
                 widget = wibox.container.constraint
             },
-            {
+            { -- RIGHT
+                {
+                    {
+                        {
+                            wibox.widget.textbox(helpers.colorize_text("  ", beautiful.orange)),
+                            cpu,
+                            wibox.widget.textbox(helpers.colorize_text("  ", beautiful.xcolor1)),
+                            ram,
+                            battery,
+                            right = dpi(7),
+                            left = dpi(7),
+                            layout = wibox.layout.fixed.horizontal
+                        },
+                        bg = beautiful.xcolor0,
+                        shape = helpers.rrect(beautiful.border_radius - 3),
+                        widget = wibox.container.background
+                    },
+                    widget = wibox.container.margin
+                },
                 {
                     wibox.widget.systray(),
                     widget = wibox.container.margin

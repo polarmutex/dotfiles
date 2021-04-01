@@ -32,6 +32,7 @@ require("modules.sloppy-focus")
 require("modules.set-wallpaper")
 
 -- Setup UI Elements
+require('widgets.watches')
 require('ui')
 
 -- Setup all configurations

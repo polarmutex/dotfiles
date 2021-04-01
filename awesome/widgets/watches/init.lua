@@ -1,0 +1,7 @@
+require("widgets.watches.battery")
+require("widgets.watches.brightness")
+require("widgets.watches.cpu")
+require("widgets.watches.disk")
+require("widgets.watches.ram")
+require("widgets.watches.temp")
+require("widgets.watches.volume")
