@@ -11,6 +11,7 @@ local configuration = require('configuration.config')
 require('widgets.top-panel')
 
 local mylauncher = require('widgets.top-panel.launcher')
+local mytextclock = require('widgets.top-panel.textclock')
 local cpu = require('widgets.top-panel.cpu')
 local ram = require('widgets.top-panel.ram')
 local battery = require('widgets.top-panel.battery')
