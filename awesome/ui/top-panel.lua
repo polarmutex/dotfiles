@@ -15,6 +15,7 @@ local mytextclock = require('widgets.top-panel.textclock')
 local cpu = require('widgets.top-panel.cpu')
 local ram = require('widgets.top-panel.ram')
 local battery = require('widgets.top-panel.battery')
+local playerctl_bar = require('widgets.top-panel.playerctl')
 
 local TopPanel = function(s)
 
@@ -74,7 +75,7 @@ local TopPanel = function(s)
                 },
                 s.mypromptbox,
                 {
-                    --playerctl_bar,
+                    playerctl_bar,
                     margins = dpi(5),
                     widget = wibox.container.margin
                 }

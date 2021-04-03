@@ -31,6 +31,10 @@ require("modules.auto-start")
 require("modules.sloppy-focus")
 require("modules.set-wallpaper")
 
+-- Setup bling playerctl
+local bling = require('bling')
+bling.signal.playerctl.enable()
+
 -- Setup UI Elements
 require('widgets.watches')
 require('ui')
