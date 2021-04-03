@@ -9,7 +9,7 @@ local ram = wibox.widget.textbox("")
 
 awesome.connect_signal("watches::ram", function(used, total)
     local used_ram_percentage = string.format(
-        "%.1f%%",
+        "%.1f%% ",
         (used / total) * 100
     )
     ram.markup = helpers.colorize_text(used_ram_percentage, beautiful.xcolor1)

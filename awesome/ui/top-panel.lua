@@ -30,7 +30,7 @@ local TopPanel = function(s)
             x = s.geometry.x,
             y = s.geometry.y,
             stretch = false,
-            bg = beautiful.background,
+            bg = '#000000' .. '00', --beautiful.background,
             fg = beautiful.fg_normal,
             struts = {
                 top = configuration.toppanel_height
@@ -70,7 +70,7 @@ local TopPanel = function(s)
                         widget = wibox.container.background
                     },
                     right = dpi(5),
-                    left = dpi(10),
+                    left = dpi(5),
                     widget = wibox.container.margin
                 },
                 s.mypromptbox,
@@ -115,10 +115,33 @@ local TopPanel = function(s)
                     widget = wibox.container.margin
                 },
                 {
-                    wibox.widget.systray(),
+                    {
+                        {
+                            wibox.widget.systray(),
+                            right = dpi(7),
+                            left = dpi(7),
+                            widget = wibox.container.margin
+                        },
+                        bg = beautiful.xcolor0,
+                        shape = helpers.rrect(beautiful.border_radius - 3),
+                        widget = wibox.container.background
+                    },
                     widget = wibox.container.margin
                 },
-                mytextclock,
+                {
+                    {
+                        {
+                            mytextclock,
+                            right = dpi(7),
+                            left = dpi(7),
+                            widget = wibox.container.margin
+                        },
+                        bg = beautiful.xcolor0,
+                        shape = helpers.rrect(beautiful.border_radius - 3),
+                        widget = wibox.container.background
+                    },
+                    widget = wibox.container.margin
+                },
                 {
                     {
                         {
