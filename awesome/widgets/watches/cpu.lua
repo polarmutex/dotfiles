@@ -10,9 +10,7 @@ local update_interval = 5 -- secs
 --    sh -c "vmstat 1 2 | tail -1 | awk '{printf \"%d\", $15}'"
 --]]
 local cpu_procstat_script = [[
-    sh -c "grep '^cpu.' /proc/stat; ps -eo '%p|%c|%C|' -o "%mem" -o '|%a' --sort=-%cpu
-]] .. [[
-    | head -11 | tail -n +2"
+    sh -c "grep '^cpu.' /proc/stat; ps -eo '%p|%c|%C|' -o "%mem" -o '|%a' --sort=-%cpu | head -11 | tail -n +2"
 ]]
 
 -- Periodically get cpu info
@@ -44,6 +42,7 @@ local function starts_with(str, start)
 end
 
 local cpus = {}
+local processes = {}
 awful.widget.watch(cpu_procstat_script, update_interval, function(widget, stdout)
 
     local cpu_num = 1
@@ -66,6 +65,7 @@ awful.widget.watch(cpu_procstat_script, update_interval, function(widget, stdout
             core.last_total = total
             core.last_active = idle
             core.usage = usage
+            core.name = name
 
             if cpu_num== 1 then
                 awesome.emit_signal("watches::cpu", usage)
@@ -77,14 +77,19 @@ awful.widget.watch(cpu_procstat_script, update_interval, function(widget, stdout
         else
             local columns = split(line, '|')
 
-            local pid = columns[1]
-            local comm = columns[2]
-            local cpu = columns[3]
-            local mem = columns[4]
-            local cmd = columns[5]
+            local process = processes[proc_num] or
+                { pid = "", comm = "", cpu = "", mem = "", cmd = ""}
+
+            process.pid = columns[1]
+            process.comm = columns[2]
+            process.cpu = columns[3]
+            process.mem = columns[4]
+            process.cmd = columns[5]
+
+            processes[proc_num] = process
 
             proc_num = proc_num + 1
         end
     end
-    awesome.emit_signal("watches::cpu_cores", cpus)
+    awesome.emit_signal("watches::cpu_extra", cpus, processes)
 end)

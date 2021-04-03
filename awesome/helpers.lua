@@ -444,4 +444,13 @@ function helpers.this_dir()
    return str:match("(.*/)")
 end
 
+function helpers.create_textbox(args)
+    return wibox.widget{
+        text = args.text,
+        align = args.align or 'left',
+        markup = args.markup,
+        forced_width = args.forced_width or 40,
+        widget = wibox.widget.textbox
+    }
+end
 return helpers
