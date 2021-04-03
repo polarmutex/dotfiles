@@ -77,19 +77,18 @@ local playerctl_bar = wibox.widget {
 
 playerctl_bar.visible = false
 
-awesome.connect_signal("bling::playerctl::player_stopped",
-function() playerctl_bar.visible = false end)
+awesome.connect_signal("bling::playerctl::player_stopped", function()
+    playerctl_bar.visible = false
+end)
 
 -- Get Title 
 awesome.connect_signal("bling::playerctl::title_artist_album",
 function(title, artist, _)
 
     playerctl_bar.visible = true
-    song_title.markup = '<span foreground="' .. beautiful.xcolor5 .. '">' ..
-    title .. '</span>'
+    song_title.markup = '<span foreground="' .. beautiful.xcolor5 .. '">' .. title .. '</span>'
 
-    song_artist.markup = '<span foreground="' .. beautiful.xcolor4 .. '">' ..
-    artist .. '</span>'
+    song_artist.markup = '<span foreground="' .. beautiful.xcolor4 .. '">' .. artist .. '</span>'
 end)
 
 return playerctl_bar

@@ -8,7 +8,6 @@ local xresources = require("beautiful.xresources")
 local dpi = xresources.apply_dpi
 
 local configuration = require('configuration.config')
-require('widgets.top-panel')
 
 local mylauncher = require('widgets.top-panel.launcher')
 local mytextclock = require('widgets.top-panel.textclock')
@@ -45,6 +44,7 @@ local TopPanel = function(s)
     s.mytaglist = require("widgets.top-panel.taglist")(s)
     s.mypromptbox = require("widgets.top-panel.promptbox")(s)
     s.mytasklist = require("widgets.top-panel.tasklist")(s)
+    s.mylayoutbox = require("widgets.top-panel.layoutbox")(s)
 
     panel:setup {
         layout = wibox.layout.fixed.vertical,
@@ -76,7 +76,7 @@ local TopPanel = function(s)
                 s.mypromptbox,
                 {
                     playerctl_bar,
-                    margins = dpi(5),
+                    --margins = dpi(5),
                     widget = wibox.container.margin
                 }
             },
