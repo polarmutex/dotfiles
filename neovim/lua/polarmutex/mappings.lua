@@ -83,16 +83,23 @@ local maps = {
     { n, '<leader>u',':UndotreeShow<CR>'},
 
     -- Move windows
-    { n, '<C-j>','<C-W><C-J>'},
-    { n, '<C-k>','<C-W><C-K>'},
-    { n, '<C-l>','<C-W><C-L>'},
-    { n, '<C-h>','<C-W><C-H>'},
-
+    --{ n, '<C-j>','<C-W><C-J>'},
+    --{ n, '<C-k>','<C-W><C-K>'},
+    --{ n, '<C-l>','<C-W><C-L>'},
+    --{ n, '<C-h>','<C-W><C-H>'},
     --" Use alt + hjkl to resize windows
     { n, '<M-j>',':resize -3<CR>'},
     { n, '<M-k>',':resize +3<CR>'},
     { n, '<M-h>',':vertical resize -3<CR>'},
     { n, '<M-l>',':vertical resize +3<CR>'},
+
+    --" visual move and highligh
+    --" from the Primeagen
+    { n, '<C-j>', ':m .+1<CR>==', silent},
+    { n, '<C-k>', ':m .-2<CR>==', silent},
+    { v, '<C-j>', ":m '>+1<CR>gv=gv", silent},
+    { v, '<C-k>', ":m '<-2<CR>gv=gv", silent},
+
 
     -- Allow ESC to leave terminal
     { t, '<Esc>','<C-\\><C-n>'},
@@ -105,10 +112,8 @@ local maps = {
     { n, "<Leader>w", ":w<cr>" },
 	{ n, "<Leader>q", ":q<cr>" },
 
-    --" visual move and highligh
-    --" from the Primeagen
-    { v, "J", ":m '>+1<CR>gv=gv"},
-    { v, "K", ":m '<-2<CR>gv=gv"},
+    -- remove whitespace
+    --{ n, "<leader>rw", ":%s/\s\+$//<CR>"},
 }
 
 utils.keymaps(maps)
