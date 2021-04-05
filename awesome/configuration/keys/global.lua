@@ -142,10 +142,21 @@ globalKeys = gears.table.join(
     {description = "show the menubar", group = "launcher"})
 )
 
--- Bind all key numbers to tags.
+-- Bind all tag keys to tags.
 -- Be careful: we use keycodes to make it works on any keyboard layout.
--- This should map on the top row of your keyboard, usually 1 to 9.
-for i = 1, 9 do
+local tag_keys = {
+    'a',
+    'r',
+    's',
+    't',
+    'n',
+    'e',
+    'i',
+    'o',
+    'm',
+}
+
+for i = 1, #tag_keys do
   -- Hack to only show tags 1 and 9 in the shortcut window (mod+s)
   local descr_view, descr_toggle, descr_move, descr_toggle_focus
   if i == 1 or i == 9 then
@@ -160,7 +171,7 @@ for i = 1, 9 do
       -- View tag only.
       awful.key(
         {modkey},
-        '#' .. i + 9,
+        tag_keys[i],
         function()
           local screen = awful.screen.focused()
           local tag = screen.tags[i]
@@ -173,7 +184,7 @@ for i = 1, 9 do
       -- Toggle tag display.
       awful.key(
         {modkey, 'Control'},
-        '#' .. i + 9,
+        tag_keys[i],
         function()
           local screen = awful.screen.focused()
           local tag = screen.tags[i]
@@ -186,7 +197,7 @@ for i = 1, 9 do
       -- Move client to tag.
       awful.key(
         {modkey, 'Shift'},
-        '#' .. i + 9,
+        tag_keys[i],
         function()
           if _G.client.focus then
             local tag = _G.client.focus.screen.tags[i]
@@ -200,7 +211,7 @@ for i = 1, 9 do
       -- Toggle tag on focused client.
       awful.key(
         {modkey, 'Control', 'Shift'},
-        '#' .. i + 9,
+        tag_keys[i],
         function()
           if _G.client.focus then
             local tag = _G.client.focus.screen.tags[i]
