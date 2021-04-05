@@ -174,8 +174,7 @@ theme.menu_bg_focus = theme.xcolor4
 theme.menu_fg_focus = theme.xcolor7
 theme.menu_bg_normal = theme.xbackground
 theme.menu_fg_normal = theme.xcolor7
-theme.menu_submenu_icon = gears.filesystem.get_configuration_dir() ..
-                              "theme/icons/submenu.png"
+--theme.menu_submenu_icon = polar_themes_path .. "icons/submenu.png"
 theme.menu_height = dpi(20)
 theme.menu_width = dpi(130)
 theme.menu_border_color = "#0000000"
