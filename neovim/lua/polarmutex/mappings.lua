@@ -1,4 +1,4 @@
-local utils = require('polarmutex.utils')
+local utils = require("polarmutex.utils")
 
 local n, i, v, t, esc = "n", "i", "v", "t", "<esc>"
 local silent = { silent = true }
@@ -115,8 +115,8 @@ local maps = {
     -- Replace the word under cursor
     { n, "<leader>*", ":%s/<c-r><c-w>//g<left><left>" },
 
-    -- remove whitespace
-    --{ n, "<leader>rw", ":%s/\s\+$//<CR>"},
+	-- remove whitespace
+	--{ n, "<leader>rw", ":%s/\s\+$//<CR>"},
 }
 
 utils.keymaps(maps)

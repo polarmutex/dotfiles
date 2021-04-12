@@ -13,7 +13,7 @@ local apps = require('configuration.apps')
 -- {{{ Key bindings
 globalKeys = gears.table.join(
 
-  awful.key({ modkey, }, "q",
+  awful.key({ modkey, }, "z",
     hotkeys_popup.show_help,
     {description="show help", group="awesome"}),
 
