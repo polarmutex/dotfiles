@@ -97,6 +97,10 @@ return require("packer").startup({
 		use("pwntester/octo.nvim")
 		--use("ThePrimeagen/git-worktree.nvim")
 		local_use("git-worktree.nvim")
+		use({
+			"ruifm/gitlinker.nvim",
+			requires = "nvim-lua/plenary.nvim",
+		})
 
 		-- colorsheme
 		use("tjdevries/colorbuddy.nvim")
