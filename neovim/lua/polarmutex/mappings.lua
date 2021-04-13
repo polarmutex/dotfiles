@@ -18,9 +18,9 @@ local maps = {
 	{ n, "<space>wa", "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>", silent },
 	{ n, "<space>wr", "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>", silent },
 	{ n, "<space>wl", "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", silent },
-	{ n, "<Leader>re", "<cmd>lua vim.lsp.buf.rename()<CR>", silent },
-	{ n, "<Leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", silent },
-	{ n, "<Leader>di", "<cmd>lua vim.lsp.util.show_line_diagnostics()<CR>", silent },
+	{ n, "<leader>re", "<cmd>lua vim.lsp.buf.rename()<CR>", silent },
+	{ n, "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", silent },
+	{ n, "<leader>di", "<cmd>lua vim.lsp.util.show_line_diagnostics()<CR>", silent },
 	{ n, "[d", "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", silent },
 	{ n, "]d", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", silent },
 	{ n, "<space>q", "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>", silent },
@@ -117,8 +117,11 @@ local maps = {
 	{ n, "tq", ":tabclose<CR>" },
 
 	-- Save and Quit
-	{ n, "<Leader>w", ":w<cr>" },
-	{ n, "<Leader>q", ":q<cr>" },
+	{ n, "<leader>w", ":w<cr>" },
+	{ n, "<leader>q", ":q<cr>" },
+
+	-- Replace the word under cursor
+	{ n, "<leader>*", ":%s/<c-r><c-w>//g<left><left>" },
 
 	-- remove whitespace
 	--{ n, "<leader>rw", ":%s/\s\+$//<CR>"},
