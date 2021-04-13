@@ -95,6 +95,8 @@ return require("packer").startup({
 		use("TimUntersberger/neogit")
 		use("lewis6991/gitsigns.nvim")
 		use("pwntester/octo.nvim")
+		--use("ThePrimeagen/git-worktree.nvim")
+		local_use("git-worktree.nvim")
 
 		-- colorsheme
 		use("tjdevries/colorbuddy.nvim")

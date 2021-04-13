@@ -1,6 +1,5 @@
 local actions = require("telescope.actions")
 local sorters = require("telescope.sorters")
-local themes = require("telescope.themes")
 
 require("telescope").setup({
 	defaults = {
@@ -64,3 +63,4 @@ require("telescope").setup({
 require("telescope").load_extension("fzy_native")
 require("telescope").load_extension("octo")
 require("telescope").load_extension("dap")
+require("telescope").load_extension("git_worktree")

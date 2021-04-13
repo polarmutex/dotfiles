@@ -86,6 +86,7 @@ local maps = {
 	{ n, "<leader>sg", ':lua require("polarmutex.plugins.telescope").git_files()<CR>' },
 	{ n, "<leader>sp", ':lua require("telescope.builtin").spell_suggest()<CR>' },
 	{ n, "<leader>sq", ':lua require("telescope.builtin").quickfix()<CR>' },
+	{ n, "<leader>sw", ':lua require("telescope").extensions.git_worktree.git_worktrees()<CR>' },
 
 	-- Undo
 	{ n, "<leader>u", ":UndotreeShow<CR>" },
