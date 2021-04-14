@@ -1,9 +1,9 @@
 return {
 	cmd = {
-		"node",
-		"--inspect",
-		"/home/brian/repos/beancount-language-server/out/cli.js",
-		--'beancount-langserver',
+		--"node",
+		--"--inspect",
+		--"/home/brian/repos/beancount-language-server/out/cli.js",
+		"beancount-langserver",
 		"--stdio",
 	},
 	init_options = {
