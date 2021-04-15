@@ -2,15 +2,12 @@
 --   /  _/___  (_) /__   __(_)___ ___
 --   / // __ \/ / __/ | / / / __ `__ \
 -- _/ // / / / / /__| |/ / / / / / / /
---/___/_/ /_/_/\__(_)___/_/_/ /_/ /_/
-
+-- /___/_/ /_/_/\__(_)___/_/_/ /_/ /_/
 package.loaded["polarmutex.globals"] = nil
 require("polarmutex.globals")
 
 -- load plugins
-if require("polarmutex.first_load")() then
-	return
-end
+if require("polarmutex.first_load")() then return end
 require("polarmutex.plugins")
 require("polarmutex.settings")
 

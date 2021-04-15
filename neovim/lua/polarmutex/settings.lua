@@ -8,15 +8,15 @@ local opt = vim.opt
 
 -- Ignore compiled files
 opt.wildignore = "__pycache__"
-opt.wildignore = opt.wildignore + { "*.o", "*~", "*.pyc", "*pycache*" }
+opt.wildignore = opt.wildignore + {"*.o", "*~", "*.pyc", "*pycache*"}
 
-opt.wildmode = { "longest", "list", "full" }
+opt.wildmode = {"longest", "list", "full"}
 
 -- Cool floating window popup menu for completion on command line
 opt.pumblend = 17
 
 opt.wildmode = opt.wildmode - "list"
-opt.wildmode = opt.wildmode + { "longest", "full" }
+opt.wildmode = opt.wildmode + {"longest", "full"}
 
 opt.wildoptions = "pum"
 
@@ -66,7 +66,7 @@ opt.clipboard = "unnamedplus"
 
 opt.inccommand = "split"
 opt.swapfile = false -- Living on the edge
-opt.shada = { "!", "'1000", "<50", "s10", "h" }
+opt.shada = {"!", "'1000", "<50", "s10", "h"}
 
 -- Enable mouse in normal mode
 opt.mouse = "n"
@@ -84,28 +84,27 @@ opt.undoreload = 1000
 --   2. gw{motion} - Put cursor back after formatting motion.
 --
 -- TODO: w, {v, b, l}
-opt.formatoptions = opt.formatoptions
-	- "a" -- Auto formatting is BAD.
-	- "t" -- Don't auto format my code. I got linters for that.
-	+ "c" -- In general, I like it when comments respect textwidth
-	+ "q" -- Allow formatting comments w/ gq
-	- "o" -- O and o, don't continue comments
-	+ "r" -- But do continue when pressing enter.
-	+ "n" -- Indent past the formatlistpat, not underneath it.
-	+ "j" -- Auto-remove comments if possible.
-	- "2" -- I'm not in gradeschool anymore
+opt.formatoptions = opt.formatoptions - "a" -- Auto formatting is BAD.
+- "t" -- Don't auto format my code. I got linters for that.
++ "c" -- In general, I like it when comments respect textwidth
++ "q" -- Allow formatting comments w/ gq
+- "o" -- O and o, don't continue comments
++ "r" -- But do continue when pressing enter.
++ "n" -- Indent past the formatlistpat, not underneath it.
++ "j" -- Auto-remove comments if possible.
+- "2" -- I'm not in gradeschool anymore
 
 opt.shortmess = opt.shortmess - "S" -- Show Search count
 
 -- set joinspaces
 opt.joinspaces = false -- Two spaces and grade school, we're done
 
-opt.fillchars = { eob = "~" }
+opt.fillchars = {eob = "~"}
 
 -- colorscheme settings
 opt.termguicolors = true
 opt.background = "dark"
 vim.cmd([[colorscheme gruvbox]])
 
---opt.foldmethod="expr"
---opt.foldexpr="nvim_treesitter#foldexpr()"
+-- opt.foldmethod="expr"
+-- opt.foldexpr="nvim_treesitter#foldexpr()"

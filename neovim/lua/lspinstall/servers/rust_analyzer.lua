@@ -3,8 +3,8 @@ require("lspconfig/configs").rust_analyzer = nil -- important, immediately unset
 config.default_config.cmd[1] = "./rust-analyzer"
 
 return vim.tbl_extend("error", config, {
-	-- adjusted from https://github.com/mattn/vim-lsp-settings/blob/master/installer/install-rust-analyzer.sh
-	install_script = [[
+    -- adjusted from https://github.com/mattn/vim-lsp-settings/blob/master/installer/install-rust-analyzer.sh
+    install_script = [[
         os=$(uname -s | tr "[:upper:]" "[:lower:]")
         case $os in
         linux)
