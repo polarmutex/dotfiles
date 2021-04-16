@@ -8,7 +8,7 @@ local eslintd = {
     lintCommand = "eslint_d -f visualstudio --stdin --stdin-filename ${INPUT}",
     lintStdin = true,
     lintFormats = {"ESLINT:%f(%l,%c): %trror %m", "ESLINT: %f(%l,%c): %tarning %m"},
-    lintIgnoreExitCode = true,
+    lintIgnoreExitCode = true
     -- formatCommand = "eslint_d --fix-to-stdout --stdin --stdin-filename=${INPUT}",
     -- formatStdin = true
 }
@@ -16,7 +16,7 @@ local eslintd = {
 -- PRETTIER
 local prettier = {
     formatCommand = "./node_modules/.bin/prettier --stdin-filepath=${INPUT}",
-    formatStdin = true,
+    formatStdin = true
 }
 
 -- Python
@@ -31,25 +31,27 @@ local prettier = {
 local flake8 = {
     lintCommand = "flake8 --stdin-display-name ${INPUT} -",
     lintStdin = true,
-    lintFormats = {"%f:%l:%c: %m"},
+    lintFormats = {"%f:%l:%c: %m"}
 }
 local mypy = {
     lintCommand = "mypy --show-column-numbers",
     lintFormats = {
-        "%f:%l:%c: %trror: %m", "%f:%l:%c: %tarning: %m", "%f:%l:%c: %tote: %m",
-    },
+        "%f:%l:%c: %trror: %m", "%f:%l:%c: %tarning: %m", "%f:%l:%c: %tote: %m"
+    }
 }
 
 -- LUA
-local styluaFormat = {
+local luaFormat = {
     formatCommand = "lua-format -i " .. "--column-limit=88 " .. "--indent-width=4 " ..
-        "--spaces-around-equals-in-field " .. "--single-quote-to-double-quote " .. "",
-    formatStdin = true,
+        "--spaces-around-equals-in-field " .. "--single-quote-to-double-quote " ..
+        "--no-keep-simple-function-one-line " ..
+        "--no-keep-simple-control-block-one-line ",
+    formatStdin = true
 }
 local luacheck = {
     lintCommand = "luacheck --globals vim --filename ${INPUT} --formatter plain -",
     lintStdin = true,
-    lintFormats = {"%f:%l:%c: %m"},
+    lintFormats = {"%f:%l:%c: %m"}
 }
 
 return {
@@ -62,7 +64,7 @@ return {
             typescript = {eslintd, prettier},
             typescriptreact = {eslintd, prettier},
             python = {flake8, mypy},
-            lua = {luacheck, styluaFormat},
-        },
-    },
+            lua = {luacheck, luaFormat}
+        }
+    }
 }
