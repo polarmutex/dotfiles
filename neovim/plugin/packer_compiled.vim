@@ -48,17 +48,13 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/brian/.local/share/nvim/site/pack/packer/start/dial.nvim"
   },
-  ["express_line.nvim"] = {
+  ["feat-telescope-create"] = {
     loaded = true,
-    path = "/home/brian/.local/share/nvim/site/pack/packer/start/express_line.nvim"
+    path = "/home/brian/.local/share/nvim/site/pack/packer/start/feat-telescope-create"
   },
   firenvim = {
     loaded = true,
     path = "/home/brian/.local/share/nvim/site/pack/packer/start/firenvim"
-  },
-  ["galaxyline.nvim"] = {
-    loaded = true,
-    path = "/home/brian/.local/share/nvim/site/pack/packer/start/galaxyline.nvim"
   },
   ["gitlinker.nvim"] = {
     loaded = true,
@@ -151,10 +147,6 @@ _G.packer_plugins = {
   ["packer.nvim"] = {
     loaded = true,
     path = "/home/brian/.local/share/nvim/site/pack/packer/start/packer.nvim"
-  },
-  ["path-fix"] = {
-    loaded = true,
-    path = "/home/brian/.local/share/nvim/site/pack/packer/start/path-fix"
   },
   playground = {
     loaded = true,

@@ -1,229 +1,246 @@
-local theme = require("polarmutex.colorschemes.gruvbox")
-local gl = require("galaxyline")
-local gls = gl.section
-local condition = require("galaxyline.condition")
-local extension = require("galaxyline.provider_extensions")
-local fileinfo = require("galaxyline.provider_fileinfo")
-local diagnostic = require("galaxyline.provider_diagnostic")
-local vcs = require("galaxyline.provider_vcs")
+-- local theme = require("polarmutex.colorschemes.gruvbox")
 local has_lsp_status, lsp_status = pcall(require, "lsp-status")
+local M = {}
 
-local sep = {
-    left_filled = " ", -- e0b2
-    right_filled = " ", -- e0b0
-    left = " ", -- e0b3
-    right = " ", -- e0b1
-    left_rounded = " ",
-    right_rounded = " ",
+local active_sep = "rounded"
+
+M.separators = {
+    arrow = {"", ""},
+    normal = {"", ""},
+    rounded = {"", ""},
+    blanck = {"", ""}
 }
 
-local icons = {
+M.icons = {
     locked = "🔒",
     unsaved = "",
     warning = "",
     error = "ﳛ",
-    branch = " ",
+    branch = " "
 }
 
-function condition.checkwidth()
-    local squeeze_width = vim.fn.winwidth(0) / 2
-    if squeeze_width > 50 then return true end
-    return false
-end
-
-local function buffer_not_empty()
-    if vim.fn.empty(vim.fn.expand("%:t")) ~= 1 then return true end
-    return false
-end
-
-local function highlight(group, fg, bg, gui)
-    local cmd = string.format("highlight %s guifg=%s guibg=%s", group, fg, bg)
-    if gui ~= nil then cmd = cmd .. " gui=" .. gui end
-    vim.cmd(cmd)
-end
-
-local mode_map = {
-    n = {"N", "NORMAL", tostring(theme.GruvboxFg3.fg)},
-    i = {"I", "INSERT", tostring(theme.GruvboxBlue.fg)},
-    c = {"C", "COMMAND", tostring(theme.GruvboxGreen.fg)},
-    V = {"V", "VISUAL", tostring(theme.GruvboxOrange.fg)},
-    [""] = {"V", "VISUAL", tostring(theme.GruvboxOrange.fg)},
-    v = {"V", "VISUAL", tostring(theme.GruvboxOrange.fg)},
-    ["r?"] = {"C", ":CONFIRM", tostring(theme.GruvboxFg3.fg)},
-    rm = {"M", "--MORE", tostring(theme.GruvboxFg3.fg)},
-    R = {"R", "REPLACE", tostring(theme.GruvboxRed.fg)},
-    Rv = {"V", "VIRTUAL", tostring(theme.GruvboxFg3.fg)},
-    s = {"S", "SELECT", tostring(theme.GruvboxFg3.fg)},
-    S = {"S", "SELECT", tostring(theme.GruvboxFg3.fg)},
-    ["r"] = {"E", "HIT-ENTER", tostring(theme.GruvboxFg3.fg)},
-    [""] = {"S", "SELECT", tostring(theme.GruvboxFg3.fg)},
-    t = {"T", "TERMINAL", tostring(theme.GruvboxYellow.fg)},
-    ["!"] = {"S", "SHELL", tostring(theme.GruvboxFg3.fg)},
+M.colors = {
+    active = "%#GruvboxGreenBold#",
+    inactive = "%#GruvboxBg0#",
+    mode = "%#GruvboxGreen#",
+    mode_alt = "%#GruvboxBg0#",
+    git = "%#GruvboxGreen#",
+    git_alt = "%#GruvboxBg0#",
+    filetype = "%#GruvboxGreen#",
+    filetype_alt = "%#GruvboxBg0#",
+    line_col = "%#GruvboxGreen#",
+    line_col_alt = "%#GruvboxBg0#"
 }
 
-gls.left = {
-    {
-        Mode = {
-            provider = function()
-                highlight("GalaxyLineMode", tostring(theme.GruvboxBg0.fg),
-                          mode_map[vim.fn.mode()][3], "bold")
-                highlight("GalaxyLineModeInv", mode_map[vim.fn.mode()][3],
-                          tostring(theme.GruvboxBg2.fg), "bold")
-                if not condition.checkwidth() then
-                    return string.format("  %s ", mode_map[vim.fn.mode()][1])
-                end
-                return string.format("  %s ", mode_map[vim.fn.mode()][2])
-            end,
-            highlight = "GalaxyLineMode",
-            separator = sep.right_rounded,
-            separator_highlight = "GalaxyLineModeInv",
-        },
-    }, {
-        GitBranch = {
-            provider = "GitBranch",
-            icon = icons.branch,
-            condition = vcs.check_git_workspace,
-            highlight = {theme.GruvboxGreen.fg, theme.GruvboxBg2.fg},
-        },
-    }, {
-        FileIcon = {
-            provider = "FileIcon",
-            condition = buffer_not_empty,
-            highlight = {
-                require("galaxyline.provider_fileinfo").get_file_icon_color,
-                theme.GruvboxBg2.fg,
-            },
-        },
-    }, {
-        FileName = {
-            provider = {"FileName"},
-            condition = buffer_not_empty,
-            highlight = {theme.GruvboxFg2.fg, theme.GruvboxBg2.fg},
-        },
-    }, {
-        FileStatus = {
-            provider = function()
-                local status = ""
-                if vim.bo.readonly then
-                    status = status .. " " .. icons.locked
-                end
-                if vim.bo.modified then
-                    status = status .. " " .. icons.unsaved
-                end
-                return " " .. status .. " "
-            end,
-            highlight = {theme.GruvboxRed.fg, theme.GruvboxBg2.fg},
-        },
-    },
+M.trunc_width = setmetatable({git_status = 90, filename = 140}, {
+    __index = function()
+        return 80
+    end
+})
+
+M.is_truncated = function(_, width)
+    local current_width = vim.api.nvim_win_get_width(0)
+    return current_width < width
+end
+
+M.modes = {
+    ["n"] = {"N", "Normal", "%#GruvboxGreenBold#"},
+    ["no"] = {"N·P", "N·Pending", "%#GruvboxFg3#"},
+
+    ["v"] = {"V", "Visual", "%#GruvboxOrange#"},
+    ["V"] = {"V", "V·Line", "%#GruvboxOrang#"},
+    [""] = {"V", "V·Block", "%#GruvboxOrange#"},
+
+    ["s"] = {"S", "Select", "%#GruvboxFg3#"},
+    ["S"] = {"S", "S·Line", "%#GruvboxFg3#"},
+    [""] = {"S", "S·Block", "%#GruvboxFg3#"},
+
+    ["i"] = {"I", "Insert", "%#GruvboxBlue#"},
+    ["ic"] = {"I", "Insert", "%#GruvboxBlue#"},
+
+    ["R"] = {"R", "Replace", "%#GruvboxRed#"},
+    ["Rv"] = {"V", "V·Replace", "%#GruvboxFg3#"},
+
+    ["c"] = {"C", "Command", "%#GruvboxGreen#"},
+    ["cv"] = {"C", "Vim·Ex", "%#GruvboxGreen#"},
+    ["ce"] = {"C", "Ex", "%#GruvboxGreen#"},
+
+    ["r"] = {"E", "Prompt", "%#GruvboxFg3#"},
+    ["rm"] = {"M", "More", "%#GruvboxFg3#"},
+    ["r?"] = {"C", "Confirm", "%#GruvboxFg3#"},
+
+    ["!"] = {"S", "SHELL", "%#GruvboxFg3#"},
+
+    ["t"] = {"T", "TERMINAL", "%#GruvboxYellow#"},
+
+    __index = function()
+        return {"U", "Unknown", "%#GruvboxRed#"} -- handle edge cases
+    end
 }
 
-gls.mid = {
-    {
-        LspStatusMsgs = {
-            provider = function()
-                local clients = vim.lsp.buf_get_clients(0)
-                local connected = not vim.tbl_isempty(clients)
-                if connected then
-                    local all_messages = lsp_status.messages()
-                    for _, msg in ipairs(all_messages) do
-                        if msg.name then
-                            local contents = ""
-                            if msg.progress then
-                                contents = msg.title
-                                if msg.message then
-                                    contents = contents .. " " .. msg.message
-                                end
+M.get_current_mode = function(self)
+    local current_mode = vim.api.nvim_get_mode().mode
+    if self:is_truncated(self.trunc_width.mode) then
+        return "1" -- string.format(" %s ", self.modes[current_mode][1]):upper()
+    end
+    return string.format(" %s ", self.modes[current_mode][2]):upper()
+end
 
-                                if msg.percentage then
-                                    contents = contents .. " (" .. msg.percentage .. ")"
-                                end
-                            elseif msg.status then
-                                contents = msg.content
-                            else
-                                contents = msg.content
-                            end
+M.get_git_status = function(self)
+    -- use fallback because it doesn't set this variable on the initial `BufEnter`
+    local signs = vim.b.gitsigns_status_dict or
+                      {head = "", added = 0, changed = 0, removed = 0}
+    local is_head_empty = signs.head ~= ""
 
-                            return " " .. contents .. " "
-                        end
+    if self:is_truncated(self.trunc_width.git_status) then
+        return is_head_empty and string.format("  %s ", signs.head or "") or ""
+    end
+
+    return is_head_empty and
+               string.format(" +%s ~%s -%s |  %s ", signs.added, signs.changed,
+                             signs.removed, signs.head) or ""
+end
+
+M.get_filename = function(self)
+    if self:is_truncated(self.trunc_width.filename) then
+        return " %<%f "
+    end
+    return " %<%F "
+end
+
+M.get_filetype = function()
+    local file_name, file_ext = vim.fn.expand("%:t"), vim.fn.expand("%:e")
+    local icon = require("nvim-web-devicons").get_icon(file_name, file_ext,
+                                                       {default = true})
+    local filetype = vim.bo.filetype
+
+    if filetype == "" then
+        return " No FT "
+    end
+    return string.format(" %s %s ", icon, filetype):lower()
+end
+
+M.get_lsp_status_message = function()
+    local clients = vim.lsp.buf_get_clients(0)
+    local connected = not vim.tbl_isempty(clients)
+    if connected then
+        local all_messages = lsp_status.messages()
+        for _, msg in ipairs(all_messages) do
+            if msg.name then
+                local contents
+                if msg.progress then
+                    contents = msg.title
+                    if msg.message then
+                        contents = contents .. " " .. msg.message
                     end
-                    return ""
-                else
-                    return ""
-                end
-            end,
-            highlight = {theme.GruvboxFg2.fg, theme.GruvboxBg2.fg},
-        },
-    },
-}
 
-gls.right = {
-    {
-        FileType = {
-            provider = function()
-                if not buffer_not_empty() then return "" end
-                local icon = icons[vim.bo.fileformat] or ""
-                return string.format(" %s %s ", icon, vim.bo.filetype)
-            end,
-            highlight = {theme.GruvboxFg2.fg, theme.GruvboxBg2.fg},
-        },
-    }, {
-        LspStatus = {
-            provider = function()
-                local clients = vim.lsp.buf_get_clients(0)
-                local connected = not vim.tbl_isempty(clients)
-                if connected then
-                    local status = " " .. "" .. " ( "
-                    for id, client in ipairs(clients) do
-                        status = status .. client.name .. " "
+                    if msg.percentage then
+                        contents = contents .. " (" .. msg.percentage .. ")"
                     end
-                    status = status .. ") "
-                    return status
+                elseif msg.status then
+                    contents = msg.content
                 else
-                    return ""
+                    contents = msg.content
                 end
-            end,
-            highlight = {theme.GruvboxGreen.fg, theme.GruvboxBg2.fg},
-        },
-    }, {
-        DiagnosticWarn = {
-            provider = function()
-                local n = vim.lsp.diagnostic.get_count(0, "Warning")
-                if n == 0 then return "" end
-                return string.format(" %s %d ", icons.warning, n)
-            end,
-            highlight = {theme.GruvboxYellow.fg, theme.GruvboxBg2.fg},
-        },
-        DiagnosticError = {
-            -- provider = diagnostic.get_diagnostic_error,
-            provider = function()
-                local n = vim.lsp.diagnostic.get_count(0, "Error")
-                if n == 0 then return "" end
-                return string.format(" %s %d ", icons.error, n)
-            end,
-            highlight = {theme.GruvboxRed.fg, theme.GruvboxBg2.fg},
-        },
-    }, {
-        PositionInfo = {
-            provider = {
-                function()
-                    return string.format(" %s:%s ", vim.fn.line("."), vim.fn.col("."))
-                end,
-            },
-            highlight = {theme.GruvboxBg2.fg, theme.GruvboxBlue.fg, "bold"},
-            condition = buffer_not_empty,
-            separator = sep.left_rounded,
-            separator_highlight = {theme.GruvboxBlue.fg, theme.GruvboxBg2.fg},
-        },
-    }, {
-        PercentInfo = {
-            provider = fileinfo.current_line_percent,
-            highlight = {theme.GruvboxBg2.fg, theme.GruvboxBlue.fg, "bold"},
-            condition = buffer_not_empty,
-        },
-    }, {
-        PosRightRounded = {
-            provider = function() return sep.right_rounded end,
-            highlight = {theme.GruvboxBlue.fg, theme.GruvboxBg2.fg},
-        },
-    },
-}
+
+                return " " .. contents .. " "
+            end
+        end
+        return ""
+    else
+        return ""
+    end
+end
+
+M.get_lsp_connection = function()
+    local clients = vim.lsp.buf_get_clients(0)
+    local connected = not vim.tbl_isempty(clients)
+    if connected then
+        local status = " " .. "" .. " ( "
+        for _, client in ipairs(clients) do
+            status = status .. client.name .. " "
+        end
+        status = status .. ") "
+        return status
+    else
+        return ""
+    end
+end
+
+M.get_diagnostic_warn = function(self)
+    local n = vim.lsp.diagnostic.get_count(0, "Warning")
+    if n == 0 then
+        return ""
+    end
+    return string.format(" %s %d ", self.icons.warning, n)
+end
+
+M.get_diagnostic_error = function(self)
+    local n = vim.lsp.diagnostic.get_count(0, "Error")
+    if n == 0 then
+        return ""
+    end
+    return string.format(" %s %d ", self.icons.error, n)
+end
+
+M.get_line_col = function()
+    return string.format(" %s:%s ", vim.fn.line("."), vim.fn.col("."))
+end
+
+M.set_active = function(self)
+    local colors = self.colors
+
+    local mode = colors.mode .. self:get_current_mode()
+    -- local mode_alt = colors.mode_alt .. self.separators[active_sep][1]
+    -- local git = colors.git .. self:get_git_status()
+    -- local git_alt = colors.git_alt .. self.separators[active_sep][1]
+    -- local filename = colors.inactive .. self:get_filename()
+    -- local filetype_alt = colors.filetype_alt .. self.separators[active_sep][2]
+    -- local filetype = colors.filetype .. self:get_filetype()
+    -- local line_col = colors.line_col .. self:get_line_col()
+    -- local line_col_alt = colors.line_col_alt .. self.separators[active_sep][2]
+
+    return table.concat({mode}) -- mode_alt -- git, git_alt, -- file icon
+    -- filename, -- file status
+    -- "%=", -- lsp status messages
+    -- "%=" -- filetype_alt, filetype, -- lsp connection
+    -- diag warning
+    -- diag error
+    -- line_col, line_col_alt
+end
+
+M.set_inactive = function(self)
+    return self.colors.inactive .. "%= %F %="
+end
+
+M.set_explorer = function(self)
+    local title = self.colors.mode .. "   "
+    local title_alt = self.colors.mode_alt .. self.separators[active_sep][2]
+
+    return table.concat({self.colors.active, title, title_alt})
+end
+
+Statusline = setmetatable(M, {
+    __call = function(statusline, mode)
+        if mode == "active" then
+            return statusline:set_active()
+        end
+        if mode == "inactive" then
+            return statusline:set_inactive()
+        end
+        if mode == "explorer" then
+            return statusline:set_explorer()
+        end
+    end
+})
+
+-- set statusline
+-- TODO: replace this once we can define autocmd using lua
+vim.api.nvim_exec([[
+    augroup Statusline
+    au!
+    au WinEnter,BufEnter * setlocal statusline=%!v:lua.Statusline('active')
+    au WinLeave,BufLeave * setlocal statusline=%!v:lua.Statusline('inactive')
+    au WinEnter,BufEnter,FileType NvimTree setlocal statusline=%!v:lua.Statusline('explorer')
+    augroup END
+]], false)

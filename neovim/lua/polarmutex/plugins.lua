@@ -43,7 +43,9 @@ return require("packer").startup({
         -- Tree-Sitter
         use({
             "nvim-treesitter/nvim-treesitter",
-            run = function() vim.cmd([[TSUpdate]]) end,
+            run = function()
+                vim.cmd([[TSUpdate]])
+            end
         })
         -- local_use('polarmutex','nvim-treesitter')
         use("nvim-treesitter/playground")
@@ -61,8 +63,8 @@ return require("packer").startup({
                 {"nvim-telescope/telescope-fzf-writer.nvim"},
                 {"nvim-telescope/telescope-packer.nvim"},
                 {"nvim-telescope/telescope-github.nvim"},
-                {"nvim-telescope/telescope-packer.nvim"},
-            },
+                {"nvim-telescope/telescope-packer.nvim"}
+            }
         })
         use("kyazdani42/nvim-web-devicons")
         use("phaazon/hop.nvim")
@@ -73,10 +75,6 @@ return require("packer").startup({
         use("mfussenegger/nvim-lua-debugger")
         use("theHamsta/nvim-dap-virtual-text")
         use("nvim-telescope/telescope-dap.nvim")
-
-        -- Statusline
-        use({"glepnir/galaxyline.nvim", branch = "main"})
-        use("tjdevries/express_line.nvim")
 
         -- Buffer Tabs
         use("akinsho/nvim-bufferline.lua")
@@ -90,7 +88,7 @@ return require("packer").startup({
         use("lewis6991/gitsigns.nvim")
         use("pwntester/octo.nvim")
         -- use("ThePrimeagen/git-worktree.nvim")
-        use("~/repos/git-worktree.nvim.git/path-fix")
+        use("~/repos/git-worktree.nvim.git/master")
         use({"ruifm/gitlinker.nvim", requires = "nvim-lua/plenary.nvim"})
 
         -- colorsheme
@@ -127,7 +125,12 @@ return require("packer").startup({
         use("tweekmonster/startuptime.vim")
 
         -- Neovim in the browser
-        use({"glacambre/firenvim", run = function() vim.fn["firenvim#install"](0) end})
+        use({
+            "glacambre/firenvim",
+            run = function()
+                vim.fn["firenvim#install"](0)
+            end
+        })
 
         -- Whitespace
         -- do I still want this?
@@ -152,5 +155,5 @@ return require("packer").startup({
         -- tasks
         local_use("polarmutex", "tasks.nvim")
     end,
-    config = {display = {open_fn = require("packer.util").float}},
+    config = {display = {open_fn = require("packer.util").float}}
 })
