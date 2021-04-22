@@ -1,3 +1,0 @@
-#!/bin/bash
-# This scripts gets all percent cpu usage from ps and adds them, then it divides them by 4 for 4 cores and then it formates the output
-\ps -eo pcpu --no-headers | awk '{sum+=$1;} END{printf "%.2f%", (sum/4);}' | tee /tmp/cpupercent
