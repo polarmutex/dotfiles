@@ -58,7 +58,7 @@ return require("packer").startup({
             -- "nvim-telescope/telescope.nvim",
             "~/repos/telescope.nvim",
             requires = {
-                {"nvim-lua/popup.nvim"}, {"nvim-lua/plenary.nvim"},
+                {"nvim-lua/popup.nvim"},
                 {"nvim-telescope/telescope-fzy-native.nvim"},
                 {"nvim-telescope/telescope-fzf-writer.nvim"},
                 {"nvim-telescope/telescope-packer.nvim"},
@@ -82,14 +82,19 @@ return require("packer").startup({
         -- Terminal / File Nav
         use("ThePrimeagen/harpoon")
         -- local_use('polarmutex','harpoon')
+        use 'norcalli/nvim-terminal.lua'
 
         -- Git
         use("TimUntersberger/neogit")
         use("lewis6991/gitsigns.nvim")
         use("pwntester/octo.nvim")
         -- use("ThePrimeagen/git-worktree.nvim")
-        use("~/repos/git-worktree.nvim.git/master")
-        use({"ruifm/gitlinker.nvim", requires = "nvim-lua/plenary.nvim"})
+        --use("~/repos/git-worktree.nvim.git/master")
+        use("~/repos/git-worktree.nvim.git/feat-fix-non-bare-repos")
+        use({"ruifm/gitlinker.nvim"})
+
+        -- plenary
+        use({"polarmutex/plenary.nvim", branch="fix-absolute-path"})
 
         -- colorsheme
         use("tjdevries/colorbuddy.nvim")

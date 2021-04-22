@@ -44,7 +44,11 @@ local maps = {
     {n, "<leader>cu", ":lua require(\"harpoon.term\").sendCommand(1, 1)<CR>"}, {
         n, "<leader>cp",
         ":lua require('plenary.reload').reload_module('contextprint'); require('contextprint').add_statement()<CR>",
-    }, -- Git
+    }, 
+    {
+        n, "<leader>t", "<Plug>PlenaryTestFile",
+    },
+    -- Git
     {
         n, "<leader>gb",
         ":lua require(\"polarmutex.plugins.telescope\").git_branches()<CR>",
