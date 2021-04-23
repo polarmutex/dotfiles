@@ -55,8 +55,7 @@ return require("packer").startup({
 
         -- Telescope (fuzzy finder)
         use({
-            -- "nvim-telescope/telescope.nvim",
-            "~/repos/telescope.nvim",
+            "nvim-telescope/telescope.nvim",
             requires = {
                 {"nvim-lua/popup.nvim"},
                 {"nvim-telescope/telescope-fzy-native.nvim"},
@@ -88,13 +87,12 @@ return require("packer").startup({
         use("TimUntersberger/neogit")
         use("lewis6991/gitsigns.nvim")
         use("pwntester/octo.nvim")
-        -- use("ThePrimeagen/git-worktree.nvim")
+        use("ThePrimeagen/git-worktree.nvim")
         --use("~/repos/git-worktree.nvim.git/master")
-        use("~/repos/git-worktree.nvim.git/feat-fix-non-bare-repos")
         use({"ruifm/gitlinker.nvim"})
 
         -- plenary
-        use({"polarmutex/plenary.nvim", branch="fix-absolute-path"})
+        use{"nvim-lua/plenary.nvim"}
 
         -- colorsheme
         use("tjdevries/colorbuddy.nvim")
