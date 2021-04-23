@@ -19,6 +19,24 @@ M.git_commits = function() require("telescope.builtin").git_commits({}) end
 M.git_bcommits = function() require("telescope.builtin").git_bcommits({}) end
 M.gh_pull_request = function() require("telescope").extensions.octo.prs({}) end
 M.gh_issues = function() require("telescope").extensions.octo.issues({}) end
+M.git_worktrees = function()
+    local opts = themes.get_dropdown({
+        winblend = 10,
+        border = true,
+        previewer = false,
+        shorten_path = false,
+    })
+    require("telescope").extensions.git_worktree.git_worktrees(opts)
+end
+M.git_worktree_create = function()
+    local opts = themes.get_dropdown({
+        winblend = 10,
+        border = true,
+        previewer = false,
+        shorten_path = false,
+    })
+    require("telescope").extensions.git_worktree.create_git_worktree(opts)
+end
 
 -- Files / Meta
 M.nvim_dotfiles = function()
