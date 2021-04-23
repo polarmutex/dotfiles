@@ -1,7 +1,20 @@
-my dotfiles
+# Installing
 
-## Influenced from the following
-* [chrisatmachine nvim config](https://github.com/ChristianChiarulli/nvim)
+```
+curl  -sSL https://git.io/polarmutex | bash
+```
+
+## Using
+
+```
+chezmoi init --apply --verbose git@github.com:polarmutex/dotfiles.git
+```
+
+## creating curl bash
+Use git.io or your favorite shortener and point to the bootstrap/setup script in your dotfiles repo:
+```
+curl -i https://git.io -F "url=https://raw.githubusercontent.com/polarmutex/dotfiles/master/setup.sh" -F code=polarmutex
+```
 
 ### How to disable the super key in ubuntu MATE 
 
