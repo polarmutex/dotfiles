@@ -228,9 +228,7 @@ local function start_screen()
 
     vim.cmd([[noautocmd enew]])
     vim.cmd([[
-        silent! setlocal bufhidden=wipe colorcolumn= foldcolumn=0 filetype=startify \
-        matchpairs= nocursorcolumn nocursorline nolist nonumber norelativenumber \
-        nospell noswapfile signcolumn=no synmaxcol& statusline=]])
+        silent! setlocal bufhidden=wipe colorcolumn= foldcolumn=0 filetype=startify matchpairs= nocursorcolumn nocursorline nolist nonumber norelativenumber nospell noswapfile signcolumn=no synmaxcol& statusline=]])
     make_sections()
     vim.cmd([[setlocal nomodifiable nomodified]])
     position_cursor()

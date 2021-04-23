@@ -1,0 +1,23 @@
+{{/* boolean feature tags */}}
+{{- $headless := false -}}{{/* true if this machine does not have a screen and keyboard */}}
+{{- $temporary := false -}}{{/* true if this machine is temporary, e.g. a cloud or VM instance */}}
+{{- $personal := false -}}{{/* true if this machine should have personal secrets from LastPass */}}
+{{- "" -}}
+
+{{- if eq $hostname "archbox" -}}
+{{-   $personal = true -}}
+{{-   $kubernetes = true -}}
+{{- else if eq $hostname "raspberrypi4" -}}
+{{-   $headless = true -}}
+{{-   $personal = true -}}
+{{- else -}}
+{{-   $headless = promptBool "headless" -}}
+{{-   $transient = promptBool "transient" -}}
+{{-   $kubernetes = promptBool "kubernetes" -}}
+{{- end -}}
+
+[data]
+  headless = {{ $headless }}
+  hostname = {{ $hostname | quote }}
+  temporary = {{ $temporary }}
+  personal = {{ $personal }}
