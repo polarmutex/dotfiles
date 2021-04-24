@@ -22,3 +22,12 @@ curl -i https://git.io -F "url=https://raw.githubusercontent.com/polarmutex/dotf
 gsettings set org.mate.mate-menu hot-key ''
 gsettings set com.solus-project.brisk-menu hot-key ''
 ```
+
+## Update chezmoi imports
+```bash
+cd $(chezmoi source-path)
+./update-imports.sh
+```
+- Oh-My-Zsh
+- lain (awesome)
+- bling (awesome)
