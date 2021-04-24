@@ -17,6 +17,9 @@ require("polarmutex.lsp")
 require("polarmutex.configure_plugins")
 require("polarmutex.mappings")
 
+--Modules
+require("polarmutex.modules.whitespace").setup()
+
 vim.api.nvim_command("augroup start_screen")
 vim.api.nvim_command("autocmd!")
 vim.api.nvim_command("autocmd VimEnter * ++once lua require('start-screen').start()")
