@@ -71,6 +71,8 @@ local maps = {
     {n, "<leader>hR", "<cmd>lua require(\"gitsigns\").reset_buffer()<CR>"},
     {n, "<leader>hs", "<cmd>lua require(\"gitsigns\").stage_hunk()<CR>"},
     {n, "<leader>hu", "<cmd>lua require(\"gitsigns\").undo_stage_hunk()<CR>"},
+    {n, "<leader>gw", "<cmd>lua require(\"polarmutex.plugins.telescope\").git_worktrees()<CR>"},
+    {n, "<leader>gwc","<cmd>lua require(\"polarmutex.plugins.telescope\").git_worktree_create()<CR>"},
 
     -- Beancount
     {n, "<leader>mc", ":%s/txn/*/gc<CR>"}, -- change uncleared transactions to cleared in beancount
