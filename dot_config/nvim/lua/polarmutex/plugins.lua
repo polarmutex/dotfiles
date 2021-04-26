@@ -94,10 +94,6 @@ return require("packer").startup({
         -- plenary
         use{"nvim-lua/plenary.nvim"}
 
-        -- colorsheme
-        use("tjdevries/colorbuddy.nvim")
-        use("rktjmp/lush.nvim")
-
         -- Increment / Decrement
         use("monaqa/dial.nvim")
 
