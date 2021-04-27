@@ -75,9 +75,6 @@ return require("packer").startup({
         use("theHamsta/nvim-dap-virtual-text")
         use("nvim-telescope/telescope-dap.nvim")
 
-        -- Buffer Tabs
-        use("akinsho/nvim-bufferline.lua")
-
         -- Terminal / File Nav
         use("ThePrimeagen/harpoon")
         -- local_use('polarmutex','harpoon')
