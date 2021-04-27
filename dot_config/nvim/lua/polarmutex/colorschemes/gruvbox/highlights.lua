@@ -96,8 +96,8 @@ hl.common = {
     WarningMsg = {fg = p.yellow, bold = true},
     MoreMsg = hl.predef.YellowBold,
     ModeMsg = hl.predef.YellowBold,
-    IncSearch = {fg = p.orange, bg = p.bg0},
-    Search = {fg = p.yellow, bg = p.bg0},
+    IncSearch = {fg = p.orange, bg = p.bg0, reverse = true},
+    Search = {fg = p.yellow, bg = p.bg0, reverse = true},
     MatchParen = {fg = p.none, bg = p.bg4},
     NonText = {fg = p.bg2},
     Whitespace = {fg = p.bg4},
@@ -246,17 +246,10 @@ hl.plugins.telescope = {
 }
 
 hl.plugins.startscreen = {
-    StartifyBracket = hl.predef.Fg,
-    StartifyFile = hl.predef.Fg,
-    StartifyNumber = hl.predef.Fg,
+    StartifyTitle = hl.predef.Blue,
+    StartifyBracket = hl.predef.Green,
+    StartifyNumber = hl.predef.Purple,
     StartifyPath = hl.predef.Fg,
-    StartifySlash = hl.predef.Fg,
-    StartifySection = hl.predef.Fg,
-    StartifySpecial = hl.predef.Fg,
-    StartifyHeader = hl.predef.Fg,
-    StartifyFooter = hl.predef.Fg,
-    StartifyVar = hl.predef.Fg,
-    StartifySelect =  hl.predef.Fg,
 }
 
 hl.plugins.statusline = {
@@ -305,12 +298,23 @@ hl.plugins.gitsigns = {
     GitSignsAdd = hl.predef.Green,
     GitSignsAddLn = hl.predef.Green,
     GitSignsAddNr = hl.predef.Green,
-    GitSignsChange = hl.predef.Blue,
-    GitSignsChangeLn = hl.predef.Blue,
-    GitSignsChangeNr = hl.predef.Blue,
+    GitSignsChange = hl.predef.Yellow,
+    GitSignsChangeLn = hl.predef.Yellow,
+    GitSignsChangeNr = hl.predef.Yellow,
     GitSignsDelete = hl.predef.Red,
     GitSignsDeleteLn = hl.predef.Red,
     GitSignsDeleteNr = hl.predef.Red
+}
+
+hl.plugins.neogit = {
+    NeogitNotificationInfo = hl.predef.Green,
+    NeogitNotificationWarning = hl.predef.Yellow,
+    NeogitNotificationError = hl.predef.Red,
+    NeogitDiffAddHighlight = hl.common.DiffAdd,
+    NeogitDiffDeleteHighlight = hl.common.DiffDelete,
+    NeogitDiffContextHighlight = hl.common.DiffText,
+    NeogitHunkHeader = hl.predef.Green,
+    NeogitHunkHeaderHighlight = hl.predef.Green,
 }
 
 hl.langs.markdown = {
