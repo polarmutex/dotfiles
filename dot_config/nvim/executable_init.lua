@@ -19,6 +19,7 @@ require("polarmutex.mappings")
 
 --Modules
 require("polarmutex.modules.whitespace").setup()
+require("polarmutex.modules.terminal")
 
 vim.api.nvim_command("augroup start_screen")
 vim.api.nvim_command("autocmd!")
