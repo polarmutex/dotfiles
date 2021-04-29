@@ -32,13 +32,13 @@ if has_compe then
             path = true,
             buffer = true,
             calc = true,
-            vsnip = true,
+            vsnip = false,
             nvim_lsp = true,
             nvim_lua = true,
             spell = true,
-            tags = true,
-            snippets_nvim = true,
-            treesitter = true,
+            tags = false,
+            snippets_nvim = false,
+            treesitter = false,
         },
     })
 end
