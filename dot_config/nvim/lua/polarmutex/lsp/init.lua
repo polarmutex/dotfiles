@@ -1,12 +1,12 @@
 local lspconfig = require("lspconfig")
-local lspinstall = require("lspinstall")
+--local lspinstall = require("polarmutex.lsp.install")
 
 -- require('vim.lsp.log').set_level("trace")
 -- require('vim.lsp.log').set_level("debug")
 
 require("polarmutex.lsp.handlers")
 
-require("polarmutex.lsp.servers.prosemd").setup()
+--require("polarmutex.lsp.servers.prosemd").setup()
 
 local custom_on_attach = function(client, bufnr)
     -- Set autocommands conditional on server_capabilities
@@ -28,58 +28,13 @@ local custom_on_attach = function(client, bufnr)
     end
 end
 
-local function make_config()
-    local capabilities = vim.lsp.protocol.make_client_capabilities()
-    return {on_attach = custom_on_attach}
-end
-
-local function setup_servers()
-    lspinstall.setup()
-
-    -- get all installed servers
-    local servers = lspinstall.installed_servers()
-    -- ... and add manually installed servers
-    table.insert(servers, "beancount")
-    table.insert(servers, "clangd")
-    table.insert(servers, "prosemd")
-
-    for _, server in pairs(servers) do
-        local config = make_config()
-
-        if server == "sumneko" then
-            config = vim.tbl_extend("force", config,
-                                    require("polarmutex.lsp.servers.sumneko"))
-        elseif server == "pyright" then
-            config = vim.tbl_extend("force", config,
-                                    require("polarmutex.lsp.servers.pyright"))
-        elseif server == "clangd" then
-            config = vim.tbl_extend("force", config,
-                                    require("polarmutex.lsp.servers.clangd"))
-        elseif server == "efm" then
-            config = vim.tbl_extend("force", config,
-                                    require("polarmutex.lsp.servers.efm"))
-        elseif server == "beancount" then
-            config = vim.tbl_extend("force", config,
-                                    require("polarmutex.lsp.servers.beancount"))
-        elseif server == "prosemd" then
-            config = vim.tbl_extend("force", config,
-                                    require("polarmutex.lsp.servers.prosemd")).config()
-        elseif server == "tsserver" then
-            config = vim.tbl_extend("force", config,
-                                    require("polarmutex.lsp.servers.typescript"))
-        elseif server == "svelte" then
-            config = vim.tbl_extend("force", config,
-                                    require("polarmutex.lsp.servers.svelte"))
-        end
-
-        lspconfig[server].setup(config)
-    end
-end
-
-setup_servers()
-
--- Automatically reload after LspInstall <server>` so we don't have to restart neovim
-lspinstall.post_install_hook = function()
-    setup_servers() -- reload installed servers
-    vim.cmd("bufdo e") -- this triggers the FileType autocmd that starts the server
-end
+require("polarmutex.lsp.servers.beancount")
+require("polarmutex.lsp.servers.clangd")
+require("polarmutex.lsp.servers.efm")
+require("polarmutex.lsp.servers.prosemd")
+require("polarmutex.lsp.servers.pyright")
+require("polarmutex.lsp.servers.sumneko")
+--require("polarmutex.lsp.servers.nlua")
+require("polarmutex.lsp.servers.svelte")
+require("polarmutex.lsp.servers.typescript")
+require("polarmutex.lsp.servers.vimls")

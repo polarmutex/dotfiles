@@ -5,37 +5,61 @@
 -- https://github.com/johannesthyssen/vim-signit
 -- https://github.com/kyazdani42/nvim-tree.lua
 -- https://github.com/mkitt/tabline.vim
-return require("packer").startup({
-    function(use)
-        local local_use = function(first, second)
-            local plug_path
-            local home
 
-            if second == nil then
-                plug_path = first
-                home = "polarmutex"
-            else
-                plug_path = second
-                home = first
-            end
+local install_path = vim.fn.stdpath('data')..'/site/pack/packer/opt/packer.nvim'
 
-            if vim.fn.isdirectory(vim.fn.expand("~/repos/" .. plug_path)) == 1 then
-                use("~/repos/" .. plug_path)
-            elseif vim.fn.isdirectory(vim.fn.expand("~/dev/" .. plug_path)) == 1 then
-                use("~/dev/" .. plug_path)
-            else
-                use(string.format("%s/%s", home, plug_path))
-            end
+if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
+  vim.cmd('!git clone https://github.com/wbthomason/packer.nvim '..install_path)
+  vim.cmd('packadd packer.nvim')
+end
+
+vim.cmd [[packadd packer.nvim]]
+
+local packer_ok, packer = pcall(require, "packer")
+
+if packer_ok then
+
+    local use = packer.use
+    local local_use = function(first, second)
+        local plug_path
+        local home
+
+        if second == nil then
+            plug_path = first
+            home = "polarmutex"
+        else
+            plug_path = second
+            home = first
         end
 
+        if vim.fn.isdirectory(vim.fn.expand("~/repos/" .. plug_path)) == 1 then
+            use("~/repos/" .. plug_path)
+        elseif vim.fn.isdirectory(vim.fn.expand("~/dev/" .. plug_path)) == 1 then
+            use("~/dev/" .. plug_path)
+        else
+            use(string.format("%s/%s", home, plug_path))
+        end
+    end
+
+    packer.init{
+        display = {
+            open_fn = require("packer.util").float
+        }
+    }
+
+    local plugins = function()
         -- Packer can manage itself as an optional plugin
-        use("wbthomason/packer.nvim")
+        use{"wbthomason/packer.nvim", opt = true}
 
         -- LSP
         use("neovim/nvim-lspconfig")
-        use("hrsh7th/nvim-compe")
+        use{"hrsh7th/nvim-compe",
+            config = function() require("polarmutex.plugins.completion") end,
+        }
         use("nvim-lua/lsp-status.nvim")
-        use("glepnir/lspsaga.nvim")
+        use{"glepnir/lspsaga.nvim",
+            config = function() require("polarmutex.plugins.lspsaga") end,
+        }
         use("onsails/lspkind-nvim")
         use("kosayoda/nvim-lightbulb")
         use("tjdevries/nlua.nvim")
@@ -45,16 +69,18 @@ return require("packer").startup({
             "nvim-treesitter/nvim-treesitter",
             run = function()
                 vim.cmd([[TSUpdate]])
-            end
+            end,
+            config = function() require("polarmutex.plugins.treesitter") end,
         })
         -- local_use('polarmutex','nvim-treesitter')
         use("nvim-treesitter/playground")
         -- use 'nvim-treesitter/completion-treesitter'
         local_use("polarmutex", "beancount.nvim")
         local_use("polarmutex", "contextprint.nvim")
+        -- haringsrob/nvim_context_vt
 
         -- Telescope (fuzzy finder)
-        use({
+        use{
             "nvim-telescope/telescope.nvim",
             requires = {
                 {"nvim-lua/popup.nvim"},
@@ -63,26 +89,36 @@ return require("packer").startup({
                 {"nvim-telescope/telescope-packer.nvim"},
                 {"nvim-telescope/telescope-github.nvim"},
                 {"nvim-telescope/telescope-packer.nvim"}
-            }
-        })
+            },
+            config = function() require("polarmutex.plugins.telescope.config") end,
+        }
         use("kyazdani42/nvim-web-devicons")
         use("phaazon/hop.nvim")
 
         -- Debug adapter protocol
-        use("mfussenegger/nvim-dap")
+        use{"mfussenegger/nvim-dap",
+            config = function() require("polarmutex.plugins.dap") end,
+        }
         use("mfussenegger/nvim-dap-python")
         use("mfussenegger/nvim-lua-debugger")
         use("theHamsta/nvim-dap-virtual-text")
         use("nvim-telescope/telescope-dap.nvim")
 
         -- Terminal / File Nav
-        use("ThePrimeagen/harpoon")
-        -- local_use('polarmutex','harpoon')
-        use 'norcalli/nvim-terminal.lua'
+        use{"ThePrimeagen/harpoon", 
+            config = function() require("polarmutex.plugins.harpoon") end,
+        }
+        use{'norcalli/nvim-terminal.lua',
+            config = function() require("polarmutex.plugins.nvim-terminal") end
+        }
 
         -- Git
-        use("TimUntersberger/neogit")
-        use("lewis6991/gitsigns.nvim")
+        use{"TimUntersberger/neogit",
+            config = function() require("polarmutex.plugins.neogit") end,
+        }
+        use{"lewis6991/gitsigns.nvim",
+            config = function() require("polarmutex.plugins.gitsigns") end,
+        }
         use("pwntester/octo.nvim")
         use("ThePrimeagen/git-worktree.nvim")
         --use("~/repos/git-worktree.nvim.git/master")
@@ -92,7 +128,9 @@ return require("packer").startup({
         use{"nvim-lua/plenary.nvim"}
 
         -- Increment / Decrement
-        use("monaqa/dial.nvim")
+        use{"monaqa/dial.nvim",
+            config = function() require("polarmutex.plugins.dial") end,
+        }
 
         -- text maniuplation
         use("tpope/vim-surround") -- Surround text objects easily
@@ -107,7 +145,10 @@ return require("packer").startup({
         use("airblade/vim-rooter")
 
         -- Add some color
-        use("norcalli/nvim-colorizer.lua")
+        use{"norcalli/nvim-colorizer.lua",
+            opt = false,
+            config = function() require("polarmutex.plugins.colorizer") end,
+        }
 
         -- :Messages <- view messages in quickfix list
         -- :Verbose  <- view verbose output in preview window.
@@ -150,6 +191,7 @@ return require("packer").startup({
 
         -- tasks
         local_use("polarmutex", "tasks.nvim")
-    end,
-    config = {display = {open_fn = require("packer.util").float}}
-})
+    end
+
+    packer.startup(plugins)
+end

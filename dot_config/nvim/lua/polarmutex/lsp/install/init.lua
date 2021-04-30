@@ -1,5 +1,5 @@
-local servers = require("lspinstall/servers")
-local configs = require("lspconfig/configs")
+local servers = require("polarmutex.lsp.install.servers")
+local configs = require("lspconfig.configs")
 
 local M = {}
 

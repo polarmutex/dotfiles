@@ -1,6 +1,9 @@
 local lspstatus = require("lsp-status")
+local lspconfig = require("lspconfig")
+local lspname = "clangd"
+local install_path = vim.fn.stdpath("data") .. "/lspinstall/" .. lspname
 
-return {
+lspconfig[lspname].setup{
     cmd = {
         "clangd", "--background-index", "--suggest-missing-includes", "--clang-tidy",
         "--header-insertion=iwyu",

@@ -1,4 +1,9 @@
-return {
+local lspconfig = require("lspconfig")
+local lspname = "sumneko_lua"
+local install_path = vim.fn.stdpath("data") .. "/lspinstall/" .. lspname
+
+lspconfig[lspname].setup{
+    cmd = { install_path .. "/sumneko-lua-language-server" },
     settings = {
         Lua = {
             runtime = {

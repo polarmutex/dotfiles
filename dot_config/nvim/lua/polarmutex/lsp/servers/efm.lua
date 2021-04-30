@@ -54,7 +54,12 @@ local luacheck = {
     lintFormats = {"%f:%l:%c: %m"}
 }
 
-return {
+local lspconfig = require("lspconfig")
+local lspname = "efm"
+local install_path = vim.fn.stdpath("data") .. "/lspinstall/" .. lspname
+
+lspconfig.efm.setup{
+    cmd = { install_path .. "/efm-langserver" },
     init_options = {documentFormatting = true},
     filetypes = {"javascript", "typescript", "typescriptreact", "lua", "python"},
     settings = {

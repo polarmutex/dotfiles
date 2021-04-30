@@ -1,4 +1,8 @@
-return {
+local lspconfig = require("lspconfig")
+local lspname = "beancount"
+local install_path = vim.fn.stdpath("data") .. "/lspinstall/" .. lspname
+
+lspconfig[lspname].setup{
     cmd = {
         -- "node",
         -- "--inspect",

@@ -47,8 +47,8 @@ local function save_profiles(threshold)
 end
 
 time("Luarocks path setup", true)
-local package_path_str = "/home/brian/.cache/nvim/packer_hererocks/2.0.5/share/lua/5.1/?.lua;/home/brian/.cache/nvim/packer_hererocks/2.0.5/share/lua/5.1/?/init.lua;/home/brian/.cache/nvim/packer_hererocks/2.0.5/lib/luarocks/rocks-5.1/?.lua;/home/brian/.cache/nvim/packer_hererocks/2.0.5/lib/luarocks/rocks-5.1/?/init.lua"
-local install_cpath_pattern = "/home/brian/.cache/nvim/packer_hererocks/2.0.5/lib/lua/5.1/?.so"
+local package_path_str = "/home/blueguardian/.cache/nvim/packer_hererocks/2.1.0-beta3/share/lua/5.1/?.lua;/home/blueguardian/.cache/nvim/packer_hererocks/2.1.0-beta3/share/lua/5.1/?/init.lua;/home/blueguardian/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/luarocks/rocks-5.1/?.lua;/home/blueguardian/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/luarocks/rocks-5.1/?/init.lua"
+local install_cpath_pattern = "/home/blueguardian/.cache/nvim/packer_hererocks/2.1.0-beta3/lib/lua/5.1/?.so"
 if not string.find(package.path, package_path_str, 1, true) then
   package.path = package.path .. ';' .. package_path_str
 end
@@ -73,215 +73,259 @@ time("Defining packer_plugins", true)
 _G.packer_plugins = {
   ["beancount.nvim"] = {
     loaded = true,
-    path = "/home/brian/.local/share/nvim/site/pack/packer/start/beancount.nvim"
-  },
-  ["colorbuddy.nvim"] = {
-    loaded = true,
-    path = "/home/brian/.local/share/nvim/site/pack/packer/start/colorbuddy.nvim"
+    path = "/home/blueguardian/.local/share/nvim/site/pack/packer/start/beancount.nvim"
   },
   ["contextprint.nvim"] = {
     loaded = true,
-    path = "/home/brian/.local/share/nvim/site/pack/packer/start/contextprint.nvim"
+    path = "/home/blueguardian/.local/share/nvim/site/pack/packer/start/contextprint.nvim"
   },
   ["dial.nvim"] = {
+    config = { "\27LJ\2\n7\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\28polarmutex.plugins.dial\frequire\0" },
     loaded = true,
-    path = "/home/brian/.local/share/nvim/site/pack/packer/start/dial.nvim"
+    path = "/home/blueguardian/.local/share/nvim/site/pack/packer/start/dial.nvim"
   },
   firenvim = {
     loaded = true,
-    path = "/home/brian/.local/share/nvim/site/pack/packer/start/firenvim"
+    path = "/home/blueguardian/.local/share/nvim/site/pack/packer/start/firenvim"
   },
   ["git-worktree.nvim"] = {
     loaded = true,
-    path = "/home/brian/.local/share/nvim/site/pack/packer/start/git-worktree.nvim"
+    path = "/home/blueguardian/.local/share/nvim/site/pack/packer/start/git-worktree.nvim"
   },
   ["gitlinker.nvim"] = {
     loaded = true,
-    path = "/home/brian/.local/share/nvim/site/pack/packer/start/gitlinker.nvim"
+    path = "/home/blueguardian/.local/share/nvim/site/pack/packer/start/gitlinker.nvim"
   },
   ["gitsigns.nvim"] = {
+    config = { "\27LJ\2\n;\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0 polarmutex.plugins.gitsigns\frequire\0" },
     loaded = true,
-    path = "/home/brian/.local/share/nvim/site/pack/packer/start/gitsigns.nvim"
+    path = "/home/blueguardian/.local/share/nvim/site/pack/packer/start/gitsigns.nvim"
   },
   harpoon = {
+    config = { "\27LJ\2\n:\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\31polarmutex.plugins.harpoon\frequire\0" },
     loaded = true,
-    path = "/home/brian/.local/share/nvim/site/pack/packer/start/harpoon"
+    path = "/home/blueguardian/.local/share/nvim/site/pack/packer/start/harpoon"
   },
   ["hop.nvim"] = {
     loaded = true,
-    path = "/home/brian/.local/share/nvim/site/pack/packer/start/hop.nvim"
+    path = "/home/blueguardian/.local/share/nvim/site/pack/packer/start/hop.nvim"
   },
   ["lsp-status.nvim"] = {
     loaded = true,
-    path = "/home/brian/.local/share/nvim/site/pack/packer/start/lsp-status.nvim"
+    path = "/home/blueguardian/.local/share/nvim/site/pack/packer/start/lsp-status.nvim"
   },
   ["lspkind-nvim"] = {
     loaded = true,
-    path = "/home/brian/.local/share/nvim/site/pack/packer/start/lspkind-nvim"
+    path = "/home/blueguardian/.local/share/nvim/site/pack/packer/start/lspkind-nvim"
   },
   ["lspsaga.nvim"] = {
+    config = { "\27LJ\2\n:\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\31polarmutex.plugins.lspsaga\frequire\0" },
     loaded = true,
-    path = "/home/brian/.local/share/nvim/site/pack/packer/start/lspsaga.nvim"
-  },
-  ["lush.nvim"] = {
-    loaded = true,
-    path = "/home/brian/.local/share/nvim/site/pack/packer/start/lush.nvim"
+    path = "/home/blueguardian/.local/share/nvim/site/pack/packer/start/lspsaga.nvim"
   },
   neogit = {
+    config = { "\27LJ\2\n9\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\30polarmutex.plugins.neogit\frequire\0" },
     loaded = true,
-    path = "/home/brian/.local/share/nvim/site/pack/packer/start/neogit"
+    path = "/home/blueguardian/.local/share/nvim/site/pack/packer/start/neogit"
   },
   ["nlua.nvim"] = {
     loaded = true,
-    path = "/home/brian/.local/share/nvim/site/pack/packer/start/nlua.nvim"
-  },
-  ["nvim-bufferline.lua"] = {
-    loaded = true,
-    path = "/home/brian/.local/share/nvim/site/pack/packer/start/nvim-bufferline.lua"
+    path = "/home/blueguardian/.local/share/nvim/site/pack/packer/start/nlua.nvim"
   },
   ["nvim-colorizer.lua"] = {
+    config = { "\27LJ\2\n<\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0!polarmutex.plugins.colorizer\frequire\0" },
     loaded = true,
-    path = "/home/brian/.local/share/nvim/site/pack/packer/start/nvim-colorizer.lua"
+    path = "/home/blueguardian/.local/share/nvim/site/pack/packer/start/nvim-colorizer.lua"
   },
   ["nvim-compe"] = {
+    config = { "\27LJ\2\n=\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\"polarmutex.plugins.completion\frequire\0" },
     loaded = true,
-    path = "/home/brian/.local/share/nvim/site/pack/packer/start/nvim-compe"
+    path = "/home/blueguardian/.local/share/nvim/site/pack/packer/start/nvim-compe"
   },
   ["nvim-dap"] = {
+    config = { "\27LJ\2\n6\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\27polarmutex.plugins.dap\frequire\0" },
     loaded = true,
-    path = "/home/brian/.local/share/nvim/site/pack/packer/start/nvim-dap"
+    path = "/home/blueguardian/.local/share/nvim/site/pack/packer/start/nvim-dap"
   },
   ["nvim-dap-python"] = {
     loaded = true,
-    path = "/home/brian/.local/share/nvim/site/pack/packer/start/nvim-dap-python"
+    path = "/home/blueguardian/.local/share/nvim/site/pack/packer/start/nvim-dap-python"
   },
   ["nvim-dap-virtual-text"] = {
     loaded = true,
-    path = "/home/brian/.local/share/nvim/site/pack/packer/start/nvim-dap-virtual-text"
+    path = "/home/blueguardian/.local/share/nvim/site/pack/packer/start/nvim-dap-virtual-text"
   },
   ["nvim-lightbulb"] = {
     loaded = true,
-    path = "/home/brian/.local/share/nvim/site/pack/packer/start/nvim-lightbulb"
+    path = "/home/blueguardian/.local/share/nvim/site/pack/packer/start/nvim-lightbulb"
   },
   ["nvim-lspconfig"] = {
     loaded = true,
-    path = "/home/brian/.local/share/nvim/site/pack/packer/start/nvim-lspconfig"
+    path = "/home/blueguardian/.local/share/nvim/site/pack/packer/start/nvim-lspconfig"
   },
   ["nvim-lua-debugger"] = {
     loaded = true,
-    path = "/home/brian/.local/share/nvim/site/pack/packer/start/nvim-lua-debugger"
+    path = "/home/blueguardian/.local/share/nvim/site/pack/packer/start/nvim-lua-debugger"
   },
   ["nvim-terminal.lua"] = {
+    config = { "\27LJ\2\n@\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0%polarmutex.plugins.nvim-terminal\frequire\0" },
     loaded = true,
-    path = "/home/brian/.local/share/nvim/site/pack/packer/start/nvim-terminal.lua"
+    path = "/home/blueguardian/.local/share/nvim/site/pack/packer/start/nvim-terminal.lua"
   },
   ["nvim-treesitter"] = {
+    config = { "\27LJ\2\n=\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\"polarmutex.plugins.treesitter\frequire\0" },
     loaded = true,
-    path = "/home/brian/.local/share/nvim/site/pack/packer/start/nvim-treesitter"
+    path = "/home/blueguardian/.local/share/nvim/site/pack/packer/start/nvim-treesitter"
   },
   ["nvim-web-devicons"] = {
     loaded = true,
-    path = "/home/brian/.local/share/nvim/site/pack/packer/start/nvim-web-devicons"
+    path = "/home/blueguardian/.local/share/nvim/site/pack/packer/start/nvim-web-devicons"
   },
   ["octo.nvim"] = {
     loaded = true,
-    path = "/home/brian/.local/share/nvim/site/pack/packer/start/octo.nvim"
+    path = "/home/blueguardian/.local/share/nvim/site/pack/packer/start/octo.nvim"
   },
   ["packer.nvim"] = {
-    loaded = true,
-    path = "/home/brian/.local/share/nvim/site/pack/packer/start/packer.nvim"
+    loaded = false,
+    needs_bufread = false,
+    path = "/home/blueguardian/.local/share/nvim/site/pack/packer/opt/packer.nvim"
   },
   playground = {
     loaded = true,
-    path = "/home/brian/.local/share/nvim/site/pack/packer/start/playground"
+    path = "/home/blueguardian/.local/share/nvim/site/pack/packer/start/playground"
   },
   ["plenary.nvim"] = {
     loaded = true,
-    path = "/home/brian/.local/share/nvim/site/pack/packer/start/plenary.nvim"
+    path = "/home/blueguardian/.local/share/nvim/site/pack/packer/start/plenary.nvim"
   },
   ["popup.nvim"] = {
     loaded = true,
-    path = "/home/brian/.local/share/nvim/site/pack/packer/start/popup.nvim"
+    path = "/home/blueguardian/.local/share/nvim/site/pack/packer/start/popup.nvim"
   },
   ["startuptime.vim"] = {
     loaded = true,
-    path = "/home/brian/.local/share/nvim/site/pack/packer/start/startuptime.vim"
+    path = "/home/blueguardian/.local/share/nvim/site/pack/packer/start/startuptime.vim"
   },
   ["tasks.nvim"] = {
     loaded = true,
-    path = "/home/brian/.local/share/nvim/site/pack/packer/start/tasks.nvim"
+    path = "/home/blueguardian/.local/share/nvim/site/pack/packer/start/tasks.nvim"
   },
   ["telescope-dap.nvim"] = {
     loaded = true,
-    path = "/home/brian/.local/share/nvim/site/pack/packer/start/telescope-dap.nvim"
+    path = "/home/blueguardian/.local/share/nvim/site/pack/packer/start/telescope-dap.nvim"
   },
   ["telescope-fzf-writer.nvim"] = {
     loaded = true,
-    path = "/home/brian/.local/share/nvim/site/pack/packer/start/telescope-fzf-writer.nvim"
+    path = "/home/blueguardian/.local/share/nvim/site/pack/packer/start/telescope-fzf-writer.nvim"
   },
   ["telescope-fzy-native.nvim"] = {
     loaded = true,
-    path = "/home/brian/.local/share/nvim/site/pack/packer/start/telescope-fzy-native.nvim"
+    path = "/home/blueguardian/.local/share/nvim/site/pack/packer/start/telescope-fzy-native.nvim"
   },
   ["telescope-github.nvim"] = {
     loaded = true,
-    path = "/home/brian/.local/share/nvim/site/pack/packer/start/telescope-github.nvim"
+    path = "/home/blueguardian/.local/share/nvim/site/pack/packer/start/telescope-github.nvim"
   },
   ["telescope-packer.nvim"] = {
     loaded = true,
-    path = "/home/brian/.local/share/nvim/site/pack/packer/start/telescope-packer.nvim"
+    path = "/home/blueguardian/.local/share/nvim/site/pack/packer/start/telescope-packer.nvim"
   },
   ["telescope.nvim"] = {
+    config = { "\27LJ\2\nC\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0(polarmutex.plugins.telescope.config\frequire\0" },
     loaded = true,
-    path = "/home/brian/.local/share/nvim/site/pack/packer/start/telescope.nvim"
+    path = "/home/blueguardian/.local/share/nvim/site/pack/packer/start/telescope.nvim"
   },
   undotree = {
     loaded = true,
-    path = "/home/brian/.local/share/nvim/site/pack/packer/start/undotree"
+    path = "/home/blueguardian/.local/share/nvim/site/pack/packer/start/undotree"
   },
   ["vim-abolish"] = {
     loaded = true,
-    path = "/home/brian/.local/share/nvim/site/pack/packer/start/vim-abolish"
+    path = "/home/blueguardian/.local/share/nvim/site/pack/packer/start/vim-abolish"
   },
   ["vim-be-good"] = {
     loaded = true,
-    path = "/home/brian/.local/share/nvim/site/pack/packer/start/vim-be-good"
+    path = "/home/blueguardian/.local/share/nvim/site/pack/packer/start/vim-be-good"
   },
   ["vim-commentary"] = {
     loaded = true,
-    path = "/home/brian/.local/share/nvim/site/pack/packer/start/vim-commentary"
+    path = "/home/blueguardian/.local/share/nvim/site/pack/packer/start/vim-commentary"
   },
   ["vim-hardtime"] = {
     loaded = true,
-    path = "/home/brian/.local/share/nvim/site/pack/packer/start/vim-hardtime"
+    path = "/home/blueguardian/.local/share/nvim/site/pack/packer/start/vim-hardtime"
   },
   ["vim-illuminate"] = {
     loaded = true,
-    path = "/home/brian/.local/share/nvim/site/pack/packer/start/vim-illuminate"
+    path = "/home/blueguardian/.local/share/nvim/site/pack/packer/start/vim-illuminate"
   },
   ["vim-radical"] = {
     loaded = true,
-    path = "/home/brian/.local/share/nvim/site/pack/packer/start/vim-radical"
+    path = "/home/blueguardian/.local/share/nvim/site/pack/packer/start/vim-radical"
   },
   ["vim-rooter"] = {
     loaded = true,
-    path = "/home/brian/.local/share/nvim/site/pack/packer/start/vim-rooter"
+    path = "/home/blueguardian/.local/share/nvim/site/pack/packer/start/vim-rooter"
   },
   ["vim-scriptease"] = {
     loaded = true,
-    path = "/home/brian/.local/share/nvim/site/pack/packer/start/vim-scriptease"
+    path = "/home/blueguardian/.local/share/nvim/site/pack/packer/start/vim-scriptease"
   },
   ["vim-surround"] = {
     loaded = true,
-    path = "/home/brian/.local/share/nvim/site/pack/packer/start/vim-surround"
+    path = "/home/blueguardian/.local/share/nvim/site/pack/packer/start/vim-surround"
   },
   ["vim-test"] = {
     loaded = true,
-    path = "/home/brian/.local/share/nvim/site/pack/packer/start/vim-test"
+    path = "/home/blueguardian/.local/share/nvim/site/pack/packer/start/vim-test"
   }
 }
 
 time("Defining packer_plugins", false)
+-- Config for: dial.nvim
+time("Config for dial.nvim", true)
+try_loadstring("\27LJ\2\n7\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\28polarmutex.plugins.dial\frequire\0", "config", "dial.nvim")
+time("Config for dial.nvim", false)
+-- Config for: harpoon
+time("Config for harpoon", true)
+try_loadstring("\27LJ\2\n:\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\31polarmutex.plugins.harpoon\frequire\0", "config", "harpoon")
+time("Config for harpoon", false)
+-- Config for: lspsaga.nvim
+time("Config for lspsaga.nvim", true)
+try_loadstring("\27LJ\2\n:\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\31polarmutex.plugins.lspsaga\frequire\0", "config", "lspsaga.nvim")
+time("Config for lspsaga.nvim", false)
+-- Config for: telescope.nvim
+time("Config for telescope.nvim", true)
+try_loadstring("\27LJ\2\nC\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0(polarmutex.plugins.telescope.config\frequire\0", "config", "telescope.nvim")
+time("Config for telescope.nvim", false)
+-- Config for: nvim-terminal.lua
+time("Config for nvim-terminal.lua", true)
+try_loadstring("\27LJ\2\n@\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0%polarmutex.plugins.nvim-terminal\frequire\0", "config", "nvim-terminal.lua")
+time("Config for nvim-terminal.lua", false)
+-- Config for: gitsigns.nvim
+time("Config for gitsigns.nvim", true)
+try_loadstring("\27LJ\2\n;\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0 polarmutex.plugins.gitsigns\frequire\0", "config", "gitsigns.nvim")
+time("Config for gitsigns.nvim", false)
+-- Config for: nvim-colorizer.lua
+time("Config for nvim-colorizer.lua", true)
+try_loadstring("\27LJ\2\n<\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0!polarmutex.plugins.colorizer\frequire\0", "config", "nvim-colorizer.lua")
+time("Config for nvim-colorizer.lua", false)
+-- Config for: neogit
+time("Config for neogit", true)
+try_loadstring("\27LJ\2\n9\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\30polarmutex.plugins.neogit\frequire\0", "config", "neogit")
+time("Config for neogit", false)
+-- Config for: nvim-dap
+time("Config for nvim-dap", true)
+try_loadstring("\27LJ\2\n6\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\27polarmutex.plugins.dap\frequire\0", "config", "nvim-dap")
+time("Config for nvim-dap", false)
+-- Config for: nvim-compe
+time("Config for nvim-compe", true)
+try_loadstring("\27LJ\2\n=\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\"polarmutex.plugins.completion\frequire\0", "config", "nvim-compe")
+time("Config for nvim-compe", false)
+-- Config for: nvim-treesitter
+time("Config for nvim-treesitter", true)
+try_loadstring("\27LJ\2\n=\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\"polarmutex.plugins.treesitter\frequire\0", "config", "nvim-treesitter")
+time("Config for nvim-treesitter", false)
 if should_profile then save_profiles() end
 
 END
