@@ -1,4 +1,4 @@
-vim.opt.completeopt = {"menuone", "noinsert", "noselect"}
+vim.opt.completeopt = {"menuone", "noselect"}
 
 -- Don't show the dumb matching stuff.
 -- TODO look into this
@@ -29,11 +29,11 @@ if has_compe then
         documentation = true,
 
         source = {
-            path = true,
+            nvim_lsp = true,
             buffer = true,
+            path = true,
             calc = true,
             vsnip = false,
-            nvim_lsp = true,
             nvim_lua = true,
             spell = true,
             tags = false,

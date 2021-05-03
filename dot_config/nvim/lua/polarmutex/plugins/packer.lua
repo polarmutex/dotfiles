@@ -141,9 +141,6 @@ if packer_ok then
         -- Convert binary, hex, etc..
         use("glts/vim-radical")
 
-        -- Have the file system follow you aroun
-        use("airblade/vim-rooter")
-
         -- Add some color
         use{"norcalli/nvim-colorizer.lua",
             opt = false,
