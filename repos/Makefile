@@ -1,0 +1,44 @@
+
+pwd := $(shell pwd -LP)
+.PHONY: link-vim link-tmux neovim
+
+build_reqs:
+	sudo apt-get install -y make cmake git xclip
+	sudo apt-get install -y make build-essential libssl-dev zlib1g-dev libbz2-dev \
+		libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev \
+		xz-utils tk-dev libffi-dev liblzma-dev python-openssl git
+	sudo apt-get install -y gettext libtool libtool-bin autoconf automake cmake g++ pkg-config unzip
+
+neovim_target = $(pwd)/../neovim
+neovim: | $(neovim_target)
+	cd $(neovim_target);\
+	git pull;\
+i	make clean && make distclean;\
+	make CMAKE_BUILD_TYPE=RelWithDebInfo -j;\
+	sudo make install;\
+
+$(neovim_target):
+	mkdir $(neovim_target);
+	git clone https://github.com/neovim/neovim.git $(neovim_target);
+
+kitty_target = $(pwd)/../kitty
+kitty: | $(kitty_target)
+	cd $(kitty_target);\
+	git pull;\
+	make clean;\
+	make;\
+	sudo make install;\
+
+$(kitty_target):
+	mkdir $(kitty_target);
+	git clone https://github.com/kovidgoyal/kitty.git $(kitty_target);
+
+CMAKE = /opt/cmake
+cmake: | $(CMAKE)
+$(CMAKE):
+	wget https://cmake.org/files/v3.17/cmake-3.17.3-Linux-x86_64.sh;\
+	sudo mkdir /opt/cmake;\
+	sudo sh cmake-3.17.3-Linux-x86_64.sh --prefix=/opt/cmake;\
+
+efmlsp:
+	go get github.com/mattn/efm-langserver
