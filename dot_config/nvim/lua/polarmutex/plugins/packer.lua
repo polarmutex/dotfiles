@@ -60,6 +60,9 @@ if packer_ok then
         use{"glepnir/lspsaga.nvim",
             config = function() require("polarmutex.plugins.lspsaga") end,
         }
+        use{"lspcontainers/lspcontainers.nvim",
+            config = function() require("polarmutex.plugins.lspcontainers") end,
+        }
         use("onsails/lspkind-nvim")
         use("kosayoda/nvim-lightbulb")
         use("tjdevries/nlua.nvim")

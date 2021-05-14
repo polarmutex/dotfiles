@@ -114,6 +114,10 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/blueguardian/.local/share/nvim/site/pack/packer/start/lsp-status.nvim"
   },
+  ["lspcontainers.nvim"] = {
+    loaded = true,
+    path = "/home/blueguardian/.local/share/nvim/site/pack/packer/start/lspcontainers.nvim"
+  },
   ["lspkind-nvim"] = {
     loaded = true,
     path = "/home/blueguardian/.local/share/nvim/site/pack/packer/start/lspkind-nvim"
@@ -263,10 +267,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/blueguardian/.local/share/nvim/site/pack/packer/start/vim-radical"
   },
-  ["vim-rooter"] = {
-    loaded = true,
-    path = "/home/blueguardian/.local/share/nvim/site/pack/packer/start/vim-rooter"
-  },
   ["vim-scriptease"] = {
     loaded = true,
     path = "/home/blueguardian/.local/share/nvim/site/pack/packer/start/vim-scriptease"
@@ -282,30 +282,30 @@ _G.packer_plugins = {
 }
 
 time("Defining packer_plugins", false)
--- Config for: dial.nvim
-time("Config for dial.nvim", true)
-try_loadstring("\27LJ\2\n7\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\28polarmutex.plugins.dial\frequire\0", "config", "dial.nvim")
-time("Config for dial.nvim", false)
--- Config for: harpoon
-time("Config for harpoon", true)
-try_loadstring("\27LJ\2\n:\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\31polarmutex.plugins.harpoon\frequire\0", "config", "harpoon")
-time("Config for harpoon", false)
--- Config for: lspsaga.nvim
-time("Config for lspsaga.nvim", true)
-try_loadstring("\27LJ\2\n:\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\31polarmutex.plugins.lspsaga\frequire\0", "config", "lspsaga.nvim")
-time("Config for lspsaga.nvim", false)
--- Config for: telescope.nvim
-time("Config for telescope.nvim", true)
-try_loadstring("\27LJ\2\nC\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0(polarmutex.plugins.telescope.config\frequire\0", "config", "telescope.nvim")
-time("Config for telescope.nvim", false)
--- Config for: nvim-terminal.lua
-time("Config for nvim-terminal.lua", true)
-try_loadstring("\27LJ\2\n@\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0%polarmutex.plugins.nvim-terminal\frequire\0", "config", "nvim-terminal.lua")
-time("Config for nvim-terminal.lua", false)
 -- Config for: gitsigns.nvim
 time("Config for gitsigns.nvim", true)
 try_loadstring("\27LJ\2\n;\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0 polarmutex.plugins.gitsigns\frequire\0", "config", "gitsigns.nvim")
 time("Config for gitsigns.nvim", false)
+-- Config for: nvim-compe
+time("Config for nvim-compe", true)
+try_loadstring("\27LJ\2\n=\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\"polarmutex.plugins.completion\frequire\0", "config", "nvim-compe")
+time("Config for nvim-compe", false)
+-- Config for: harpoon
+time("Config for harpoon", true)
+try_loadstring("\27LJ\2\n:\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\31polarmutex.plugins.harpoon\frequire\0", "config", "harpoon")
+time("Config for harpoon", false)
+-- Config for: telescope.nvim
+time("Config for telescope.nvim", true)
+try_loadstring("\27LJ\2\nC\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0(polarmutex.plugins.telescope.config\frequire\0", "config", "telescope.nvim")
+time("Config for telescope.nvim", false)
+-- Config for: dial.nvim
+time("Config for dial.nvim", true)
+try_loadstring("\27LJ\2\n7\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\28polarmutex.plugins.dial\frequire\0", "config", "dial.nvim")
+time("Config for dial.nvim", false)
+-- Config for: nvim-dap
+time("Config for nvim-dap", true)
+try_loadstring("\27LJ\2\n6\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\27polarmutex.plugins.dap\frequire\0", "config", "nvim-dap")
+time("Config for nvim-dap", false)
 -- Config for: nvim-colorizer.lua
 time("Config for nvim-colorizer.lua", true)
 try_loadstring("\27LJ\2\n<\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0!polarmutex.plugins.colorizer\frequire\0", "config", "nvim-colorizer.lua")
@@ -314,14 +314,14 @@ time("Config for nvim-colorizer.lua", false)
 time("Config for neogit", true)
 try_loadstring("\27LJ\2\n9\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\30polarmutex.plugins.neogit\frequire\0", "config", "neogit")
 time("Config for neogit", false)
--- Config for: nvim-dap
-time("Config for nvim-dap", true)
-try_loadstring("\27LJ\2\n6\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\27polarmutex.plugins.dap\frequire\0", "config", "nvim-dap")
-time("Config for nvim-dap", false)
--- Config for: nvim-compe
-time("Config for nvim-compe", true)
-try_loadstring("\27LJ\2\n=\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\"polarmutex.plugins.completion\frequire\0", "config", "nvim-compe")
-time("Config for nvim-compe", false)
+-- Config for: lspsaga.nvim
+time("Config for lspsaga.nvim", true)
+try_loadstring("\27LJ\2\n:\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\31polarmutex.plugins.lspsaga\frequire\0", "config", "lspsaga.nvim")
+time("Config for lspsaga.nvim", false)
+-- Config for: nvim-terminal.lua
+time("Config for nvim-terminal.lua", true)
+try_loadstring("\27LJ\2\n@\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0%polarmutex.plugins.nvim-terminal\frequire\0", "config", "nvim-terminal.lua")
+time("Config for nvim-terminal.lua", false)
 -- Config for: nvim-treesitter
 time("Config for nvim-treesitter", true)
 try_loadstring("\27LJ\2\n=\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\"polarmutex.plugins.treesitter\frequire\0", "config", "nvim-treesitter")

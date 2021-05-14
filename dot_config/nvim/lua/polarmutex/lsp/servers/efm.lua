@@ -43,7 +43,7 @@ local mypy = {
 -- LUA
 local luaFormat = {
     formatCommand = "lua-format -i " .. "--column-limit=88 " .. "--indent-width=4 " ..
-        "--spaces-around-equals-in-field " .. "--single-quote-to-double-quote " ..
+        "--spaces-around-equals-in-field " .. "--singe-quote-to-double-quote " ..
         "--no-keep-simple-function-one-line " ..
         "--no-keep-simple-control-block-one-line ",
     formatStdin = true
@@ -59,7 +59,14 @@ local lspname = "efm"
 local install_path = vim.fn.stdpath("data") .. "/lspinstall/" .. lspname
 
 lspconfig.efm.setup{
-    cmd = { install_path .. "/efm-langserver" },
+    before_init = function(params)
+        params.processId = vim.NIL
+    end,
+    cmd = require'lspcontainers'.command('efm', {
+        additional_languages = {
+            efm = "lspcontainers/efm:latest"
+        }
+    }),
     init_options = {documentFormatting = true},
     filetypes = {"javascript", "typescript", "typescriptreact", "lua", "python"},
     settings = {
