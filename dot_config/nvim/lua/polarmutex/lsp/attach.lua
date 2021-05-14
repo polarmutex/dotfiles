@@ -1,44 +1,23 @@
-local custom_attach = function(client)
-    -- using compe now
-    -- require('completion').on_attach(client)
+local M = {}
 
-    -- if client.resolved_capabilities.document_formatting then
-    --    attach_formatting(client)
-    -- end
-
-    -- can we inject code into this function?
-    if vim.api.nvim_buf_get_option(0, "filetype") == "beancount" then
-        -- populate quickfix list with diagnostics
-        -- TODO can we limit this easily to beancount?
-        local method = "textDocument/publishDiagnostics"
-        local default_callback = vim.lsp.handlers[method]
-        vim.lsp.handlers[method] = function(err, method, result, client_id)
-            default_callback(err, method, result, client_id)
-            if result and result.diagnostics then
-                local item_list = {}
-
-                for _, v in ipairs(result.diagnostics) do
-                    local fname = result.uri
-                    table.insert(item_list, {
-                        filename = fname,
-                        lnum = v.range.start.line + 1,
-                        col = v.range.start.character + 1,
-                        text = v.message,
-                    })
-                end
-
-                local old_items = vim.fn.getqflist()
-                for _, old_item in ipairs(old_items) do
-                    local bufnr = vim.uri_to_bufnr(result.uri)
-                    if vim.uri_from_bufnr(old_item.bufnr) ~= result.uri then
-                        table.insert(item_list, old_item)
-                    end
-                end
-
-                vim.fn.setqflist({}, " ", {title = "LSP", items = item_list})
-            end
+M.default_custom_on_attach = function(client, bufnr)
+    -- Set autocommands conditional on server_capabilities
+    if client.resolved_capabilities.document_formatting then
+        if client.name ~= "tsserver" then
+            vim.cmd(
+                [[ autocmd BufWritePre * :lua vim.lsp.buf.formatting_sync(nil, 250) ]])
         end
+    end
+
+    if client.resolved_capabilities.document_highlight then
+        vim.api.nvim_exec([[
+            augroup lsp_document_highlight
+            autocmd! * <buffer>
+            autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
+            autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+            augroup END
+        ]], false)
     end
 end
 
-return custom_attach
+return M
