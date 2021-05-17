@@ -5,12 +5,11 @@
 -- https://github.com/johannesthyssen/vim-signit
 -- https://github.com/kyazdani42/nvim-tree.lua
 -- https://github.com/mkitt/tabline.vim
-
-local install_path = vim.fn.stdpath('data')..'/site/pack/packer/opt/packer.nvim'
+local install_path = vim.fn.stdpath("data") .. "/site/pack/packer/opt/packer.nvim"
 
 if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
-  vim.cmd('!git clone https://github.com/wbthomason/packer.nvim '..install_path)
-  vim.cmd('packadd packer.nvim')
+    vim.cmd("!git clone https://github.com/wbthomason/packer.nvim " .. install_path)
+    vim.cmd("packadd packer.nvim")
 end
 
 vim.cmd [[packadd packer.nvim]]
@@ -41,28 +40,33 @@ if packer_ok then
         end
     end
 
-    packer.init{
-        display = {
-            open_fn = require("packer.util").float
-        }
-    }
+    packer.init {display = {open_fn = require("packer.util").float}}
 
     local plugins = function()
         -- Packer can manage itself as an optional plugin
-        use{"wbthomason/packer.nvim", opt = true}
+        use {
+            "wbthomason/packer.nvim",
+            run = function()
+                vim.cmd([[PackerCompile]])
+            end
+        }
 
         -- LSP
         use("neovim/nvim-lspconfig")
-        use{"hrsh7th/nvim-compe",
-            config = function() require("polarmutex.plugins.completion") end,
+        use {
+            "hrsh7th/nvim-compe",
+            config = function()
+                require("polarmutex.plugins.completion")
+            end
         }
         use("nvim-lua/lsp-status.nvim")
-        use{"glepnir/lspsaga.nvim",
-            config = function() require("polarmutex.plugins.lspsaga") end,
+        use {
+            "glepnir/lspsaga.nvim",
+            config = function()
+                require("polarmutex.plugins.lspsaga")
+            end
         }
-        use{"lspcontainers/lspcontainers.nvim",
-            config = function() require("polarmutex.plugins.lspcontainers") end,
-        }
+        use {"lspcontainers/lspcontainers.nvim"}
         use("onsails/lspkind-nvim")
         use("kosayoda/nvim-lightbulb")
         use("tjdevries/nlua.nvim")
@@ -73,7 +77,9 @@ if packer_ok then
             run = function()
                 vim.cmd([[TSUpdate]])
             end,
-            config = function() require("polarmutex.plugins.treesitter") end,
+            config = function()
+                require("polarmutex.plugins.treesitter")
+            end
         })
         -- local_use('polarmutex','nvim-treesitter')
         use("nvim-treesitter/playground")
@@ -83,24 +89,28 @@ if packer_ok then
         -- haringsrob/nvim_context_vt
 
         -- Telescope (fuzzy finder)
-        use{
+        use {
             "nvim-telescope/telescope.nvim",
             requires = {
-                {"nvim-lua/popup.nvim"},
-                {"nvim-telescope/telescope-fzy-native.nvim"},
+                {"nvim-lua/popup.nvim"}, {"nvim-telescope/telescope-fzy-native.nvim"},
                 {"nvim-telescope/telescope-fzf-writer.nvim"},
                 {"nvim-telescope/telescope-packer.nvim"},
                 {"nvim-telescope/telescope-github.nvim"},
                 {"nvim-telescope/telescope-packer.nvim"}
             },
-            config = function() require("polarmutex.plugins.telescope.config") end,
+            config = function()
+                require("polarmutex.plugins.telescope.config")
+            end
         }
         use("kyazdani42/nvim-web-devicons")
         use("phaazon/hop.nvim")
 
         -- Debug adapter protocol
-        use{"mfussenegger/nvim-dap",
-            config = function() require("polarmutex.plugins.dap") end,
+        use {
+            "mfussenegger/nvim-dap",
+            config = function()
+                require("polarmutex.plugins.dap")
+            end
         }
         use("mfussenegger/nvim-dap-python")
         use("mfussenegger/nvim-lua-debugger")
@@ -108,31 +118,53 @@ if packer_ok then
         use("nvim-telescope/telescope-dap.nvim")
 
         -- Terminal / File Nav
-        use{"ThePrimeagen/harpoon", 
-            config = function() require("polarmutex.plugins.harpoon") end,
+        use {
+            "ThePrimeagen/harpoon",
+            config = function()
+                require("polarmutex.plugins.harpoon")
+            end
         }
-        use{'norcalli/nvim-terminal.lua',
-            config = function() require("polarmutex.plugins.nvim-terminal") end
+        use {
+            "norcalli/nvim-terminal.lua",
+            config = function()
+                require("polarmutex.plugins.nvim-terminal")
+            end
         }
 
         -- Git
-        use{"TimUntersberger/neogit",
-            config = function() require("polarmutex.plugins.neogit") end,
+        use {
+            "TimUntersberger/neogit",
+            config = function()
+                require("polarmutex.plugins.neogit")
+            end
         }
-        use{"lewis6991/gitsigns.nvim",
-            config = function() require("polarmutex.plugins.gitsigns") end,
+        use {
+            "lewis6991/gitsigns.nvim",
+            config = function()
+                require("polarmutex.plugins.gitsigns")
+            end
         }
         use("pwntester/octo.nvim")
         use("ThePrimeagen/git-worktree.nvim")
-        --use("~/repos/git-worktree.nvim.git/master")
+        -- use("~/repos/git-worktree.nvim.git/master")
         use({"ruifm/gitlinker.nvim"})
 
         -- plenary
-        use{"nvim-lua/plenary.nvim"}
+        use {"nvim-lua/plenary.nvim"}
 
+        -- keymaps
+        use {
+            "folke/which-key.nvim",
+            config = function()
+                require("polarmutex.plugins.which-key")
+            end
+        }
         -- Increment / Decrement
-        use{"monaqa/dial.nvim",
-            config = function() require("polarmutex.plugins.dial") end,
+        use {
+            "monaqa/dial.nvim",
+            config = function()
+                require("polarmutex.plugins.dial")
+            end
         }
 
         -- text maniuplation
@@ -145,9 +177,12 @@ if packer_ok then
         use("glts/vim-radical")
 
         -- Add some color
-        use{"norcalli/nvim-colorizer.lua",
+        use {
+            "norcalli/nvim-colorizer.lua",
             opt = false,
-            config = function() require("polarmutex.plugins.colorizer") end,
+            config = function()
+                require("polarmutex.plugins.colorizer")
+            end
         }
 
         -- :Messages <- view messages in quickfix list
