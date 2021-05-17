@@ -1,3 +1,5 @@
+local custom_on_attach = require('polarmutex.lsp.attach').default_custom_on_attach
+
 -- ESLINT
 -- local eslint = {
 --	lintCommand = "./node_modules/.bin/eslint -f unix --stdin",
@@ -43,7 +45,7 @@ local mypy = {
 -- LUA
 local luaFormat = {
     formatCommand = "lua-format -i " .. "--column-limit=88 " .. "--indent-width=4 " ..
-        "--spaces-around-equals-in-field " .. "--singe-quote-to-double-quote " ..
+        "--spaces-around-equals-in-field " .. "--single-quote-to-double-quote " ..
         "--no-keep-simple-function-one-line " ..
         "--no-keep-simple-control-block-one-line ",
     formatStdin = true
@@ -64,7 +66,7 @@ lspconfig.efm.setup{
     end,
     cmd = require'lspcontainers'.command('efm', {
         additional_languages = {
-            efm = "lspcontainers/efm:latest"
+            efm = "lspcontainers/efm:0.0.29"
         }
     }),
     init_options = {documentFormatting = true},
@@ -78,5 +80,6 @@ lspconfig.efm.setup{
             python = {flake8, mypy},
             lua = {luacheck, luaFormat}
         }
-    }
+    },
+    on_attach = custom_on_attach,
 }
