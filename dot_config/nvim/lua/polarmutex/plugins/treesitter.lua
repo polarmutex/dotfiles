@@ -58,6 +58,6 @@ require("nvim-treesitter.configs").setup({
     },
     playground = {enable = true},
     ensure_installed = {
-        "python", "beancount", "lua", "cpp", "typescript", "tsx", "svelte",
+        "python", "beancount", "lua", "c", "cpp", "typescript", "tsx", "svelte",
     },
 })

@@ -46,9 +46,10 @@ if packer_ok then
         -- Packer can manage itself as an optional plugin
         use {
             "wbthomason/packer.nvim",
+            opt = true,
             run = function()
                 vim.cmd([[PackerCompile]])
-            end
+            end,
         }
 
         -- LSP

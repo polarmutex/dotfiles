@@ -2,9 +2,12 @@ local wk = require("which-key")
 
 local M = {}
 
-M.default_custom_on_attach = function(client, bufnr)
-    local opts = {noremap = true, silent = true, buffer = bufnr}
+M.default_custom_on_attach = function(client, bufnr, user_opts)
+    local opts = user_opts or {auto_format = false, lsp_highlights = false}
+    local auto_format = opts.auto_format or false
+    local lsp_highlights = opts.lsp_highlights or false
 
+    local mapping_opts = {noremap = true, silent = true, buffer = bufnr}
     local keymap = {
         c = {
             name = "+code",
@@ -61,6 +64,16 @@ M.default_custom_on_attach = function(client, bufnr)
         -- I = { "<Cmd>lua vim.lsp.buf.declaration()<CR>", "Goto Declaration" },
         t = {"<cmd>lua vim.lsp.buf.type_definition()<CR>", "Goto Type Definition"}
     }
+
+    if lsp_highlights and client.resolved_capabilities.document_highlight then
+        vim.api.nvim_exec([[
+        augroup lsp_document_highlight
+            autocmd!
+            autocmd CursorHold,CursorHoldI  <buffer> lua vim.lsp.buf.document_highlight()
+            autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+        augroup END
+        ]], false)
+    end
 
     -- Set some keybinds conditional on server capabilities
     if client.resolved_capabilities.document_formatting then
